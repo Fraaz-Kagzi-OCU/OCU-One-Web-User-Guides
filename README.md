@@ -1,6 +1,12 @@
 # User Guides
 
-End-user-facing how-to guides — written for the people who use the app day to day, not for developers. Each guide is a single self-contained `.md` file with numbered steps and screenshots stored alongside it under `attachments/<guide-slug>/`.
+This repo is an end-user-facing documentation project for a web app — how-to guides written for the people who use the app day to day, not for developers. The end goal is full coverage: a guide for every user-facing feature and workflow in the app, not just a handful of isolated topics. Each guide is a single self-contained `.md` file with numbered steps and screenshots stored alongside it under `attachments/<guide-slug>/`.
+
+Every guide listed below still needs a human to check it against the live app before it's trusted — see [`VERIFICATION.md`](VERIFICATION.md) for what's been verified so far and how to sign off on one.
+
+## Roadmap
+
+The app has roughly 390  user-facing workflows worth documenting in total. This repo currently covers one complete area — Planned vs Actual / commercial product allocations (17 guides) — end to end, from setup through to seeing the results. The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
 
 ## Contents
 
