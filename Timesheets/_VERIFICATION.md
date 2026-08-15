@@ -33,6 +33,22 @@ Tracks whether a human has actually checked each guide against the live app — 
 | Viewing the company shift timeline (Gantt/scheduler)             | No       |             |      | v2026.08.02 |       |
 | Inspecting and updating a shift event from the timeline          | No       |             |      | v2026.08.02 |       |
 
+### Timesheet Groups — pre-booking and reviewing shift groups
+
+| Guide                                                                        | Verified | Verified by | Date | Version     | Notes |
+| ----------------------------------------------------------------------------- | -------- | ----------- | ---- | ----------- | ----- |
+| Creating and managing a timesheet group                                     | No       |             |      | v2026.08.02 |       |
+| Reviewing a timesheet group and approving or denying its timesheets         | No       |             |      | v2026.08.02 |       |
+| Browsing and filtering timesheet groups                                     | No       |             |      | v2026.08.02 |       |
+
+### Timesheet Exports — payroll export files
+
+| Guide                                                                        | Verified | Verified by | Date | Version     | Notes |
+| ----------------------------------------------------------------------------- | -------- | ----------- | ---- | ----------- | ----- |
+| Creating a timesheet export for payroll                                     | No       |             |      | v2026.08.02 |       |
+| Reviewing an export and bulk-updating its timesheet statuses                | No       |             |      | v2026.08.02 |       |
+| Browsing and filtering timesheet exports                                    | No       |             |      | v2026.08.02 |       |
+
 ## Summary
 
-Verified: 0 / 10
+Verified: 0 / 16

@@ -322,17 +322,17 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating and managing a timesheet group | Timesheets | Mgr | TimesheetGroupsController CRUD | todo | Group "Bank Holiday Cover – Aug 2026", 2 owners, 2 nested rows | 4 |  |  |
-| Reviewing a timesheet group and approving/denying its timesheets | Timesheets | Mgr | TimesheetGroupsController#show/#status | todo | Group status change to "approved" | 3 |  |  |
-| Browsing and filtering timesheet groups | Timesheets | Mgr | TimesheetGroupsController#index/#filter | todo | Filter title contains "Bank Holiday" | 2 |  |  |
+| Creating and managing a timesheet group | Timesheets | Mgr | TimesheetGroupsController CRUD | done | Group "Bank Holiday Cover – Aug 2026", 2 owners, 2 nested rows | 4 | 2026-08-15 | v2026.08.02 |
+| Reviewing a timesheet group and approving/denying its timesheets | Timesheets | Mgr | TimesheetGroupsController#show/#status | done | Group status change to "approved" | 3 | 2026-08-15 | v2026.08.02 |
+| Browsing and filtering timesheet groups | Timesheets | Mgr | TimesheetGroupsController#index/#filter | done | Filter title contains "Bank Holiday" | 2 | 2026-08-15 | v2026.08.02 |
 
 ## Timesheet Exports
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating a timesheet export for payroll | Timesheets | Fin, Admin | TimesheetExportsController#new/#select_timesheets/#create | todo | Export "Payroll Run – Aug 2026 Week 32", CSV, 42 timesheets | 4 |  |  |
-| Reviewing an export and bulk-updating its timesheet statuses | Timesheets | Fin, Admin | TimesheetExportsController#show/#bulk_status | todo | Bulk status "exported" | 3 |  |  |
-| Browsing and filtering timesheet exports | Timesheets | Fin, Admin | TimesheetExportsController#index/#filter | todo | Filter by created_at this month | 2 |  |  |
+| Creating a timesheet export for payroll | Timesheets | Fin, Admin | TimesheetExportsController#new/#select_timesheets/#create | done | Export "Payroll Run – Aug 2026 Week 32", CSV, 42 timesheets | 4 | 2026-08-15 | v2026.08.02 |
+| Reviewing an export and bulk-updating its timesheet statuses | Timesheets | Fin, Admin | TimesheetExportsController#show/#bulk_status | done | Bulk status "exported" | 3 | 2026-08-15 | v2026.08.02 |
+| Browsing and filtering timesheet exports | Timesheets | Fin, Admin | TimesheetExportsController#index/#filter | done | Filter by created_at this month | 2 | 2026-08-15 | v2026.08.02 |
 
 ## Skills & Compliance
 
@@ -739,13 +739,13 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 ## Summary
 
-Completed: 27 / 393
+Completed: 33 / 393
 
 PVA (Planned vs Actual / product allocations) guides completed: 16 / 16
 
-Timesheets guides completed: 10 / 16
+Timesheets guides completed: 16 / 16
 
 Release breakdown (current version only, for `done` rows):
 
-- v2026.08.02: 13
+- v2026.08.02: 19
 - v2026.08.03: 14

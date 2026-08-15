@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers one complete area — Planned vs Actual / commercial product allocations (17 guides) — end to end, from setup through to seeing the results, and is partway through a second — Timesheets (10 of 16 guides so far, covering clocking in, individual timesheets, and the review grid; timesheet groups and payroll exports still to come). The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
+The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers two complete areas — Planned vs Actual / commercial product allocations (17 guides) and Timesheets (16 guides, covering clocking in, individual timesheets, the review grid, the shift timeline, timesheet groups, and payroll exports) — each end to end, from setup through to seeing the results. The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
 
 ## Contents
 
@@ -42,7 +42,7 @@ Start with the overview, then follow the flow: set up rates → allocate → adj
 - [Viewing a project's commercial stats dashboard](PVA/Viewing%20an%20projects%20commercial%20stats%20dashboard.md)
 
 ### Timesheets
-In progress — 10 of 16 guides so far. Timesheet groups and payroll exports are still to come.
+Complete — 16 of 16 guides.
 
 **Clocking in & tracking your own time**
 - [Clocking in and starting a shift](Timesheets/Clocking%20in%20and%20starting%20a%20shift.md)
@@ -59,6 +59,16 @@ In progress — 10 of 16 guides so far. Timesheet groups and payroll exports are
 **Viewing the shift timeline**
 - [Viewing the company shift timeline (Gantt/scheduler)](Timesheets/Viewing%20the%20company%20shift%20timeline%20%28Gantt-scheduler%29.md)
 - [Inspecting and updating a shift event from the timeline](Timesheets/Inspecting%20and%20updating%20a%20shift%20event%20from%20the%20timeline.md)
+
+**Pre-booking and reviewing timesheet groups**
+- [Creating and managing a timesheet group](Timesheets/Creating%20and%20managing%20a%20timesheet%20group.md)
+- [Reviewing a timesheet group and approving or denying its timesheets](Timesheets/Reviewing%20a%20timesheet%20group%20and%20approving%20or%20denying%20its%20timesheets.md)
+- [Browsing and filtering timesheet groups](Timesheets/Browsing%20and%20filtering%20timesheet%20groups.md)
+
+**Exporting timesheets for payroll**
+- [Creating a timesheet export for payroll](Timesheets/Creating%20a%20timesheet%20export%20for%20payroll.md)
+- [Reviewing an export and bulk-updating its timesheet statuses](Timesheets/Reviewing%20an%20export%20and%20bulk-updating%20its%20timesheet%20statuses.md)
+- [Browsing and filtering timesheet exports](Timesheets/Browsing%20and%20filtering%20timesheet%20exports.md)
 
 ## Folder layout
 
