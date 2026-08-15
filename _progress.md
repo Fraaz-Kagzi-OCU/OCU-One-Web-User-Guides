@@ -302,37 +302,37 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Clocking in and starting a shift |  | FE | TimesheetsController#start_shift_form/#start_shift | todo | Project code "PC-2026-OFFICE", planned duration 8h | 3 |  |  |
-| Ending a shift and confirming hours worked |  | FE | TimesheetsController#end_shift_form/#end_shift/#confirm_shift | todo | Shift started 08:00 at "Riverside Substation", ended 16:30 | 3 |  |  |
-| Viewing and editing an individual timesheet |  | FE, Mgr | TimesheetsController#show/new/edit/update/destroy | todo | Timesheet "Week 32 – J. Smith", project #ORD-1042, 8h15m | 4 |  |  |
-| Logging a break or other shift event |  | FE | Timesheets::EventsController CRUD | todo | Event "Lunch Break" 12:00, 30 min | 3 |  |  |
-| Browsing all timesheets in the table view |  | Mgr, Fin | TimesheetsController#index/#filter | todo | Filter status=pending, group="North Region Engineers" | 3 |  |  |
-| Approving or denying timesheets for your team (weekly review grid) |  | Mgr | TimesheetsController#review/#status/#bulk_status | todo | Week of 2026-08-10, cover approver, 5 pending entries | 4 |  |  |
-| Adding or editing a timesheet entry from the review grid |  | Mgr | TimesheetsController#review_new/#review_create/#review_edit/#review_update/#review_entry_status | todo | User "A. Fieldworker", date 2026-08-11, category "Overtime", 2h | 4 |  |  |
-| Rounding or splitting a timesheet entry during review |  | Mgr | TimesheetsController#round/#split | todo | Split shift 22:00–06:00 at midnight; round start to nearest 15 min | 3 |  |  |
+| Clocking in and starting a shift | Timesheets | FE | TimesheetsController#start_shift_form/#start_shift | done | Project code "PC-2026-OFFICE", planned duration 8h | 3 | 2026-08-15 | v2026.08.02 |
+| Ending a shift and confirming hours worked | Timesheets | FE | TimesheetsController#end_shift_form/#end_shift/#confirm_shift | done | Shift started 08:00 at "Riverside Substation", ended 16:30 | 3 | 2026-08-15 | v2026.08.02 |
+| Viewing and editing an individual timesheet | Timesheets | FE, Mgr | TimesheetsController#show/new/edit/update/destroy | done | Timesheet "Week 32 – J. Smith", project #ORD-1042, 8h15m | 4 | 2026-08-15 | v2026.08.02 |
+| Logging a break or other shift event | Timesheets | FE | Timesheets::EventsController CRUD | done | Event "Lunch Break" 12:00, 30 min | 3 | 2026-08-15 | v2026.08.02 |
+| Browsing all timesheets in the table view | Timesheets | Mgr, Fin | TimesheetsController#index/#filter | done | Filter status=pending, group="North Region Engineers" | 3 | 2026-08-15 | v2026.08.02 |
+| Approving or denying timesheets for your team (weekly review grid) | Timesheets | Mgr | TimesheetsController#review/#status/#bulk_status | done | Week of 2026-08-10, cover approver, 5 pending entries | 4 | 2026-08-15 | v2026.08.02 |
+| Adding or editing a timesheet entry from the review grid | Timesheets | Mgr | TimesheetsController#review_new/#review_create/#review_edit/#review_update/#review_entry_status | done | User "A. Fieldworker", date 2026-08-11, category "Overtime", 2h | 4 | 2026-08-15 | v2026.08.02 |
+| Rounding or splitting a timesheet entry during review | Timesheets | Mgr | TimesheetsController#round/#split | done | Split shift 22:00–06:00 at midnight; round start to nearest 15 min | 3 | 2026-08-15 | v2026.08.02 |
 
 ## Timesheet Timeline
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing the company shift timeline (Gantt/scheduler) |  | Mgr, Ops | Timesheets::TimelineController#show; Timeline::UsersController/EventsController#index | todo | Date range 2026-08-10 to 16, 2 users' shifts shown | 3 |  |  |
-| Inspecting and updating a shift event from the timeline |  | Mgr, Ops | Timesheets::Timeline::EventsController#tooltip/#status/#update | todo | Event "Travel" 09:00–09:30 linked to Job #JOB-5521 | 3 |  |  |
+| Viewing the company shift timeline (Gantt/scheduler) | Timesheets | Mgr, Ops | Timesheets::TimelineController#show; Timeline::UsersController/EventsController#index | done | Date range 2026-08-10 to 16, 2 users' shifts shown | 3 | 2026-08-15 | v2026.08.02 |
+| Inspecting and updating a shift event from the timeline | Timesheets | Mgr, Ops | Timesheets::Timeline::EventsController#tooltip/#status/#update | done | Event "Travel" 09:00–09:30 linked to Job #JOB-5521 | 3 | 2026-08-15 | v2026.08.02 |
 
 ## Timesheet Groups
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating and managing a timesheet group |  | Mgr | TimesheetGroupsController CRUD | todo | Group "Bank Holiday Cover – Aug 2026", 2 owners, 2 nested rows | 4 |  |  |
-| Reviewing a timesheet group and approving/denying its timesheets |  | Mgr | TimesheetGroupsController#show/#status | todo | Group status change to "approved" | 3 |  |  |
-| Browsing and filtering timesheet groups |  | Mgr | TimesheetGroupsController#index/#filter | todo | Filter title contains "Bank Holiday" | 2 |  |  |
+| Creating and managing a timesheet group | Timesheets | Mgr | TimesheetGroupsController CRUD | todo | Group "Bank Holiday Cover – Aug 2026", 2 owners, 2 nested rows | 4 |  |  |
+| Reviewing a timesheet group and approving/denying its timesheets | Timesheets | Mgr | TimesheetGroupsController#show/#status | todo | Group status change to "approved" | 3 |  |  |
+| Browsing and filtering timesheet groups | Timesheets | Mgr | TimesheetGroupsController#index/#filter | todo | Filter title contains "Bank Holiday" | 2 |  |  |
 
 ## Timesheet Exports
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating a timesheet export for payroll |  | Fin, Admin | TimesheetExportsController#new/#select_timesheets/#create | todo | Export "Payroll Run – Aug 2026 Week 32", CSV, 42 timesheets | 4 |  |  |
-| Reviewing an export and bulk-updating its timesheet statuses |  | Fin, Admin | TimesheetExportsController#show/#bulk_status | todo | Bulk status "exported" | 3 |  |  |
-| Browsing and filtering timesheet exports |  | Fin, Admin | TimesheetExportsController#index/#filter | todo | Filter by created_at this month | 2 |  |  |
+| Creating a timesheet export for payroll | Timesheets | Fin, Admin | TimesheetExportsController#new/#select_timesheets/#create | todo | Export "Payroll Run – Aug 2026 Week 32", CSV, 42 timesheets | 4 |  |  |
+| Reviewing an export and bulk-updating its timesheet statuses | Timesheets | Fin, Admin | TimesheetExportsController#show/#bulk_status | todo | Bulk status "exported" | 3 |  |  |
+| Browsing and filtering timesheet exports | Timesheets | Fin, Admin | TimesheetExportsController#index/#filter | todo | Filter by created_at this month | 2 |  |  |
 
 ## Skills & Compliance
 
@@ -739,11 +739,13 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 ## Summary
 
-Completed: 17 / 393
+Completed: 27 / 393
 
 PVA (Planned vs Actual / product allocations) guides completed: 16 / 16
 
+Timesheets guides completed: 10 / 16
+
 Release breakdown (current version only, for `done` rows):
 
-- v2026.08.02: 3
+- v2026.08.02: 13
 - v2026.08.03: 14

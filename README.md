@@ -2,11 +2,11 @@
 
 This repo is an end-user-facing documentation project for a web app — how-to guides written for the people who use the app day to day, not for developers. The end goal is full coverage: a guide for every user-facing feature and workflow in the app, not just a handful of isolated topics. Each guide is a single self-contained `.md` file with numbered steps and screenshots stored alongside it under `attachments/<guide-slug>/`.
 
-Every guide listed below still needs a human to check it against the live app before it's trusted — see [`VERIFICATION.md`](VERIFICATION.md) for what's been verified so far and how to sign off on one.
+Every guide listed below still needs a human to check it against the live app before it's trusted. Verification is tracked per feature area — see [`PVA/_VERIFICATION.md`](PVA/_VERIFICATION.md) and [`Timesheets/_VERIFICATION.md`](Timesheets/_VERIFICATION.md) for what's been verified so far and how to sign off on one. Every feature area gets its own `_VERIFICATION.md` as it's added.
 
 ## Roadmap
 
-The app has roughly 390  user-facing workflows worth documenting in total. This repo currently covers one complete area — Planned vs Actual / commercial product allocations (17 guides) — end to end, from setup through to seeing the results. The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
+The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers one complete area — Planned vs Actual / commercial product allocations (17 guides) — end to end, from setup through to seeing the results, and is partway through a second — Timesheets (10 of 16 guides so far, covering clocking in, individual timesheets, and the review grid; timesheet groups and payroll exports still to come). The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
 
 ## Contents
 
@@ -41,16 +41,40 @@ Start with the overview, then follow the flow: set up rates → allocate → adj
 - [Managing a task's product allocations tab](PVA/Managing%20a%20task%27s%20product%20allocations%20tab.md)
 - [Viewing a project's commercial stats dashboard](PVA/Viewing%20an%20projects%20commercial%20stats%20dashboard.md)
 
+### Timesheets
+In progress — 10 of 16 guides so far. Timesheet groups and payroll exports are still to come.
+
+**Clocking in & tracking your own time**
+- [Clocking in and starting a shift](Timesheets/Clocking%20in%20and%20starting%20a%20shift.md)
+- [Ending a shift and confirming hours worked](Timesheets/Ending%20a%20shift%20and%20confirming%20hours%20worked.md)
+- [Logging a break or other shift event](Timesheets/Logging%20a%20break%20or%20other%20shift%20event.md)
+- [Viewing and editing an individual timesheet](Timesheets/Viewing%20and%20editing%20an%20individual%20timesheet.md)
+
+**Reviewing your team's timesheets**
+- [Browsing all timesheets in the table view](Timesheets/Browsing%20all%20timesheets%20in%20the%20table%20view.md)
+- [Approving or denying timesheets for your team (weekly review grid)](Timesheets/Approving%20or%20denying%20timesheets%20for%20your%20team%20%28weekly%20review%20grid%29.md)
+- [Adding or editing a timesheet entry from the review grid](Timesheets/Adding%20or%20editing%20a%20timesheet%20entry%20from%20the%20review%20grid.md)
+- [Rounding or splitting a timesheet entry during review](Timesheets/Rounding%20or%20splitting%20a%20timesheet%20entry%20during%20review.md)
+
+**Viewing the shift timeline**
+- [Viewing the company shift timeline (Gantt/scheduler)](Timesheets/Viewing%20the%20company%20shift%20timeline%20%28Gantt-scheduler%29.md)
+- [Inspecting and updating a shift event from the timeline](Timesheets/Inspecting%20and%20updating%20a%20shift%20event%20from%20the%20timeline.md)
+
 ## Folder layout
 
 ```
-user guides/
+OCU-One-Web-User-Guides/
 ├── README.md              this file
-├── images/                 shared/misc images
-└── PVA/                    Planned vs Actual guides
-    ├── _Planned vs Actual - Overview.md
+├── _progress.md           internal tracker: every planned guide + its status
+├── PVA/                    Planned vs Actual guides
+│   ├── _Planned vs Actual - Overview.md
+│   ├── _VERIFICATION.md    verification status for PVA guides
+│   ├── ...guide files
+│   └── attachments/         
+└── Timesheets/             Timesheets guides
+    ├── _VERIFICATION.md    verification status for Timesheets guides
     ├── ...guide files
-    └── attachments/         screenshots for PVA guides, one subfolder per guide
+    └── attachments/        
 ```
 
 ## Conventions
