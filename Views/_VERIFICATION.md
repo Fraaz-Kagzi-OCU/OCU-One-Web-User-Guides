@@ -15,28 +15,28 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 ### Filtering and columns — narrowing down and customizing a list view
 
-| Guide                                                            | Verified | Verified by | Date | Version     | Notes |
-| ------------------------------------------------------------------ | -------- | ----------- | ---- | ----------- | ----- |
-| Filtering a list view by a field                                  | No       |             |      | v2026.08.02 |       |
-| Removing or updating an active filter                            | No       |             |      | v2026.08.02 |       |
-| Customizing which columns appear in a list-table view             | No       |             |      | v2026.08.02 |       |
+| Guide                                                 | Verified | Verified by | Date       | Version     | Notes |
+| ----------------------------------------------------- | -------- | ----------- | ---------- | ----------- | ----- |
+| Filtering a list view by a field                      | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |       |
+| Removing or updating an active filter                 | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |       |
+| Customizing which columns appear in a list-table view | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |       |
 
 ### Saved views — creating, editing, and switching between your own views
 
-| Guide                                                            | Verified | Verified by | Date | Version     | Notes |
-| ------------------------------------------------------------------ | -------- | ----------- | ---- | ----------- | ----- |
-| Saving current filters-columns as a new personal view             | No       |             |      | v2026.08.02 |       |
-| Renaming and updating an existing saved view                      | No       |             |      | v2026.08.02 |       |
-| Switching between saved views on a list screen                    | No       |             |      | v2026.08.02 |       |
-| Favouriting a saved view                                          | No       |             |      | v2026.08.02 |       |
-| Managing all your saved views (My Views)                          | No       |             |      | v2026.08.02 |       |
+| Guide                                                 | Verified | Verified by | Date       | Version     | Notes                                   |
+| ----------------------------------------------------- | -------- | ----------- | ---------- | ----------- | --------------------------------------- |
+| Saving current filters-columns as a new personal view | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
+| Renaming and updating an existing saved view          | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
+| Switching between saved views on a list screen        | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
+| Favouriting a saved view                              | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
+| Managing all your saved views (My Views)              | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 | will normal users be able to use this ? |
 
 ### Admin — managing saved views across the tenant
 
-| Guide                            | Verified | Verified by | Date | Version     | Notes |
-| ----------------------------------- | -------- | ----------- | ---- | ----------- | ----- |
-| Managing saved views (admin)       | No       |             |      | v2026.08.02 |       |
+| Guide                        | Verified | Verified by | Date       | Version     | Notes                                  |
+| ---------------------------- | -------- | ----------- | ---------- | ----------- | -------------------------------------- |
+| Managing saved views (admin) | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 | will normal users be able to use this? |
 
 ## Summary
 
-Verified: 0 / 9
+Verified: 9 / 9

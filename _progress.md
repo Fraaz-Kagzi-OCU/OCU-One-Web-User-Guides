@@ -16,6 +16,7 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 | Switching between saved views on a list screen | Views | Ops, FE | ViewsController#show; scenes/view_component (view tabs) | done | Jobs list with tabs "Default view", "My Active Jobs" (favourited), "Unscheduled Jobs" | 2 | 2026-08-16 | v2026.08.02 |
 | Favouriting a saved view | Views | Ops, FE | ViewsController#favourite | done | Favouriting "Unscheduled Jobs" view (yellow star badge) | 1 | 2026-08-16 | v2026.08.02 |
 | Managing all your saved views ("My Views") | Views | Ops | ViewsController#index/#edit/#move/#activate/#deactivate/#destroy | done | User with 5 saved views across Jobs/Tickets, one deactivated ("Old Backlog"), reordering two views | 4 | 2026-08-16 | v2026.08.02 |
+| Managing saved views (admin) | Views | Admin | Settings::ViewsController#index/#filter/#edit/#update/#activate/#deactivate/#destroy | done | Admin Marcus renaming Priya Nair's "High Priority Tickets" to "High Priority Tickets - Reviewed" and deactivating her "Unscheduled Jobs" view | 7 | 2026-08-16 | v2026.08.02 |
 
 ## Media & Attachments
 
@@ -739,13 +740,15 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 ## Summary
 
-Completed: 32 / 393
+Completed: 41 / 393
 
 PVA (Planned vs Actual / product allocations) guides completed: 16 / 16
 
 Timesheets guides completed: 16 / 16
 
+Views guides completed: 9 / 9
+
 Release breakdown (current version only, for `done` rows):
 
-- v2026.08.02: 18
+- v2026.08.02: 27
 - v2026.08.03: 14

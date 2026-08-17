@@ -1,6 +1,6 @@
-# Customizing which columns appear in a list/table view
+# Customising which columns appear in a list/table view
 
-Every list screen in OCU One shows a default set of columns, but you can add, remove, and reorder them to show exactly the information you need. In this example, Priya customizes the Projects list to show the project number, client, and planned total value.
+Every list screen in OCU One shows a default set of columns, but you can add, remove, and reorder them to show exactly the information you need. In this example, Priya customises the Projects list to show the project number, client, and planned total value.
 
 ## Opening the columns panel
 
