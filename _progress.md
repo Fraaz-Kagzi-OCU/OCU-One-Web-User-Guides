@@ -8,14 +8,14 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 | ----------------------------------------------------- |-------| -------- | ------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ------------- | ----------- |
-| Filtering a list view by a field |  | Ops, FE | FiltersController#new/#autocomplete; filters/*_filter_component | done | Jobs list filtered by "Status = Booked" (no "Scheduled" status exists in the app; "Booked" is the closest real status) and a created-date range of the last 7 days | 4 | 2026-08-13 | v2026.08.02 |
-| Removing or updating an active filter |  | Ops, FE | filters/filter_component (remove/update) | todo | Existing "Priority = High" filter chip on the Tickets list changed to "Priority = Urgent" | 2 |  |  |
-| Customizing which columns appear in a list/table view |  | Ops | ColumnsController#new/#autocomplete; columns/column_component; scenes/view/view_options_component | todo | Projects list with columns Project Number, Client, Status, Total (ex VAT) added then reordered | 4 |  |  |
-| Saving current filters/columns as a new personal view |  | Ops, FE | ViewsController#create; scenes/view/view_options_component | todo | Filtered Jobs list ("Status = In Progress", "Assigned to = me") saved as new view "My Active Jobs" | 3 |  |  |
-| Renaming and updating an existing saved view |  | Ops | ViewsController#update | todo | Renaming view "Overdue Tickets" to "Overdue Tickets - This Week" after adding a due-date filter | 2 |  |  |
-| Switching between saved views on a list screen |  | Ops, FE | ViewsController#show; scenes/view_component (view tabs) | todo | Jobs list with tabs "Default view", "My Active Jobs" (favourited), "Unscheduled Jobs" | 2 |  |  |
-| Favouriting a saved view |  | Ops, FE | ViewsController#favourite | todo | Favouriting "Unscheduled Jobs" view (yellow star badge) | 1 |  |  |
-| Managing all your saved views ("My Views") |  | Ops | ViewsController#index/#edit/#move/#activate/#deactivate/#destroy | todo | User with 5 saved views across Jobs/Tickets, one deactivated ("Old Backlog"), reordering two views | 4 |  |  |
+| Filtering a list view by a field | Views | Ops, FE | FiltersController#new/#autocomplete; filters/*_filter_component | done | Jobs list filtered by "Status = Booked" (no "Scheduled" status exists in the app; "Booked" is the closest real status) and a created-date range of the last 7 days | 4 | 2026-08-16 | v2026.08.02 |
+| Removing or updating an active filter | Views | Ops, FE | filters/filter_component (remove/update) | done | Existing "Owner" filter chip on the Tickets list changed from Priya Nair to Marcus Webb, then removed (no "Priority" field exists on Tickets in the app) | 2 | 2026-08-16 | v2026.08.02 |
+| Customizing which columns appear in a list/table view | Views | Ops | ColumnsController#new/#autocomplete; columns/column_component; scenes/view/view_options_component | done | Projects list with columns Reference, Total Price (Planned), Client Lead added then reordered (no literal "Project Number"/"Total (ex VAT)" fields exist; these are the closest real on-screen equivalents) | 4 | 2026-08-16 | v2026.08.02 |
+| Saving current filters/columns as a new personal view | Views | Ops, FE | ViewsController#create; scenes/view/view_options_component | done | Filtered Jobs list ("Status = In Progress", "Assigned to = me") saved as new view "My Active Jobs" | 3 | 2026-08-16 | v2026.08.02 |
+| Renaming and updating an existing saved view | Views | Ops | ViewsController#update | done | Renaming view "Overdue Tickets" to "Overdue Tickets - This Week" after adding a Created-at filter (no due-date field exists on Tickets) | 2 | 2026-08-16 | v2026.08.02 |
+| Switching between saved views on a list screen | Views | Ops, FE | ViewsController#show; scenes/view_component (view tabs) | done | Jobs list with tabs "Default view", "My Active Jobs" (favourited), "Unscheduled Jobs" | 2 | 2026-08-16 | v2026.08.02 |
+| Favouriting a saved view | Views | Ops, FE | ViewsController#favourite | done | Favouriting "Unscheduled Jobs" view (yellow star badge) | 1 | 2026-08-16 | v2026.08.02 |
+| Managing all your saved views ("My Views") | Views | Ops | ViewsController#index/#edit/#move/#activate/#deactivate/#destroy | done | User with 5 saved views across Jobs/Tickets, one deactivated ("Old Backlog"), reordering two views | 4 | 2026-08-16 | v2026.08.02 |
 
 ## Media & Attachments
 
@@ -562,7 +562,7 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Managing saved views (admin) |  | Admin | Settings::ViewsController | todo | Admin renames/deactivates other users' saved views | 4 |  |  |
+| Managing saved views (admin) | Views | Admin | Settings::ViewsController | done | Admin renames/deactivates other users' saved views | 4 | 2026-08-16 | v2026.08.02 |
 | Managing folder sets (document folder templates) |  | Admin | Settings::FolderSetsController | todo | Folder Set "Standard Job Compliance Docs" with 3 child folders | 5 |  |  |
 
 ## Home Dashboard
@@ -739,7 +739,7 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 ## Summary
 
-Completed: 33 / 393
+Completed: 32 / 393
 
 PVA (Planned vs Actual / product allocations) guides completed: 16 / 16
 
@@ -747,5 +747,5 @@ Timesheets guides completed: 16 / 16
 
 Release breakdown (current version only, for `done` rows):
 
-- v2026.08.02: 19
+- v2026.08.02: 18
 - v2026.08.03: 14
