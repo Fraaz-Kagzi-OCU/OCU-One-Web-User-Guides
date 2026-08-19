@@ -286,18 +286,18 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing the ticket type catalog (ticket groups landing page) |  | Ops | TicketGroupsController#index | todo | Groups "Customer Complaints" and "Warranty Claims" | 2 |  |  |
-| Viewing ticket types within a ticket group |  | Ops | TicketGroupsController#show | todo | Group "Warranty Claims" with types "Product Defect"/"Installation Issue" | 2 |  |  |
-| Viewing the tickets list/table |  | Ops | TicketsController#index/#filter | todo | Ticket "Leaking pipe at 12 Oak Street", type "Plumbing Repair" | 3 |  |  |
-| Creating a new ticket |  | Ops | TicketsController#new/#create | todo | Ticket type "Product Defect", ref "RMA-4471" | 3 |  |  |
-| Viewing ticket details (main tab) |  | Ops, FE | TicketsController#show/#main | todo | Ticket "RMA-4471" stage "Awaiting Parts" with 2 comments, 1 doc | 4 |  |  |
-| Editing a ticket |  | Ops | TicketsController#edit/#update | todo | Update ticket description | 2 |  |  |
-| Deleting (archiving) a ticket |  | Ops | TicketsController#destroy | todo | Delete a duplicate test ticket | 2 |  |  |
-| Managing ticket todos |  | Ops, FE | TicketsController#todos | todo | Ticket with todos "Project replacement part", "Schedule pickup", "Confirm delivery" | 2 |  |  |
-| Downloading/previewing a ticket PDF |  | Ops | TicketsController#download | todo | Ticket with custom PDF template, one photo excluded | 3 |  |  |
-| Moving a ticket's pipeline stage |  | Ops | TicketsController#stage | todo | Move ticket "RMA-4471" Awaiting Parts → Resolved | 3 |  |  |
-| Viewing the tickets pipeline (kanban) board |  | Ops, Mgr | Tickets::PipelinesController#index/show/#filter | todo | Pipeline "Support Pipeline": New/In Progress/Awaiting Parts/Resolved | 3 |  |  |
-| Viewing "My Tickets" (personal account tab) |  | Ops, FE | Accounts::TicketsController#index/#group_tab/#show | todo | User with 1 open and 1 completed assigned ticket under "Warranty Claims" | 2 |  |  |
+| Browsing the ticket type catalog (ticket groups landing page) | Tickets | Ops | TicketGroupsController#index | done | Groups "HR", "Marketing", "Payroll", "IT Security", "Skills Hub" (matches production's real ticket groups) | 2 | 2026-08-18 | v2026.08.04 |
+| Viewing ticket types within a ticket group | Tickets | Ops | TicketGroupsController#show | done | Group "HR" with types "Annual Leave"/"Absence & Sickness"/"Benefits"/"General HR Query" | 2 | 2026-08-18 | v2026.08.04 |
+| Viewing the tickets list/table | Tickets | Ops | TicketsController#index/#filter | done | Ticket "Suspicious phishing email reported by employee", type "Incident", ref "INC-180826-2"; filtered by Ticket Groups = "IT Security" | 3 | 2026-08-18 | v2026.08.04 |
+| Creating a new ticket | Tickets | Ops | TicketsController#new/#create | done | Ticket type "Incident" (IT Security group), title "Suspicious phishing email reported by employee", reference left blank and auto-generated as "INC-180826-2", assigned to Priya Nair, pipeline "Service Desk" | 3 | 2026-08-18 | v2026.08.04 |
+| Viewing ticket details (main tab) | Tickets | Ops, FE | TicketsController#show/#main | done | Ticket "INC-180826-2" moved to stage "In Progress", with 2 notes and 1 doc ("Phishing Email Screenshot") | 4 | 2026-08-18 | v2026.08.04 |
+| Editing a ticket | Tickets | Ops | TicketsController#edit/#update | done | Updated ticket "INC-180826-2" Detail to record the outcome of the incident | 2 | 2026-08-18 | v2026.08.04 |
+| Deleting (archiving) a ticket | Tickets | Ops | TicketsController#destroy | done | Deleted duplicate ticket "Question about flexible working policy" (General HR Query), submitted twice by mistake | 2 | 2026-08-19 | v2026.08.04 |
+| Managing ticket todos | Tickets | Ops, FE | TicketsController#todos | done | Ticket "INC-180826-2" with todos "Reset affected account password" (marked Done), "Notify IT Security lead", "Send phishing reminder to team" (both Pending), todo type "Follow-up Task" | 2 | 2026-08-18 | v2026.08.04 |
+| Downloading/previewing a ticket PDF | Tickets | Ops | TicketsController#download | done | Ticket "INC-180826-2" with one "Supporting Photos" evidence photo, excluded from the PDF via "don't show this time" | 3 | 2026-08-19 | v2026.08.04 |
+| Moving a ticket's pipeline stage | Tickets | Ops | TicketsController#stage | done | Moved ticket "INC-180826-2" In Progress → Resolved | 3 | 2026-08-18 | v2026.08.04 |
+| Viewing the tickets pipeline (kanban) board | Tickets | Ops, Mgr | Tickets::PipelinesController#index/show/#filter | done | Pipeline "Service Desk" with one ticket in each of New/In Progress/On Hold/Resolved | 3 | 2026-08-19 | v2026.08.04 |
+| Viewing "My Tickets" (personal account tab) | Tickets | Ops, FE | Accounts::TicketsController#index/#group_tab/#show | done | Priya Nair with ticket "INC-180826-2" (stage Resolved, still shows as an open request) under "IT Security" | 2 | 2026-08-18 | v2026.08.04 |
 
 ## Timesheets
 
@@ -740,7 +740,7 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 ## Summary
 
-Completed: 41 / 393
+Completed: 54 / 394
 
 PVA (Planned vs Actual / product allocations) guides completed: 16 / 16
 
@@ -748,7 +748,10 @@ Timesheets guides completed: 16 / 16
 
 Views guides completed: 9 / 9
 
+Tickets guides completed: 12 / 12
+
 Release breakdown (current version only, for `done` rows):
 
-- v2026.08.02: 27
+- v2026.08.02: 28
 - v2026.08.03: 14
+- v2026.08.04: 12

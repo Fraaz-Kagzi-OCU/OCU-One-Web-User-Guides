@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers three complete areas — Planned vs Actual / commercial product allocations (16 guides), Timesheets (16 guides), and List Views & Filtering (9 guides) — each end to end, from setup through to seeing the results. The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
+The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers four complete areas — Planned vs Actual / commercial product allocations (16 guides), Timesheets (16 guides), List Views & Filtering (9 guides), and Tickets (12 guides) — each end to end, from setup through to seeing the results. The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
 
 ## Contents
 
@@ -91,6 +91,31 @@ Start with the overview, then follow the flow: set up rates → allocate → adj
 **Admin**
 - [Managing saved views (admin)](Views/Managing%20saved%20views%20%28admin%29.md)
 
+### Tickets
+Start with the overview, then follow the flow: browse groups & types → raise a ticket → work the ticket → track it via pipeline → your personal view.
+
+- [Overview — what ticket groups, types, and pipelines mean and how they fit together](Tickets/_Tickets%20-%20Overview.md)
+
+**Browsing tickets**
+- [Browsing the ticket type catalog (ticket groups landing page)](Tickets/Browsing%20the%20ticket%20type%20catalog.md)
+- [Viewing ticket types within a ticket group](Tickets/Viewing%20ticket%20types%20within%20a%20ticket%20group.md)
+- [Viewing the tickets list/table](Tickets/Viewing%20the%20tickets%20list.md)
+
+**Working a ticket**
+- [Creating a new ticket](Tickets/Creating%20a%20new%20ticket.md)
+- [Viewing ticket details (main tab)](Tickets/Viewing%20ticket%20details.md)
+- [Editing a ticket](Tickets/Editing%20a%20ticket.md)
+- [Managing ticket todos](Tickets/Managing%20ticket%20todos.md)
+- [Downloading or previewing a ticket PDF](Tickets/Downloading%20or%20previewing%20a%20ticket%20PDF.md)
+- [Deleting a ticket](Tickets/Deleting%20a%20ticket.md)
+
+**Pipeline & board views**
+- [Moving a ticket's pipeline stage](Tickets/Moving%20a%20ticket%27s%20pipeline%20stage.md)
+- [Viewing the tickets pipeline (kanban) board](Tickets/Viewing%20the%20tickets%20pipeline%20%28kanban%29%20board.md)
+
+**Your own tickets**
+- [Viewing "My Tickets" (personal account tab)](Tickets/Viewing%20My%20Tickets.md)
+
 ## Folder layout
 
 ```
@@ -107,9 +132,14 @@ OCU-One-Web-User-Guides/
 │   ├── _VERIFICATION.md    verification status for Timesheets guides
 │   ├── ...guide files
 │   └── attachments/        
-└── Views/                  List Views & Filtering guides
-    ├── _Views - Overview.md
-    ├── _VERIFICATION.md    verification status for Views guides
+├── Views/                  List Views & Filtering guides
+│   ├── _Views - Overview.md
+│   ├── _VERIFICATION.md    verification status for Views guides
+│   ├── ...guide files
+│   └── attachments/        
+└── Tickets/                Tickets guides
+    ├── _Tickets - Overview.md
+    ├── _VERIFICATION.md    verification status for Tickets guides
     ├── ...guide files
     └── attachments/        
 ```
