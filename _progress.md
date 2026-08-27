@@ -4,6 +4,26 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 **Audience key:** `FE` = Field Engineer (mobile, on-site) · `Ops` = Office/Operations staff · `Sales` = Sales/BD · `Fin` = Finance/Commercial · `Mgr` = Manager/Approver · `Admin` = Tenant system admin (Settings) · `Ext` = External (client portal / public share links) · `All` = any authenticated user · `OCU` = OCU's own internal platform team, not a customer persona. Rows can list more than one where a workflow spans roles.
 
+## How to sync this file (prompt for Claude)
+
+When asked to sync/update this file against what's actually been written, do the following:
+
+1. For each topic folder in the repo root (e.g. `Views/`, `Tickets/`, `Assets/`), list its guide `.md` files — excluding `_VERIFICATION.md`, any `_<Topic> - Overview.md`, and the `attachments/` folder.
+2. Match each file against a row in this tracker by title (wording can differ slightly from the `Guide` column — e.g. "Customizing" vs "Customising", "list/table" vs "list-table" — match by meaning, not exact string; use the section heading and "Maps to" column to disambiguate when a title is ambiguous). Note: a tracker section heading doesn't always share its exact name with the folder (e.g. "List Views & Filtering" ↔ `Views/`).
+3. For each row currently `todo` that now has a matching file on disk:
+   - Set **Status** to `done`.
+   - Set **documented_at** to the date the file was added, from `git log --diff-filter=A --follow --format=%ad --date=short -- "<path to file>"` (take the oldest/last line if it shows more than one).
+   - Set **Release** from `git describe --tags $(git log --diff-filter=A --follow --format=%H -- "<path to file>" | tail -1)`.
+4. Leave rows already `done` untouched — don't overwrite an existing `documented_at`/`Release` even if the file changed since.
+5. If a row is `done` but no matching file exists on disk, don't silently flip it back to `todo` — flag it to the user (likely a rename or deletion worth reconciling by hand).
+6. If a file exists on disk with no matching row anywhere in this tracker, flag it too rather than inventing a new row — it needs a human to decide where it belongs.
+7. Don't touch the per-topic `_VERIFICATION.md` files here — that's a separate sync (see the root `_VERIFICATION.md`'s own sync prompt), since being written and being verified are different things.
+8. After updating rows, regenerate the **## Summary** section at the very bottom of this file from the now-current table data:
+   - `Completed: X / Y` — `X` = count of rows with Status `done` across every section, `Y` = count of all rows in the file.
+   - One `<Topic> guides completed: A / B` line per topic that has its own folder (Views, Tickets, Product Allocations, Products & Rates, Projects, Timesheets, Signing In, Account, Home Dashboard, Notifications, Search & Navigation, Assets, Watches, Media & Attachments, and any new topic folder added since) — `A` = `done` rows whose section maps to that folder, `B` = total rows in that section. Note: some folders don't map 1:1 to a single `_progress.md` section: `Projects` holds only the subset of a much larger section's rows that happen to be written so far (so `B` is that section's full row count, not just the written subset); `Products & Rates` merges two sections that are both fundamentally about rates ("Products & Rates" and "Settings: Finance Reference Data", minus that section's one unrelated project-codes/timesheet-categories row) into one folder, so `B` is the sum of both minus that excluded row. Keep one line per topic, in the same order as today unless a topic is added/removed.
+   - **Release breakdown (current version only, for `done` rows)** — group all `done` rows by their **Release** value and list `<release>: <count>` lines, sorted by release ascending. "Current version only" means: if a row's guide was later rewritten for a newer release (its Release cell was bumped), it counts under the newer release only, not both.
+   - Replace the whole `## Summary` section with the freshly computed version — don't hand-edit individual numbers.
+
 ## List Views & Filtering
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
@@ -22,8 +42,8 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Choosing which attachments appear on a PDF export |  | Ops, Fin | SelectMediaController#show/#update; select_media_controller.js | todo | Job with 4 attached site photos, 2 shown-by-default, 1 toggled off for this export only | 3 |  |  |
-| Removing an uploaded file attachment |  | Ops, FE | AttachmentsController#destroy (generic ActiveStorage purge, no standalone screen) | todo | Comment draft with a mistakenly attached "old_invoice.pdf" removed before submitting | 1 |  |  |
+| Choosing which attachments appear on a PDF export |  | Ops, Fin | SelectMediaController#show/#update; select_media_controller.js | done | Job with 4 attached site photos, 2 shown-by-default, 1 toggled off for this export only | 3 | 2026-08-26 | v2026.08.05 |
+| Removing an uploaded file attachment |  | Ops, FE | AttachmentsController#destroy (generic ActiveStorage purge, no standalone screen) | done | Comment draft with a mistakenly attached "old_invoice.pdf" removed before submitting | 1 | 2026-08-26 | v2026.08.05 |
 
 ## Labels
 
@@ -73,22 +93,22 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing assets in the drilldown tree view |  | Ops, FE | Assets::DrilldownController#index/#filter | todo | "Street Cabinet" asset with 3 child "Pole" assets, one having its own sub-asset | 3 |  |  |
-| Browsing assets in the table (list) view |  | Ops, FE | AssetsController#index/#filter | todo | 10 assets across 3 asset types, one filtered search for "Cabinet" | 2 |  |  |
-| Viewing the assets board (pipeline) |  | Ops, Mgr | Assets::PipelinesController#index/show | todo | Pipeline "Cabinet Lifecycle" with stages New/In Service/Decommissioned, 2 assets each | 2 |  |  |
-| Using the assets landing page |  | Ops, FE | AssetsController#landing | todo | N/A — static entry page | 1 |  |  |
-| Creating an asset |  | Ops | AssetsController#new/#create | todo | New asset type "Street Cabinet" named "Cabinet 42", site "Manchester Depot" | 3 |  |  |
-| Editing or deleting an asset |  | Ops | AssetsController#edit/#update/#destroy | todo | Asset "Cabinet 42" with 2 sub-assets; edit description, then cascade-delete | 2 |  |  |
-| Viewing an asset's overview page |  | Ops, FE | AssetsController#show/#main | todo | Asset "Cabinet 42" with parent, 2 children, 3 activity entries, 2 comments, 1 doc | 4 |  |  |
-| Viewing and adding sub-assets |  | Ops | AssetsController#sub_assets | todo | Asset "Cabinet 42" with sub-assets "Fuse Board A"/"Fuse Board B" | 2 |  |  |
-| Viewing an asset's Visits tab |  | Ops, FE | AssetsController#visits | todo | Asset with 1 completed, 1 overdue, 1 scheduled future visit | 2 |  |  |
-| Scheduling a maintenance visit plan for an asset |  | Ops | AssetVisitPlansController#new/#create | todo | Asset "Cabinet 42" attach visit plan "Quarterly Safety Check" starting 2026-09-01 | 3 |  |  |
-| Removing a visit plan from an asset |  | Ops | AssetVisitPlansController#destroy | todo | Detach "Quarterly Safety Check" from "Cabinet 42" | 1 |  |  |
-| Viewing an asset's linked jobs |  | Ops, FE | AssetsController#jobs | todo | Asset linked to 5 jobs across statuses | 1 |  |  |
-| Viewing an asset's to-dos |  | Ops, FE | AssetsController#todos | todo | Asset with 2 open, 1 completed todo | 1 |  |  |
-| Viewing an asset's records |  | Ops, FE | AssetsController#records | todo | Asset with 1 attached "Electrical Safety Certificate" record | 1 |  |  |
-| Viewing and raising issues against an asset |  | Ops, FE | AssetsController#issues; IssuesController#new | todo | Asset with 1 open issue "Cabinet door damaged"; raise "Graffiti on cabinet" | 3 |  |  |
-| Moving an asset through pipeline stages |  | Ops | AssetsController#stage | todo | Asset "Cabinet 42" moved In Service → Decommissioned | 2 |  |  |
+| Browsing assets in the drilldown tree view |  | Ops, FE | Assets::DrilldownController#index/#filter | done | "Street Cabinet" asset with 3 child "Pole" assets, one having its own sub-asset | 3 | 2026-08-26 | v2026.08.05 |
+| Browsing assets in the table (list) view |  | Ops, FE | AssetsController#index/#filter | done | 10 assets across 3 asset types, one filtered search for "Cabinet" | 2 | 2026-08-26 | v2026.08.05 |
+| Viewing the assets board (pipeline) |  | Ops, Mgr | Assets::PipelinesController#index/show | done | Pipeline "Cabinet Lifecycle" with stages New/In Service/Decommissioned, 2 assets each | 2 | 2026-08-26 | v2026.08.05 |
+| Using the assets landing page |  | Ops, FE | AssetsController#landing | done | N/A — static entry page | 2 | 2026-08-25 | v2026.08.05 |
+| Creating an asset |  | Ops | AssetsController#new/#create | done | New asset type "Street Cabinet" named "Cabinet 42", site "Manchester Depot" | 3 | 2026-08-26 | v2026.08.05 |
+| Editing or deleting an asset |  | Ops | AssetsController#edit/#update/#destroy | done | Asset "Cabinet 42" with 2 sub-assets; edit description, then cascade-delete | 2 | 2026-08-26 | v2026.08.05 |
+| Viewing an asset's overview page |  | Ops, FE | AssetsController#show/#main | done | Asset "Cabinet 42" with parent, 2 children, 3 activity entries, 2 comments, 1 doc | 4 | 2026-08-26 | v2026.08.05 |
+| Viewing and adding sub-assets |  | Ops | AssetsController#sub_assets | done | Asset "Cabinet 42" with sub-assets "Fuse Board A"/"Fuse Board B" | 2 | 2026-08-26 | v2026.08.05 |
+| Viewing an asset's Visits tab |  | Ops, FE | AssetsController#visits | done | Asset with 1 completed, 1 overdue, 1 scheduled future visit | 2 | 2026-08-26 | v2026.08.05 |
+| Scheduling a maintenance visit plan for an asset |  | Ops | AssetVisitPlansController#new/#create | done | Asset "Cabinet 42" attach visit plan "Quarterly Safety Check" starting 2026-09-01 | 3 | 2026-08-26 | v2026.08.05 |
+| Removing a visit plan from an asset |  | Ops | AssetVisitPlansController#destroy | done | Detach "Quarterly Safety Check" from "Cabinet 42" | 1 | 2026-08-26 | v2026.08.05 |
+| Viewing an asset's linked jobs |  | Ops, FE | AssetsController#jobs | done | Asset linked to 5 jobs across statuses | 1 | 2026-08-26 | v2026.08.05 |
+| Viewing an asset's to-dos |  | Ops, FE | AssetsController#todos | done | Asset with 2 open, 1 completed todo | 1 | 2026-08-26 | v2026.08.05 |
+| Viewing an asset's records |  | Ops, FE | AssetsController#records | done | Asset with 1 attached "Electrical Safety Certificate" record | 1 | 2026-08-26 | v2026.08.05 |
+| Viewing and raising issues against an asset |  | Ops, FE | AssetsController#issues; IssuesController#new | done | Asset with 1 open issue "Cabinet door damaged"; raise "Graffiti on cabinet" | 3 | 2026-08-26 | v2026.08.05 |
+| Moving an asset through pipeline stages |  | Ops | AssetsController#stage | done | Asset "Cabinet 42" moved In Service → Decommissioned | 2 | 2026-08-26 | v2026.08.05 |
 
 ## Visits
 
@@ -210,39 +230,39 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing and filtering the projects list |  | Ops | OrdersController#index | todo | Project type "Civils Installation" with 15 projects across 3 stages, 1 red-RAG project with 2 open warnings | 3 |  |  |
-| Exploring projects as a relationship graph |  | Ops | Orders::ExploresController#index/#filter | todo | Parent project "Framework Contract #500" with children "Store #12 Refit"/"Store #45 Refit" | 3 |  |  |
-| Browsing projects in drilldown (hierarchy) view |  | Ops | Orders::DrilldownController#index/#filter | todo | Root project "Network Upgrade Phase 2" with 4 children, one with 2 grandchildren | 3 |  |  |
-| Viewing and moving projects on the pipeline (kanban) board |  | Sales, Ops | Orders::PipelinesController#index/show; OrdersController#stage | todo | "Sales" pipeline: Enquiry/Quoted/Won/Lost with 8 projects; drag one Quoted → Won | 4 |  |  |
-| Creating a new project |  | Sales, Ops | OrdersController#new/#create | todo | Project type "Civils Installation" for client "Anglian Water", rate book "2026 Civils Rates" v3 | 5 |  |  |
-| Creating a sub-project (child project) under an existing project |  | Ops | OrdersController#new (parent_id) | todo | Parent project "Streetworks Renewal - Zone 4" with new sub-project "Zone 4 - Section B" | 3 |  |  |
-| Viewing a project's overview (main tab) |  | Ops | OrdersController#show/#main | todo | Project "123 High Street Resurfacing" with parent, 2 children, 1 SLA in jeopardy, 3 activity entries | 4 |  |  |
-| Editing a project's details |  | Ops | OrdersController#edit/#update | todo | Project's rate book changed and next-action date moved | 3 |  |  |
-| Deleting (archiving) a project |  | Ops | OrdersController#destroy | todo | Completed project with no open jobs, deleted | 2 |  |  |
-| Managing sub-projects on the Children tab |  | Ops | OrdersController#children | todo | Project "Streetworks Renewal - Zone 4" with 3 child projects, one over budget | 2 |  |  |
-| Viewing key fields rolled up from jobs and tasks |  | Ops, Mgr | OrdersController#key_fields/#key_fields_job | todo | Project with 3 jobs each having a "Cable Length Installed (m)" key field | 3 |  |  |
-| Managing the project plan (project groups / checklist tab) |  | Ops, FE | OrdersController#order_groups; OrderGroupsController CRUD | todo | Project with groups "Pre-Start Checks" and "Snagging Items" | 3 |  |  |
-| Adding a new checklist item (job or record) to a project group |  | Ops | OrderGroupTodosController#new/#create (mode=new) | todo | Group "Pre-Start Checks" gets blank to-do or new linked Job "Site Induction - Riverside" | 3 |  |  |
-| Attaching an existing job or record to a project group checklist |  | Ops | OrderGroupTodosController#jobs/#records/#create (mode=existing) | todo | Search "Boiler" → attach existing Job "JOB-8842" to group "Snagging Items" | 3 |  |  |
-| Completing, editing, reordering, and removing checklist items |  | Ops, FE | OrderGroupTodosController#toggle/#update/#move/#destroy | todo | Toggle and edit a checklist item's description | 3 |  |  |
-| Viewing and attaching records (surveys/inspections) to a project |  | Ops, FE | OrdersController#records | todo | Project with 2 "Pre-Works Survey" records and 1 "H&S Inspection" record | 3 |  |  |
-| Viewing and creating jobs from a project |  | Ops | OrdersController#jobs | todo | Project with 6 active jobs across 2 engineers, one overdue | 3 |  |  |
-| Viewing and filtering tasks on a project |  | Ops | OrdersController#tasks; Orders::TasksController#filter | todo | Project filtered by Status="In Progress", Task Type="Site Survey" | 2 |  |  |
-| Creating a new task under a project |  | Ops | Orders::TasksController#new/#create | todo | Task type "Site Survey" named "Initial roof survey" with product allocation | 3 |  |  |
-| Viewing and working a task's overview tab |  | Ops, FE | Orders::TasksController#show/#main | todo | Task status changed Not Started → In Progress; download PDF | 4 |  |  |
+| Browsing and filtering the projects list |  | Ops | OrdersController#index | done | Project type "Install" (reused), client "Anglian Water", 15 projects across the pipeline's real stages, 1 red-RAG project with 2 open warnings | 3 | 2026-08-26 | v2026.08.05 |
+| Exploring projects as a relationship graph |  | Ops | Orders::ExploresController#index/#filter | done | Same "Anglian Water" dataset — feature confirmed broken (GET/POST route mismatch), guide documents intended behaviour and flags the bug | 3 | 2026-08-26 | v2026.08.05 |
+| Browsing projects in drilldown (hierarchy) view |  | Ops | Orders::DrilldownController#index/#filter | done | Root project "Network Upgrade Phase 2" with 4 children, one with 2 grandchildren | 3 | 2026-08-26 | v2026.08.05 |
+| Viewing and moving projects on the pipeline (kanban) board |  | Sales, Ops | Orders::PipelinesController#index/show; OrdersController#stage | done | Existing "Sales" pipeline (New/Qualified/Awaiting Site Visit/Quoting/Negotiating/Won/Lost); dragged "Fibre Duct Replacement - Oldham" Quoting → Won | 4 | 2026-08-26 | v2026.08.05 |
+| Creating a new project |  | Sales, Ops | OrdersController#new/#create | done | Project type "Install" for client "Anglian Water", rate book "2026 Civils Rates" | 5 | 2026-08-26 | v2026.08.05 |
+| Creating a sub-project (child project) under an existing project |  | Ops | OrdersController#new (parent_id) | done | Parent project "Streetworks Renewal - Zone 4" with new sub-project "Zone 4 - Section B" | 3 | 2026-08-26 | v2026.08.05 |
+| Viewing a project's overview (main tab) |  | Ops | OrdersController#show/#main | done | Project "123 High Street Resurfacing" with parent, 2 children | 4 | 2026-08-26 | v2026.08.05 |
+| Editing a project's details |  | Ops | OrdersController#edit/#update | done | Project's rate book changed and next-action date moved | 3 | 2026-08-26 | v2026.08.05 |
+| Deleting (archiving) a project |  | Ops | OrdersController#destroy | done | Completed project with no open jobs, deleted | 2 | 2026-08-26 | v2026.08.05 |
+| Managing sub-projects on the Children tab |  | Ops | OrdersController#children | done | Project "Streetworks Renewal - Zone 4" with 3 child projects, one over budget | 2 | 2026-08-26 | v2026.08.05 |
+| Viewing key fields rolled up from jobs and tasks |  | Ops, Mgr | OrdersController#key_fields/#key_fields_job | done | Project with 3 jobs each having a "Cable Length Installed (m)" key field | 3 | 2026-08-26 | v2026.08.05 |
+| Managing the project plan (project groups / checklist tab) |  | Ops, FE | OrdersController#order_groups; OrderGroupsController CRUD | done | Project with groups "Pre-Start Checks" and "Snagging Items" | 3 | 2026-08-26 | v2026.08.05 |
+| Adding a new checklist item (job or record) to a project group |  | Ops | OrderGroupTodosController#new/#create (mode=new) | done | Group "Pre-Start Checks" gets blank to-do or new linked Job "Site Induction - Riverside" | 3 | 2026-08-26 | v2026.08.05 |
+| Attaching an existing job or record to a project group checklist |  | Ops | OrderGroupTodosController#jobs/#records/#create (mode=existing) | done | Search "Boiler" → attach existing Job "JOB-8842" to group "Snagging Items" | 3 | 2026-08-26 | v2026.08.05 |
+| Completing, editing, reordering, and removing checklist items |  | Ops, FE | OrderGroupTodosController#toggle/#update/#move/#destroy | done | Toggle and edit a checklist item's description | 3 | 2026-08-26 | v2026.08.05 |
+| Viewing and attaching records (surveys/inspections) to a project |  | Ops, FE | OrdersController#records | done | Project with 2 "Pre-Works Survey" records and 1 "H&S Inspection" record | 3 | 2026-08-27 | v2026.08.05 |
+| Viewing and creating jobs from a project |  | Ops | OrdersController#jobs | done | Project with 6 active jobs across 2 engineers, one overdue | 3 | 2026-08-27 | v2026.08.05 |
+| Viewing and filtering tasks on a project |  | Ops | OrdersController#tasks; Orders::TasksController#filter | done | Project filtered by Status="In Progress", Task Type="Site Survey" | 2 | 2026-08-27 | v2026.08.05 |
+| Creating a new task under a project |  | Ops | Orders::TasksController#new/#create | done | Task type "Site Survey" named "Initial roof survey" with product allocation | 3 | 2026-08-27 | v2026.08.05 |
+| Viewing and working a task's overview tab |  | Ops, FE | Orders::TasksController#show/#main | done | Task status changed Not Started → In Progress; download PDF | 4 | 2026-08-27 | v2026.08.05 |
 | Managing a task's product allocations tab | PVA | Ops | Orders::TasksController#products | done | Task planned quantity for "Solar Panel 400W" changed 12 → 14 | 2 | 2026-08-13 | v2026.08.02 |
-| Editing or deleting a task |  | Ops | Orders::TasksController#edit/#update/#destroy | todo | Rename a task; delete a duplicate task | 2 |  |  |
+| Editing or deleting a task |  | Ops | Orders::TasksController#edit/#update/#destroy | done | Rename a task; delete a duplicate task | 2 | 2026-08-27 | v2026.08.05 |
 | Viewing and managing product allocations on a project | PVA | Ops, Fin | OrdersController#products | done | Project allocated 200m "Ducting 100mm" and 15 "Chamber Cover" | 3 | 2026-08-13 | v2026.08.02 |
 | Viewing a project's commercial stats dashboard | PVA | Fin, Mgr | OrdersController#stats | done | Project with £45k planned, £38.2k actual, £30k invoiced, £2.5k pending variations | 3 | 2026-08-13 | v2026.08.03 |
-| Viewing and creating estimates on a project |  | Sales, Fin | OrdersController#estimates | todo | Project with 1 draft and 1 approved estimate (£12,400) | 2 |  |  |
-| Viewing and creating invoices on a project |  | Fin | OrdersController#invoices | todo | Project with 1 sent invoice (£15,000) and 1 unsent draft (£8,200) | 2 |  |  |
-| Viewing and raising variations on a project |  | Fin, Ops | OrdersController#variations | todo | Project with 1 pending (£2,500) and 1 approved (£900) variation | 2 |  |  |
-| Viewing and attaching permits to a project |  | Ops | OrdersController#permits | todo | Project with an active street-works permit expiring in 10 days | 2 |  |  |
-| Linking related projects together |  | Ops | OrdersController#linked_orders; OrderOrderablesController | todo | Link "Project #2201" to related "Project #2202" | 2 |  |  |
-| Viewing and managing to-dos on a project |  | Ops | OrdersController#todos | todo | Project with 3 open and 2 completed todos | 2 |  |  |
-| Setting a project's RAG status |  | Ops, Mgr | OrdersController#rag_status | todo | Project changed Amber → Red after a missed milestone | 2 |  |  |
-| Locking and unlocking jobs on a project |  | Ops | OrdersController#job_lock/#job_unlock | todo | Project with 2 booked jobs, locked (auto-unbooked), then unlocked | 3 |  |  |
-| Downloading or previewing a project PDF |  | Ops, Fin | OrdersController#download | todo | Custom-PDF-template project downloaded with 2 photos hidden | 3 |  |  |
+| Viewing and creating estimates on a project |  | Sales, Fin | OrdersController#estimates | done | Project with 1 draft and 1 approved estimate (£12,400) | 2 | 2026-08-27 | v2026.08.05 |
+| Viewing and creating invoices on a project |  | Fin | OrdersController#invoices | done | Project with 1 sent invoice (£15,000) and 1 unsent draft (£8,200) | 2 | 2026-08-27 | v2026.08.05 |
+| Viewing and raising variations on a project |  | Fin, Ops | OrdersController#variations | done | Project with 1 pending (£2,500) and 1 approved (£900) variation | 2 | 2026-08-27 | v2026.08.05 |
+| Viewing and attaching permits to a project |  | Ops | OrdersController#permits | done | Project with an active street-works permit expiring in 10 days | 2 | 2026-08-27 | v2026.08.05 |
+| Linking related projects together |  | Ops | OrdersController#linked_orders; OrderOrderablesController | done | Link "Project #2201" to related "Project #2202" | 2 | 2026-08-27 | v2026.08.05 |
+| Viewing and managing to-dos on a project |  | Ops | OrdersController#todos | done | Project "Riverside Pumping Station Refurbishment" with 3 pending and 2 done todos | 2 | 2026-08-27 | v2026.08.05 |
+| Setting a project's RAG status |  | Ops, Mgr | OrdersController#rag_status | done | Same project changed Amber → Red | 2 | 2026-08-27 | v2026.08.05 |
+| Locking and unlocking jobs on a project |  | Ops | OrdersController#job_lock/#job_unlock | done | Same project with 2 booked jobs, locked (auto-unbooked), then unlocked | 3 | 2026-08-27 | v2026.08.05 |
+| Downloading or previewing a project PDF |  | Ops, Fin | OrdersController#download | done | Same project's photo-selection screen; PDF/preview generation itself failed with a local Grover/headless-Chrome error, same as an earlier guide this session | 3 | 2026-08-27 | v2026.08.05 |
 
 ## Projects > Warnings
 
@@ -467,29 +487,29 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 ## Variations (Change Projects)
 
-| Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
-|-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing and filtering variations and the variations pipeline |  | Fin, Ops | VariationsController#index/#autocomplete; Variations::PipelinesController | todo | 6 variations against a project, 2 pending approval | 3 |  |  |
-| Creating a new variation |  | Fin, Ops | VariationsController#new/#create | todo | Project "Substation Refurbishment - Project #4021", type "Additional Works Instruction" | 3 |  |  |
-| Viewing a variation overview and updating status/RAG |  | Fin, Mgr | VariationsController#show/#main/#status/#rag_status | todo | Variation "VAR-22" status "pending", RAG red | 3 |  |  |
-| Editing, activating/deactivating, or deleting a variation |  | Fin, Ops | VariationsController#edit/#update/#activate/#deactivate/#destroy | todo | Variation "VAR-22" description edited | 3 |  |  |
-| Managing products on a variation |  | Fin, Ops | VariationsController#products | todo | Variation with 2 added products | 2 |  |  |
-| Applying an approved variation to a job or project |  | Fin, Ops | VariationsController#apply_new/#apply | todo | Approved variation applied to job "Substation Panel Swap - Job #9101" | 4 |  |  |
-| Downloading or previewing a variation PDF |  | Fin, Ops | VariationsController#download | todo | Variation with custom template, one attachment hidden | 2 |  |  |
-| Sending a variation for client approval |  | Fin | VariationsController#send_variation_form/#send_variation | todo | Variation emailed to "Priya Shah" for sign-off | 3 |  |  |
-| Toggling attachment visibility on a variation PDF |  | Fin | VariationsController#toggle_attachment_show_on_pdf | todo | Internal cost-breakdown attachment excluded from client PDF | 1 |  |  |
+| Guide                                                        | Feature | Audience | Maps to (controllers/views)                                               | Status | Test data needed                                                                        | Screenshot steps (est.) | documented_at | Release |
+| ------------------------------------------------------------ | ------- | -------- | ------------------------------------------------------------------------- | ------ | --------------------------------------------------------------------------------------- | ----------------------- | ------------- | ------- |
+| Viewing and filtering variations and the variations pipeline |         | Fin, Ops | VariationsController#index/#autocomplete; Variations::PipelinesController | todo   | 6 variations against a project, 2 pending approval                                      | 3                       |               |         |
+| Creating a new variation                                     |         | Fin, Ops | VariationsController#new/#create                                          | todo   | Project "Substation Refurbishment - Project #4021", type "Additional Works Instruction" | 3                       |               |         |
+| Viewing a variation overview and updating status/RAG         |         | Fin, Mgr | VariationsController#show/#main/#status/#rag_status                       | todo   | Variation "VAR-22" status "pending", RAG red                                            | 3                       |               |         |
+| Editing, activating/deactivating, or deleting a variation    |         | Fin, Ops | VariationsController#edit/#update/#activate/#deactivate/#destroy          | todo   | Variation "VAR-22" description edited                                                   | 3                       |               |         |
+| Managing products on a variation                             |         | Fin, Ops | VariationsController#products                                             | todo   | Variation with 2 added products                                                         | 2                       |               |         |
+| Applying an approved variation to a job or project           |         | Fin, Ops | VariationsController#apply_new/#apply                                     | todo   | Approved variation applied to job "Substation Panel Swap - Job #9101"                   | 4                       |               |         |
+| Downloading or previewing a variation PDF                    |         | Fin, Ops | VariationsController#download                                             | todo   | Variation with custom template, one attachment hidden                                   | 2                       |               |         |
+| Sending a variation for client approval                      |         | Fin      | VariationsController#send_variation_form/#send_variation                  | todo   | Variation emailed to "Priya Shah" for sign-off                                          | 3                       |               |         |
+| Toggling attachment visibility on a variation PDF            |         | Fin      | VariationsController#toggle_attachment_show_on_pdf                        | todo   | Internal cost-breakdown attachment excluded from client PDF                             | 1                       |               |         |
 
 ## Products & Rates
 
-| Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
-|-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing the product catalog and drilldown hierarchy |  | Admin, Fin | ProductsController#index; Products::DrilldownController | todo | Parent "Cabling" with children "LV Cable"/"HV Cable per metre" | 3 |  |  |
-| Creating a product or sub-product |  | Admin, Fin | ProductsController#new/#create | todo | Sub-product "Cable Trench Excavation per metre" under "Groundworks" | 3 |  |  |
-| Viewing and editing a product |  | Admin, Fin | ProductsController#show/#main/#edit/#update/#delete_photo | todo | Product "HV Cable per metre" with photo and ref code | 3 |  |  |
-| Deleting a product |  | Admin, Fin | ProductsController#destroy | todo | Parent product with 3 sub-products, cascade-delete | 2 |  |  |
-| Managing sell rates on a product | PVA | Fin, Admin | ProductsController#rates; RatesController (as :rates) | done | Sell rate £14.50/m for "HV Cable per metre" under "2026 Wind Rates" v1 | 4 | 2026-08-13 | v2026.08.03 |
-| Managing cost rates on a product | PVA | Fin, Admin | ProductsController#costs; RatesController (as :costs) | done | Cost rate £9.20/m for "HV Cable per metre" under "Internal Costs 2026" v1 | 4 | 2026-08-13 | v2026.08.03 |
-| Viewing a product's sub-products |  | Admin, Fin | ProductsController#sub_products | todo | Parent "Groundworks" with 2 sub-products | 2 |  |  |
+| Guide                                                | Feature | Audience   | Maps to (controllers/views)                               | Status | Test data needed                                                          | Screenshot steps (est.) | documented_at | Release     |
+| ---------------------------------------------------- | ------- | ---------- | --------------------------------------------------------- | ------ | ------------------------------------------------------------------------- | ----------------------- | ------------- | ----------- |
+| Browsing the product catalog and drilldown hierarchy | PVA     | Admin, Fin | ProductsController#index; Products::DrilldownController   | done   | Parent "Cabling" with children "LV Cable"/"HV Cable per metre"            | 3                       | 2026-08-26    | v2026.08.05 |
+| Creating a product or sub-product                    | PVA     | Admin, Fin | ProductsController#new/#create                            | done   | Sub-product "Cable Trench Excavation per metre" under "Groundworks"       | 3                       | 2026-08-26    | v2026.08.05 |
+| Viewing and editing a product                        | PVA     | Admin, Fin | ProductsController#show/#main/#edit/#update/#delete_photo | done   | Product "HV Cable per metre" with photo and ref code                      | 3                       | 2026-08-26    | v2026.08.05 |
+| Deleting a product                                   | PVA     | Admin, Fin | ProductsController#destroy                                | done   | Parent product with 3 sub-products, cascade-delete                        | 2                       | 2026-08-26    | v2026.08.05 |
+| Managing sell rates on a product                     | PVA     | Fin, Admin | ProductsController#rates; RatesController (as :rates)     | done   | Sell rate £14.50/m for "HV Cable per metre" under "2026 Wind Rates" v1    | 4                       | 2026-08-13    | v2026.08.03 |
+| Managing cost rates on a product                     | PVA     | Fin, Admin | ProductsController#costs; RatesController (as :costs)     | done   | Cost rate £9.20/m for "HV Cable per metre" under "Internal Costs 2026" v1 | 4                       | 2026-08-13    | v2026.08.03 |
+| Viewing a product's sub-products                     | PVA     | Admin, Fin | ProductsController#sub_products                           | done   | Parent "Groundworks" with 2 sub-products                                  | 2                       | 2026-08-26    | v2026.08.05 |
 
 ## Product Allocations
 
@@ -563,57 +583,56 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Managing saved views (admin) | Views | Admin | Settings::ViewsController | done | Admin renames/deactivates other users' saved views | 4 | 2026-08-16 | v2026.08.02 |
 | Managing folder sets (document folder templates) |  | Admin | Settings::FolderSetsController | todo | Folder Set "Standard Job Compliance Docs" with 3 child folders | 5 |  |  |
 
 ## Home Dashboard
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing your activity feed |  | All | HomeController#show/#personal_feed/#global_feed | todo | Channel "North Region Crew" feed item on Job JOB-10432 | 3 |  |  |
-| Using the Home overview widget dashboard |  | Mgr, Ops | HomeController#overview | todo | Tags "Region: North", "Team: Electrical" filtering widgets | 2 |  |  |
-| Reading the Today snapshot widget |  | Mgr, Ops | Home::TodayController#today | todo | 4 new invoices, 12 active bookable jobs, 18 created/15 done/1 failed | 1 |  |  |
-| Reading the Timesheets Today widget |  | Mgr | Home::TimesheetsController#today | todo | Draft 3, Submitted 9, Approved 22, Rejected 1 | 1 |  |  |
-| Reading the Jobs Today widget |  | Mgr, Ops | Home::JobsController#today | todo | Booked 8, In Progress 3, Completed 20, Failed 2 | 1 |  |  |
-| Browsing upcoming jobs on the Coming Up widget |  | Ops, Mgr | Home::JobsController#coming_up | todo | Job "Annual Gas Safety Check" starting in 3 hours | 1 |  |  |
-| Filtering the Jobs by Status chart |  | Mgr, Ops | Home::JobsController#total_by_status | todo | This Month, statuses Booked/Completed/Failed over daily buckets | 2 |  |  |
-| Filtering the Jobs by Type chart |  | Mgr, Ops | Home::JobsController#top_by_type | todo | Job types by % share, time range This Quarter | 2 |  |  |
-| Filtering the Projects by Stage chart |  | Mgr, Sales | Home::OrdersController#total_by_stage | todo | Pipeline "Sales Project Pipeline" stages | 2 |  |  |
-| Filtering the Projects by Type chart |  | Mgr, Sales | Home::OrdersController#top_by_type | todo | Project types by % share, This Month | 2 |  |  |
-| Filtering the Records by Stage chart |  | Mgr, Ops | Home::RecordsController#total_by_stage | todo | Pipeline "Permit Applications" stages | 2 |  |  |
-| Filtering the Records by Type chart |  | Mgr, Ops | Home::RecordsController#top_by_type | todo | Record types by % share | 2 |  |  |
-| Reviewing the Recent Activity widget |  | Mgr, Ops | Home::ActivityController#recent | todo | "Dana Reyes updated Project ORD-3341" timeline entry | 1 |  |  |
-| Monitoring the Uploads status widget (Admin) |  | Admin | Home::UploadsController#total | todo | 2 pending, 1 failed upload | 1 |  |  |
-| Monitoring the Weekly Imports status widget (Admin) |  | Admin | Home::ImportsController#weekly_total | todo | 3 pending, 1 failed import this week | 1 |  |  |
+| Viewing your activity feed | Home Dashboard | All | HomeController#show/#personal_feed/#global_feed | done | Hub::Post "North East Crew" channel + a global-channel post, both by Owen Brooks (row's original hint — a feed item directly on a Job — doesn't match the code: feed items are Hub posts/articles, not jobs) | 1 | 2026-08-25 | v2026.08.05 |
+| Using the Home overview widget dashboard | Home Dashboard | Mgr, Ops | HomeController#overview | done | Existing tag "Area · North East" (tag-based filter, not free-text region/team tags); Owen Brooks given that tag so the filter could select it | 1 | 2026-08-25 | v2026.08.05 |
+| Reading the Today snapshot widget | Home Dashboard | Mgr, Ops | Home::Today::TodayService | done | 4 invoices, 1 team member active, 6 jobs created, 1 done, 1 failed, all today | 1 | 2026-08-25 | v2026.08.05 |
+| Reading the Timesheets Today widget | Home Dashboard | Mgr | Home::Timesheets::TodayService | done | One timesheet in each real status: Draft, Pending, Approved, On-Hold, Denied, Closed, Flagged (row's hint used "Submitted"/"Rejected", which aren't real statuses) | 1 | 2026-08-25 | v2026.08.05 |
+| Reading the Jobs Today widget | Home Dashboard | Mgr, Ops | Home::Jobs::TodayService | done | Booked 2, In Progress 1, Failed 1, Cancelled 1, all status-changed today | 1 | 2026-08-25 | v2026.08.05 |
+| Browsing upcoming jobs on the Coming Up widget | Home Dashboard | Ops, Mgr | Home::Jobs::ComingUpService | done | Job "Annual Gas Safety Check" starting in 3 hours, plus one 2 days out | 1 | 2026-08-25 | v2026.08.05 |
+| Filtering the Jobs by Status chart | Home Dashboard | Mgr, Ops | Home::Jobs::TotalByStatusService | done | 6 seeded jobs across booked/in_progress/failed/cancelled/done, spread over the month; confirmed the real This Month/Previous 7 Days/etc. time-range options in the UI | 2 | 2026-08-25 | v2026.08.05 |
+| Filtering the Jobs by Type chart | Home Dashboard | Mgr, Ops | Home::Jobs::TopByTypeService | done | Same seeded jobs, split Safety Check/Install (row's hint said "This Quarter" - not one of the real options, see time-range list) | 2 | 2026-08-25 | v2026.08.05 |
+| Filtering the Projects by Stage chart | Home Dashboard | Mgr, Sales | Home::Orders::TotalByStageService | done | 4 orders across the real "Sales" pipeline's stages (no "Sales Project Pipeline" exists — Sales/Operations/Billing are the real pipelines) | 2 | 2026-08-25 | v2026.08.05 |
+| Filtering the Projects by Type chart | Home Dashboard | Mgr, Sales | Home::Orders::TopByTypeService | done | Same 4 orders, all order type "Install" (only one realistic order type available in this tenant) | 2 | 2026-08-25 | v2026.08.05 |
+| Filtering the Records by Stage chart | Home Dashboard | Mgr, Ops | Home::Records::TotalByStageService | done | 4 records across the real "Health and Safety" pipeline's stages (no "Permit Applications" pipeline exists) | 1 | 2026-08-25 | v2026.08.05 |
+| Filtering the Records by Type chart | Home Dashboard | Mgr, Ops | Home::Records::TopByTypeService | done | Same 4 records, split Incident Report/Safety Risk | 2 | 2026-08-25 | v2026.08.05 |
+| Reviewing the Recent Activity widget | Home Dashboard | Mgr, Ops | Home::Activity::RecentService | done | Owen Brooks's own "completed Job"/"failed Job" activity entries (row's hint named a different user - this widget only ever shows the viewing user's own activity, never someone else's) | 1 | 2026-08-25 | v2026.08.05 |
+| Monitoring the Uploads status widget (Admin) | Home Dashboard | OCU | Home::UploadsController#total | done | Fictional user Test Docs <test.docs@insiris.com>, admin flag set, satisfying `user.developer?` — 1 pending + 2 failed uploads seeded globally. Row's "Admin" audience is wrong; this is OCU-internal, not tenant-admin | 1 | 2026-08-25 | v2026.08.05 |
+| Monitoring the Weekly Imports status widget (Admin) | Home Dashboard | Admin | Home::ImportsController#weekly_total | done | 3 pending + 1 failed import created today, plus 2 pre-existing failed imports from 6 days ago also within the 7-day window (widget shows a total count only, not a list, so those don't expose any specific unrelated data) | 1 | 2026-08-25 | v2026.08.05 |
 
 ## Account
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Updating your account profile |  | All | AccountsController#edit/#update | todo | DOB, default home page "Jobs", profile picture upload | 3 |  |  |
-| Collapsing/expanding the sidebar |  | All | AccountsController#toggle_sidebar | todo | Sidebar toggled collapsed vs expanded | 2 |  |  |
-| Dismissing an onboarding tip |  | All | AccountsController#dismiss_tip | todo | Tip "new_launcher_menu" dismissed | 1 |  |  |
+| Updating your account profile | Account | All | AccountsController#edit/#update | done | User Dave Chen: DOB 12/04/1990, default home page "Jobs", profile picture uploaded then removed | 6 | 2026-08-25 | v2026.08.05 |
+| Collapsing/expanding the sidebar | Account | All | AccountsController#toggle_sidebar | done | Sidebar toggled collapsed vs expanded on Dave Chen's own Settings > Users record | 2 | 2026-08-25 | v2026.08.05 |
+| Dismissing an onboarding tip | Account | All | AccountsController#dismiss_tip | done | Tip "scene_columns" shown and dismissed on the Settings > Users list (row said "new_launcher_menu", which doesn't exist in the codebase — scene_columns is the only tip actually wired up) | 2 | 2026-08-25 | v2026.08.05 |
 
-## Authentication
+## Signing In
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Signing in with email and password |  | All | SessionsController#create | todo | Email/password sign-in; error case for SSO-only account | 2 |  |  |
-| Signing in with Microsoft (Azure AD SSO) |  | All | OmniauthCallbacksController#create/#failure | todo | Azure AD tenant "acmefieldservices.onmicrosoft.com" | 3 |  |  |
-| Requesting and resetting a forgotten password |  | All | clearance/passwords#new/#create/#edit/#update | todo | Reset link requested, new password set | 3 |  |  |
+| Signing in to your account | Signing In | All | SessionsController#create; OmniauthCallbacksController#create/#failure | done | Microsoft SSO button (production, no credentials entered); email/password sign-in for user Priya Nair; error cases for wrong password (Priya), deactivated account (Jordan Ellis), and SSO-only account (Sam Ahmed); sign out | 8 | 2026-08-25 | v2026.08.05 |
+| Requesting a password reset | Signing In | All | clearance/passwords#new/#create | done | Reset requested for Priya Nair's email | 3 | 2026-08-25 | v2026.08.05 |
+| Setting a new password from a reset link | Signing In | All | clearance/passwords#edit/#update | done | New password set via reset link for Priya Nair | 3 | 2026-08-25 | v2026.08.05 |
 
 ## Search & Navigation
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Using global search / command palette |  | All | SearchesController#index; app/views/application/_command.html.erb | todo | Query "ORD-3341", category filter "Projects", Deep Search toggle | 4 |  |  |
-| Launching connected apps from the App Launcher |  | All | app/views/application/_launcher.html.erb; LauncherApp model | todo | Apps "Power BI Dashboards", "Fleet Tracker", search "fleet" | 2 |  |  |
+| Using global search / command palette |  | All | SearchesController#index; app/views/application/_command.html.erb | done | Project "Elm Street Depot - Access Road Resurfacing" (real reference format is "INS-ddmmyy-id", not "ORD-3341"), category filter "Projects", Deep Search toggle | 3 | 2026-08-25 | v2026.08.05 |
+| Launching connected apps from the App Launcher |  | All | app/views/application/_launcher.html.erb; LauncherApp model | done | Apps "Power BI Dashboards", "Fleet Tracker", search "fleet" | 3 | 2026-08-25 | v2026.08.05 |
 
 ## Notifications
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing and managing notifications |  | All | NotificationsController#index/#show/#destroy/#mark_all_as_read | todo | Notification "You were assigned to Job JOB-20567", 5 pending | 3 |  |  |
+| Viewing and managing notifications |  | All | NotificationsController#index/#show/#destroy/#mark_all_as_read | done | Notification "Booked - Job "Boiler Service - Annual Safety Check" has been booked" (JOB-20567), 5 pending | 3 | 2026-08-25 | v2026.08.05 |
 
 ## Announcements
 
@@ -627,7 +646,7 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Managing your watches |  | All | WatchesController#index/#create/#destroy | todo | Watching Project "ORD-3341" and Job "JOB-20567" | 2 |  |  |
+| Managing your bookmarks |  | All | WatchesController#index/#create/#destroy | done | Bookmarking Project "Ferngate Office Fit-Out" and Job "Fire Door Inspection" (on screen this feature is called "Bookmarks"/"My Bookmarks", not "Watches" - renamed from "Managing your watches" to match) | 4 | 2026-08-25 | v2026.08.05 |
 
 ## Assignments Inbox
 
@@ -740,9 +759,15 @@ Tracks every end-user-facing feature/workflow in ocu-one-web (OCU One / Jobstra)
 
 ## Summary
 
-Completed: 54 / 394
+Completed: 131 / 393
 
-PVA (Planned vs Actual / product allocations) guides completed: 16 / 16
+Media & Attachments guides completed: 2 / 2
+
+Product Allocations guides completed: 7 / 7
+
+Products & Rates guides completed: 11 / 11
+
+Projects guides completed: 33 / 33
 
 Timesheets guides completed: 16 / 16
 
@@ -750,8 +775,23 @@ Views guides completed: 9 / 9
 
 Tickets guides completed: 12 / 12
 
+Signing In guides completed: 3 / 3
+
+Account guides completed: 3 / 3
+
+Home Dashboard guides completed: 15 / 15
+
+Notifications guides completed: 1 / 1
+
+Search & Navigation guides completed: 2 / 2
+
+Assets guides completed: 16 / 16
+
+Watches guides completed: 1 / 1
+
 Release breakdown (current version only, for `done` rows):
 
-- v2026.08.02: 28
+- v2026.08.02: 27
 - v2026.08.03: 14
 - v2026.08.04: 12
+- v2026.08.05: 78

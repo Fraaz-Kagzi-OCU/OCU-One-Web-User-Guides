@@ -1,0 +1,3 @@
+# Bookmarks — Overview
+
+If there's a job, project, ticket, or other record you want to keep an easy eye on without hunting for it again, you can bookmark it — shown on screen as **Bookmarks** (this area is called "Watches" internally, which is why you'll see that name in the guide list, but everything on screen says "bookmark"). Bookmarking something adds it to your own personal **My Bookmarks** list, which you can open from your profile menu at any time to jump straight back to it. See [Managing your bookmarks](Managing%20your%20bookmarks.md) for how to bookmark an item, view your list, and remove a bookmark once you no longer need to track it.

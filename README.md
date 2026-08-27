@@ -6,40 +6,202 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers four complete areas — Planned vs Actual / commercial product allocations (16 guides), Timesheets (16 guides), List Views & Filtering (9 guides), and Tickets (12 guides) — each end to end, from setup through to seeing the results. The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
+The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers fourteen complete areas — Projects (33 guides), Product Allocations (7 guides), Products & Rates (11 guides), Timesheets (16 guides), List Views & Filtering (9 guides), Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), and Media & Attachments (2 guides) — each end to end, from setup through to seeing the results.
+
+Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
+
+Known product issues found while building these guides — not documentation gaps, but real app behaviour worth an engineer's attention — are tracked separately in [`Zz - Known Bugs/`](Zz%20-%20Known%20Bugs/).
+
+The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
 
 ## Contents
 
-### Planned vs Actual (PVA) — Commercial / Product Allocations
-Start with the overview, then follow the flow: set up rates → allocate → adjust the plan → record what happened → view the results.
+### Signing In
+Start with signing in, then the password-reset flow if you use email/password rather than Microsoft sign-in.
 
-- [Overview — what Planned vs Actual means and how it all fits together](PVA/_Planned%20vs%20Actual%20-%20Overview.md)
+- [Overview — how Microsoft SSO, email/password sign-in, and the password-reset flow fit together](Signing%20In/_Signing%20In%20-%20Overview.md)
+- [Signing in to your account](Signing%20In/Signing%20in%20to%20your%20account.md) — Microsoft SSO (the realistic path for most users) and email/password, including what each error message means and how to sign out
+- [Requesting a password reset](Signing%20In/Requesting%20a%20password%20reset.md)
+- [Setting a new password from a reset link](Signing%20In/Setting%20a%20new%20password%20from%20a%20reset%20link.md)
 
-**Setting up rates & categories**
-- [Creating a rate book and its versions](PVA/Creating%20a%20rate%20book%20and%20its%20versions.md)
-- [Setting product rates within a rate book version](PVA/Setting%20product%20rates%20within%20a%20rate%20book%20version.md)
-- [Managing sell rates on a product](PVA/Managing%20sell%20rates%20on%20a%20product.md)
-- [Managing cost rates on a product](PVA/Managing%20cost%20rates%20on%20a%20product.md)
-- [Managing product allocation types](PVA/Managing%20product%20allocation%20types.md)
-- [Managing rate categories](PVA/Managing%20rate%20categories.md)
+### Account
+Personal account settings, available to everyone.
+
+- [Overview — the three standalone personal settings covered in this area](Account/_Account%20-%20Overview.md)
+- [Updating your account profile](Account/Updating%20your%20account%20profile.md)
+- [Collapsing or expanding the sidebar](Account/Collapsing%20or%20expanding%20the%20sidebar.md)
+- [Dismissing an onboarding tip](Account/Dismissing%20an%20onboarding%20tip.md)
+
+### Home Dashboard
+Start with the activity feed and the tag filter, then each widget on the Overview dashboard.
+
+- [Overview — what the Home and Overview tabs are for, and how the activity feed, snapshot widgets, charts, and Admin widgets fit together](Home%20Dashboard/_Home%20Dashboard%20-%20Overview.md)
+- [Viewing your activity feed](Home%20Dashboard/Viewing%20your%20activity%20feed.md)
+- [Using the Home overview widget dashboard](Home%20Dashboard/Using%20the%20Home%20overview%20widget%20dashboard.md) — the tag filter that narrows every widget below
+
+**Snapshots**
+- [Reading the Today snapshot widget](Home%20Dashboard/Reading%20the%20Today%20snapshot%20widget.md)
+- [Reading the Timesheets Today widget](Home%20Dashboard/Reading%20the%20Timesheets%20Today%20widget.md)
+- [Reading the Jobs Today widget](Home%20Dashboard/Reading%20the%20Jobs%20Today%20widget.md)
+- [Browsing upcoming jobs on the Coming Up widget](Home%20Dashboard/Browsing%20upcoming%20jobs%20on%20the%20Coming%20Up%20widget.md)
+- [Reviewing the Recent Activity widget](Home%20Dashboard/Reviewing%20the%20Recent%20Activity%20widget.md)
+
+**Charts**
+- [Filtering the Jobs by Status chart](Home%20Dashboard/Filtering%20the%20Jobs%20by%20Status%20chart.md)
+- [Filtering the Jobs by Type chart](Home%20Dashboard/Filtering%20the%20Jobs%20by%20Type%20chart.md)
+- [Filtering the Projects by Stage chart](Home%20Dashboard/Filtering%20the%20Projects%20by%20Stage%20chart.md)
+- [Filtering the Projects by Type chart](Home%20Dashboard/Filtering%20the%20Projects%20by%20Type%20chart.md)
+- [Filtering the Records by Stage chart](Home%20Dashboard/Filtering%20the%20Records%20by%20Stage%20chart.md)
+- [Filtering the Records by Type chart](Home%20Dashboard/Filtering%20the%20Records%20by%20Type%20chart.md)
+
+**Admin**
+- [Monitoring the Uploads status widget (Admin)](Home%20Dashboard/Monitoring%20the%20Uploads%20status%20widget%20%28Admin%29.md) — OCU-internal only, not visible to any tenant account
+- [Monitoring the Weekly Imports status widget (Admin)](Home%20Dashboard/Monitoring%20the%20Weekly%20Imports%20status%20widget%20%28Admin%29.md)
+
+### Search & Navigation
+Finding things and getting around quickly.
+
+- [Overview — global search and the App Launcher, and how they differ](Search%20%26%20Navigation/_Search%20%26%20Navigation%20-%20Overview.md)
+- [Using global search / command palette](Search%20%26%20Navigation/Using%20global%20search%20-%20command%20palette.md)
+- [Launching connected apps from the App Launcher](Search%20%26%20Navigation/Launching%20connected%20apps%20from%20the%20App%20Launcher.md)
+
+### Notifications
+How you're alerted when something needs your attention.
+
+- [Overview — what notifications are for and how they work](Notifications/_Notifications%20-%20Overview.md)
+- [Viewing and managing notifications](Notifications/Viewing%20and%20managing%20notifications.md)
+
+### Assets
+Tracking and maintaining the physical things your organisation manages — browse them, create and edit them, and manage everything attached to one: sub-assets, visits, visit plans, jobs, todos, records, issues, and pipeline stage.
+
+- [Overview — how asset types, sub-assets, pipeline stages, visits, and everything else attached to an asset fit together](Assets/_Assets%20-%20Overview.md)
+- [Using the assets landing page](Assets/Using%20the%20assets%20landing%20page.md)
+
+**Browsing**
+- [Browsing assets in the drilldown tree view](Assets/Browsing%20assets%20in%20the%20drilldown%20tree%20view.md)
+- [Browsing assets in the table (list) view](Assets/Browsing%20assets%20in%20the%20table%20%28list%29%20view.md)
+- [Viewing the assets board (pipeline)](Assets/Viewing%20the%20assets%20board%20%28pipeline%29.md)
+
+**Creating, viewing, and editing an asset**
+- [Creating an asset](Assets/Creating%20an%20asset.md)
+- [Viewing an asset's overview page](Assets/Viewing%20an%20asset%27s%20overview%20page.md)
+- [Editing or deleting an asset](Assets/Editing%20or%20deleting%20an%20asset.md)
+- [Moving an asset through pipeline stages](Assets/Moving%20an%20asset%20through%20pipeline%20stages.md)
+
+**Everything attached to an asset**
+- [Viewing and adding sub-assets](Assets/Viewing%20and%20adding%20sub-assets.md)
+- [Viewing an asset's Visits tab](Assets/Viewing%20an%20asset%27s%20Visits%20tab.md)
+- [Scheduling a maintenance visit plan for an asset](Assets/Scheduling%20a%20maintenance%20visit%20plan%20for%20an%20asset.md)
+- [Removing a visit plan from an asset](Assets/Removing%20a%20visit%20plan%20from%20an%20asset.md)
+- [Viewing an asset's linked jobs](Assets/Viewing%20an%20asset%27s%20linked%20jobs.md)
+- [Viewing an asset's to-dos](Assets/Viewing%20an%20asset%27s%20to-dos.md)
+- [Viewing an asset's records](Assets/Viewing%20an%20asset%27s%20records.md)
+- [Viewing and raising issues against an asset](Assets/Viewing%20and%20raising%20issues%20against%20an%20asset.md)
+
+### Watches
+Keeping an eye on specific items (shown on screen as "Bookmarks").
+
+- [Overview — what bookmarking an item is for](Watches/_Watches%20-%20Overview.md)
+- [Managing your bookmarks](Watches/Managing%20your%20bookmarks.md)
+
+### Media & Attachments
+Choosing which photos and files show up when you export a PDF, and removing a file you've just uploaded before you save.
+
+- [Overview — two unrelated attachment conveniences and when to use each](Media%20%26%20Attachments/_Media%20%26%20Attachments%20-%20Overview.md)
+- [Choosing which attachments appear on a PDF export](Media%20%26%20Attachments/Choosing%20which%20attachments%20appear%20on%20a%20PDF%20export.md)
+- [Removing an uploaded file attachment](Media%20%26%20Attachments/Removing%20an%20uploaded%20file%20attachment.md)
+
+### Product Allocations
+Allocate products or materials, adjust the plan, and record what actually happened — the core of the app's Planned vs Actual tracking.
+
+- [Overview — what Planned vs Actual means and how it all fits together, across this and the three areas below](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md)
 
 **Allocating**
-- [Allocating products or materials to a job, project, estimate, or variation](PVA/Allocating%20products%20or%20materials%20to%20a%20job%2C%20project%2C%20estimate%2C%20or%20variation.md)
+- [Allocating products or materials to a job, project, estimate, or variation](Product%20Allocations/Allocating%20products%20or%20materials%20to%20a%20job%2C%20project%2C%20estimate%2C%20or%20variation.md)
 
 **Adjusting the plan**
-- [Raising a planned quantity change on an allocation](PVA/Raising%20a%20planned%20quantity%20change%20on%20an%20allocation.md)
-- [Viewing planned quantity change history](PVA/Viewing%20planned%20quantity%20change%20history.md)
-- [Editing or removing a product allocation](PVA/Editing%20or%20removing%20a%20product%20allocation.md)
-- [Copying or transferring allocated products between records](PVA/Copying%20or%20transferring%20allocated%20products%20between%20records.md)
-- [Bulk-applying a rate modifier to all allocated products](PVA/Bulk-applying%20a%20rate%20modifier%20to%20all%20allocated%20products.md)
+- [Raising a planned quantity change on an allocation](Product%20Allocations/Raising%20a%20planned%20quantity%20change%20on%20an%20allocation.md)
+- [Viewing planned quantity change history](Product%20Allocations/Viewing%20planned%20quantity%20change%20history.md)
+- [Editing or removing a product allocation](Product%20Allocations/Editing%20or%20removing%20a%20product%20allocation.md)
+- [Copying or transferring allocated products between records](Product%20Allocations/Copying%20or%20transferring%20allocated%20products%20between%20records.md)
+- [Bulk-applying a rate modifier to all allocated products](Product%20Allocations/Bulk-applying%20a%20rate%20modifier%20to%20all%20allocated%20products.md)
 
 **Recording what happened**
-- [Recording actual product usage against an allocation](PVA/Recording%20actual%20product%20usage%20against%20an%20allocation.md)
+- [Recording actual product usage against an allocation](Product%20Allocations/Recording%20actual%20product%20usage%20against%20an%20allocation.md)
 
-**Seeing the results**
-- [Viewing and managing product allocations on a project](PVA/Viewing%20and%20managing%20product%20allocations%20on%20a%20project.md)
-- [Managing a task's product allocations tab](PVA/Managing%20a%20task%27s%20product%20allocations%20tab.md)
-- [Viewing a project's commercial stats dashboard](PVA/Viewing%20an%20projects%20commercial%20stats%20dashboard.md)
+### Products & Rates
+Browsing, creating, editing, and deleting products in the catalog, plus everything about rates — setting up rate books, rate categories, and allocation types, then setting the sell/cost rate on a specific product. Merges two `_progress.md` sections that are both fundamentally about rates and the catalog they apply to, even though they live on different screens (a product's own page vs. admin Settings). All 11 rows across both sections are now written — the only excluded row (project codes/timesheet categories) is unrelated to products or rates.
+
+- [Overview — how the product catalog, rate books and versions, rate categories, and product allocation types fit together](Products%20%26%20Rates/_Products%20%26%20Rates%20-%20Overview.md)
+
+**Browsing the catalog**
+- [Browsing the product catalog and drilldown hierarchy](Products%20%26%20Rates/Browsing%20the%20product%20catalog%20and%20drilldown%20hierarchy.md)
+- [Viewing a product's sub-products](Products%20%26%20Rates/Viewing%20a%20product%27s%20sub-products.md)
+
+**Creating, viewing, editing, and deleting a product**
+- [Creating a product or sub-product](Products%20%26%20Rates/Creating%20a%20product%20or%20sub-product.md)
+- [Viewing and editing a product](Products%20%26%20Rates/Viewing%20and%20editing%20a%20product.md)
+- [Deleting a product](Products%20%26%20Rates/Deleting%20a%20product.md)
+
+**Rates**
+- [Managing sell rates on a product](Products%20%26%20Rates/Managing%20sell%20rates%20on%20a%20product.md)
+- [Managing cost rates on a product](Products%20%26%20Rates/Managing%20cost%20rates%20on%20a%20product.md)
+- [Creating a rate book and its versions](Products%20%26%20Rates/Creating%20a%20rate%20book%20and%20its%20versions.md)
+- [Setting product rates within a rate book version](Products%20%26%20Rates/Setting%20product%20rates%20within%20a%20rate%20book%20version.md)
+- [Managing product allocation types](Products%20%26%20Rates/Managing%20product%20allocation%20types.md)
+- [Managing rate categories](Products%20%26%20Rates/Managing%20rate%20categories.md)
+
+### Projects
+Browsing projects in every available view, creating and managing a project end to end, its Children/Key Fields/Plan tabs, its Records/Jobs/Tasks tabs, its Estimates/Invoices/Variations/Permits and linking to other projects, and its Todos/RAG/job-locking/PDF export controls — all 33 guides are now written, making this the biggest complete area in the repo.
+
+- [Overview — what a Project is and how its structure, records/jobs/tasks, financials, and status controls fit together](Projects/_Projects%20-%20Overview.md)
+
+**Browsing**
+- [Browsing and filtering the projects list](Projects/Browsing%20and%20filtering%20the%20projects%20list.md)
+- [Exploring projects as a relationship graph](Projects/Exploring%20projects%20as%20a%20relationship%20graph.md) — currently broken; the guide documents the intended behaviour and flags the bug
+- [Browsing projects in drilldown (hierarchy) view](Projects/Browsing%20projects%20in%20drilldown%20%28hierarchy%29%20view.md)
+- [Viewing and moving projects on the pipeline (kanban) board](Projects/Viewing%20and%20moving%20projects%20on%20the%20pipeline%20%28kanban%29%20board.md)
+
+**Creating and managing a project**
+- [Creating a new project](Projects/Creating%20a%20new%20project.md)
+- [Creating a sub-project (child project) under an existing project](Projects/Creating%20a%20sub-project%20%28child%20project%29%20under%20an%20existing%20project.md)
+- [Viewing a project's overview (main tab)](Projects/Viewing%20a%20project%27s%20overview%20%28main%20tab%29.md)
+- [Editing a project's details](Projects/Editing%20a%20project%27s%20details.md)
+- [Deleting (archiving) a project](Projects/Deleting%20%28archiving%29%20a%20project.md)
+
+**Sub-projects, key fields, and the project plan**
+- [Managing sub-projects on the Children tab](Projects/Managing%20sub-projects%20on%20the%20Children%20tab.md)
+- [Viewing key fields rolled up from jobs and tasks](Projects/Viewing%20key%20fields%20rolled%20up%20from%20jobs%20and%20tasks.md)
+- [Managing the project plan (project groups / checklist tab)](Projects/Managing%20the%20project%20plan%20%28project%20groups%20-%20checklist%20tab%29.md)
+- [Adding a new checklist item to a project group](Projects/Adding%20a%20new%20checklist%20item%20to%20a%20project%20group.md)
+- [Attaching an existing job or record to a project group checklist](Projects/Attaching%20an%20existing%20job%20or%20record%20to%20a%20project%20group%20checklist.md)
+- [Completing, editing, reordering, and removing checklist items](Projects/Completing%2C%20editing%2C%20reordering%2C%20and%20removing%20checklist%20items.md)
+
+**Records, jobs, and tasks**
+- [Viewing and attaching records (surveys, inspections) to a project](Projects/Viewing%20and%20attaching%20records%20%28surveys%2C%20inspections%29%20to%20a%20project.md)
+- [Viewing and creating jobs from a project](Projects/Viewing%20and%20creating%20jobs%20from%20a%20project.md)
+- [Viewing and filtering tasks on a project](Projects/Viewing%20and%20filtering%20tasks%20on%20a%20project.md)
+- [Creating a new task under a project](Projects/Creating%20a%20new%20task%20under%20a%20project.md)
+- [Viewing and working a task's overview tab](Projects/Viewing%20and%20working%20a%20task%27s%20overview%20tab.md)
+- [Editing or deleting a task](Projects/Editing%20or%20deleting%20a%20task.md)
+
+**Estimates, invoices, variations, permits, and linking**
+- [Viewing and creating estimates on a project](Projects/Viewing%20and%20creating%20estimates%20on%20a%20project.md)
+- [Viewing and creating invoices on a project](Projects/Viewing%20and%20creating%20invoices%20on%20a%20project.md)
+- [Viewing and raising variations on a project](Projects/Viewing%20and%20raising%20variations%20on%20a%20project.md)
+- [Viewing and attaching permits to a project](Projects/Viewing%20and%20attaching%20permits%20to%20a%20project.md)
+- [Linking related projects together](Projects/Linking%20related%20projects%20together.md)
+
+**Planned vs Actual on a project**
+- [Viewing and managing product allocations on a project](Projects/Viewing%20and%20managing%20product%20allocations%20on%20a%20project.md)
+- [Managing a task's product allocations tab](Projects/Managing%20a%20task%27s%20product%20allocations%20tab.md)
+- [Viewing a project's commercial stats dashboard](Projects/Viewing%20an%20projects%20commercial%20stats%20dashboard.md)
+
+**Todos, RAG status, job locking, and PDF export**
+- [Viewing and managing to-dos on a project](Projects/Viewing%20and%20managing%20to-dos%20on%20a%20project.md)
+- [Setting a project's RAG status](Projects/Setting%20a%20project%27s%20RAG%20status.md) — the RAG dropdown click can silently fail to save; see `Zz - Known Bugs/`
+- [Locking and unlocking jobs on a project](Projects/Locking%20and%20unlocking%20jobs%20on%20a%20project.md) — unlocking has the same silent-save issue as RAG status
+- [Downloading or previewing a project PDF](Projects/Downloading%20or%20previewing%20a%20project%20PDF.md)
 
 ### Timesheets
 
@@ -122,9 +284,19 @@ Start with the overview, then follow the flow: browse groups & types → raise a
 OCU-One-Web-User-Guides/
 ├── README.md              this file
 ├── _progress.md           internal tracker: every planned guide + its status
-├── PVA/                    Planned vs Actual guides
-│   ├── _Planned vs Actual - Overview.md
-│   ├── _VERIFICATION.md    verification status for PVA guides
+├── Product Allocations/    Product Allocations guides (formerly part of "PVA")
+│   ├── _Planned vs Actual - Overview.md   cross-cutting concept doc, spans all 3 PVA-descended folders below
+│   ├── _VERIFICATION.md    verification status for Product Allocations guides
+│   ├── ...guide files
+│   └── attachments/         
+├── Products & Rates/       Products & Rates guides (formerly part of "PVA"; merges the _progress.md "Products & Rates" and "Settings: Finance Reference Data" sections since both are about rates)
+│   ├── _Products & Rates - Overview.md
+│   ├── _VERIFICATION.md    verification status for Products & Rates guides
+│   ├── ...guide files
+│   └── attachments/         
+├── Projects/               Projects guides (all 33 rows written; a handful originally descend from "PVA")
+│   ├── _Projects - Overview.md
+│   ├── _VERIFICATION.md    verification status for Projects guides
 │   ├── ...guide files
 │   └── attachments/         
 ├── Timesheets/             Timesheets guides
@@ -137,15 +309,58 @@ OCU-One-Web-User-Guides/
 │   ├── _VERIFICATION.md    verification status for Views guides
 │   ├── ...guide files
 │   └── attachments/        
-└── Tickets/                Tickets guides
-    ├── _Tickets - Overview.md
-    ├── _VERIFICATION.md    verification status for Tickets guides
-    ├── ...guide files
-    └── attachments/        
+├── Tickets/                Tickets guides
+│   ├── _Tickets - Overview.md
+│   ├── _VERIFICATION.md    verification status for Tickets guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Signing In/             Signing In guides
+│   ├── _Signing In - Overview.md
+│   ├── _VERIFICATION.md    verification status for Signing In guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Account/                Account guides
+│   ├── _Account - Overview.md
+│   ├── _VERIFICATION.md    verification status for Account guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Home Dashboard/         Home Dashboard guides
+│   ├── _Home Dashboard - Overview.md
+│   ├── _VERIFICATION.md    verification status for Home Dashboard guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Notifications/          Notifications guides
+│   ├── _Notifications - Overview.md
+│   ├── _VERIFICATION.md    verification status for Notifications guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Search & Navigation/    Search & Navigation guides
+│   ├── _Search & Navigation - Overview.md
+│   ├── _VERIFICATION.md    verification status for Search & Navigation guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Assets/                 Assets guides
+│   ├── _Assets - Overview.md
+│   ├── _VERIFICATION.md    verification status for Assets guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Watches/                Watches guides
+│   ├── _Watches - Overview.md
+│   ├── _VERIFICATION.md    verification status for Watches guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Media & Attachments/    Media & Attachments guides
+│   ├── _Media & Attachments - Overview.md
+│   ├── _VERIFICATION.md    verification status for Media & Attachments guides
+│   ├── ...guide files
+│   └── attachments/        
+└── Zz - Known Bugs/        real product issues found while building guides, not documentation — named to sort last
+    ├── ...bug writeups (one .md per issue)
+    └── attachments/         evidence screenshots/recordings, one subfolder per bug
 ```
 
 ## Conventions
 
 - **Naming**: guide filenames are the plain-English title of the workflow (e.g. `Raising a planned quantity change on an allocation.md`).
 - **Screenshots**: live under `attachments/<slugified-guide-name>/`, numbered in the order they're referenced (`01-...`, `02-...`).
-- **Cross-links**: guides link to each other with `[[Guide Name]]` wiki-style links (see the PVA overview for examples).
+- **Cross-links**: a guide linking to a sibling guide in the same area uses `[[Guide Name]]` wiki-style links (see the Assets guides for examples). An area's `_<Area> - Overview.md` links out to its child guides with standard markdown links instead (see the Product Allocations, Timesheets, Tickets, or Views overview for examples), since those need to resolve outside Obsidian too — and, where an overview's guides span more than one folder (see Product Allocations' `_Planned vs Actual - Overview.md`), with relative `../Other Folder/Guide.md` paths.
