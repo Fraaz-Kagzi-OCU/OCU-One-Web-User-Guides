@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers fourteen complete areas — Projects (33 guides), Product Allocations (7 guides), Products & Rates (11 guides), Timesheets (16 guides), List Views & Filtering (9 guides), Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), and Media & Attachments (2 guides) — each end to end, from setup through to seeing the results.
+The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers eighteen complete areas — Projects (33 guides), Product Allocations (7 guides), Products & Rates (11 guides), Timesheets (16 guides), List Views & Filtering (9 guides), Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), and Collaboration (3 guides) — each end to end, from setup through to seeing the results.
 
 Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
 
@@ -110,6 +110,44 @@ Choosing which photos and files show up when you export a PDF, and removing a fi
 - [Overview — two unrelated attachment conveniences and when to use each](Media%20%26%20Attachments/_Media%20%26%20Attachments%20-%20Overview.md)
 - [Choosing which attachments appear on a PDF export](Media%20%26%20Attachments/Choosing%20which%20attachments%20appear%20on%20a%20PDF%20export.md)
 - [Removing an uploaded file attachment](Media%20%26%20Attachments/Removing%20an%20uploaded%20file%20attachment.md)
+
+### Labels
+Your own personal coloured tags for marking records — the My Labels page, creating one, and editing/deactivating one.
+
+- [Overview — what labels are for and how the three guides fit together](Labels/_Labels%20-%20Overview.md)
+- [Managing your personal labels ("My Labels")](Labels/Managing%20your%20personal%20labels%20%28My%20Labels%29.md)
+- [Creating a new label](Labels/Creating%20a%20new%20label.md)
+- [Editing, deactivating, or deleting a label](Labels/Editing%2C%20deactivating%2C%20or%20deleting%20a%20label.md)
+
+### Todos & Checklists
+Simple tracked tasks — the standalone Todos list and board, todos on a job's Todos tab, your assigned todos, and checklists within a todo.
+
+- [Overview — how todos, the assignments view, and checklists fit together](Todos%20%26%20Checklists/_Todos%20%26%20Checklists%20-%20Overview.md)
+- [Creating, editing, and managing a standalone todo](Todos%20%26%20Checklists/Creating%2C%20editing%2C%20and%20managing%20a%20standalone%20todo.md)
+- [Changing a todo's status from its detail page](Todos%20%26%20Checklists/Changing%20a%20todo%27s%20status%20from%20its%20detail%20page.md)
+- [Viewing todos as a pipeline (kanban board)](Todos%20%26%20Checklists/Viewing%20todos%20as%20a%20pipeline%20%28kanban%20board%29.md)
+- [Adding and managing todos on a job or project (Todos tab)](Todos%20%26%20Checklists/Adding%20and%20managing%20todos%20on%20a%20job%20or%20project%20%28Todos%20tab%29.md)
+- [Viewing and prioritising your assigned todos](Todos%20%26%20Checklists/Viewing%20and%20prioritising%20your%20assigned%20todos.md)
+- [Adding a checklist to a todo](Todos%20%26%20Checklists/Adding%20a%20checklist%20to%20a%20todo.md)
+- [Adding, checking off, and removing checklist items](Todos%20%26%20Checklists/Adding%2C%20checking%20off%2C%20and%20removing%20checklist%20items.md)
+
+### Documents
+Uploading and organising files on a record — folders, previewing and replacing a document, version history, and comments.
+
+- [Overview — how Docs, folders, versions, and comments fit together](Documents/_Documents%20-%20Overview.md)
+- [Uploading and organising documents on a record](Documents/Uploading%20and%20organising%20documents%20on%20a%20record.md)
+- [Previewing, replacing, and annotating a document](Documents/Previewing%2C%20replacing%2C%20and%20annotating%20a%20document.md)
+- [Viewing a document's version history](Documents/Viewing%20a%20document%27s%20version%20history.md)
+- [Commenting on a document](Documents/Commenting%20on%20a%20document.md)
+- [Creating and configuring a folder](Documents/Creating%20and%20configuring%20a%20folder.md)
+
+### Collaboration
+Discussing and reacting to records together — comments with threaded replies and internal-only notes, reactions on Hub posts, and each record's activity feed.
+
+- [Overview — how comments, reactions, and activity feeds fit together](Collaboration/_Collaboration%20-%20Overview.md)
+- [Commenting on any record, with replies and internal notes](Collaboration/Commenting%20on%20any%20record%2C%20with%20replies%20and%20internal%20notes.md)
+- [Reacting to a comment](Collaboration/Reacting%20to%20a%20comment.md)
+- [Viewing a record's activity feed](Collaboration/Viewing%20a%20record%27s%20activity%20feed.md)
 
 ### Product Allocations
 Allocate products or materials, adjust the plan, and record what actually happened — the core of the app's Planned vs Actual tracking.
@@ -352,6 +390,26 @@ OCU-One-Web-User-Guides/
 ├── Media & Attachments/    Media & Attachments guides
 │   ├── _Media & Attachments - Overview.md
 │   ├── _VERIFICATION.md    verification status for Media & Attachments guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Labels/                 Labels guides
+│   ├── _Labels - Overview.md
+│   ├── _VERIFICATION.md    verification status for Labels guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Todos & Checklists/    Todos & Checklists guides
+│   ├── _Todos & Checklists - Overview.md
+│   ├── _VERIFICATION.md    verification status for Todos & Checklists guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Documents/              Documents guides
+│   ├── _Documents - Overview.md
+│   ├── _VERIFICATION.md    verification status for Documents guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Collaboration/          Collaboration guides
+│   ├── _Collaboration - Overview.md
+│   ├── _VERIFICATION.md    verification status for Collaboration guides
 │   ├── ...guide files
 │   └── attachments/        
 └── Zz - Known Bugs/        real product issues found while building guides, not documentation — named to sort last

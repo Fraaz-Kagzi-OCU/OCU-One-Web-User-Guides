@@ -49,39 +49,39 @@ When asked to sync/update this file against what's actually been written, do the
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Managing your personal labels ("My Labels") |  | Ops | LabelsController#index | todo | User with active labels "Urgent", "Follow Up", "Client VIP" and one inactive label "Old Campaign" | 2 |  |  |
-| Creating a new label |  | Ops | LabelsController#new/#create | todo | New label "Follow Up", orange, in label group "Client Comms" | 2 |  |  |
-| Editing, deactivating, or deleting a label |  | Ops | LabelsController#edit/#update/#deactivate/#activate/#destroy | todo | Deactivating the "Old Campaign" label so it drops out of tagging autocomplete | 2 |  |  |
+| Managing your personal labels ("My Labels") |  | Ops | LabelsController#index | done | User with active labels "Urgent", "Follow Up", "Client VIP" and one inactive label "Old Campaign" | 2 | 2026-08-27 | v2026.08.05 |
+| Creating a new label |  | Ops | LabelsController#new/#create | done | New label "Follow Up", orange, in label group "Client Comms" | 2 | 2026-08-27 | v2026.08.05 |
+| Editing, deactivating, or deleting a label |  | Ops | LabelsController#edit/#update/#deactivate/#activate/#destroy | done | Deactivating the "Old Campaign" label so it drops out of tagging autocomplete | 2 | 2026-08-27 | v2026.08.05 |
 
 ## Todos & Checklists
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating, editing, and managing a standalone todo |  | Ops | TodosController#index/show/new/create/edit/update/destroy | todo | Todo Types "Safety Check" and "Follow-up Call"; todo "Replace faulty RCD on Panel 3" (High priority, due tomorrow, assigned to Dave Chen, ref "JOB-4021") | 6 |  |  |
-| Changing a todo's status from its detail page |  | Ops, FE | TodosController#show/#main/#status | todo | Todo "Follow-up call with tenant re: leak" moved from "In Progress" to "Done" | 3 |  |  |
-| Viewing todos as a pipeline (kanban board) |  | Ops, Mgr | Todos::PipelinesController#index/show | todo | 12 open todos spread across Pending/In Progress/On Hold/Done columns | 3 |  |  |
-| Adding and managing todos on a job/project/record (Todos tab) |  | Ops, FE | TodoableTodosController#index/new/create/edit/update/status/move/destroy | todo | Job "Annual Boiler Service - 14 Elm St" with 3 todoable todos at different statuses | 6 |  |  |
-| Viewing and prioritising your assigned todos |  | FE, Ops | Assignments::TodosController#show/#completed/#status/#prioritise | todo | User "Sarah Ahmed" with 4 assigned todos across 2 jobs, 1 prioritised, plus a Completed tab with 3 done items | 2 |  |  |
-| Adding a checklist to a record |  | Ops, FE | ChecklistsController#create/#update/#destroy | todo | Project "Install new boiler - 22 Park Rd" checklist "Pre-Install Safety Checks" with 5 items, 2 checked (40% progress) | 3 |  |  |
-| Adding, checking off, and removing checklist items |  | FE, Ops | ChecklistItemsController#create/#update/#toggle/#destroy | todo | Checklist item "Isolate mains water supply" toggled from unchecked to checked | 2 |  |  |
+| Creating, editing, and managing a standalone todo |  | Ops | TodosController#index/show/new/create/edit/update/destroy | done | Todo Types "Safety Check" and "Follow-up Call"; todo "Replace faulty RCD on Panel 3" (High priority, due tomorrow, assigned to Dave Chen, ref "JOB-4021") | 6 | 2026-08-27 | v2026.08.05 |
+| Changing a todo's status from its detail page |  | Ops, FE | TodosController#show/#main/#status | done | Todo "Follow-up call with tenant re: leak" moved from "In Progress" to "Done" | 3 | 2026-08-27 | v2026.08.05 |
+| Viewing todos as a pipeline (kanban board) |  | Ops, Mgr | Todos::PipelinesController#index/show | done | 12 open todos spread across Pending/In Progress/On Hold/Done columns | 3 | 2026-08-27 | v2026.08.05 |
+| Adding and managing todos on a job/project/record (Todos tab) |  | Ops, FE | TodoableTodosController#index/new/create/edit/update/status/move/destroy | done | Job "Annual Boiler Service - 14 Elm St" with 3 todoable todos at different statuses | 6 | 2026-08-27 | v2026.08.05 |
+| Viewing and prioritising your assigned todos |  | FE, Ops | Assignments::TodosController#show/#completed/#status/#prioritise | done | User "Sarah Ahmed" with 4 assigned todos across 2 jobs, 1 prioritised, plus a Completed tab with 3 done items | 2 | 2026-08-27 | v2026.08.05 |
+| Adding a checklist to a record |  | Ops, FE | ChecklistsController#create/#update/#destroy | done | Project "Install new boiler - 22 Park Rd" checklist "Pre-Install Safety Checks" with 5 items, 2 checked (40% progress) | 3 | 2026-08-27 | v2026.08.05 |
+| Adding, checking off, and removing checklist items |  | FE, Ops | ChecklistItemsController#create/#update/#toggle/#destroy | done | Checklist item "Isolate mains water supply" toggled from unchecked to checked | 2 | 2026-08-27 | v2026.08.05 |
 
 ## Documents
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Uploading and organising documents on a record |  | Ops, FE | DocsController#index/new/create/drop_create/edit/update | todo | Job Docs tab with folder "Certificates" containing "Gas_Safety_Certificate.pdf" (expires in 11 months) plus a loose photo dropped in via drag-and-drop | 6 |  |  |
-| Previewing, replacing, and annotating a document |  | Ops, FE | DocsController#show/#preview/#update/#update_notes/#toggle_eager_load | todo | "Gas_Safety_Certificate.pdf" previewed inline, note added ("Signed by engineer J. Patel on 12 Aug 2026"), then replaced with a rescanned copy | 4 |  |  |
-| Viewing a document's version history |  | Ops | DocVersionsController#index | todo | "Method_Statement.pdf" with 3 versions uploaded by 3 different engineers, version 3 marked current | 2 |  |  |
-| Commenting on a document |  | Ops, FE | (Comments::CommentsComponent rendered on a Doc — see Collaboration) | todo | "Risk_Assessment.pdf" with 2 comments discussing a missing signature | 1 |  |  |
-| Creating and configuring a folder |  | Ops | FoldersController#new/create/edit/update/destroy | todo | Folder "Insurance Documents" (blue, warn-if-empty on, default expiry 12 months) under Asset "Van - REG123", later renamed | 3 |  |  |
+| Uploading and organising documents on a record |  | Ops, FE | DocsController#index/new/create/drop_create/edit/update | done | Job Docs tab with folder "Certificates" containing "Gas_Safety_Certificate.pdf" (expires in 11 months) plus a loose photo dropped in via drag-and-drop | 6 | 2026-08-27 | v2026.08.05 |
+| Previewing, replacing, and annotating a document |  | Ops, FE | DocsController#show/#preview/#update/#update_notes/#toggle_eager_load | done | "Gas_Safety_Certificate.pdf" previewed inline, note added ("Signed by engineer J. Patel on 12 Aug 2026"), then replaced with a rescanned copy | 4 | 2026-08-27 | v2026.08.05 |
+| Viewing a document's version history |  | Ops | DocVersionsController#index | done | "Method_Statement.pdf" with 3 versions uploaded by 3 different engineers, version 3 marked current | 2 | 2026-08-27 | v2026.08.05 |
+| Commenting on a document |  | Ops, FE | (Comments::CommentsComponent rendered on a Doc — see Collaboration) | done | "Risk_Assessment.pdf" with 2 comments discussing a missing signature | 1 | 2026-08-27 | v2026.08.05 |
+| Creating and configuring a folder |  | Ops | FoldersController#new/create/edit/update/destroy | done | Folder "Insurance Documents" (blue, warn-if-empty on, default expiry 12 months) under Asset "Van - REG123", later renamed | 3 | 2026-08-27 | v2026.08.05 |
 
 ## Collaboration
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Commenting on any record, with replies and internal notes |  | Ops, FE | CommentsController#create | todo | Ticket #T-889 "Boiler not igniting" with a customer comment, an engineer reply, and one internal-only note "Waiting on part delivery, ETA Friday" | 3 |  |  |
-| Reacting to a comment |  | Ops, FE | ReactionsController#create | todo | Comment "Job completed and signed off" with 3 thumbs-up and 1 heart reaction | 2 |  |  |
-| Viewing a record's activity feed |  | Ops, FE | ActivitiesController#index | todo | Project "Replace guttering - 8 Mill Lane" activity feed: created, status changed, document added, paginated at 10/page | 2 |  |  |
+| Commenting on any record, with replies and internal notes |  | Ops, FE | CommentsController#create | done | Ticket #T-889 "Boiler not igniting" with a customer comment, an engineer reply, and one internal-only note "Waiting on part delivery, ETA Friday" | 3 | 2026-08-27 | v2026.08.05 |
+| Reacting to a comment |  | Ops, FE | ReactionsController#create | done | Comment "Job completed and signed off" with 3 thumbs-up and 1 heart reaction | 2 | 2026-08-27 | v2026.08.05 |
+| Viewing a record's activity feed |  | Ops, FE | ActivitiesController#index | done | Project "Replace guttering - 8 Mill Lane" activity feed: created, status changed, document added, paginated at 10/page | 2 | 2026-08-27 | v2026.08.05 |
 
 ## Records
 
@@ -759,7 +759,7 @@ When asked to sync/update this file against what's actually been written, do the
 
 ## Summary
 
-Completed: 131 / 393
+Completed: 149 / 393
 
 Media & Attachments guides completed: 2 / 2
 
@@ -789,9 +789,17 @@ Assets guides completed: 16 / 16
 
 Watches guides completed: 1 / 1
 
+Labels guides completed: 3 / 3
+
+Todos & Checklists guides completed: 7 / 7
+
+Documents guides completed: 5 / 5
+
+Collaboration guides completed: 3 / 3
+
 Release breakdown (current version only, for `done` rows):
 
 - v2026.08.02: 27
 - v2026.08.03: 14
 - v2026.08.04: 12
-- v2026.08.05: 78
+- v2026.08.05: 96
