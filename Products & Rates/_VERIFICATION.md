@@ -16,7 +16,7 @@ Tracks whether a human has actually checked each guide against the live app — 
 | Guide | Verified | Verified by | Date | Version | Notes |
 | ----- | -------- | ------------ | ---- | ------- | ----- |
 | Managing sell rates on a product | No |  |  | v2026.08.03 |  |
-| Managing cost rates on a product | No |  |  | v2026.08.03 |  |
+| Managing cost rates on a product | No |  |  | v2026.08.04 | Rewritten 2026-09-03 for cost-specific copy. Not yet human-verified. Note: the Cancel-on-new-cost-rate bug is NOT actually fixed (still returns to Rates tab) — see Zz - Known Bugs/cancelling-a-new-cost-rate-lands-on-the-rates-tab-not-costs.md; guide documents this as a known quirk rather than claiming it's fixed. |
 | Managing rate categories | No |  |  | v2026.08.03 |  |
 | Creating a rate book and its versions | No |  |  | v2026.08.03 |  |
 | Setting product rates within a rate book version | No |  |  | v2026.08.03 |  |

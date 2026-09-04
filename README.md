@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 390 user-facing workflows worth documenting in total. This repo currently covers eighteen complete areas — Projects (33 guides), Product Allocations (7 guides), Products & Rates (11 guides), Timesheets (16 guides), List Views & Filtering (9 guides), Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), and Collaboration (3 guides) — each end to end, from setup through to seeing the results.
+The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers eighteen complete areas — Projects (33 guides), Products & Rates (11 guides), List Views & Filtering (9 guides), Product Allocations (7 guides), Timesheets (17 guides), Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), and Collaboration (3 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and the one new guide that sync's discovery pass found ("Using the Timesheets landing page") has been written too.
 
 Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
 
@@ -245,6 +245,7 @@ Browsing projects in every available view, creating and managing a project end t
 
 
 - [Overview — what Timesheets, Timesheet Groups, and Timesheet Exports mean and how they fit together](Timesheets/_Timesheets%20-%20Overview.md)
+- [Using the Timesheets landing page](Timesheets/Using%20the%20Timesheets%20landing%20page.md)
 
 **Clocking in & tracking your own time**
 - [Clocking in and starting a shift](Timesheets/Clocking%20in%20and%20starting%20a%20shift.md)

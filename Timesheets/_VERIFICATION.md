@@ -19,12 +19,13 @@ Tracks whether a human has actually checked each guide against the live app — 
 | ----------------------------------------------------------------------------- | -------- | ----------- | ---- | ----------- | ----- |
 | Clocking in and starting a shift                                             | No       |             |      | v2026.08.02 |       |
 | Ending a shift and confirming hours worked                                   | No       |             |      | v2026.08.02 |       |
-| Viewing and editing an individual timesheet                                  | No       |             |      | v2026.08.02 |       |
+| Viewing and editing an individual timesheet                                  | No       |             |      | v2026.08.04 | Rewritten 2026-09-03 to cover the Active Duration field's 18-hour cap. Not yet human-verified. |
 | Logging a break or other shift event                                        | No       |             |      | v2026.08.02 |       |
 | Browsing all timesheets in the table view                                   | No       |             |      | v2026.08.02 |       |
-| Approving or denying timesheets for your team (weekly review grid)          | No       |             |      | v2026.08.02 |       |
+| Approving or denying timesheets for your team (weekly review grid)          | No       |             |      | v2026.08.04 | Rewritten 2026-09-04 to cover the bulk-update failure error banner. Not yet human-verified. |
 | Adding or editing a timesheet entry from the review grid                    | No       |             |      | v2026.08.02 |       |
 | Rounding or splitting a timesheet entry during review                       | No       |             |      | v2026.08.02 |       |
+| Using the Timesheets landing page                                           | No       |             |      | v2026.08.04 | Newly written 2026-09-04. Not yet human-verified. |
 
 ### Timesheet Timeline — Gantt/scheduler view
 
@@ -51,4 +52,4 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 ## Summary
 
-Verified: 0 / 16
+Verified: 0 / 17

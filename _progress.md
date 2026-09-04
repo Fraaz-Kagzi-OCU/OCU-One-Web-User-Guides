@@ -17,26 +17,43 @@ When asked to sync/update this file against what's actually been written, do the
 4. Leave rows already `done` untouched — don't overwrite an existing `documented_at`/`Release` even if the file changed since.
 5. If a row is `done` but no matching file exists on disk, don't silently flip it back to `todo` — flag it to the user (likely a rename or deletion worth reconciling by hand).
 6. If a file exists on disk with no matching row anywhere in this tracker, flag it too rather than inventing a new row — it needs a human to decide where it belongs.
-7. Don't touch the per-topic `_VERIFICATION.md` files here — that's a separate sync (see the root `_VERIFICATION.md`'s own sync prompt), since being written and being verified are different things.
+7. Don't touch the per-topic `_VERIFICATION.md` files as part of *this* file-existence sync — that's a separate concern (see the root `_VERIFICATION.md`'s own sync prompt), since being written and being verified are different things. The one exception is the code-drift sync in the next section, which does update them — see step 4 there.
 8. After updating rows, regenerate the **## Summary** section at the very bottom of this file from the now-current table data:
    - `Completed: X / Y` — `X` = count of rows with Status `done` across every section, `Y` = count of all rows in the file.
-   - One `<Topic> guides completed: A / B` line per topic that has its own folder (Views, Tickets, Product Allocations, Products & Rates, Projects, Timesheets, Signing In, Account, Home Dashboard, Notifications, Search & Navigation, Assets, Watches, Media & Attachments, and any new topic folder added since) — `A` = `done` rows whose section maps to that folder, `B` = total rows in that section. Note: some folders don't map 1:1 to a single `_progress.md` section: `Projects` holds only the subset of a much larger section's rows that happen to be written so far (so `B` is that section's full row count, not just the written subset); `Products & Rates` merges two sections that are both fundamentally about rates ("Products & Rates" and "Settings: Finance Reference Data", minus that section's one unrelated project-codes/timesheet-categories row) into one folder, so `B` is the sum of both minus that excluded row. Keep one line per topic, in the same order as today unless a topic is added/removed.
-   - **Release breakdown (current version only, for `done` rows)** — group all `done` rows by their **Release** value and list `<release>: <count>` lines, sorted by release ascending. "Current version only" means: if a row's guide was later rewritten for a newer release (its Release cell was bumped), it counts under the newer release only, not both.
+   - `Needs update: Z` — count of rows with Status `needs update`. These do NOT count toward `Completed`.
+   - One `<Topic> guides completed: A / B` line per topic that has its own folder (Views, Tickets, Product Allocations, Products & Rates, Projects, Timesheets, Signing In, Account, Home Dashboard, Notifications, Search & Navigation, Assets, Watches, Media & Attachments, and any new topic folder added since) — `A` = `done` rows whose section maps to that folder, `B` = total rows in that section (`todo` + `done` + `needs update`). Note: some folders don't map 1:1 to a single `_progress.md` section: `Projects` holds only the subset of a much larger section's rows that happen to be written so far (so `B` is that section's full row count, not just the written subset); `Products & Rates` merges two sections that are both fundamentally about rates ("Products & Rates" and "Settings: Finance Reference Data", minus that section's one unrelated project-codes/timesheet-categories row) into one folder, so `B` is the sum of both minus that excluded row. Keep one line per topic, in the same order as today unless a topic is added/removed.
+   - **Release breakdown (current version only, for `done` rows)** — group all `done` rows (not `needs update` rows) by their **Release** value and list `<release>: <count>` lines, sorted by release ascending. "Current version only" means: if a row's guide was later rewritten for a newer release (its Release cell was bumped), it counts under the newer release only, not both.
    - Replace the whole `## Summary` section with the freshly computed version — don't hand-edit individual numbers.
+
+## How to sync for code drift (prompt for Claude)
+
+When asked to check whether written guides have gone stale against the current codebase (separate from the file-existence sync above — this checks `done` rows for drift, that one checks `todo` rows for new files), do the following:
+
+1. For every row with Status `done`, resolve its **Maps to** column to real file paths (controllers, their matching `app/views/` directory, and any named components/JS files) and resolve its **Release** cell to a git SHA (`git rev-parse <tag>`).
+2. `git diff <release_sha> <current_ref> -- <resolved paths>` for that row. Use whatever ref actually represents "the current app" for this purpose — if the checked-out branch is behind the mainline (`git merge-base --is-ancestor <release_tag> HEAD` failing, or `HEAD` being an ancestor of the release tag rather than the other way round, is the tell), diff against `origin/develop` instead of literal `HEAD`, or the results will silently under-report drift.
+3. Empty diff → leave the row as `done`, untouched.
+4. Non-empty diff → read it and judge:
+   - **Cosmetic** (styling/refactor/internal renaming with no visible behavior change) → leave as `done`.
+   - **User-facing** (new option/field, changed flow, removed step, different validation/default, new button/tab) → set Status to `needs update` and add a one-line note in a **Change notes** column (add that column to the section's table if it isn't there yet) describing what changed and what to focus on when rewriting.
+   - When a row flips to `needs update` this way, immediately reset its matching row in that area's `<Area>/_VERIFICATION.md`: `Verified` → `No`, clear `Verified by` and `Date`, leave `Version` unchanged (it only updates once the guide is actually rewritten), add a short `Notes` entry (reuse the Change notes text). This is the one case where a `_progress.md` sync does touch `_VERIFICATION.md` — see `_FULL_SYNC.md` for the full chain including the root rollup and README.
+5. While doing this pass, also do a lightweight walk of `app/controllers`/`config/routes.rb` for genuinely new end-user-facing controllers/actions with no existing "Maps to" reference anywhere in this file, and add them as new `todo` rows under the best-fit existing heading (or a new one) — same idea as the file-existence sync above, but driven from the code side rather than the guide-folder side, since a feature can exist in the app for a while before anyone starts writing its guide.
+6. Recompute the `## Summary` section per step 8 above (needs-update rows count as not-completed, with their own count line).
+
+For the full chain — this sync plus the required `_VERIFICATION.md` and `README.md` follow-through — see `_FULL_SYNC.md`.
 
 ## List Views & Filtering
 
-| Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
-| ----------------------------------------------------- |-------| -------- | ------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ------------- | ----------- |
-| Filtering a list view by a field | Views | Ops, FE | FiltersController#new/#autocomplete; filters/*_filter_component | done | Jobs list filtered by "Status = Booked" (no "Scheduled" status exists in the app; "Booked" is the closest real status) and a created-date range of the last 7 days | 4 | 2026-08-16 | v2026.08.02 |
-| Removing or updating an active filter | Views | Ops, FE | filters/filter_component (remove/update) | done | Existing "Owner" filter chip on the Tickets list changed from Priya Nair to Marcus Webb, then removed (no "Priority" field exists on Tickets in the app) | 2 | 2026-08-16 | v2026.08.02 |
-| Customizing which columns appear in a list/table view | Views | Ops | ColumnsController#new/#autocomplete; columns/column_component; scenes/view/view_options_component | done | Projects list with columns Reference, Total Price (Planned), Client Lead added then reordered (no literal "Project Number"/"Total (ex VAT)" fields exist; these are the closest real on-screen equivalents) | 4 | 2026-08-16 | v2026.08.02 |
-| Saving current filters/columns as a new personal view | Views | Ops, FE | ViewsController#create; scenes/view/view_options_component | done | Filtered Jobs list ("Status = In Progress", "Assigned to = me") saved as new view "My Active Jobs" | 3 | 2026-08-16 | v2026.08.02 |
-| Renaming and updating an existing saved view | Views | Ops | ViewsController#update | done | Renaming view "Overdue Tickets" to "Overdue Tickets - This Week" after adding a Created-at filter (no due-date field exists on Tickets) | 2 | 2026-08-16 | v2026.08.02 |
-| Switching between saved views on a list screen | Views | Ops, FE | ViewsController#show; scenes/view_component (view tabs) | done | Jobs list with tabs "Default view", "My Active Jobs" (favourited), "Unscheduled Jobs" | 2 | 2026-08-16 | v2026.08.02 |
-| Favouriting a saved view | Views | Ops, FE | ViewsController#favourite | done | Favouriting "Unscheduled Jobs" view (yellow star badge) | 1 | 2026-08-16 | v2026.08.02 |
-| Managing all your saved views ("My Views") | Views | Ops | ViewsController#index/#edit/#move/#activate/#deactivate/#destroy | done | User with 5 saved views across Jobs/Tickets, one deactivated ("Old Backlog"), reordering two views | 4 | 2026-08-16 | v2026.08.02 |
-| Managing saved views (admin) | Views | Admin | Settings::ViewsController#index/#filter/#edit/#update/#activate/#deactivate/#destroy | done | Admin Marcus renaming Priya Nair's "High Priority Tickets" to "High Priority Tickets - Reviewed" and deactivating her "Unscheduled Jobs" view | 7 | 2026-08-16 | v2026.08.02 |
+| Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release | Change notes |
+| ----------------------------------------------------- |-------| -------- | ------------------------------------------------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ------------- | ----------- | ----------- |
+| Filtering a list view by a field | Views | Ops, FE | FiltersController#new/#autocomplete; filters/*_filter_component | done | Jobs list: Title filter "contains Boiler" then "contains any" of Boiler/Cabinet (new multi-select), combined with Status = Booked and Created-at "Previous 7 Days" | 6 | 2026-09-03 | v2026.08.04 (from v2026.08.02) | |
+| Removing or updating an active filter | Views | Ops, FE | filters/filter_component (remove/update) | done | Existing "Owner" filter chip on the Tickets list changed from Priya Nair to Marcus Webb, then removed (no "Priority" field exists on Tickets in the app) | 2 | 2026-08-16 | v2026.08.02 | |
+| Customizing which columns appear in a list/table view | Views | Ops | ColumnsController#new/#autocomplete; columns/column_component; scenes/view/view_options_component | done | Projects list with columns Reference, Total Price (Planned), Client Lead added then reordered (no literal "Project Number"/"Total (ex VAT)" fields exist; these are the closest real on-screen equivalents) | 4 | 2026-08-16 | v2026.08.02 | |
+| Saving current filters/columns as a new personal view | Views | Ops, FE | ViewsController#create; scenes/view/view_options_component | done | Filtered Jobs list ("Status = In Progress", "Assigned to = me") saved as new view "My Active Jobs" | 3 | 2026-08-16 | v2026.08.02 | |
+| Renaming and updating an existing saved view | Views | Ops | ViewsController#update | done | Renaming view "Overdue Tickets" to "Overdue Tickets - This Week" after adding a Created-at filter (no due-date field exists on Tickets) | 2 | 2026-08-16 | v2026.08.02 | |
+| Switching between saved views on a list screen | Views | Ops, FE | ViewsController#show; scenes/view_component (view tabs) | done | Jobs list with tabs "Default view", "My Active Jobs" (favourited), "Unscheduled Jobs" | 2 | 2026-08-16 | v2026.08.02 | |
+| Favouriting a saved view | Views | Ops, FE | ViewsController#favourite | done | Favouriting "Unscheduled Jobs" view (yellow star badge) | 1 | 2026-08-16 | v2026.08.02 | |
+| Managing all your saved views ("My Views") | Views | Ops | ViewsController#index/#edit/#move/#activate/#deactivate/#destroy | done | User with 5 saved views across Jobs/Tickets, one deactivated ("Old Backlog"), reordering two views | 4 | 2026-08-16 | v2026.08.02 | |
+| Managing saved views (admin) | Views | Admin | Settings::ViewsController#index/#filter/#edit/#update/#activate/#deactivate/#destroy | done | Admin Marcus Webb renaming Priya Nair's "Old Backlog" view, deactivating and reactivating it, then deleting it via the fixed settings-scoped Delete link | 8 | 2026-09-03 | v2026.08.04 (from v2026.08.02) | |
 
 ## Media & Attachments
 
@@ -82,6 +99,14 @@ When asked to sync/update this file against what's actually been written, do the
 | Commenting on any record, with replies and internal notes |  | Ops, FE | CommentsController#create | done | Ticket #T-889 "Boiler not igniting" with a customer comment, an engineer reply, and one internal-only note "Waiting on part delivery, ETA Friday" | 3 | 2026-08-27 | v2026.08.05 |
 | Reacting to a comment |  | Ops, FE | ReactionsController#create | done | Comment "Job completed and signed off" with 3 thumbs-up and 1 heart reaction | 2 | 2026-08-27 | v2026.08.05 |
 | Viewing a record's activity feed |  | Ops, FE | ActivitiesController#index | done | Project "Replace guttering - 8 Mill Lane" activity feed: created, status changed, document added, paginated at 10/page | 2 | 2026-08-27 | v2026.08.05 |
+
+## Access & Visibility
+
+| Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
+|-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
+| Viewing a record's Access panel (visibility & ownership) |  | Ops, Mgr, Admin | AccessController#show/#visibility/#ownership | todo | Job "Cabinet Swap - JOB-9210" Access panel opened, visibility set to "Restricted", owner changed to Priya Nair | 3 |  |  |
+| Sharing or assigning a record to specific users |  | Ops, Mgr | AccessController#shared_users/#assigned_users | todo | Ticket shared with 2 users, 1 assigned user added via the Access panel | 2 |  |  |
+| Tagging or labelling a record from the Access panel |  | Ops | AccessController#tags/#labels | todo | Record tagged "Area · North East" and labelled "Client VIP" via Access panel | 2 |  |  |
 
 ## Records
 
@@ -169,7 +194,7 @@ When asked to sync/update this file against what's actually been written, do the
 | Viewing job details |  | Ops, FE | JobsController#show/#main | todo | 1 booked job with allocated user, project, 3 tasks, 2 todos, address, 2 activity entries | 3 |  |  |
 | Editing a job |  | Ops | JobsController#edit/#update | todo | Existing job whose job type allows editing allocation/rate book | 3 |  |  |
 | Deleting (archiving) a job |  | Ops | JobsController#destroy | todo | 1 unlinked job + 1 job linked to a locked project (failure path) | 2 |  |  |
-| Changing a job's status |  | Ops, FE | JobsController#status | todo | Unallocated job (warning path); fully-booked job with sub-statuses "On Site"/"Delayed" | 3 |  |  |
+| Changing a job's status |  | Ops, FE | JobsController#status/#review_book/#book | todo | Unallocated job (warning path); fully-booked job with sub-statuses "On Site"/"Delayed"; new review/confirm step before a status change actually books the job | 4 |  |  |
 | Unbooking a job |  | Ops | JobsController#unbook/#status | todo | Job in "booked" status with a scheduled start time | 2 |  |  |
 | Tracking a job's RAG health status |  | Ops, Mgr | JobsController#rag_status | todo | 3 jobs set red/amber/green respectively | 2 |  |  |
 | Managing secondary allocated users on a job |  | Ops | JobsController#promote_secondary_allocated_user | todo | Job with secondary users enabled and 2 extra crew members | 3 |  |  |
@@ -321,16 +346,17 @@ When asked to sync/update this file against what's actually been written, do the
 
 ## Timesheets
 
-| Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
-|-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Clocking in and starting a shift | Timesheets | FE | TimesheetsController#start_shift_form/#start_shift | done | Project code "PC-2026-OFFICE", planned duration 8h | 3 | 2026-08-15 | v2026.08.02 |
-| Ending a shift and confirming hours worked | Timesheets | FE | TimesheetsController#end_shift_form/#end_shift/#confirm_shift | done | Shift started 08:00 at "Riverside Substation", ended 16:30 | 3 | 2026-08-15 | v2026.08.02 |
-| Viewing and editing an individual timesheet | Timesheets | FE, Mgr | TimesheetsController#show/new/edit/update/destroy | done | Timesheet "Week 32 – J. Smith", project #ORD-1042, 8h15m | 4 | 2026-08-15 | v2026.08.02 |
-| Logging a break or other shift event | Timesheets | FE | Timesheets::EventsController CRUD | done | Event "Lunch Break" 12:00, 30 min | 3 | 2026-08-15 | v2026.08.02 |
-| Browsing all timesheets in the table view | Timesheets | Mgr, Fin | TimesheetsController#index/#filter | done | Filter status=pending, group="North Region Engineers" | 3 | 2026-08-15 | v2026.08.02 |
-| Approving or denying timesheets for your team (weekly review grid) | Timesheets | Mgr | TimesheetsController#review/#status/#bulk_status | done | Week of 2026-08-10, cover approver, 5 pending entries | 4 | 2026-08-15 | v2026.08.02 |
-| Adding or editing a timesheet entry from the review grid | Timesheets | Mgr | TimesheetsController#review_new/#review_create/#review_edit/#review_update/#review_entry_status | done | User "A. Fieldworker", date 2026-08-11, category "Overtime", 2h | 4 | 2026-08-15 | v2026.08.02 |
-| Rounding or splitting a timesheet entry during review | Timesheets | Mgr | TimesheetsController#round/#split | done | Split shift 22:00–06:00 at midnight; round start to nearest 15 min | 3 | 2026-08-15 | v2026.08.02 |
+| Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release | Change notes |
+|-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|-------|
+| Using the Timesheets landing page | Timesheets | FE, Ops | TimesheetsController#landing | done | N/A — static entry page, viewed as Priya Nair (Ops) | 1 | 2026-09-04 | v2026.08.04 | |
+| Clocking in and starting a shift | Timesheets | FE | TimesheetsController#start_shift_form/#start_shift | done | Project code "PC-2026-OFFICE", planned duration 8h | 3 | 2026-08-15 | v2026.08.02 | |
+| Ending a shift and confirming hours worked | Timesheets | FE | TimesheetsController#end_shift_form/#end_shift/#confirm_shift | done | Shift started 08:00 at "Riverside Substation", ended 16:30 | 3 | 2026-08-15 | v2026.08.02 | |
+| Viewing and editing an individual timesheet | Timesheets | FE, Mgr | TimesheetsController#show/new/edit/update/destroy | done | Timesheet "J. Smith - Approved", 04/08/2026, duration changed from 8h15m to 12h30m, project "Tesco Door Install" | 6 | 2026-09-03 | v2026.08.04 (from v2026.08.02) | |
+| Logging a break or other shift event | Timesheets | FE | EventsController CRUD (top-level, not namespaced) | done | Event "Lunch Break" 12:00, 30 min | 3 | 2026-08-15 | v2026.08.02 | |
+| Browsing all timesheets in the table view | Timesheets | Mgr, Fin | TimesheetsController#index/#filter | done | Filter status=pending, group="North Region Engineers" | 3 | 2026-08-15 | v2026.08.02 | |
+| Approving or denying timesheets for your team (weekly review grid) | Timesheets | Mgr | TimesheetsController#review/#status/#bulk_status | done | Week of 2026-08-10, manager Sarah Whitfield reviewing Tom Fletcher and Aisha Rahman's 5 pending entries; right-click approve, right-click deny, and the whole-week Total-cell bulk action | 8 | 2026-09-04 | v2026.08.04 (from v2026.08.02) | |
+| Adding or editing a timesheet entry from the review grid | Timesheets | Mgr | TimesheetsController#review_new/#review_create/#review_edit/#review_update/#review_entry_status | done | User "A. Fieldworker", date 2026-08-11, category "Overtime", 2h | 4 | 2026-08-15 | v2026.08.02 | |
+| Rounding or splitting a timesheet entry during review | Timesheets | Mgr | TimesheetsController#round/#split | done | Split shift 22:00–06:00 at midnight; round start to nearest 15 min | 3 | 2026-08-15 | v2026.08.02 | |
 
 ## Timesheet Timeline
 
@@ -501,27 +527,39 @@ When asked to sync/update this file against what's actually been written, do the
 
 ## Products & Rates
 
-| Guide                                                | Feature | Audience   | Maps to (controllers/views)                               | Status | Test data needed                                                          | Screenshot steps (est.) | documented_at | Release     |
-| ---------------------------------------------------- | ------- | ---------- | --------------------------------------------------------- | ------ | ------------------------------------------------------------------------- | ----------------------- | ------------- | ----------- |
-| Browsing the product catalog and drilldown hierarchy | PVA     | Admin, Fin | ProductsController#index; Products::DrilldownController   | done   | Parent "Cabling" with children "LV Cable"/"HV Cable per metre"            | 3                       | 2026-08-26    | v2026.08.05 |
-| Creating a product or sub-product                    | PVA     | Admin, Fin | ProductsController#new/#create                            | done   | Sub-product "Cable Trench Excavation per metre" under "Groundworks"       | 3                       | 2026-08-26    | v2026.08.05 |
-| Viewing and editing a product                        | PVA     | Admin, Fin | ProductsController#show/#main/#edit/#update/#delete_photo | done   | Product "HV Cable per metre" with photo and ref code                      | 3                       | 2026-08-26    | v2026.08.05 |
-| Deleting a product                                   | PVA     | Admin, Fin | ProductsController#destroy                                | done   | Parent product with 3 sub-products, cascade-delete                        | 2                       | 2026-08-26    | v2026.08.05 |
-| Managing sell rates on a product                     | PVA     | Fin, Admin | ProductsController#rates; RatesController (as :rates)     | done   | Sell rate £14.50/m for "HV Cable per metre" under "2026 Wind Rates" v1    | 4                       | 2026-08-13    | v2026.08.03 |
-| Managing cost rates on a product                     | PVA     | Fin, Admin | ProductsController#costs; RatesController (as :costs)     | done   | Cost rate £9.20/m for "HV Cable per metre" under "Internal Costs 2026" v1 | 4                       | 2026-08-13    | v2026.08.03 |
-| Viewing a product's sub-products                     | PVA     | Admin, Fin | ProductsController#sub_products                           | done   | Parent "Groundworks" with 2 sub-products                                  | 2                       | 2026-08-26    | v2026.08.05 |
+| Guide                                                | Feature | Audience   | Maps to (controllers/views)                               | Status | Test data needed                                                          | Screenshot steps (est.) | documented_at | Release     | Change notes |
+| ---------------------------------------------------- | ------- | ---------- | --------------------------------------------------------- | ------ | ------------------------------------------------------------------------- | ----------------------- | ------------- | ----------- | ----------- |
+| Browsing the product catalog and drilldown hierarchy | PVA     | Admin, Fin | ProductsController#index; Products::DrilldownController   | done   | Parent "Cabling" with children "LV Cable"/"HV Cable per metre"            | 3                       | 2026-08-26    | v2026.08.05 | |
+| Creating a product or sub-product                    | PVA     | Admin, Fin | ProductsController#new/#create                            | done   | Sub-product "Cable Trench Excavation per metre" under "Groundworks"       | 3                       | 2026-08-26    | v2026.08.05 | |
+| Viewing and editing a product                        | PVA     | Admin, Fin | ProductsController#show/#main/#edit/#update/#delete_photo | done   | Product "HV Cable per metre" with photo and ref code                      | 3                       | 2026-08-26    | v2026.08.05 | |
+| Deleting a product                                   | PVA     | Admin, Fin | ProductsController#destroy                                | done   | Parent product with 3 sub-products, cascade-delete                        | 2                       | 2026-08-26    | v2026.08.05 | |
+| Managing sell rates on a product                     | PVA     | Fin, Admin | ProductsController#rates; RatesController (as :rates)     | done   | Sell rate £14.50/m for "HV Cable per metre" under "2026 Wind Rates" v1    | 4                       | 2026-08-13    | v2026.08.03 | |
+| Managing cost rates on a product                     | PVA     | Fin, Admin | ProductsController#costs; RatesController (as :costs)     | done   | Product "HV Cable per metre" with sell rate under "2026 Wind Rates" and cost rate £9.20/m under "Internal Costs 2026" v1; new cost rate added and existing one edited | 5                       | 2026-09-03    | v2026.08.04 (from v2026.08.03) | |
+| Viewing a product's sub-products                     | PVA     | Admin, Fin | ProductsController#sub_products                           | done   | Parent "Groundworks" with 2 sub-products                                  | 2                       | 2026-08-26    | v2026.08.05 | |
 
 ## Product Allocations
 
+| Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release | Change notes |
+|-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|-------|
+| Allocating products/materials to a job, project, estimate, or variation | PVA | Ops, Fin | ProductAllocationsController#new/#create/#index | done | Job allocated 25m of "HV Cable per metre" | 4 | 2026-08-13 | v2026.08.03 | |
+| Copying/transferring allocated products between records | PVA | Ops, Fin | ProductAllocationsController#allocate_new/#allocate/#allocatable_products | done | Accepted estimate's allocations transferred onto new project | 4 | 2026-08-13 | v2026.08.03 | |
+| Editing or removing a product allocation | PVA | Ops, Fin | ProductAllocationsController#edit/#update/#destroy/#show | done | Allocation title typo corrected and category set; accidental duplicate allocation removed | 3 | 2026-08-13 | v2026.08.03 | |
+| Bulk-applying a rate modifier to all allocated products | PVA | Fin | ProductAllocationsController#bulk_modifier/#bulk_update_modifier | done | 12 allocations with a "+15% Out of Hours" modifier applied | 2 | 2026-08-13 | v2026.08.03 | |
+| Raising a planned quantity change on an allocation | PVA | Ops, FE | PlannedQuantityChangesController#new/#create/#show | done | Allocation changed 40m → 55m with reason and attached sketch | 3 | 2026-08-13 | v2026.08.03 | |
+| Viewing planned quantity change history | PVA | Ops, Fin | ProductAllocationsController#quantity_history | done | Allocation with 2 recorded changes (40→55→60m) | 1 | 2026-08-13 | v2026.08.03 | |
+| Recording actual product usage against an allocation | PVA | FE, Ops | ProductRecordingsController#new/#create/#edit/#update/#show/#destroy | done | Allocation "HV Cable per metre" (planned 30m) on Job "Substation Cable Run - Riverside Depot" recorded at 28m, Status "Approved", note re: 2m shortfall | 6 | 2026-09-03 | v2026.08.04 (from v2026.08.03) | |
+
+## Custom Fields
+
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Allocating products/materials to a job, project, estimate, or variation | PVA | Ops, Fin | ProductAllocationsController#new/#create/#index | done | Job allocated 25m of "HV Cable per metre" | 4 | 2026-08-13 | v2026.08.03 |
-| Copying/transferring allocated products between records | PVA | Ops, Fin | ProductAllocationsController#allocate_new/#allocate/#allocatable_products | done | Accepted estimate's allocations transferred onto new project | 4 | 2026-08-13 | v2026.08.03 |
-| Editing or removing a product allocation | PVA | Ops, Fin | ProductAllocationsController#edit/#update/#destroy/#show | done | Allocation title typo corrected and category set; accidental duplicate allocation removed | 3 | 2026-08-13 | v2026.08.03 |
-| Bulk-applying a rate modifier to all allocated products | PVA | Fin | ProductAllocationsController#bulk_modifier/#bulk_update_modifier | done | 12 allocations with a "+15% Out of Hours" modifier applied | 2 | 2026-08-13 | v2026.08.03 |
-| Raising a planned quantity change on an allocation | PVA | Ops, FE | PlannedQuantityChangesController#new/#create/#show | done | Allocation changed 40m → 55m with reason and attached sketch | 3 | 2026-08-13 | v2026.08.03 |
-| Viewing planned quantity change history | PVA | Ops, Fin | ProductAllocationsController#quantity_history | done | Allocation with 2 recorded changes (40→55→60m) | 1 | 2026-08-13 | v2026.08.03 |
-| Recording actual product usage against an allocation | PVA | FE, Ops | ProductRecordingsController#new/#create/#edit/#update/#show/#destroy | done | Allocation (planned 30m) recorded at 28m with 2 photos | 4 | 2026-08-13 | v2026.08.03 |
+| Filling in and editing custom field values on a record |  | Ops, FE | FieldableFieldGroupsController#show/#edit/#update | todo | Job with field group "Site Info" containing "Cable Length" and "Fibre Type" fields filled in | 3 |  |  |
+
+## Settings: Overview
+
+| Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
+|-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
+| Finding your way around Settings (landing page) |  | Admin | SettingsController#index | todo | N/A — static navigation hub | 1 |  |  |
 
 ## Settings: Workspace Builder
 
@@ -759,7 +797,9 @@ When asked to sync/update this file against what's actually been written, do the
 
 ## Summary
 
-Completed: 149 / 393
+Completed: 150 / 399
+
+Needs update: 0
 
 Media & Attachments guides completed: 2 / 2
 
@@ -769,7 +809,7 @@ Products & Rates guides completed: 11 / 11
 
 Projects guides completed: 33 / 33
 
-Timesheets guides completed: 16 / 16
+Timesheets guides completed: 17 / 17
 
 Views guides completed: 9 / 9
 
@@ -799,7 +839,7 @@ Collaboration guides completed: 3 / 3
 
 Release breakdown (current version only, for `done` rows):
 
-- v2026.08.02: 27
-- v2026.08.03: 14
-- v2026.08.04: 12
+- v2026.08.02: 23
+- v2026.08.03: 12
+- v2026.08.04: 19
 - v2026.08.05: 96

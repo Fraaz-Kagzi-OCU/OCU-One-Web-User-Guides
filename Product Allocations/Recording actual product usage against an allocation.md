@@ -6,43 +6,35 @@ Once work is underway, you can log exactly how much of a planned product has act
 
 On a Products tab, look for the small **+** icon next to the **Actual Quantity** figure on a row.
 
-![The Products tab, with the + icon next to Actual Quantity highlighted on the Galvanised Cable Basket 150mm row](attachments/recording-actual-product-usage-against-an-allocation/01-products-tab-before-annotated.jpg)
+![The Products tab, with the + icon next to Actual Quantity highlighted](attachments/recording-actual-product-usage-against-an-allocation/04-recording-created-products-tab-annotated.jpg)
 
 ## Logging the usage
 
-Click it, and a form opens for **Completed By**, **Completed at**, **Quantity**, **Notes**, and any supporting **Files** such as photos.
+Click it, and a "Create a new Recording" panel opens with fields for **Completed By**, **Completed at**, **Quantity**, **Status**, **Notes**, and any supporting **Files** such as photos. Completed By and Completed at are both required.
 
-![The "Create a new Recording" form: Completed By, Completed at, Quantity, Notes, and a Files upload area, all empty](attachments/recording-actual-product-usage-against-an-allocation/02-recording-form-empty.jpg)
+![The empty Create a new Recording panel, with the Status field highlighted](attachments/recording-actual-product-usage-against-an-allocation/01-empty-recording-form-annotated.jpg)
 
-Choose who actually did the work and when, enter how much was used, and add a note explaining anything worth flagging — here, that the run came up 2 metres short because a support bracket needs moving first. Attaching photos gives a visual record alongside the numbers.
+**Status** lets you track where this recording is in its own approval process, separately from the quantities themselves. Click it to see the options:
 
-![The form filled in: Completed By Chris, a date and time, Quantity 28, a note explaining the shortfall, and two photos attached](attachments/recording-actual-product-usage-against-an-allocation/03-recording-form-filled.jpg)
+![The Status dropdown open, showing New, Disputed, Approved, Approved for Payment, and Paid](attachments/recording-actual-product-usage-against-an-allocation/02-status-dropdown-options.jpg)
 
-Click **Create Recording** to save it.
+Choose who actually completed the work, when, how much was used, and a status. Add a note explaining anything worth flagging — here, that the run came up 2 metres short because of an extra bend around a wall.
 
-## Seeing the result
+![The form filled in: Completed By Sam Ahmed, a date and time, Quantity 28, Status Approved, and a note explaining the shortfall](attachments/recording-actual-product-usage-against-an-allocation/03-completed-recording-form-annotated.jpg)
 
-The **Actual Quantity** column updates to show what's actually been used, right alongside the original **Planned Quantity**:
+Click **Create Recording** to save it. The Products tab updates immediately — the **Actual Quantity** column now shows what's actually been used, alongside the original **Planned Quantity**.
 
-![The Products tab afterwards, showing 28 m in the Actual Quantity column against 30 m planned](attachments/recording-actual-product-usage-against-an-allocation/04-products-tab-after-annotated.jpg)
+![The Products tab after saving, with Actual Quantity now showing 28 m against a Planned Quantity of 30 m](attachments/recording-actual-product-usage-against-an-allocation/04-recording-created-products-tab.jpg)
 
-Opening the allocation's own details shows the same figure in the **Product Allocation Map** as **Recorded Actuals**, and a full **Recordings** table further down listing every recording made against it:
+## Viewing a recording's detail
 
-![The allocation's details, showing the Recordings table with the 28 m entry and its note](attachments/recording-actual-product-usage-against-an-allocation/05-detail-view-recordings.jpg)
+Click the product's name to open the allocation's detail panel and scroll down to the **Recordings** section. Every recording made against this allocation is listed here with its quantity, status, notes, who completed it, and when.
 
-## Viewing, editing, or removing a recording
+![The allocation's detail panel, scrolled to the Recordings section showing the new recording: Quantity 28, Status Approved](attachments/recording-actual-product-usage-against-an-allocation/05-recording-detail-with-status.jpg)
 
-Click the quantity in the Recordings table to open its full details — who completed the work, when, the note, and the photos attached:
+## Things to know
 
-![A single recording's details: Quantity 28.0, Completed By Chris, Completed at, the note, and both photos attached](attachments/recording-actual-product-usage-against-an-allocation/06-recording-detail-view.jpg)
-
-From there, **Edit** lets you correct the quantity, notes, or files:
-
-![The edit form for a recording: Quantity, Notes, and the existing files, each removable](attachments/recording-actual-product-usage-against-an-allocation/07-edit-recording-form.jpg)
-
-**Good to know:** who completed the work and when can only be set when the recording is first created — editing only lets you fix the quantity, notes, or attached files afterwards. The trash icon next to **Edit** removes the recording entirely, if it was logged by mistake.
-
-## Other things to know
-
-- You can log more than one recording against the same allocation over time — useful if the work happens in stages. Each one is kept as its own entry in the Recordings table.
-- This is different from a **Planned Quantity Change** — recording actual usage never changes what was planned, it only tracks what's really happened so far against that plan.
+- You can add more than one recording against the same allocation — for example, logging usage in stages as work progresses. Each one is tracked separately, and the Actual Quantity total reflects all of them combined.
+- Completed By and Completed at are both required — you can't save a recording without saying who did the work and when.
+- Status is there to track a recording's own approval state (New, Disputed, Approved, Approved for Payment, Paid) independently of the allocation's own status, which stays Open until the whole allocation is closed out.
+- Attaching photos under Files gives a visual record alongside the numbers — useful evidence if a recording is later disputed.

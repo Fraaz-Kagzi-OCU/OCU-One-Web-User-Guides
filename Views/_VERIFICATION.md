@@ -17,7 +17,7 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 | Guide                                                 | Verified | Verified by | Date       | Version     | Notes |
 | ----------------------------------------------------- | -------- | ----------- | ---------- | ----------- | ----- |
-| Filtering a list view by a field                      | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |       |
+| Filtering a list view by a field                      | No       |             |            | v2026.08.04 | Rewritten 2026-09-03 to cover the new "contains any" multi-select on text filters. Not yet human-verified. |
 | Removing or updating an active filter                 | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |       |
 | Customizing which columns appear in a list-table view | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |       |
 
@@ -35,7 +35,7 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 | Guide                        | Verified | Verified by | Date       | Version     | Notes                                  |
 | ---------------------------- | -------- | ----------- | ---------- | ----------- | -------------------------------------- |
-| Managing saved views (admin) | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 | will normal users be able to use this? |
+| Managing saved views (admin) | No       |             |            | v2026.08.04 | Rewritten 2026-09-03 to cover the fixed settings-scoped Delete link and admin authz check. Not yet human-verified. |
 
 ## Summary
 

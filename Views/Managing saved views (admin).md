@@ -1,48 +1,58 @@
 # Managing saved views (admin)
 
-If you have admin access, **Settings > Views** lets you see and manage every saved view across the whole tenant — not just your own. From here you can rename or deactivate a view that belongs to any user, which is useful for cleaning up or correcting views on someone else's behalf.
+If you have admin access, **Settings > Views** lets you see and manage every saved view across the whole tenant — not just your own. From here you can rename, deactivate, reactivate, or delete a view that belongs to any user, which is useful for cleaning up or correcting views on someone else's behalf.
 
-In this example, Marcus (an admin) manages views belonging to Priya Nair.
+In this example, Marcus (an admin) manages a view belonging to Priya Nair.
 
 ## Finding a user's views
 
-1. Open **Settings > Views**. Use the **Owner** filter to narrow the list down to the person you're looking for — here, Priya Nair.
+1. Open **Settings > Views**. Use the **+ Filter** toolbar to add an **Owner** filter and narrow the list down to the person you're looking for — here, Priya Nair. Every saved view in the tenant appears here by default, so filtering down to one person keeps things manageable.
 
-   ![Settings > Views filtered down to Priya Nair's saved views](attachments/managing-saved-views-admin/01-priya-views-admin-baseline-annotated.jpg)
+   ![Settings > Views filtered down to Priya Nair's two saved views](attachments/managing-saved-views-admin/01-admin-views-baseline.jpg)
 
 ## Renaming someone else's view
 
-1. Click the view's name — here, **High Priority Tickets** — to open its edit panel.
+1. Click the view's name — here, **Old Backlog** — to open its edit panel. The panel shows a **Name** field, a **Delete** link, and **Update View** / **Never mind** buttons.
 
-2. The panel shows a **Name** field along with **Delete**, **Update View**, and **Never mind**.
+2. Clear the **Name** field and type the new name — here, "Old Backlog - Superseded".
 
-   ![The edit panel open for "High Priority Tickets"](attachments/managing-saved-views-admin/02-edit-modal-open.jpg)
+   ![The new name typed into the Name field, ready to click Update View](attachments/managing-saved-views-admin/02-rename-view-modal-annotated.jpg)
 
-3. Clear the **Name** field and type the new name — here, "High Priority Tickets - Reviewed" — then click **Update View**.
+3. Click **Update View**. The name updates immediately in the list, and the change is visible to the view's owner too, the next time they open it.
 
-   ![The new name typed into the Name field, ready to update](attachments/managing-saved-views-admin/03-name-edited-annotated.jpg)
+   ![The renamed "Old Backlog - Superseded" among Priya's saved views](attachments/managing-saved-views-admin/03-rename-result.jpg)
 
-4. The view's name updates immediately, and the change is visible to Priya too the next time she opens her Tickets list.
+## Deactivating and reactivating someone else's view
 
-   ![The renamed "High Priority Tickets - Reviewed" among Priya's other saved views](attachments/managing-saved-views-admin/04-renamed-final.jpg)
-
-## Deactivating someone else's view
-
-1. Click the eye icon in the **State** column for the view you want to deactivate — here, Priya's **Unscheduled Jobs**.
-
-   ![The state icon for "Unscheduled Jobs", the next view to deactivate](attachments/managing-saved-views-admin/05-deactivate-target-annotated.jpg)
+1. Click the eye icon in the **State** column for the view you want to deactivate.
 
 2. Confirm by clicking **Yes** on the prompt that appears.
 
-   ![The confirmation prompt asking whether to deactivate the view](attachments/managing-saved-views-admin/06-deactivate-confirm-annotated.jpg)
+   ![The confirmation prompt asking whether to deactivate the view](attachments/managing-saved-views-admin/04-deactivate-confirm.jpg)
 
-3. The view disappears from the active list. It isn't deleted — Priya can still see it (and reactivate it herself) in her own **My Views** page.
+3. The view drops out of the active list. To see it again, turn on **Include closed?** in the toolbar — the **State** column shows a crossed-out eye for anything deactivated.
 
-   ![The Views list showing Priya's remaining active views, with "Unscheduled Jobs" no longer listed](attachments/managing-saved-views-admin/07-deactivated-final.jpg)
+   ![The deactivated view showing a crossed-out eye icon in the State column](attachments/managing-saved-views-admin/05-deactivated-result-annotated.jpg)
+
+4. To reactivate it, click that same icon again and confirm. The view returns to normal and reappears in the active list without needing **Include closed?** turned on.
+
+## Deleting someone else's view
+
+1. Open the view's edit panel and click **Delete**.
+
+   ![The Delete link inside a view's edit panel](attachments/managing-saved-views-admin/07-delete-link-annotated.jpg)
+
+2. Confirm by clicking **Yes** on the prompt that appears. This permanently removes the view — unlike deactivating, there's no way to bring it back afterwards.
+
+   ![The confirmation prompt asking whether to delete the view](attachments/managing-saved-views-admin/08-delete-confirm.jpg)
+
+3. The view is gone from the list for good, while the owner's other views are unaffected.
+
+   ![The Views list after deletion, with only the remaining view left](attachments/managing-saved-views-admin/09-final-result.jpg)
 
 ## Things to know
 
 - These admin actions work on any user's view, not just your own — always check the **Owner** column before making a change.
-- Renaming or deactivating a view here doesn't touch its filters or columns; the view works exactly the same for its owner, just under a new name or hidden from their tab bar.
-- Deactivating is reversible. A deactivated view isn't deleted — its owner can switch it back on any time from their own **My Views** page.
+- Renaming, deactivating, or reactivating a view here doesn't touch its filters or columns; the view works exactly the same for its owner, just under a new name or hidden from their tab bar.
+- Deactivating is reversible from this same screen at any time. Deleting is not — use it only for views you're sure aren't needed.
 - Only admins with permission to manage views will see this page under **Settings**.

@@ -21,7 +21,7 @@ Tracks whether a human has actually checked each guide against the live app — 
 | Editing or removing a product allocation | No |  |  | v2026.08.03 |  |
 | Copying or transferring allocated products between records | No |  |  | v2026.08.03 |  |
 | Bulk-applying a rate modifier to all allocated products | No |  |  | v2026.08.03 |  |
-| Recording actual product usage against an allocation | No |  |  | v2026.08.03 |  |
+| Recording actual product usage against an allocation | No |  |  | v2026.08.04 | Rewritten 2026-09-03 to cover the new required Status field on the recording form and detail view. Not yet human-verified. |
 
 ## Summary
 

@@ -21,7 +21,10 @@ When asked to sync/update/refresh this file, do the following:
 | ------------------------------- | -------- | ---------- |
 | Account                          | 3 / 3   | 25/08/2026 |
 | Assets                           | 0 / 16  |            |
+| Collaboration                    | 0 / 3   |            |
+| Documents                        | 0 / 5   |            |
 | Home Dashboard                   | 0 / 15  |            |
+| Labels                           | 0 / 3   |            |
 | Media & Attachments              | 0 / 2   |            |
 | Notifications                    | 1 / 1   | 25/08/2026 |
 | Product Allocations              | 0 / 7   |            |
@@ -30,11 +33,12 @@ When asked to sync/update/refresh this file, do the following:
 | Search & Navigation              | 0 / 2   |            |
 | Signing In                       | 3 / 3   | 25/08/2026 |
 | Tickets                          | 0 / 12  |            |
-| Timesheets                       | 0 / 16  |            |
-| Views                            | 9 / 9   | 17/08/2026 |
+| Timesheets                       | 0 / 17  |            |
+| Todos & Checklists               | 0 / 7   |            |
+| Views                            | 7 / 9   |            |
 | Watches                          | 1 / 1   | 26/08/2026 |
 
 ## Summary
 
-Topics fully verified: 5 / 14
-Guides verified: 17 / 131
+Topics fully verified: 4 / 18
+Guides verified: 15 / 150
