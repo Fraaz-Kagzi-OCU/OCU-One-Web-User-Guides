@@ -20,6 +20,12 @@ In this example, Priya's Jobs list has three tabs: **Default View**, **My Active
 
    ![The Unscheduled Jobs view, showing only jobs not yet booked](attachments/switching-between-saved-views-on-a-list-screen/03-unscheduled-jobs-view.jpg)
 
+## Opening a saved view from a direct link
+
+If you have a direct link to one of your saved views — for example, one bookmarked earlier or shared by a colleague — opening it takes you straight to that view's own list screen with the view already selected, whatever page you happened to be on before. Here, opening a link to Priya's "My Open Tasks" view lands on the Tasks list with that tab active:
+
+![Opening a link to the "My Open Tasks" saved view, landing on the Tasks list with that tab active](attachments/switching-between-saved-views-on-a-list-screen/04-tasks-view-from-direct-link-annotated.jpg)
+
 ## Things to know
 
 - The currently active tab is underlined and shown in a different colour, so you can always tell which view you're looking at.

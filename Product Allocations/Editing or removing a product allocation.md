@@ -18,6 +18,8 @@ Further down, a **Quantities** section shows the planned amount alongside a **Ch
 
 **Good to know:** that link is the only way to change how much of something is planned — it's covered in its own guide, since changing a quantity keeps a record of *why* it changed. The **Edit** button described below only lets you correct the title, category, or a pricing modifier, not the quantity itself.
 
+Further down still, if any actual usage has been recorded against the allocation, you'll also see a **Recordings** history — what appears there is covered in *Recording actual product usage against an allocation*. (A display bug in that table's column headers is tracked separately — see `Zz - Known Bugs/product-recordings-table-columns-misaligned.md`.)
+
 ## Editing an allocation
 
 Click **Edit** in the top-right of the details panel. Here, the title has a typo — "Armored" instead of "Armoured" — that's worth fixing.

@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers eighteen complete areas — Projects (33 guides), Products & Rates (11 guides), List Views & Filtering (9 guides), Product Allocations (7 guides), Timesheets (17 guides), Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), and Collaboration (3 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and the one new guide that sync's discovery pass found ("Using the Timesheets landing page") has been written too.
+The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty-three complete areas — Projects (33 guides), Products & Rates (11 guides), List Views & Filtering (9 guides), Product Allocations (7 guides), Timesheets (17 guides), Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), and Access & Visibility (3 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. Three areas have made a start but aren't complete yet: **Assignments** (1/3 — "Assignments Inbox"'s 2 record/project rows still open), **Records** (1/26 — this repo's biggest remaining gap), and **Settings** (4/63 — most admin configuration screens are still undocumented).
 
 Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
 
@@ -317,6 +317,59 @@ Start with the overview, then follow the flow: browse groups & types → raise a
 **Your own tickets**
 - [Viewing "My Tickets" (personal account tab)](Tickets/Viewing%20My%20Tickets.md)
 
+### Access & Visibility
+Who can see a record, who owns it, and who it's shared with or assigned to — the Access panel that appears in the sidebar of every record's Main tab.
+
+- [Overview — how visibility, ownership, sharing, and tagging fit together in the Access panel](Access%20%26%20Visibility/_Access%20%26%20Visibility%20-%20Overview.md)
+- [Viewing a record's Access panel (visibility & ownership)](Access%20%26%20Visibility/Viewing%20a%20record's%20Access%20panel%20%28visibility%20%26%20ownership%29.md)
+- [Sharing or assigning a record to specific users](Access%20%26%20Visibility/Sharing%20or%20assigning%20a%20record%20to%20specific%20users.md)
+- [Tagging or labelling a record from the Access panel](Access%20%26%20Visibility/Tagging%20or%20labelling%20a%20record%20from%20the%20Access%20panel.md)
+
+### Assignments
+Where your assigned work lands — jobs assigned to you show up here. (Partial area — the separate "Assignments Inbox" records/projects tabs aren't written yet.)
+
+- [Overview — the four tabs of the Assignments inbox](Assignments/_Assignments%20-%20Overview.md)
+- [Viewing my assigned jobs](Assignments/Viewing%20my%20assigned%20jobs.md)
+
+### Client Portal
+The read-only page a client reaches from an emailed link to approve or reject a quote — no sign-in required.
+
+- [Overview — what the Client Portal is for](Client%20Portal/_Client%20Portal%20-%20Overview.md)
+- [Approving or rejecting a quote via a client portal link](Client%20Portal/Approving%20or%20rejecting%20a%20quote%20via%20a%20client%20portal%20link.md)
+
+### Custom Fields
+Filling in the extra fields an admin has attached to a record type, beyond the record's standard fields.
+
+- [Overview — what custom fields are and where they show up](Custom%20Fields/_Custom%20Fields%20-%20Overview.md)
+- [Filling in and editing custom field values on a record](Custom%20Fields/Filling%20in%20and%20editing%20custom%20field%20values%20on%20a%20record.md)
+
+### Map
+A live view of where your field team is right now.
+
+- [Overview — what the Map page shows](Map/_Map%20-%20Overview.md)
+- [Viewing the live user map](Map/Viewing%20the%20live%20user%20map.md)
+
+### Records
+Custom record types — inspections, audits, and other structured forms attached to your work. (Partial area — this repo's biggest remaining gap; only the entry-point hub is written so far.)
+
+- [Overview — Record Groups and what's still to come](Records/_Records%20-%20Overview.md)
+- [Browsing records by category (Record Groups hub)](Records/Browsing%20records%20by%20category%20%28Record%20Groups%20hub%29.md)
+
+### Settings
+Tenant admin configuration — organised into one subfolder per Settings sub-area (matching the "Settings: *" sections in `_progress.md`), since this will grow to ~14 sub-areas and 60+ guides. (Partial area — 4 of many sub-areas documented so far.)
+
+- [Overview — how the 4 written Settings guides fit together](Settings/_Settings%20-%20Overview.md)
+- [Finding your way around Settings (landing page)](Settings/Overview/Finding%20your%20way%20around%20Settings%20%28landing%20page%29.md)
+- [Configuring label groups](Settings/Labels/Configuring%20label%20groups.md)
+- [Managing folder sets (document folder templates)](Settings/Views%20%26%20Organization/Managing%20folder%20sets%20%28document%20folder%20templates%29.md)
+- [Building a notification journey](Settings/Journeys/Building%20a%20notification%20journey.md)
+
+### Tasks
+A cross-job, cross-project view of every task assigned across the organisation — not to be confused with the tasks tab on an individual job.
+
+- [Overview — what the Tasks landing page is for](Tasks/_Tasks%20-%20Overview.md)
+- [Browsing the tasks landing page](Tasks/Browsing%20the%20tasks%20landing%20page.md)
+
 ## Folder layout
 
 ```
@@ -411,6 +464,51 @@ OCU-One-Web-User-Guides/
 ├── Collaboration/          Collaboration guides
 │   ├── _Collaboration - Overview.md
 │   ├── _VERIFICATION.md    verification status for Collaboration guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Access & Visibility/    Access & Visibility guides (the Access panel: visibility, ownership, sharing, tagging)
+│   ├── _Access & Visibility - Overview.md
+│   ├── _VERIFICATION.md    verification status for Access & Visibility guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Assignments/            Assignments guides (merges "Assignments (My Work Inbox)" and "Assignments Inbox" _progress.md sections)
+│   ├── _Assignments - Overview.md
+│   ├── _VERIFICATION.md    verification status for Assignments guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Client Portal/          Client Portal guides
+│   ├── _Client Portal - Overview.md
+│   ├── _VERIFICATION.md    verification status for Client Portal guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Custom Fields/          Custom Fields guides
+│   ├── _Custom Fields - Overview.md
+│   ├── _VERIFICATION.md    verification status for Custom Fields guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Map/                    Map guides
+│   ├── _Map - Overview.md
+│   ├── _VERIFICATION.md    verification status for Map guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Records/                Records guides (merges the small "Records" hub section with the much larger later "Records" _progress.md section)
+│   ├── _Records - Overview.md
+│   ├── _VERIFICATION.md    verification status for Records guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Settings/               Settings guides (merges every "Settings: *" _progress.md section except "Settings: Finance Reference Data", which lives under Products & Rates)
+│   ├── _Settings - Overview.md
+│   ├── _VERIFICATION.md    roll-up of every subfolder below (not a flat guide list — see the file itself)
+│   ├── Overview/           one subfolder per Settings sub-area, each with its own guide(s), _VERIFICATION.md, and attachments/
+│   │   ├── _VERIFICATION.md
+│   │   ├── ...guide files
+│   │   └── attachments/
+│   ├── Labels/             (same subfolder shape as Overview/ above)
+│   ├── Views & Organization/
+│   └── Journeys/
+├── Tasks/                  Tasks guides
+│   ├── _Tasks - Overview.md
+│   ├── _VERIFICATION.md    verification status for Tasks guides
 │   ├── ...guide files
 │   └── attachments/        
 └── Zz - Known Bugs/        real product issues found while building guides, not documentation — named to sort last

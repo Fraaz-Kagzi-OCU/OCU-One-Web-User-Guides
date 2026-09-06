@@ -65,6 +65,7 @@ The process is identical wherever you start it — open the record's **Products*
 
 - On a **variation**, the search screen defaults to showing products already used elsewhere on the related project, rather than rate book products.
 - On records that sit underneath something else (like a task under a project, or a job linked to a project), you may also see an **Allocate from** option next to **+ Product**. That pulls an existing allocation across from the related record instead of creating a brand new one, and is covered separately.
+- A task's own Products tab never shows a **+ Product** option at all, regardless of whether product allocations are enabled for that task type — see *Managing a task's product allocations tab* for how allocations get onto a task.
 
 Once an allocation exists, editing its details, changing its planned quantity, and recording actual usage against it all work the same way regardless of where it was created — see *Viewing and managing product allocations on a project* and *Managing a task's product allocations tab* for those steps.
 

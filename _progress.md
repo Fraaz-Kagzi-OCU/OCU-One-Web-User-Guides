@@ -21,7 +21,7 @@ When asked to sync/update this file against what's actually been written, do the
 8. After updating rows, regenerate the **## Summary** section at the very bottom of this file from the now-current table data:
    - `Completed: X / Y` — `X` = count of rows with Status `done` across every section, `Y` = count of all rows in the file.
    - `Needs update: Z` — count of rows with Status `needs update`. These do NOT count toward `Completed`.
-   - One `<Topic> guides completed: A / B` line per topic that has its own folder (Views, Tickets, Product Allocations, Products & Rates, Projects, Timesheets, Signing In, Account, Home Dashboard, Notifications, Search & Navigation, Assets, Watches, Media & Attachments, and any new topic folder added since) — `A` = `done` rows whose section maps to that folder, `B` = total rows in that section (`todo` + `done` + `needs update`). Note: some folders don't map 1:1 to a single `_progress.md` section: `Projects` holds only the subset of a much larger section's rows that happen to be written so far (so `B` is that section's full row count, not just the written subset); `Products & Rates` merges two sections that are both fundamentally about rates ("Products & Rates" and "Settings: Finance Reference Data", minus that section's one unrelated project-codes/timesheet-categories row) into one folder, so `B` is the sum of both minus that excluded row. Keep one line per topic, in the same order as today unless a topic is added/removed.
+   - One `<Topic> guides completed: A / B` line per topic that has its own folder (Views, Tickets, Product Allocations, Products & Rates, Projects, Timesheets, Signing In, Account, Home Dashboard, Notifications, Search & Navigation, Assets, Watches, Media & Attachments, and any new topic folder added since) — `A` = `done` rows whose section maps to that folder, `B` = total rows in that section (`todo` + `done` + `needs update`). Note: some folders don't map 1:1 to a single `_progress.md` section: `Projects` holds only the subset of a much larger section's rows that happen to be written so far (so `B` is that section's full row count, not just the written subset); `Products & Rates` merges two sections that are both fundamentally about rates ("Products & Rates" and "Settings: Finance Reference Data", minus that section's one unrelated project-codes/timesheet-categories row) into one folder, so `B` is the sum of both minus that excluded row. `Assignments` merges "Assignments (My Work Inbox)" and "Assignments Inbox" — both live on the same real `AssignmentsController` page, just split across two discovery passes. `Records` merges the small "Records" section (the Record Groups hub row) with the much larger later "## Records" section (25 rows about `RecordsController` etc.) — same real feature area, same reason. `Settings` merges every "Settings: *" section EXCEPT "Settings: Finance Reference Data" (which stays under `Products & Rates` per the rule above) — there are many small Settings sub-areas that will all eventually live under one `Settings/` folder, but (unlike every other merged folder) as actual subfolders — `Settings/Overview/`, `Settings/Labels/`, etc., one per sub-area, each with its own `_VERIFICATION.md` — rather than one flat guide list, since Settings alone will eventually hold as many guides as several other topics combined. `Settings/_VERIFICATION.md` itself is a roll-up of those subfolders' files, not a guide list. Keep one line per topic, in the same order as today unless a topic is added/removed.
    - **Release breakdown (current version only, for `done` rows)** — group all `done` rows (not `needs update` rows) by their **Release** value and list `<release>: <count>` lines, sorted by release ascending. "Current version only" means: if a row's guide was later rewritten for a newer release (its Release cell was bumped), it counts under the newer release only, not both.
    - Replace the whole `## Summary` section with the freshly computed version — don't hand-edit individual numbers.
 
@@ -50,7 +50,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Customizing which columns appear in a list/table view | Views | Ops | ColumnsController#new/#autocomplete; columns/column_component; scenes/view/view_options_component | done | Projects list with columns Reference, Total Price (Planned), Client Lead added then reordered (no literal "Project Number"/"Total (ex VAT)" fields exist; these are the closest real on-screen equivalents) | 4 | 2026-08-16 | v2026.08.02 | |
 | Saving current filters/columns as a new personal view | Views | Ops, FE | ViewsController#create; scenes/view/view_options_component | done | Filtered Jobs list ("Status = In Progress", "Assigned to = me") saved as new view "My Active Jobs" | 3 | 2026-08-16 | v2026.08.02 | |
 | Renaming and updating an existing saved view | Views | Ops | ViewsController#update | done | Renaming view "Overdue Tickets" to "Overdue Tickets - This Week" after adding a Created-at filter (no due-date field exists on Tickets) | 2 | 2026-08-16 | v2026.08.02 | |
-| Switching between saved views on a list screen | Views | Ops, FE | ViewsController#show; scenes/view_component (view tabs) | done | Jobs list with tabs "Default view", "My Active Jobs" (favourited), "Unscheduled Jobs" | 2 | 2026-08-16 | v2026.08.02 | |
+| Switching between saved views on a list screen | Views | Ops, FE | ViewsController#show; scenes/view_component (view tabs) | done | Jobs list with tabs "Default view", "My Active Jobs" (favourited), "Unscheduled Jobs"; plus a Tasks-type saved view ("My Open Tasks") opened via a direct link | 3 | 2026-09-06 | v2026.08.04 (from v2026.08.02) | |
 | Favouriting a saved view | Views | Ops, FE | ViewsController#favourite | done | Favouriting "Unscheduled Jobs" view (yellow star badge) | 1 | 2026-08-16 | v2026.08.02 | |
 | Managing all your saved views ("My Views") | Views | Ops | ViewsController#index/#edit/#move/#activate/#deactivate/#destroy | done | User with 5 saved views across Jobs/Tickets, one deactivated ("Old Backlog"), reordering two views | 4 | 2026-08-16 | v2026.08.02 | |
 | Managing saved views (admin) | Views | Admin | Settings::ViewsController#index/#filter/#edit/#update/#activate/#deactivate/#destroy | done | Admin Marcus Webb renaming Priya Nair's "Old Backlog" view, deactivating and reactivating it, then deleting it via the fixed settings-scoped Delete link | 8 | 2026-09-03 | v2026.08.04 (from v2026.08.02) | |
@@ -77,9 +77,9 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Creating, editing, and managing a standalone todo |  | Ops | TodosController#index/show/new/create/edit/update/destroy | done | Todo Types "Safety Check" and "Follow-up Call"; todo "Replace faulty RCD on Panel 3" (High priority, due tomorrow, assigned to Dave Chen, ref "JOB-4021") | 6 | 2026-08-27 | v2026.08.05 |
 | Changing a todo's status from its detail page |  | Ops, FE | TodosController#show/#main/#status | done | Todo "Follow-up call with tenant re: leak" moved from "In Progress" to "Done" | 3 | 2026-08-27 | v2026.08.05 |
 | Viewing todos as a pipeline (kanban board) |  | Ops, Mgr | Todos::PipelinesController#index/show | done | 12 open todos spread across Pending/In Progress/On Hold/Done columns | 3 | 2026-08-27 | v2026.08.05 |
-| Adding and managing todos on a job/project/record (Todos tab) |  | Ops, FE | TodoableTodosController#index/new/create/edit/update/status/move/destroy | done | Job "Annual Boiler Service - 14 Elm St" with 3 todoable todos at different statuses | 6 | 2026-08-27 | v2026.08.05 |
+| Adding and managing todos on a job or project (Todos tab) |  | Ops, FE | TodoableTodosController#index/new/create/edit/update/status/move/destroy | done | Job "Annual Boiler Service - 14 Elm St" with 3 todoable todos at different statuses | 6 | 2026-08-27 | v2026.08.05 |
 | Viewing and prioritising your assigned todos |  | FE, Ops | Assignments::TodosController#show/#completed/#status/#prioritise | done | User "Sarah Ahmed" with 4 assigned todos across 2 jobs, 1 prioritised, plus a Completed tab with 3 done items | 2 | 2026-08-27 | v2026.08.05 |
-| Adding a checklist to a record |  | Ops, FE | ChecklistsController#create/#update/#destroy | done | Project "Install new boiler - 22 Park Rd" checklist "Pre-Install Safety Checks" with 5 items, 2 checked (40% progress) | 3 | 2026-08-27 | v2026.08.05 |
+| Adding a checklist to a todo |  | Ops, FE | ChecklistsController#create/#update/#destroy | done | Project "Install new boiler - 22 Park Rd" checklist "Pre-Install Safety Checks" with 5 items, 2 checked (40% progress) | 3 | 2026-08-27 | v2026.08.05 |
 | Adding, checking off, and removing checklist items |  | FE, Ops | ChecklistItemsController#create/#update/#toggle/#destroy | done | Checklist item "Isolate mains water supply" toggled from unchecked to checked | 2 | 2026-08-27 | v2026.08.05 |
 
 ## Documents
@@ -104,15 +104,15 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing a record's Access panel (visibility & ownership) |  | Ops, Mgr, Admin | AccessController#show/#visibility/#ownership | todo | Job "Cabinet Swap - JOB-9210" Access panel opened, visibility set to "Restricted", owner changed to Priya Nair | 3 |  |  |
-| Sharing or assigning a record to specific users |  | Ops, Mgr | AccessController#shared_users/#assigned_users | todo | Ticket shared with 2 users, 1 assigned user added via the Access panel | 2 |  |  |
-| Tagging or labelling a record from the Access panel |  | Ops | AccessController#tags/#labels | todo | Record tagged "Area · North East" and labelled "Client VIP" via Access panel | 2 |  |  |
+| Viewing a record's Access panel (visibility & ownership) |  | Ops, Mgr, Admin | AccessController#show/#visibility/#ownership | done | Job "Cabinet Swap - Riverside Depot" (no reference field is actually shown for Jobs) Access panel opened, visibility set to "Private" (closest real equivalent to the row's "Restricted" hint — the app's real options are Public/Tags/Private, no "Restricted"), owner changed to Priya Nair | 3 | 2026-09-06 | v2026.08.04 |
+| Sharing or assigning a record to specific users |  | Ops, Mgr | AccessController#shared_users/#assigned_users | done | Ticket "Replacement safety boots - size 10" shared with Sam Ahmed and Aisha Rahman, assigned to Tom Fletcher, via the Access panel | 2 | 2026-09-06 | v2026.08.04 |
+| Tagging or labelling a record from the Access panel |  | Ops | AccessController#tags/#labels | done | Record "Client Site Access Risk Assessment - Riverside Depot" tagged "Area · North East" and labelled "Client VIP" via Access panel | 2 | 2026-09-06 | v2026.08.04 |
 
 ## Records
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing records by category (Record Groups hub) |  | Ops, FE | RecordGroupsController#index/show | todo | Record Group "Health & Safety Incidents" (12 record types) containing Record Type "Near Miss Report" with 24 open records | 2 |  |  |
+| Browsing records by category (Record Groups hub) |  | Ops, FE | RecordGroupsController#index/show | done | Existing "Health and Safety" group (3 record types incl. new "Near Miss Report" type with 6 records) and "Fleet" group | 2 | 2026-09-04 | v2026.08.04 |
 
 ## Assets
 
@@ -225,7 +225,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing the tasks landing page |  | Ops | TasksLandingController#index | todo | 10+ tasks spanning multiple jobs/projects, task types, statuses | 2 |  |  |
+| Browsing the tasks landing page |  | Ops | TasksLandingController#index | done | 9 tasks across 2 projects ("Fibre Rollout - Oldham Estate", "Substation Refurbishment - Riverside"), 3 task types, 6 statuses | 1 | 2026-09-04 | v2026.08.04 |
 
 ## Scheduling
 
@@ -243,13 +243,13 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing the live user map |  | Ops | MapController#show; Map::UsersController#index | todo | 4 field users with distinct GPS coordinates, 1 user with no location set | 3 |  |  |
+| Viewing the live user map |  | Ops | MapController#show; Map::UsersController#index | done | Sarah Whitfield (no location), Aisha Rahman and Tom Fletcher (distinct GPS coordinates); map tiles don't render in this dev environment (no Google Maps API key configured) — sidebar list documented instead | 2 | 2026-09-04 | v2026.08.04 |
 
 ## Assignments (My Work Inbox)
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing my assigned jobs |  | FE, Ops | AssignmentsController#jobs | todo | 3 jobs of different types assigned to the current user, 1 non-default status | 1 |  |  |
+| Viewing my assigned jobs |  | FE, Ops | AssignmentsController#jobs | done | Field engineer Tom Fletcher with 3 jobs assigned across Install and Safety Check types, statuses New/Booked/In Progress | 1 | 2026-09-04 | v2026.08.04 |
 
 ## Projects
 
@@ -370,7 +370,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
 | Creating and managing a timesheet group | Timesheets | Mgr | TimesheetGroupsController CRUD | done | Group "Bank Holiday Cover – Aug 2026", 2 owners, 2 nested rows | 4 | 2026-08-15 | v2026.08.02 |
-| Reviewing a timesheet group and approving/denying its timesheets | Timesheets | Mgr | TimesheetGroupsController#show/#status | done | Group status change to "approved" | 3 | 2026-08-15 | v2026.08.02 |
+| Reviewing a timesheet group and approving or denying its timesheets | Timesheets | Mgr | TimesheetGroupsController#show/#status | done | Group status change to "approved" | 3 | 2026-08-15 | v2026.08.02 |
 | Browsing and filtering timesheet groups | Timesheets | Mgr | TimesheetGroupsController#index/#filter | done | Filter title contains "Bank Holiday" | 2 | 2026-08-15 | v2026.08.02 |
 
 ## Timesheet Exports
@@ -435,7 +435,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Approving or rejecting a quote via a client portal link |  | Ext | ClientPortal::ApprovalsController#show/#approve/#reject | todo | Quote #Q-10452 for "Roof Leak Repair", client contact "Jane Whitfield" | 4 |  |  |
+| Approving or rejecting a quote via a client portal link |  | Ext | ClientPortal::ApprovalsController#show/#approve/#reject | done | Quote #1 (Estimate #9 "Roof Leak Repair", £875.00), client contact "Jane Whitfield" | 4 | 2026-09-04 | v2026.08.04 |
 
 ## Public Share Links
 
@@ -541,9 +541,9 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release | Change notes |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|-------|
-| Allocating products/materials to a job, project, estimate, or variation | PVA | Ops, Fin | ProductAllocationsController#new/#create/#index | done | Job allocated 25m of "HV Cable per metre" | 4 | 2026-08-13 | v2026.08.03 | |
-| Copying/transferring allocated products between records | PVA | Ops, Fin | ProductAllocationsController#allocate_new/#allocate/#allocatable_products | done | Accepted estimate's allocations transferred onto new project | 4 | 2026-08-13 | v2026.08.03 | |
-| Editing or removing a product allocation | PVA | Ops, Fin | ProductAllocationsController#edit/#update/#destroy/#show | done | Allocation title typo corrected and category set; accidental duplicate allocation removed | 3 | 2026-08-13 | v2026.08.03 | |
+| Allocating products or materials to a job, project, estimate, or variation | PVA | Ops, Fin | ProductAllocationsController#new/#create/#index | done | Job allocated 25m of "HV Cable per metre" | 4 | 2026-09-06 | v2026.08.04 (from v2026.08.03) | |
+| Copying or transferring allocated products between records | PVA | Ops, Fin | ProductAllocationsController#allocate_new/#allocate/#allocatable_products | done | Accepted estimate's allocations transferred onto new project | 4 | 2026-08-13 | v2026.08.03 | |
+| Editing or removing a product allocation | PVA | Ops, Fin | ProductAllocationsController#edit/#update/#destroy/#show | done | Allocation title typo corrected and category set; accidental duplicate allocation removed | 3 | 2026-09-06 | v2026.08.04 (from v2026.08.03) | |
 | Bulk-applying a rate modifier to all allocated products | PVA | Fin | ProductAllocationsController#bulk_modifier/#bulk_update_modifier | done | 12 allocations with a "+15% Out of Hours" modifier applied | 2 | 2026-08-13 | v2026.08.03 | |
 | Raising a planned quantity change on an allocation | PVA | Ops, FE | PlannedQuantityChangesController#new/#create/#show | done | Allocation changed 40m → 55m with reason and attached sketch | 3 | 2026-08-13 | v2026.08.03 | |
 | Viewing planned quantity change history | PVA | Ops, Fin | ProductAllocationsController#quantity_history | done | Allocation with 2 recorded changes (40→55→60m) | 1 | 2026-08-13 | v2026.08.03 | |
@@ -553,13 +553,13 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Filling in and editing custom field values on a record |  | Ops, FE | FieldableFieldGroupsController#show/#edit/#update | todo | Job with field group "Site Info" containing "Cable Length" and "Fibre Type" fields filled in | 3 |  |  |
+| Filling in and editing custom field values on a record |  | Ops, FE | FieldableFieldGroupsController#show/#edit/#update | done | Job "Fibre Duct Repair - Zone 4" with field group "Site Info" (Cable Length, Fibre Type) filled in as Priya Nair | 4 | 2026-09-04 | v2026.08.04 |
 
 ## Settings: Overview
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Finding your way around Settings (landing page) |  | Admin | SettingsController#index | todo | N/A — static navigation hub | 1 |  |  |
+| Finding your way around Settings (landing page) |  | Admin | SettingsController#index | done | N/A — static navigation hub, viewed as Marcus Webb (Admin) | 1 | 2026-09-04 | v2026.08.04 |
 
 ## Settings: Workspace Builder
 
@@ -605,7 +605,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Building a notification journey |  | Admin | Settings::JourneysController, StepsController | todo | Journey "New Engineer Onboarding" with 3 scheduled steps | 6 |  |  |
+| Building a notification journey |  | Admin | Settings::JourneysController, StepsController | done | Journey "New Engineer Onboarding" with 1 instant step and 2 scheduled steps (Day 4, Day 7) | 6 | 2026-09-04 | v2026.08.04 |
 
 ## Settings: Imports & Integrations
 
@@ -621,7 +621,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Managing folder sets (document folder templates) |  | Admin | Settings::FolderSetsController | todo | Folder Set "Standard Job Compliance Docs" with 3 child folders | 5 |  |  |
+| Managing folder sets (document folder templates) |  | Admin | Settings::FolderSetsController | done | Folder Set "Standard Job Compliance Docs" with 3 child folders (Certificates, Risk Assessments, Sign-off Photos) | 5 | 2026-09-04 | v2026.08.04 |
 
 ## Home Dashboard
 
@@ -738,7 +738,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Configuring label groups |  | Admin | Settings::LabelGroupsController | todo | Label group "Job Priority" with 3 labels | 4 |  |  |
+| Configuring label groups |  | Admin | Settings::LabelGroupsController | done | Label group "Job Priority" with 3 labels (Urgent/red, Standard/amber, Low Priority/green) | 4 | 2026-09-04 | v2026.08.04 |
 
 ## Settings: Scheduling Reference Data
 
@@ -792,14 +792,16 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide                               | Feature | Audience | Maps to (controllers/views)                              | Status | Test data needed                                    | Screenshot steps (est.) | documented_at | Release |
 | ----------------------------------- | ------- | -------- | -------------------------------------------------------- | ------ | --------------------------------------------------- | ----------------------- | ------------- | ------- |
-| Managing customer tenants           |         | OCU      | TenantsController#index/new/create/show/edit/update/main | todo   | Tenant "Acme Utilities Ltd" with initial admin user | 5                       |               |         |
-| Reviewing a tenant's mobile uploads |         | OCU      | TenantsController#uploads                                | todo   | Upload row status "Completed" for a tenant user     | 3                       |               |         |
+| Managing customer tenants           |         | OCU      | TenantsController#index/new/create/show/edit/update/main | done   | Tenant "Acme Utilities Ltd" with initial admin user | 5                       | 2026-09-06    | v2026.08.04 |
+| Reviewing a tenant's mobile uploads |         | OCU      | TenantsController#uploads                                | done   | Upload row status "Completed" for a tenant user     | 3                       | 2026-09-06    | v2026.08.04 |
 
 ## Summary
 
-Completed: 150 / 399
+Completed: 165 / 399
 
 Needs update: 0
+
+Access & Visibility guides completed: 3 / 3
 
 Media & Attachments guides completed: 2 / 2
 
@@ -837,9 +839,25 @@ Documents guides completed: 5 / 5
 
 Collaboration guides completed: 3 / 3
 
+Assignments guides completed: 1 / 3
+
+Client Portal guides completed: 1 / 1
+
+Custom Fields guides completed: 1 / 1
+
+Map guides completed: 1 / 1
+
+Records guides completed: 1 / 26
+
+Settings guides completed: 4 / 63
+
+Tasks guides completed: 1 / 1
+
+Platform Administration guides completed: 2 / 2
+
 Release breakdown (current version only, for `done` rows):
 
-- v2026.08.02: 23
-- v2026.08.03: 12
-- v2026.08.04: 19
+- v2026.08.02: 22
+- v2026.08.03: 10
+- v2026.08.04: 37
 - v2026.08.05: 96
