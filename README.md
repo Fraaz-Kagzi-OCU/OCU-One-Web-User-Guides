@@ -2,7 +2,7 @@
 
 This repo is an end-user-facing documentation project for a web app — how-to guides written for the people who use the app day to day, not for developers. The end goal is full coverage: a guide for every user-facing feature and workflow in the app, not just a handful of isolated topics. Each guide is a single self-contained `.md` file with numbered steps and screenshots stored alongside it under `attachments/<guide-slug>/`.
 
-Every guide listed below still needs a human to check it against the live app before it's trusted. Verification is tracked per feature area. Every feature area gets its own `_VERIFICATION.md` as it's added.
+Every guide listed below still needs a human to check it against the live app before it's trusted. Verification is tracked per feature area. Every feature area gets its own `_VERIFICATION.md` as it's added. See [`WORKFLOW.md`](WORKFLOW.md) for how guides move through writing, human verification, and re-verification after app changes, and the slash commands (`/write-guide`, `/update-guide`, `/sync-human-verification`, etc.) that drive each step.
 
 ## Roadmap
 

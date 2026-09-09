@@ -9,14 +9,16 @@ Tracks whether a human has actually checked each guide against the live app — 
 - When you review a guide, fill in the rest: **Verified** → `Yes`, **Verified by** → your name, **Date** → the date you checked it, **Notes** → anything a future reviewer should know (edge cases not covered, a step that felt fragile, etc.).
 - If you spot something wrong while reviewing, either fix the guide and then mark it verified, or leave **Verified** as `No` and note what's broken.
 - Keep rows in the same order and grouping as the internal progress tracker's sections, so the two files stay easy to cross-reference.
-- Only guides that are actually written (`done` in the progress tracker) appear here — a `todo` guide has nothing to verify yet. This folder currently covers the "Assignments (My Work Inbox)" section only — the separate "Assignments Inbox" section (Records/Projects tabs) will likely join this same folder once those guides are written.
+- Only guides that are actually written (`done` in the progress tracker) appear here — a `todo` guide has nothing to verify yet. This folder covers both the "Assignments (My Work Inbox)" section and the "Assignments Inbox" section (Records/Projects tabs) — both live on the same real `AssignmentsController` page.
 
 ## Status
 
 | Guide | Verified | Verified by | Date | Version | Notes |
 | ----- | -------- | ------------ | ---- | ------- | ----- |
 | Viewing my assigned jobs | No |  |  | v2026.08.04 |  |
+| Viewing assigned records in your Assignments inbox | No |  |  | v2026.08.04 | Newly written 2026-09-09. Notes the "Things I've assigned" toggle is broken (see `Zz - Known Bugs/assigned-by-me-tab-always-shows-nothing-here.md`). Not yet human-verified. |
+| Viewing assigned projects in your Assignments inbox | No |  |  | v2026.08.04 | Newly written 2026-09-09. Notes the same "Things I've assigned" toggle bug. Not yet human-verified. |
 
 ## Summary
 
-Verified: 0 / 1
+Verified: 0 / 3

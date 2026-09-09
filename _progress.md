@@ -21,7 +21,7 @@ When asked to sync/update this file against what's actually been written, do the
 8. After updating rows, regenerate the **## Summary** section at the very bottom of this file from the now-current table data:
    - `Completed: X / Y` — `X` = count of rows with Status `done` across every section, `Y` = count of all rows in the file.
    - `Needs update: Z` — count of rows with Status `needs update`. These do NOT count toward `Completed`.
-   - One `<Topic> guides completed: A / B` line per topic that has its own folder (Views, Tickets, Product Allocations, Products & Rates, Projects, Timesheets, Signing In, Account, Home Dashboard, Notifications, Search & Navigation, Assets, Watches, Media & Attachments, and any new topic folder added since) — `A` = `done` rows whose section maps to that folder, `B` = total rows in that section (`todo` + `done` + `needs update`). Note: some folders don't map 1:1 to a single `_progress.md` section: `Projects` holds only the subset of a much larger section's rows that happen to be written so far (so `B` is that section's full row count, not just the written subset); `Products & Rates` merges two sections that are both fundamentally about rates ("Products & Rates" and "Settings: Finance Reference Data", minus that section's one unrelated project-codes/timesheet-categories row) into one folder, so `B` is the sum of both minus that excluded row. `Assignments` merges "Assignments (My Work Inbox)" and "Assignments Inbox" — both live on the same real `AssignmentsController` page, just split across two discovery passes. `Records` merges the small "Records" section (the Record Groups hub row) with the much larger later "## Records" section (25 rows about `RecordsController` etc.) — same real feature area, same reason. `Settings` merges every "Settings: *" section EXCEPT "Settings: Finance Reference Data" (which stays under `Products & Rates` per the rule above) — there are many small Settings sub-areas that will all eventually live under one `Settings/` folder, but (unlike every other merged folder) as actual subfolders — `Settings/Overview/`, `Settings/Labels/`, etc., one per sub-area, each with its own `_VERIFICATION.md` — rather than one flat guide list, since Settings alone will eventually hold as many guides as several other topics combined. `Settings/_VERIFICATION.md` itself is a roll-up of those subfolders' files, not a guide list. Keep one line per topic, in the same order as today unless a topic is added/removed.
+   - One `<Topic> guides completed: A / B` line per topic that has its own folder (Views, Tickets, Product Allocations, Products & Rates, Projects, Timesheets, Signing In, Account, Home Dashboard, Notifications, Search & Navigation, Assets, Watches, Media & Attachments, and any new topic folder added since) — `A` = `done` rows whose section maps to that folder, `B` = total rows in that section (`todo` + `done` + `needs update`). Note: some folders don't map 1:1 to a single `_progress.md` section: `Projects` holds only the subset of a much larger section's rows that happen to be written so far (so `B` is that section's full row count, not just the written subset); `Products & Rates` merges two sections that are both fundamentally about rates ("Products & Rates" and "Settings: Finance Reference Data", minus that section's one unrelated project-codes/timesheet-categories row) into one folder, so `B` is the sum of both minus that excluded row. That excluded row ("Managing project codes, timesheet categories, and timesheet addition types") lives in `Timesheets/` instead, alongside the rest of the timesheets-related sections below — it's reference data used when logging a timesheet, not a rate. `Assignments` merges "Assignments (My Work Inbox)" and "Assignments Inbox" — both live on the same real `AssignmentsController` page, just split across two discovery passes. `Records` merges the small "Records" section (the Record Groups hub row) with the much larger later "## Records" section (25 rows about `RecordsController` etc.) — same real feature area, same reason. `Settings` merges every "Settings: *" section EXCEPT "Settings: Finance Reference Data" (which stays under `Products & Rates` per the rule above) — there are many small Settings sub-areas that will all eventually live under one `Settings/` folder, but (unlike every other merged folder) as actual subfolders — `Settings/Overview/`, `Settings/Labels/`, etc., one per sub-area, each with its own `_VERIFICATION.md` — rather than one flat guide list, since Settings alone will eventually hold as many guides as several other topics combined. `Settings/_VERIFICATION.md` itself is a roll-up of those subfolders' files, not a guide list. Keep one line per topic, in the same order as today unless a topic is added/removed.
    - **Release breakdown (current version only, for `done` rows)** — group all `done` rows (not `needs update` rows) by their **Release** value and list `<release>: <count>` lines, sorted by release ascending. "Current version only" means: if a row's guide was later rewritten for a newer release (its Release cell was bumped), it counts under the newer release only, not both.
    - Replace the whole `## Summary` section with the freshly computed version — don't hand-edit individual numbers.
 
@@ -690,8 +690,8 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing assigned records in your Assignments inbox |  | Ops, FE | AssignmentsController#index/#records | todo | Record "PERMIT-1042" assigned to "Dana Reyes" | 2 |  |  |
-| Viewing assigned projects in your Assignments inbox |  | Ops, Sales | AssignmentsController#index/#orders | todo | Project "ORD-3341" assigned to "Sam Ortiz" | 2 |  |  |
+| Viewing assigned records in your Assignments inbox |  | Ops, FE | AssignmentsController#index/#records | done | Record "Riverside Depot - Site Risk Assessment" assigned to Marcus Webb | 2 | 2026-09-09 | v2026.08.04 |
+| Viewing assigned projects in your Assignments inbox |  | Ops, Sales | AssignmentsController#index/#orders | done | Project "Fibre Duct Repair - Zone 7" assigned to Marcus Webb | 2 | 2026-09-09 | v2026.08.04 |
 
 ## Settings: Team & Users
 
@@ -762,7 +762,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Creating a rate book and its versions | PVA | Admin, Fin | Settings::RateBooksController; Settings::RateBookVersionsController | done | Rate book "2026 Wind Rates" (Price) with versions v1/v2, plus cost book "Internal Costs 2026" | 6 | 2026-08-13 | v2026.08.03 |
 | Setting product rates within a rate book version | PVA | Admin, Fin | Settings::RateBookVersionRatesController | done | Product "Duct Rod 50mm" rate £4.20/£2.60 under "2026 Wind Rates" v2 | 5 | 2026-08-13 | v2026.08.03 |
 | Managing product allocation types | PVA | Admin, Fin | Settings::ProductAllocationTypesController | done | "Emergency Repair Parts" allocation type | 4 | 2026-08-13 | v2026.08.03 |
-| Managing project codes, timesheet categories, and timesheet addition types |  | Admin, Fin | Settings::ProjectCodesController; TimesheetCategoriesController; TimesheetAdditionTypesController | todo | Project code "PC-2026-014", category "Travel Time" | 5 |  |  |
+| Managing project codes, timesheet categories, and timesheet addition types |  | Admin, Fin | Settings::ProjectCodesController; TimesheetCategoriesController; TimesheetAdditionTypesController | done | Project code "PC-2026-014", category "Travel Time" | 5 | 2026-09-09 | v2026.08.04 |
 
 ## Settings: SLA Configuration
 
@@ -797,7 +797,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 165 / 399
+Completed: 168 / 399
 
 Needs update: 0
 
@@ -811,7 +811,7 @@ Products & Rates guides completed: 11 / 11
 
 Projects guides completed: 33 / 33
 
-Timesheets guides completed: 17 / 17
+Timesheets guides completed: 18 / 18
 
 Views guides completed: 9 / 9
 
@@ -839,7 +839,7 @@ Documents guides completed: 5 / 5
 
 Collaboration guides completed: 3 / 3
 
-Assignments guides completed: 1 / 3
+Assignments guides completed: 3 / 3
 
 Client Portal guides completed: 1 / 1
 
@@ -859,5 +859,5 @@ Release breakdown (current version only, for `done` rows):
 
 - v2026.08.02: 22
 - v2026.08.03: 10
-- v2026.08.04: 37
+- v2026.08.04: 40
 - v2026.08.05: 96

@@ -26,6 +26,7 @@ Tracks whether a human has actually checked each guide against the live app — 
 | Adding or editing a timesheet entry from the review grid                    | No       |             |      | v2026.08.02 |       |
 | Rounding or splitting a timesheet entry during review                       | No       |             |      | v2026.08.02 |       |
 | Using the Timesheets landing page                                           | No       |             |      | v2026.08.04 | Newly written 2026-09-04. Not yet human-verified. |
+| Managing project codes, timesheet categories, and timesheet addition types  | No       |             |      | v2026.08.04 | Newly written 2026-09-09. Not yet human-verified. |
 
 ### Timesheet Timeline — Gantt/scheduler view
 
@@ -52,4 +53,4 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 ## Summary
 
-Verified: 0 / 17
+Verified: 0 / 18
