@@ -1,5 +1,9 @@
 # Product Recordings table on an allocation's detail panel has misaligned columns
 
+**Status:** Open
+**Found in:** [Editing or removing a product allocation](../Product%20Allocations/Editing%20or%20removing%20a%20product%20allocation.md)
+**Area:** Product Allocations
+
 ## What happens
 
 On a product allocation's detail panel, the **Recordings** section lists every recording made against it in a table headed **Quantity / Status / Notes / User / Created on**. The data shown under those headers doesn't match:

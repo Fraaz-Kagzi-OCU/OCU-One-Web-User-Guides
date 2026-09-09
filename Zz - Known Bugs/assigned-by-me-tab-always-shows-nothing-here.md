@@ -1,5 +1,9 @@
 # The "Things I've assigned" view always shows "Nothing here"
 
+**Status:** Open
+**Found in:** [Viewing assigned records in your Assignments inbox](../Assignments/Viewing%20assigned%20records%20in%20your%20Assignments%20inbox.md), [Viewing assigned projects in your Assignments inbox](../Assignments/Viewing%20assigned%20projects%20in%20your%20Assignments%20inbox.md)
+**Area:** Assignments
+
 ## What happens
 
 The Assignments inbox has a toggle at the top — "Things I've assigned" — meant to switch from "things assigned to me" to "things I've assigned to someone else". Clicking it always shows "Nothing here" on every tab (Records, Projects, Todos, Jobs), even when the signed-in user genuinely owns records/projects that are assigned to someone else.

@@ -1,0 +1,3 @@
+# Contacts & Addresses — Overview
+
+**Contacts** and **Addresses** are two small, reusable sidebar cards that appear on many kinds of record — clients, leads, projects, jobs, sites, permits, estimates, and more. A **Contact** is a real person associated with that record (with their own name, position, and contact details) distinct from the OCU One users working on it. An **Address** card shows a record's location, with an option to expand it into a full interactive map when coordinates are set. See [Managing contacts on a client, lead, or other record](Managing%20contacts%20on%20a%20client%2C%20lead%2C%20or%20other%20record.md) and [Viewing an address on a map](Viewing%20an%20address%20on%20a%20map.md).

@@ -1,5 +1,9 @@
 # Setting a record's visibility to "Private" logs a broken activity message
 
+**Status:** Open
+**Found in:** [Viewing a record's Access panel (visibility & ownership)](../Access%20%26%20Visibility/Viewing%20a%20record's%20Access%20panel%20%28visibility%20%26%20ownership%29.md)
+**Area:** Access & Visibility
+
 ## What happens
 
 On any record's Activity feed, changing the Access panel's visibility to **Public** or **Tags** logs a correctly-worded entry ("X set the visibility to Public" / "...to Tags"). Changing it to **Private** instead logs:

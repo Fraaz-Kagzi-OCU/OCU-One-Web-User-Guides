@@ -13,11 +13,11 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 ## Status
 
-| Guide | Verified | Verified by | Date | Version | Notes |
-| ----- | -------- | ------------ | ---- | ------- | ----- |
-| Viewing my assigned jobs | No |  |  | v2026.08.04 |  |
-| Viewing assigned records in your Assignments inbox | No |  |  | v2026.08.04 | Newly written 2026-09-09. Notes the "Things I've assigned" toggle is broken (see `Zz - Known Bugs/assigned-by-me-tab-always-shows-nothing-here.md`). Not yet human-verified. |
-| Viewing assigned projects in your Assignments inbox | No |  |  | v2026.08.04 | Newly written 2026-09-09. Notes the same "Things I've assigned" toggle bug. Not yet human-verified. |
+| Guide | Verified | Verified by | Date | Version | Notes | Blocked |
+| ----- | -------- | ------------ | ---- | ------- | ----- | ----- |
+| Viewing my assigned jobs | No |  |  | v2026.08.04 |  |  |
+| Viewing assigned records in your Assignments inbox | No |  |  | v2026.08.04 | Newly written 2026-09-09. Notes the "Things I've assigned" toggle is broken (see `Zz - Known Bugs/assigned-by-me-tab-always-shows-nothing-here.md`). Not yet human-verified. | Yes: assigned-by-me-tab-always-shows-nothing-here.md |
+| Viewing assigned projects in your Assignments inbox | No |  |  | v2026.08.04 | Newly written 2026-09-09. Notes the same "Things I've assigned" toggle bug. Not yet human-verified. | Yes: assigned-by-me-tab-always-shows-nothing-here.md |
 
 ## Summary
 

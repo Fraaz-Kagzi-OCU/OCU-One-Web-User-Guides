@@ -1,5 +1,6 @@
 # Cancelling a new cost rate lands on the Rates tab, not Costs
 
+**Status:** Open
 **Found in:** [Managing cost rates on a product](../Products%20%26%20Rates/Managing%20cost%20rates%20on%20a%20product.md)
 **Area:** Products & Rates
 

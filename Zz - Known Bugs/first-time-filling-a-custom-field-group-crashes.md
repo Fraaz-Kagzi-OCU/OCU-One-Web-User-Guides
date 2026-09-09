@@ -1,5 +1,9 @@
 # Filling in a custom field group for the very first time crashes the page
 
+**Status:** Open
+**Found in:** [Filling in and editing custom field values on a record](../Custom%20Fields/Filling%20in%20and%20editing%20custom%20field%20values%20on%20a%20record.md)
+**Area:** Custom Fields
+
 **What happens:** When a field group (a set of custom fields, e.g. "Site Info") has just been attached to a record type and no value has ever been saved for it on a given record, opening that field group's edit form crashes with a server error (`ArgumentError: dom_id must be passed a record_or_class as the first argument, you passed nil`) instead of showing the empty form to fill in.
 
 **How to reproduce:**

@@ -1,5 +1,6 @@
 # Projects "Explore" relationship graph never loads for anyone
 
+**Status:** Open
 **Found in:** [Exploring projects as a relationship graph](../Projects/Exploring%20projects%20as%20a%20relationship%20graph.md)
 **Area:** Projects
 

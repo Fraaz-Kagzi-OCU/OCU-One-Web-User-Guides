@@ -13,11 +13,11 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 ## Status
 
-| Guide | Verified | Verified by | Date | Version | Notes |
-| ----- | -------- | ------------ | ---- | ------- | ----- |
-| Viewing a record's Access panel (visibility & ownership) | No |  |  | v2026.08.04 | A genuine copy bug was found while building this guide: setting visibility to Private logs a broken-grammar activity message ("[name] the set visibility to Private"). Not fixed, just documented in the guide as a known quirk. See `Zz - Known Bugs/visibility-set-to-private-shows-broken-activity-message.md`. |
-| Sharing or assigning a record to specific users | No |  |  | v2026.08.04 | |
-| Tagging or labelling a record from the Access panel | No |  |  | v2026.08.04 | Non-obvious UI quirk documented in the guide: the tags row's "No Tags Available" summary text reflects the viewing user's own tags, not whether the tenant has any tags or whether this record already has one applied. |
+| Guide | Verified | Verified by | Date | Version | Notes | Blocked |
+| ----- | -------- | ------------ | ---- | ------- | ----- | ----- |
+| Viewing a record's Access panel (visibility & ownership) | No |  |  | v2026.08.04 | A genuine copy bug was found while building this guide: setting visibility to Private logs a broken-grammar activity message ("[name] the set visibility to Private"). Not fixed, just documented in the guide as a known quirk. See `Zz - Known Bugs/visibility-set-to-private-shows-broken-activity-message.md`. | Yes: visibility-set-to-private-shows-broken-activity-message.md |
+| Sharing or assigning a record to specific users | No |  |  | v2026.08.04 | |  |
+| Tagging or labelling a record from the Access panel | No |  |  | v2026.08.04 | Non-obvious UI quirk documented in the guide: the tags row's "No Tags Available" summary text reflects the viewing user's own tags, not whether the tenant has any tags or whether this record already has one applied. |  |
 
 ## Summary
 

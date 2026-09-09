@@ -6,8 +6,13 @@
  *
  * Scans every topic's _VERIFICATION.md (root-level topic folders, plus each
  * Settings/<sub-area>/_VERIFICATION.md), and builds one page per guide row
- * whose Verified column is "No". Verified guides are omitted entirely, so a
- * guide drops off the site the moment its row flips to Verified = Yes.
+ * whose Verified column is "No" and whose Blocked column is empty. Verified
+ * guides are omitted entirely, so a guide drops off the site the moment its
+ * row flips to Verified = Yes. Blocked guides (Blocked column non-empty —
+ * the guide's own documented behavior is affected by an open app bug, see
+ * <vault>/Zz - Bugged Guides.md) are omitted too, so a reviewer is never
+ * shown a guide that's known to be wrong until the bug is fixed and the
+ * guide is rewritten.
  *
  * Output goes to <vault>/site/, mirroring the source folder structure, so
  * that a guide's own "attachments/<slug>/..." image paths keep working
@@ -521,7 +526,9 @@ function main() {
     const verificationPath = path.join(VAULT_ROOT, topic.folder, '_VERIFICATION.md');
     const content = fs.readFileSync(verificationPath, 'utf8');
     const rows = parseVerificationTables(content).filter((r) => r.guide);
-    const unverified = rows.filter((r) => (r.verified || '').toLowerCase() === 'no');
+    const unverified = rows.filter(
+      (r) => (r.verified || '').toLowerCase() === 'no' && !(r.blocked || '').trim()
+    );
 
     const guides = [];
 

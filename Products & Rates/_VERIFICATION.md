@@ -13,19 +13,19 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 ## Status
 
-| Guide | Verified | Verified by | Date | Version | Notes |
-| ----- | -------- | ------------ | ---- | ------- | ----- |
-| Managing sell rates on a product | No |  |  | v2026.08.03 |  |
-| Managing cost rates on a product | No |  |  | v2026.08.04 | Rewritten 2026-09-03 for cost-specific copy. Not yet human-verified. Note: the Cancel-on-new-cost-rate bug is NOT actually fixed (still returns to Rates tab) — see Zz - Known Bugs/cancelling-a-new-cost-rate-lands-on-the-rates-tab-not-costs.md; guide documents this as a known quirk rather than claiming it's fixed. |
-| Managing rate categories | No |  |  | v2026.08.03 |  |
-| Creating a rate book and its versions | No |  |  | v2026.08.03 |  |
-| Setting product rates within a rate book version | No |  |  | v2026.08.03 |  |
-| Managing product allocation types | No |  |  | v2026.08.03 |  |
-| Browsing the product catalog and drilldown hierarchy | No |  |  | v2026.08.05 | The drilldown row's own name link always navigates straight to that item's page — clicking elsewhere in the row is what triggers the inline "drill into this folder" behaviour. Worth confirming this distinction reads clearly in the guide since it's easy to miss. |
-| Creating a product or sub-product | No |  |  | v2026.08.05 | Unlike the Assets and Media & Attachments batches earlier this session, the Create Product submit button was NOT blocked by any automation-safety guard here — both the top-level product and the sub-product were created via genuine live clicks, no console workaround needed. |
-| Viewing and editing a product | No |  |  | v2026.08.05 | Both the "Update Product" submit and the photo's delete icon were genuine live clicks, no automation block encountered — all screenshots are real captures of the actual resulting state. |
-| Deleting a product | No |  |  | v2026.08.05 | **Likely product bug**: the delete confirmation dialog says "Deleting this will cause all of its sub-resources to be deleted as well," but `ProductsController#destroy` only sets `lifecycle = "archived"` on the product itself — it does not touch children, unlike Asset's `archive!` which explicitly cascades. Verified directly: after deleting a folder with 3 sub-products, the sub-products stayed `lifecycle: "active"` and remained fully reachable at their own URLs (editable, not archived) even though they no longer appear when browsing from the top of the catalog since their parent is now archived. The guide describes this actual observed behaviour and warns the reader, rather than repeating the dialog's inaccurate claim. Recommend an engineer confirm whether this is a genuine bug (missing cascade) or intentional or dialog copy that's simply wrong. |
-| Viewing a product's sub-products | No |  |  | v2026.08.05 |  |
+| Guide | Verified | Verified by | Date | Version | Notes | Blocked |
+| ----- | -------- | ------------ | ---- | ------- | ----- | ----- |
+| Managing sell rates on a product | No |  |  | v2026.08.03 |  |  |
+| Managing cost rates on a product | No |  |  | v2026.08.04 | Rewritten 2026-09-03 for cost-specific copy. Not yet human-verified. Note: the Cancel-on-new-cost-rate bug is NOT actually fixed (still returns to Rates tab) — see Zz - Known Bugs/cancelling-a-new-cost-rate-lands-on-the-rates-tab-not-costs.md; guide documents this as a known quirk rather than claiming it's fixed. | Yes: cancelling-a-new-cost-rate-lands-on-the-rates-tab-not-costs.md |
+| Managing rate categories | No |  |  | v2026.08.03 |  |  |
+| Creating a rate book and its versions | No |  |  | v2026.08.03 |  |  |
+| Setting product rates within a rate book version | No |  |  | v2026.08.03 |  |  |
+| Managing product allocation types | No |  |  | v2026.08.03 |  |  |
+| Browsing the product catalog and drilldown hierarchy | No |  |  | v2026.08.05 | The drilldown row's own name link always navigates straight to that item's page — clicking elsewhere in the row is what triggers the inline "drill into this folder" behaviour. Worth confirming this distinction reads clearly in the guide since it's easy to miss. |  |
+| Creating a product or sub-product | No |  |  | v2026.08.05 | Unlike the Assets and Media & Attachments batches earlier this session, the Create Product submit button was NOT blocked by any automation-safety guard here — both the top-level product and the sub-product were created via genuine live clicks, no console workaround needed. |  |
+| Viewing and editing a product | No |  |  | v2026.08.05 | Both the "Update Product" submit and the photo's delete icon were genuine live clicks, no automation block encountered — all screenshots are real captures of the actual resulting state. |  |
+| Deleting a product | No |  |  | v2026.08.05 | **Likely product bug**: the delete confirmation dialog says "Deleting this will cause all of its sub-resources to be deleted as well," but `ProductsController#destroy` only sets `lifecycle = "archived"` on the product itself — it does not touch children, unlike Asset's `archive!` which explicitly cascades. Verified directly: after deleting a folder with 3 sub-products, the sub-products stayed `lifecycle: "active"` and remained fully reachable at their own URLs (editable, not archived) even though they no longer appear when browsing from the top of the catalog since their parent is now archived. The guide describes this actual observed behaviour and warns the reader, rather than repeating the dialog's inaccurate claim. Recommend an engineer confirm whether this is a genuine bug (missing cascade) or intentional or dialog copy that's simply wrong. | Yes: deleting-a-product-does-not-cascade-to-sub-products.md |
+| Viewing a product's sub-products | No |  |  | v2026.08.05 |  |  |
 
 ## Summary
 

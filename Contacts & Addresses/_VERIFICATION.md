@@ -13,10 +13,11 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 ## Status
 
-| Guide | Verified | Verified by | Date | Version | Notes | Blocked |
-| ----- | -------- | ------------ | ---- | ------- | ----- | ----- |
-| Filling in and editing custom field values on a record | No |  |  | v2026.08.04 | A related genuine bug was found while building this guide: the very first fill-in of a newly attached field group crashes (works fine once a value already exists). See `Zz - Known Bugs/first-time-filling-a-custom-field-group-crashes.md`. | Yes: first-time-filling-a-custom-field-group-crashes.md |
+| Guide | Verified | Verified by | Date | Version | Notes |
+| ----- | -------- | ------------ | ---- | ------- | ----- |
+| Managing contacts on a client, lead, or other record | No |  |  | v2026.08.04 | Newly written 2026-09-09. Notes the "View all" button bug (see `Zz - Known Bugs/view-all-contacts-button-missing-until-page-reload.md`). Not yet human-verified. |
+| Viewing an address on a map | No |  |  | v2026.08.04 | Newly written 2026-09-09. Google Maps rendered correctly in this dev environment (unlike the earlier live user map guide). Not yet human-verified. |
 
 ## Summary
 
-Verified: 0 / 1
+Verified: 0 / 2

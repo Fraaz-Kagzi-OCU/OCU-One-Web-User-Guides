@@ -6,11 +6,11 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty-three complete areas — Projects (33 guides), Products & Rates (11 guides), List Views & Filtering (9 guides), Product Allocations (7 guides), Timesheets (17 guides), Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), and Access & Visibility (3 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. Three areas have made a start but aren't complete yet: **Assignments** (1/3 — "Assignments Inbox"'s 2 record/project rows still open), **Records** (1/26 — this repo's biggest remaining gap), and **Settings** (4/63 — most admin configuration screens are still undocumented).
+The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty-five complete areas — Projects (33 guides), Products & Rates (11 guides), List Views & Filtering (9 guides), Product Allocations (7 guides), Timesheets (18 guides), Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), and Contacts & Addresses (2 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. Two areas have made a start but aren't complete yet: **Records** (1/26 — this repo's biggest remaining gap) and **Settings** (4/63 — most admin configuration screens are still undocumented).
 
 Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
 
-Known product issues found while building these guides — not documentation gaps, but real app behaviour worth an engineer's attention — are tracked separately in [`Zz - Known Bugs/`](Zz%20-%20Known%20Bugs/).
+Known product issues found while building these guides — not documentation gaps, but real app behaviour worth an engineer's attention — are tracked separately in [`Zz - Known Bugs/`](Zz%20-%20Known%20Bugs/). Any guide whose own content is affected by one of these bugs is listed in [`Zz - Bugged Guides.md`](Zz%20-%20Bugged%20Guides.md) and hidden from the human-verification site until the bug's fixed and the guide is rewritten — see `WORKFLOW.md`.
 
 The plan is to keep working through the rest of the app area by area until every workflow has a guide, verified against the live app, kept current as the app changes.
 
@@ -326,10 +326,19 @@ Who can see a record, who owns it, and who it's shared with or assigned to — t
 - [Tagging or labelling a record from the Access panel](Access%20%26%20Visibility/Tagging%20or%20labelling%20a%20record%20from%20the%20Access%20panel.md)
 
 ### Assignments
-Where your assigned work lands — jobs assigned to you show up here. (Partial area — the separate "Assignments Inbox" records/projects tabs aren't written yet.)
+Where your assigned work lands — jobs, records, and projects assigned to you all show up here, across the same four-tab inbox.
 
 - [Overview — the four tabs of the Assignments inbox](Assignments/_Assignments%20-%20Overview.md)
 - [Viewing my assigned jobs](Assignments/Viewing%20my%20assigned%20jobs.md)
+- [Viewing assigned records in your Assignments inbox](Assignments/Viewing%20assigned%20records%20in%20your%20Assignments%20inbox.md) — also notes the "Things I've assigned" toggle bug; see `Zz - Known Bugs/`
+- [Viewing assigned projects in your Assignments inbox](Assignments/Viewing%20assigned%20projects%20in%20your%20Assignments%20inbox.md)
+
+### Contacts & Addresses
+Two small, reusable sidebar cards found on clients, leads, projects, jobs, sites, permits, and estimates — a record's real-world contacts, and its address with an expandable interactive map.
+
+- [Overview — how the Contacts and Address cards fit together](Contacts%20%26%20Addresses/_Contacts%20%26%20Addresses%20-%20Overview.md)
+- [Managing contacts on a client, lead, or other record](Contacts%20%26%20Addresses/Managing%20contacts%20on%20a%20client%2C%20lead%2C%20or%20other%20record.md) — also notes the "View all" button bug; see `Zz - Known Bugs/`
+- [Viewing an address on a map](Contacts%20%26%20Addresses/Viewing%20an%20address%20on%20a%20map.md)
 
 ### Client Portal
 The read-only page a client reaches from an emailed link to approve or reject a quote — no sign-in required.
@@ -474,6 +483,11 @@ OCU-One-Web-User-Guides/
 ├── Assignments/            Assignments guides (merges "Assignments (My Work Inbox)" and "Assignments Inbox" _progress.md sections)
 │   ├── _Assignments - Overview.md
 │   ├── _VERIFICATION.md    verification status for Assignments guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Contacts & Addresses/   Contacts & Addresses guides
+│   ├── _Contacts & Addresses - Overview.md
+│   ├── _VERIFICATION.md    verification status for Contacts & Addresses guides
 │   ├── ...guide files
 │   └── attachments/        
 ├── Client Portal/          Client Portal guides

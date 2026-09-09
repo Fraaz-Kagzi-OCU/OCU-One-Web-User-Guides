@@ -1,5 +1,6 @@
 # Site autocomplete ignores role permissions — visibility is scoped by direct Access only
 
+**Status:** Open
 **Found in:** [Creating an asset](../Assets/Creating%20an%20asset.md)
 **Area:** Assets
 

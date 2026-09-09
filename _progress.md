@@ -473,8 +473,8 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Managing contacts on a client, lead, or other record |  | Sales, Ops | ContactsController#index/#card/#new/#create/#show/#edit/#update/#destroy | todo | Contact "Priya Shah, Facilities Director" set as primary on "Northgate Retail Park Ltd" | 5 |  |  |
-| Viewing an address on a map |  | Ops, FE | AddressesController#show | todo | Site address "12 Harbour Way, Southampton" opened from its address card | 2 |  |  |
+| Managing contacts on a client, lead, or other record |  | Sales, Ops | ContactsController#index/#card/#new/#create/#show/#edit/#update/#destroy | done | Contact "Priya Shah, Facilities Director" set as primary on "Northgate Retail Park Ltd" | 5 | 2026-09-09 | v2026.08.04 |
+| Viewing an address on a map |  | Ops, FE | AddressesController#show | done | Site address "12 Harbour Way, Southampton" opened from its address card | 2 | 2026-09-09 | v2026.08.04 |
 
 ## Invoicing
 
@@ -797,7 +797,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 168 / 399
+Completed: 170 / 399
 
 Needs update: 0
 
@@ -841,6 +841,8 @@ Collaboration guides completed: 3 / 3
 
 Assignments guides completed: 3 / 3
 
+Contacts & Addresses guides completed: 2 / 2
+
 Client Portal guides completed: 1 / 1
 
 Custom Fields guides completed: 1 / 1
@@ -859,5 +861,5 @@ Release breakdown (current version only, for `done` rows):
 
 - v2026.08.02: 22
 - v2026.08.03: 10
-- v2026.08.04: 40
+- v2026.08.04: 42
 - v2026.08.05: 96

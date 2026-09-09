@@ -31,9 +31,20 @@ sign-off:
 - `Notes` — reviewer comments, appended to (never overwritten), plus a
   hidden marker per applied response so re-syncing the same CSV export
   doesn't double-apply it.
+- `Blocked` — present on any topic that currently has at least one blocked
+  guide. Empty for a normal row; `Yes: <bug file>.md` when the guide's own
+  documented behavior is affected by an open app bug. A blocked row is
+  invisible on the verification site regardless of its `Verified` value —
+  see "Bugged guides" below.
 
 **`_VERIFICATION.md`** (vault root) — a pure rollup of every topic's
 `_VERIFICATION.md`, rebuilt by `/sync-verification`.
+
+**`Zz - Bugged Guides.md`** (vault root) — human-readable index of every
+currently-blocked guide: which one, which bug, whether the guide's own text
+still mentions it, and its lifecycle status (`Open` / `Fix shipped — needs
+rewrite` / `Resolved`). The `Blocked` cell above is what actually enforces
+the hiding; this file is for a human to see the list at a glance.
 
 ## Commands
 
@@ -60,10 +71,11 @@ rewritten guide.
 ### Verification
 
 Verification happens outside this repo: `scripts/generate-verification-site.js`
-builds a small site (rows where `Verified: No`) with an embedded Google Form
-per guide, stamped with that guide's current `Version`. A human reviewer
-checks the guide against the live app and submits the form; responses land
-in a Google Sheet, exported as CSV when it's time to sync.
+builds a small site (rows where `Verified: No` **and** `Blocked` is empty)
+with an embedded Google Form per guide, stamped with that guide's current
+`Version`. A human reviewer checks the guide against the live app and
+submits the form; responses land in a Google Sheet, exported as CSV when
+it's time to sync.
 
 **`/sync-human-verification`** — apply a CSV export of form responses.
 Takes a CSV (Timestamp, Guide name, Verified, Verified by, Date, Version,
@@ -80,13 +92,51 @@ Notes) and validates every row before applying anything:
    bumped by `/update-guide`) after the reviewer opened the form, this
    catches it and skips the row as a "version mismatch" instead of applying
    a review of a now-superseded guide.
+5. **Blocked check** — the matched row's `Blocked` cell must be empty. This
+   shouldn't normally trigger (a blocked guide was never on the site to be
+   reviewed), but guards against a stale form link or bookmark still
+   producing a response.
 
-Only rows passing all four are applied; a reconciliation check confirms the
+Only rows passing all five are applied; a reconciliation check confirms the
 count applied matches the count classified as valid before it reports
 success. Reports every category (applied, duplicate, incomplete, no match,
 ambiguous, version mismatch) explicitly — never a vague summary. Leaves
 changes uncommitted for review, and doesn't touch `_progress.md`, the root
 rollup, or the site.
+
+### Bugged guides
+
+Sometimes the app itself is broken in a way that means a guide's own steps
+can only show incorrect behavior — not a documentation gap, an actual
+feature fault (see `Zz - Known Bugs/`). Readers shouldn't be shown a guide
+like that, so it's kept off the verification site entirely rather than
+shipped with an in-guide caveat.
+
+**How a guide gets blocked**: while running `/write-guide` or
+`/update-guide`, if the bug found affects the guide's own documented
+behavior (not just something hit incidentally while seeding test data),
+that guide's row gets `Blocked: Yes: <bug file>.md` set on its
+`<Topic>/_VERIFICATION.md` row, and a row is added to `Zz - Bugged
+Guides.md` (Status: `Open`). The guide is written normally — describing the
+actual, broken behavior — but doesn't get an in-guide "known quirk" note,
+since it's hidden from reviewers anyway.
+
+**`/recheck-bugs`** — interactive: lists every `Open` row in `Zz - Bugged
+Guides.md`, then pauses and asks which of the underlying bugs have shipped a
+fix (this can't be determined from the codebase alone — it needs a human to
+confirm the live app, or to name a specific fix). For each confirmed fix: the
+bug file's `Status` flips to `Fixed`, its `Zz - Bugged Guides.md` row(s) flip
+to `Fix shipped — needs rewrite`, and the affected guide's `_progress.md` row
+flips to `needs update` with a Change notes entry. `Blocked` stays set until
+the guide is actually rewritten.
+
+`/update-guide` then handles a bug-triggered rewrite like any other: it
+strips the stale caveat (if the guide still had one from before this
+system), documents the now-correct behavior, bumps `Version`, and — new for
+this trigger — clears `Blocked` on the `_VERIFICATION.md` row and flips the
+`Zz - Bugged Guides.md` row to `Resolved`. The guide reappears on the
+verification site under its new `Version` and goes through the normal human
+review cycle from there.
 
 ### Sync and consistency checks
 
@@ -119,8 +169,9 @@ mirrors them.
 
 **`/check-consistency`** — read-only audit, fixes nothing. Checks every
 topic's `_VERIFICATION.md` Summary line against its own actual row counts,
-and checks the root rollup's per-topic totals against `_progress.md`'s
-done+needs-update counts. Reports any mismatch found.
+checks the root rollup's per-topic totals against `_progress.md`'s
+done+needs-update counts, and cross-checks every `Blocked` cell against
+`Zz - Bugged Guides.md` in both directions. Reports any mismatch found.
 
 ### Utility
 
@@ -155,6 +206,12 @@ content.
    sitting in the Sheet from before the rewrite.
 7. The guide reappears on the verification site under its new `Version`,
    and the cycle repeats from step 3.
+
+A guide can branch off this cycle at step 1 or 6 if the bug found affects
+its own content: it gets `Blocked` instead of going to the site, sits in
+`Zz - Bugged Guides.md` until `/recheck-bugs` confirms a fix shipped, then
+`/update-guide` rewrites it, clears `Blocked`, and rejoins the cycle at
+step 2 as normal.
 
 `/check-consistency`, `/guides-remaining`, and `/worklist` don't participate
 in this cycle — they're read-only reporting and planning tools for auditing

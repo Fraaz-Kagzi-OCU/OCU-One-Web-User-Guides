@@ -1,5 +1,7 @@
 # Deleting a tenant crashes due to a dangling model association
 
+**Status:** Open (not reachable through any documented guide flow — no delete control exists in the UI; `TenantPolicy#destroy?` is hardcoded false)
+
 ## What happens
 
 `Tenant` declares `has_many :people_fields, dependent: :destroy` (`app/models/tenant.rb:110`), but no `PeopleField` model exists anywhere in the codebase. Calling `destroy` (or `destroy!`) on any `Tenant` record raises immediately:

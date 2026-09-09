@@ -1,5 +1,9 @@
 # RAG status and job-unlock changes can silently fail to save
 
+**Status:** Open
+**Found in:** [Setting a project's RAG status](../Projects/Setting%20a%20project%27s%20RAG%20status.md), [Locking and unlocking jobs on a project](../Projects/Locking%20and%20unlocking%20jobs%20on%20a%20project.md)
+**Area:** Projects
+
 ## What happens
 
 Changing a project's RAG status, or unlocking a project's jobs, can appear to succeed in the browser (the badge/label updates immediately) while the change is never actually written to the database. There is no error message, no failed-toast, nothing visibly wrong — a user has no way to know the change didn't take. Reloading the page (or navigating away and back) silently reverts the value to whatever it was before.

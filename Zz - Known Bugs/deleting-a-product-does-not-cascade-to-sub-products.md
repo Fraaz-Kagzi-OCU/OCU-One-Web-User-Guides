@@ -1,5 +1,6 @@
 # Deleting a product doesn't cascade to its sub-products despite the confirmation dialog's claim
 
+**Status:** Open
 **Found in:** [Deleting a product](../Products%20%26%20Rates/Deleting%20a%20product.md)
 **Area:** Products & Rates
 
