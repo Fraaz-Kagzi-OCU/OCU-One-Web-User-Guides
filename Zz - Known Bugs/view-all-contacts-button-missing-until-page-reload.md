@@ -1,16 +1,41 @@
 # "View all" contacts button missing until the page is reloaded
 
-## What happens
+**Status:** Open
+**Found in:** [Managing contacts on a client, lead, or other record](../Contacts%20%26%20Addresses/Managing%20contacts%20on%20a%20client%2C%20lead%2C%20or%20other%20record.md)
+**Area:** Contacts & Addresses
 
-On a record's Contacts card (the sidebar card showing who's listed as a contact — visible on Clients, Leads, Records, Tickets, Jobs, and most other record types), a "View all" button is supposed to appear underneath the contact list once at least one contact exists, linking to the full contacts list. When you add the *first* contact to a record that previously had none, the new contact appears in the list immediately (no page reload needed for that part) — but the "View all" button does not appear. Reloading the page makes it appear correctly.
+## Description
 
-Reproduced live, twice in a row:
+On a record's Contacts card (the sidebar card showing who's listed as a contact — visible on Clients, Leads, Records, Tickets, Jobs, and most other record types), a "View all" button is supposed to appear underneath the contact list once at least one contact exists, linking to the full contacts list. When you add the *first* contact to a record that previously had none, the new contact appears in the list immediately (no page reload needed for that part) — but the "View all" button does not appear. Reloading the page makes it appear correctly. This does not affect adding a *second* (or later) contact — once the "View all" button has appeared once (via a fresh page load), adding more contacts afterward doesn't make it disappear again. It's specifically the empty-to-one-contact transition that's affected.
+
+## Preconditions
+
+- A client, lead, record, ticket, job, or other contactable record with zero existing contacts.
+
+## Steps to Reproduce
+
 1. Open a client with no contacts yet — the Contacts card shows the "Add contacts" empty state.
 2. Click the "+" button and create a new contact ("Priya Shah, Facilities Director").
-3. The contact appears in the list immediately — but no "View all" button is shown underneath it, even though one now exists.
-4. Reload the page — the exact same contact list now shows a "View all" button underneath it.
+3. Observe whether a "View all" button appears underneath the contact list.
+4. Reload the page.
 
-This does not affect adding a *second* (or later) contact — once the "View all" button has appeared once (via a fresh page load), adding more contacts afterward doesn't make it disappear again. It's specifically the empty-to-one-contact transition that's affected.
+## Expected Result
+
+The "View all" button should appear underneath the contact list as soon as the first contact is added, without needing a page reload.
+
+## Actual Result
+
+The contact appears in the list immediately, but no "View all" button is shown underneath it. Reloading the page makes the exact same contact list show a "View all" button underneath it.
+
+## Screenshot or Video
+
+![After creating the first contact on a client with none, the contact shows in the list but no "View all" button appears underneath it](attachments/view-all-contacts-button-missing-until-page-reload/01-after-adding-first-contact-no-view-all.jpg)
+
+![Reloading the exact same page — the same single contact now has a "View all" button underneath it](attachments/view-all-contacts-button-missing-until-page-reload/02-after-reload-view-all-appears.jpg)
+
+![GIF reproduction: starting from an empty Contacts card, creating "Priya Shah" as a new contact, showing the missing "View all" button, then reloading the page to show the button appear](attachments/view-all-contacts-button-missing-until-page-reload/reproduction.gif)
+
+Reproduced live, twice in a row, in this session's local dev environment, 2026-09-09, against a disposable test client ("Northgate Retail Park Ltd", built for `Contacts & Addresses/Managing contacts on a client, lead, or other record.md`, kept as ongoing reference data — not deleted after capture, since that guide's screenshots also depend on it existing).
 
 ## Root cause
 
@@ -51,13 +76,3 @@ When the record started with zero contacts, the page's DOM only contains the emp
 ## Impact
 
 Minor but real: after adding the very first contact to any client, lead, record, ticket, job, or other contactable record, there's no way to reach the full contacts list (with its table view, email/phone columns, and primary badge) until the page happens to be reloaded for some other reason. A user who adds one contact and then immediately wants to open the full list (e.g., to add a second contact from that screen, or double-check details) has no visible way to do so in that moment.
-
-## Evidence
-
-![After creating the first contact on a client with none, the contact shows in the list but no "View all" button appears underneath it](attachments/view-all-contacts-button-missing-until-page-reload/01-after-adding-first-contact-no-view-all.jpg)
-
-![Reloading the exact same page — the same single contact now has a "View all" button underneath it](attachments/view-all-contacts-button-missing-until-page-reload/02-after-reload-view-all-appears.jpg)
-
-![GIF reproduction: starting from an empty Contacts card, creating "Priya Shah" as a new contact, showing the missing "View all" button, then reloading the page to show the button appear](attachments/view-all-contacts-button-missing-until-page-reload/reproduction.gif)
-
-Reproduced in this session's local dev environment, 2026-09-09, against a disposable test client ("Northgate Retail Park Ltd", built for `Contacts & Addresses/Managing contacts on a client, lead, or other record.md`, kept as ongoing reference data — not deleted after capture, since that guide's screenshots also depend on it existing).

@@ -4,15 +4,38 @@
 **Found in:** [Viewing assigned records in your Assignments inbox](../Assignments/Viewing%20assigned%20records%20in%20your%20Assignments%20inbox.md), [Viewing assigned projects in your Assignments inbox](../Assignments/Viewing%20assigned%20projects%20in%20your%20Assignments%20inbox.md)
 **Area:** Assignments
 
-## What happens
+## Description
 
 The Assignments inbox has a toggle at the top — "Things I've assigned" — meant to switch from "things assigned to me" to "things I've assigned to someone else". Clicking it always shows "Nothing here" on every tab (Records, Projects, Todos, Jobs), even when the signed-in user genuinely owns records/projects that are assigned to someone else.
 
-Reproduced live:
-1. As Marcus Webb, own a record ("Substation 12 - Cable Fault Report") assigned to a different user (Priya Nair).
-2. Own a project ("Substation Refurbishment - Oldham") also assigned to Priya Nair, not to Marcus.
-3. Open the Assignments inbox as Marcus — the Records and Projects tabs correctly show items assigned *to* Marcus.
-4. Click "Things I've assigned" (or "Things you've assigned", the same page's title once toggled) — every tab (Todos, Records, Projects; Jobs uses the same underlying pattern too) shows "Nothing here", despite Marcus owning both records above with them assigned elsewhere.
+## Preconditions
+
+- The signed-in user (e.g. Marcus Webb) owns a record (e.g. "Substation 12 - Cable Fault Report") assigned to a different user (e.g. Priya Nair).
+- The signed-in user also owns a project (e.g. "Substation Refurbishment - Oldham") assigned to that same other user, not to themselves.
+
+## Steps to Reproduce
+
+1. As Marcus Webb, open the Assignments inbox — the Records and Projects tabs correctly show items assigned *to* Marcus.
+2. Click "Things I've assigned" (the page's title also switches to "Things you've assigned").
+3. Click through the Todos, Records, and Projects tabs (Jobs uses the same underlying pattern too).
+
+## Expected Result
+
+Each tab should show the records/projects/todos/jobs Marcus owns that are assigned to someone else (e.g. the record and project assigned to Priya Nair).
+
+## Actual Result
+
+Every tab shows "Nothing here", despite Marcus owning both the record and the project above with them assigned elsewhere.
+
+## Screenshot or Video
+
+![The Records tab of "My Assignments" correctly showing a record assigned to Marcus Webb](attachments/assigned-by-me-tab-always-shows-nothing-here/01-my-assignments-records-shows-the-record.jpg)
+
+![After clicking "Things I've assigned" and staying on the Records tab, the same tenant shows "Nothing here" — despite Marcus Webb owning a different record ("Substation 12 - Cable Fault Report") assigned to Priya Nair at the time](attachments/assigned-by-me-tab-always-shows-nothing-here/02-things-ive-assigned-records-shows-nothing.jpg)
+
+![GIF reproduction: starting on "My Assignments" with a record and project assigned to Marcus Webb, toggling to "Things I've assigned", then clicking through Todos, Records, and Projects — every tab shows "Nothing here" despite Marcus owning a record and a project both assigned to Priya Nair at the time](attachments/assigned-by-me-tab-always-shows-nothing-here/reproduction.gif)
+
+Reproduced in this session's local dev environment, 2026-09-09, using two disposable test records/projects built specifically to isolate the issue (deleted after capture — see `Assignments/Viewing assigned records in your Assignments inbox.md` and `Assignments/Viewing assigned projects in your Assignments inbox.md` for the guides written alongside this finding, and `Assignments/_VERIFICATION.md`).
 
 ## Root cause
 
@@ -34,13 +57,3 @@ SELECT (58 = ANY(ARRAY[16])) IS NULL  -- false (never NULL)
 ## Impact
 
 The "Things I've assigned" side of the Assignments inbox is non-functional — it can never show anything, on any tab, for any user, no matter how much work they've actually delegated. Anyone relying on it to check what they've handed off to their team will always see an empty "Nothing here", which reads as "I haven't assigned anything to anyone" rather than "this view is broken."
-
-## Evidence
-
-![The Records tab of "My Assignments" correctly showing a record assigned to Marcus Webb](attachments/assigned-by-me-tab-always-shows-nothing-here/01-my-assignments-records-shows-the-record.jpg)
-
-![After clicking "Things I've assigned" and staying on the Records tab, the same tenant shows "Nothing here" — despite Marcus Webb owning a different record ("Substation 12 - Cable Fault Report") assigned to Priya Nair at the time](attachments/assigned-by-me-tab-always-shows-nothing-here/02-things-ive-assigned-records-shows-nothing.jpg)
-
-![GIF reproduction: starting on "My Assignments" with a record and project assigned to Marcus Webb, toggling to "Things I've assigned", then clicking through Todos, Records, and Projects — every tab shows "Nothing here" despite Marcus owning a record and a project both assigned to Priya Nair at the time](attachments/assigned-by-me-tab-always-shows-nothing-here/reproduction.gif)
-
-Reproduced in this session's local dev environment, 2026-09-09, using two disposable test records/projects built specifically to isolate the issue (deleted after capture — see `Assignments/Viewing assigned records in your Assignments inbox.md` and `Assignments/Viewing assigned projects in your Assignments inbox.md` for the guides written alongside this finding, and `Assignments/_VERIFICATION.md`).

@@ -4,9 +4,30 @@
 **Found in:** [Exploring projects as a relationship graph](../Projects/Exploring%20projects%20as%20a%20relationship%20graph.md)
 **Area:** Projects
 
-## What happens
+## Description
 
 The Explore view (a graph meant to show projects and their parent/child relationships as connected nodes) never populates. The canvas stays permanently blank, with no on-screen error — it looks like the feature is just slow or the tenant has no data, when actually every request to load it silently fails.
+
+## Preconditions
+
+None — reproduces for every account, tenant, and dataset.
+
+## Steps to Reproduce
+
+1. Open the Projects "Explore" relationship graph view.
+
+## Expected Result
+
+The graph should populate with nodes showing projects and their parent/child relationships.
+
+## Actual Result
+
+The canvas stays permanently blank, with no on-screen error.
+
+## Screenshot or Video
+
+![Explore view showing a permanently blank canvas](../Projects/attachments/exploring-projects-as-a-relationship-graph/01-blank-broken-state.jpg)
+The Explore page after loading — the graph area stays empty indefinitely, with no error shown to the user.
 
 ## Root cause
 
@@ -17,8 +38,3 @@ The Explore view (a graph meant to show projects and their parent/child relation
 ## Impact
 
 Affects every account, every tenant, every time this view is opened — the feature is completely non-functional, not a permissions or data issue.
-
-## Evidence
-
-![Explore view showing a permanently blank canvas](../Projects/attachments/exploring-projects-as-a-relationship-graph/01-blank-broken-state.jpg)
-The Explore page after loading — the graph area stays empty indefinitely, with no error shown to the user.

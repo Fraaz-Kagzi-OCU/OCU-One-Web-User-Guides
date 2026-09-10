@@ -27,7 +27,7 @@ Tracks whether a human has actually checked each guide against the live app — 
 | ----------------------------------------------------- | -------- | ----------- | ---------- | ----------- | --------------------------------------- |
 | Saving current filters-columns as a new personal view | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
 | Renaming and updating an existing saved view          | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
-| Switching between saved views on a list screen        | No      |  |  | v2026.08.04 (from v2026.08.02) |  |
+| Switching between saved views on a list screen        | No      |  |  | v2026.08.04 (from v2026.08.02) | Code drift found 2026-09-10: ViewsController#show's redirect for a Tasks-type view changed from `redirect_back_top` to `redirect_to tasks_path` — re-verify the direct-link "My Open Tasks" flow. |
 | Favouriting a saved view                              | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
 | Managing all your saved views (My Views)              | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 | Yes: gated by the `manage_views` permission in permission_set_settings (ViewImplicitPolicy#index?), not user.admin, so any role granted that permission can access it. Edit/activate/deactivate/destroy/move further require owning the view or being admin (ViewPolicy#update?). |
 

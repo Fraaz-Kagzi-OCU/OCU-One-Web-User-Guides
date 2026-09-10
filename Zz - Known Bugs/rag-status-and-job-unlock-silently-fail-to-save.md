@@ -4,19 +4,43 @@
 **Found in:** [Setting a project's RAG status](../Projects/Setting%20a%20project%27s%20RAG%20status.md), [Locking and unlocking jobs on a project](../Projects/Locking%20and%20unlocking%20jobs%20on%20a%20project.md)
 **Area:** Projects
 
-## What happens
+## Description
 
 Changing a project's RAG status, or unlocking a project's jobs, can appear to succeed in the browser (the badge/label updates immediately) while the change is never actually written to the database. There is no error message, no failed-toast, nothing visibly wrong — a user has no way to know the change didn't take. Reloading the page (or navigating away and back) silently reverts the value to whatever it was before.
 
-Reproduced live, twice in a row, for RAG status; once for job unlock:
+## Preconditions
+
+- A project record that has *any* unrelated validation issue (e.g. a required custom field left blank) — this is what causes the save to fail silently.
+
+## Steps to Reproduce
+
+**RAG status** (reproduced live, twice in a row):
 1. Open a project whose RAG status is "Amber".
 2. Click the RAG Status dropdown, select "Red".
-3. The label updates to "Red" immediately, no error shown.
-4. Query the database directly (or simply reload the page) — `rag_status` is still `"amber"`.
+3. Query the database directly (or simply reload the page).
 
-Same pattern for `job_unlock`: clicking "Unlock" on a locked project flips the header badge to green "Unlocked" instantly, but `job_lock_status` in the database stays `"locked_by_user"` until the page is reloaded, at which point the badge reverts to "Locked".
+**Job unlock** (reproduced once):
+1. Open a locked project and click "Unlock".
+2. Reload the page.
 
 By contrast, the sibling `job_lock` action (locking a project) worked correctly and consistently in the same session — it persisted every time.
+
+## Expected Result
+
+The RAG status / job-lock change should either persist to the database, or the user should see a clear error if it didn't.
+
+## Actual Result
+
+- RAG status: the label updates to "Red" immediately with no error shown, but `rag_status` in the database is still `"amber"`.
+- Job unlock: the header badge flips to green "Unlocked" instantly, but `job_lock_status` in the database stays `"locked_by_user"` until the page is reloaded, at which point the badge reverts to "Locked".
+
+## Screenshot or Video
+
+![The RAG status dropdown with "Red" selected — this click updated the on-screen label but did not persist to the database](attachments/rag-status-and-job-unlock-silently-fail-to-save/01-red-selected-in-dropdown.jpg)
+
+![GIF reproduction: RAG Status starts Green, the dropdown is used to select Red, the label updates to Red with no error — then reloading the page shows it's reverted back to Green, proving the change never saved](attachments/rag-status-and-job-unlock-silently-fail-to-save/02-reproduction.gif)
+
+Reproduced twice: once against project id 210 ("Riverside Pumping Station Refurbishment"), and again against a disposable throwaway project ("Bug Repro - RAG Silent Save Failure", deleted after capture) built specifically to isolate the issue outside real guide data — both showed the identical pattern. In this session's local dev environment, 2026-08-27. Full walkthrough context: `Projects/Setting a project's RAG status.md` and `Projects/Locking and unlocking jobs on a project.md`, with the same finding noted in `Projects/_VERIFICATION.md`.
 
 ## Root cause
 
@@ -48,11 +72,3 @@ end
 ## Impact
 
 Any user changing a project's RAG status or unlocking its jobs on a project record that has *any* unrelated validation issue (a required custom field left blank being the case found here) will believe their change was saved when it wasn't, with zero indication anything went wrong. This could plausibly explain confusing "it didn't save" reports — the record briefly looks correct on screen, then quietly reverts on the next page load, with no error for the user or support to go on.
-
-## Evidence
-
-![The RAG status dropdown with "Red" selected — this click updated the on-screen label but did not persist to the database](attachments/rag-status-and-job-unlock-silently-fail-to-save/01-red-selected-in-dropdown.jpg)
-
-![GIF reproduction: RAG Status starts Green, the dropdown is used to select Red, the label updates to Red with no error — then reloading the page shows it's reverted back to Green, proving the change never saved](attachments/rag-status-and-job-unlock-silently-fail-to-save/02-reproduction.gif)
-
-Reproduced twice: once against project id 210 ("Riverside Pumping Station Refurbishment"), and again against a disposable throwaway project ("Bug Repro - RAG Silent Save Failure", deleted after capture) built specifically to isolate the issue outside real guide data — both showed the identical pattern. In this session's local dev environment, 2026-08-27. Full walkthrough context: `Projects/Setting a project's RAG status.md` and `Projects/Locking and unlocking jobs on a project.md`, with the same finding noted in `Projects/_VERIFICATION.md`.

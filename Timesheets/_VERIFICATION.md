@@ -17,14 +17,14 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 | Guide                                                                        | Verified | Verified by | Date | Version     | Notes |
 | ----------------------------------------------------------------------------- | -------- | ----------- | ---- | ----------- | ----- |
-| Clocking in and starting a shift                                             | No       |             |      | v2026.08.02 |       |
+| Clocking in and starting a shift                                             | No       |             |      | v2026.08.02 | Code drift found 2026-09-10: starting a shift while one is already active now shows a proper error message on the form. |
 | Ending a shift and confirming hours worked                                   | No       |             |      | v2026.08.02 |       |
 | Viewing and editing an individual timesheet                                  | No       |             |      | v2026.08.04 | Rewritten 2026-09-03 to cover the Active Duration field's 18-hour cap. Not yet human-verified. |
 | Logging a break or other shift event                                        | No       |             |      | v2026.08.02 |       |
 | Browsing all timesheets in the table view                                   | No       |             |      | v2026.08.02 |       |
 | Approving or denying timesheets for your team (weekly review grid)          | No       |             |      | v2026.08.04 | Rewritten 2026-09-04 to cover the bulk-update failure error banner. Not yet human-verified. |
 | Adding or editing a timesheet entry from the review grid                    | No       |             |      | v2026.08.02 |       |
-| Rounding or splitting a timesheet entry during review                       | No       |             |      | v2026.08.02 |       |
+| Rounding or splitting a timesheet entry during review                       | No       |             |      | v2026.08.02 | Code drift found 2026-09-10: split-time picker's midnight clamping logic reworked (wraparound-safe minutes math) — re-verify the 22:00–06:00 overnight split screenshot. |
 | Using the Timesheets landing page                                           | No       |             |      | v2026.08.04 | Newly written 2026-09-04. Not yet human-verified. |
 | Managing project codes, timesheet categories, and timesheet addition types  | No       |             |      | v2026.08.04 | Newly written 2026-09-09. Not yet human-verified. |
 

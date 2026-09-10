@@ -22,9 +22,10 @@ When asked to sync/update/refresh this file, do the following:
 | Access & Visibility               | 0 / 3   |            |
 | Account                          | 3 / 3   | 25/08/2026 |
 | Assets                           | 0 / 16  |            |
-| Assignments                      | 0 / 1   |            |
+| Assignments                      | 0 / 3   |            |
 | Client Portal                    | 0 / 1   |            |
 | Collaboration                    | 0 / 3   |            |
+| Contacts & Addresses              | 0 / 2   |            |
 | Custom Fields                    | 0 / 1   |            |
 | Documents                        | 0 / 5   |            |
 | Home Dashboard                   | 0 / 15  |            |
@@ -32,6 +33,7 @@ When asked to sync/update/refresh this file, do the following:
 | Map                              | 0 / 1   |            |
 | Media & Attachments              | 0 / 2   |            |
 | Notifications                    | 1 / 1   | 25/08/2026 |
+| Platform Administration           | 0 / 2   |            |
 | Product Allocations              | 0 / 7   |            |
 | Products & Rates                 | 0 / 11  |            |
 | Projects                         | 0 / 33  |            |
@@ -41,12 +43,12 @@ When asked to sync/update/refresh this file, do the following:
 | Signing In                       | 3 / 3   | 25/08/2026 |
 | Tasks                            | 0 / 1   |            |
 | Tickets                          | 0 / 12  |            |
-| Timesheets                       | 0 / 17  |            |
+| Timesheets                       | 0 / 18  |            |
 | Todos & Checklists               | 0 / 7   |            |
-| Views                            | 6 / 9   |            |
+| Views                            | 7 / 9   |            |
 | Watches                          | 1 / 1   | 26/08/2026 |
 
 ## Summary
 
-Topics fully verified: 4 / 26
-Guides verified: 14 / 169
+Topics fully verified: 4 / 28
+Guides verified: 15 / 176
