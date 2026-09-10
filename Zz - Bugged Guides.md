@@ -47,7 +47,11 @@ reviewers, and comes back once the bug is fixed (`/recheck-bugs` →
 | [Viewing a record's Access panel (visibility & ownership)](Access%20%26%20Visibility/Viewing%20a%20record's%20Access%20panel%20%28visibility%20%26%20ownership%29.md) | Access & Visibility | [visibility-set-to-private-shows-broken-activity-message](Zz%20-%20Known%20Bugs/visibility-set-to-private-shows-broken-activity-message.md) | Yes | Open |
 | [Creating an asset](Assets/Creating%20an%20asset.md) | Assets | [site-autocomplete-ignores-role-permission-scoped-by-access-only](Zz%20-%20Known%20Bugs/site-autocomplete-ignores-role-permission-scoped-by-access-only.md) | No | Open |
 | [Filling in and editing custom field values on a record](Custom%20Fields/Filling%20in%20and%20editing%20custom%20field%20values%20on%20a%20record.md) | Custom Fields | [first-time-filling-a-custom-field-group-crashes](Zz%20-%20Known%20Bugs/first-time-filling-a-custom-field-group-crashes.md) | No | Open |
+| [Configuring app-launcher shortcuts](Settings/Hub%20Administration/Configuring%20app-launcher%20shortcuts.md) | Settings: Hub Administration | [launcher-apps-include-closed-does-not-show-deactivated-apps](Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md) | No | Open |
+| [Creating and managing rotating shift patterns](Settings/Scheduling%20Reference%20Data/Creating%20and%20managing%20rotating%20shift%20patterns.md) | Settings: Scheduling Reference Data | [launcher-apps-include-closed-does-not-show-deactivated-apps](Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md) | No | Open |
+| [Creating and managing rotating shift patterns](Settings/Scheduling%20Reference%20Data/Creating%20and%20managing%20rotating%20shift%20patterns.md) | Settings: Scheduling Reference Data | [shift-cannot-be-created-back-to-back-with-adjacent-shift](Zz%20-%20Known%20Bugs/shift-cannot-be-created-back-to-back-with-adjacent-shift.md) | No | Open |
+| [Managing availability types](Settings/Scheduling%20Reference%20Data/Managing%20availability%20types.md) | Settings: Scheduling Reference Data | [launcher-apps-include-closed-does-not-show-deactivated-apps](Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md) | No | Open |
 
 ## Summary
 
-Bugged: 11 (0 resolved)
+Bugged: 15 (0 resolved)

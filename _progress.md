@@ -744,15 +744,15 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating and managing rotating shift patterns |  | Admin | Settings::PatternsController; Settings::ShiftsController | todo | Pattern "4-on 4-off Rotation" with 2 shifts | 6 |  |  |
-| Managing availability types |  | Admin | Settings::AvailabilityTypesController | todo | "Annual Leave" (unavailable, requires authorisation) | 3 |  |  |
+| Creating and managing rotating shift patterns |  | Admin | Settings::PatternsController; Settings::ShiftsController | done | Pattern "4-on 4-off Rotation" with 2 shifts | 6 | 2026-09-10 | v2026.08.04 |
+| Managing availability types |  | Admin | Settings::AvailabilityTypesController | done | "Annual Leave" (unavailable, requires authorisation) | 3 | 2026-09-10 | v2026.08.04 |
 
 ## Settings: Visit Scheduling
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating a shared visit plan and its recurring visit schedules |  | Admin | Settings::VisitPlansController; Settings::VisitSchedulesController | todo | Plan "Quarterly Fire Safety Servicing" with recurrence rule | 6 |  |  |
-| Attaching a custom (asset-specific) visit plan |  | Admin | Settings::VisitPlansController#new_visit_plan (asset_id) | todo | One-off plan scoped to asset "Generator Unit GEN-014" | 3 |  |  |
+| Creating a shared visit plan and its recurring visit schedules |  | Admin | Settings::VisitPlansController; Settings::VisitSchedulesController | done | Plan "Quarterly Fire Safety Servicing" with recurrence rule | 6 | 2026-09-10 | v2026.08.04 |
+| Attaching a custom (asset-specific) visit plan |  | Admin | Settings::VisitPlansController#new_visit_plan (asset_id) | done | One-off plan scoped to asset "Generator Unit GEN-014" | 3 | 2026-09-10 | v2026.08.04 |
 
 ## Settings: Finance Reference Data
 
@@ -785,8 +785,8 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Configuring Hub survey types |  | Admin | Settings::Hub::SurveyTypesController | todo | Survey type "Site Safety Walkaround" with form and default tags | 6 |  |  |
-| Configuring app-launcher shortcuts |  | Admin | Settings::LauncherAppsController | todo | Launcher app "Fleet Tracker" with URL and logo | 4 |  |  |
+| Configuring Hub survey types |  | Admin | Settings::Hub::SurveyTypesController | done | Survey type "Site Safety Walkaround" with form and default tags | 6 | 2026-09-10 | v2026.08.04 |
+| Configuring app-launcher shortcuts |  | Admin | Settings::LauncherAppsController | done | Launcher app "Fleet Tracker" with URL and logo | 4 | 2026-09-10 | v2026.08.04 |
 
 ## Platform Administration
 
@@ -797,7 +797,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 170 / 399
+Completed: 176 / 403
 
 Needs update: 0
 
@@ -851,7 +851,7 @@ Map guides completed: 1 / 1
 
 Records guides completed: 1 / 26
 
-Settings guides completed: 4 / 63
+Settings guides completed: 10 / 63
 
 Tasks guides completed: 1 / 1
 
@@ -861,5 +861,5 @@ Release breakdown (current version only, for `done` rows):
 
 - v2026.08.02: 22
 - v2026.08.03: 10
-- v2026.08.04: 42
+- v2026.08.04: 48
 - v2026.08.05: 96

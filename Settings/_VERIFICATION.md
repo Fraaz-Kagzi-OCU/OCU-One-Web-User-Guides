@@ -13,14 +13,17 @@ Settings has its own nested structure, one subfolder per Settings sub-area (`Ove
 
 ## Status
 
-| Sub-area           | Verified | Date |
-| ------------------- | -------- | ---- |
-| Journeys             | 0 / 1   |      |
-| Labels               | 0 / 1   |      |
-| Overview             | 0 / 1   |      |
-| Views & Organization | 0 / 1   |      |
+| Sub-area                | Verified | Date |
+| ------------------------ | -------- | ---- |
+| Hub Administration        | 0 / 2   |      |
+| Journeys                  | 0 / 1   |      |
+| Labels                    | 0 / 1   |      |
+| Overview                  | 0 / 1   |      |
+| Scheduling Reference Data | 0 / 2   |      |
+| Views & Organization      | 0 / 1   |      |
+| Visit Scheduling          | 0 / 2   |      |
 
 ## Summary
 
-Sub-areas fully verified: 0 / 4
-Guides verified: 0 / 4
+Sub-areas fully verified: 0 / 7
+Guides verified: 0 / 10
