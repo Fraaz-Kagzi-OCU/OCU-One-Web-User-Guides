@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), and Contacts & Addresses (2 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering, which is why those five areas are no longer listed as complete above even though every one of their guides has been written at least once; see `_progress.md` for details. Two areas have made a start but aren't complete yet: **Records** (1/26 — this repo's biggest remaining gap) and **Settings** (13/63 — most admin configuration screens are still undocumented).
+The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), and Contacts & Addresses (2 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering, which is why those five areas are no longer listed as complete above even though every one of their guides has been written at least once; see `_progress.md` for details. Two areas have made a start but aren't complete yet: **Records** (1/26 — this repo's biggest remaining gap) and **Settings** (40/63 — most admin configuration screens are still undocumented).
 
 Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
 
@@ -365,7 +365,7 @@ Custom record types — inspections, audits, and other structured forms attached
 - [Browsing records by category (Record Groups hub)](Records/Browsing%20records%20by%20category%20%28Record%20Groups%20hub%29.md)
 
 ### Settings
-Tenant admin configuration — organised into one subfolder per Settings sub-area (matching the "Settings: *" sections in `_progress.md`), since this will grow to ~14 sub-areas and 60+ guides. (Partial area — 8 of many sub-areas documented so far.)
+Tenant admin configuration — organised into one subfolder per Settings sub-area (matching the "Settings: *" sections in `_progress.md`), since this will grow to ~14 sub-areas and 60+ guides. (Partial area — 15 of many sub-areas documented so far.)
 
 - [Overview — how the written Settings guides fit together](Settings/_Settings%20-%20Overview.md)
 - [Finding your way around Settings (landing page)](Settings/Overview/Finding%20your%20way%20around%20Settings%20%28landing%20page%29.md)
@@ -374,6 +374,8 @@ Tenant admin configuration — organised into one subfolder per Settings sub-are
 - [Managing group membership (members, leads, admin leads)](Settings/Groups%20%26%20Hierarchy/Managing%20group%20membership%20%28members%2C%20leads%2C%20admin%20leads%29.md)
 - [Configuring label groups](Settings/Labels/Configuring%20label%20groups.md)
 - [Managing folder sets (document folder templates)](Settings/Views%20%26%20Organization/Managing%20folder%20sets%20%28document%20folder%20templates%29.md)
+- [Building a pipeline with stages](Settings/Pipelines%20%26%20Stages/Building%20a%20pipeline%20with%20stages.md)
+- [Attaching a pipeline to a type](Settings/Pipelines%20%26%20Stages/Attaching%20a%20pipeline%20to%20a%20type.md)
 - [Building a notification journey](Settings/Journeys/Building%20a%20notification%20journey.md)
 - [Configuring Hub survey types](Settings/Hub%20Administration/Configuring%20Hub%20survey%20types.md)
 - [Configuring app-launcher shortcuts](Settings/Hub%20Administration/Configuring%20app-launcher%20shortcuts.md) — blocked from human verification by an [open app bug](Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md)
@@ -381,6 +383,29 @@ Tenant admin configuration — organised into one subfolder per Settings sub-are
 - [Attaching a custom (asset-specific) visit plan](Settings/Visit%20Scheduling/Attaching%20a%20custom%20%28asset-specific%29%20visit%20plan.md)
 - [Creating and managing rotating shift patterns](Settings/Scheduling%20Reference%20Data/Creating%20and%20managing%20rotating%20shift%20patterns.md) — blocked from human verification by two [open app bugs](Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md)
 - [Managing availability types](Settings/Scheduling%20Reference%20Data/Managing%20availability%20types.md) — blocked from human verification by an [open app bug](Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md)
+- [Setting up tag types and tags](Settings/Tags%20%26%20Notifications/Setting%20up%20tag%20types%20and%20tags.md)
+- [Setting up notification groups and recipients](Settings/Tags%20%26%20Notifications/Setting%20up%20notification%20groups%20and%20recipients.md)
+- [Building a field set with field groups and field types](Settings/Workspace%20Builder/Building%20a%20field%20set%20with%20field%20groups%20and%20field%20types.md)
+- [Configuring a check-type field's pass/fail (RAG) scoring](Settings/Workspace%20Builder/Configuring%20a%20check-type%20field%27s%20pass-fail%20%28RAG%29%20scoring.md)
+- [Configuring records-type field columns and auto-titles](Settings/Workspace%20Builder/Configuring%20records-type%20field%20columns%20and%20auto-titles.md)
+- [Attaching a field set to a type](Settings/Workspace%20Builder/Attaching%20a%20field%20set%20to%20a%20type.md)
+- [Building a custom form](Settings/Workspace%20Builder/Building%20a%20custom%20form.md)
+- [Adding elements to a form page](Settings/Workspace%20Builder/Adding%20elements%20to%20a%20form%20page.md)
+- [Managing job types and task types](Settings/Type%20Management/Managing%20job%20types%20and%20task%20types.md)
+- [Building job task pipelines and sub-statuses](Settings/Type%20Management/Building%20job%20task%20pipelines%20and%20sub-statuses.md)
+- [Configuring project types, record types, and record groups](Settings/Type%20Management/Configuring%20project%20types%2C%20record%20types%2C%20and%20record%20groups.md)
+- [Pinning related record types to a record type](Settings/Type%20Management/Pinning%20related%20record%20types%20to%20a%20record%20type.md)
+- [Managing ticket types and ticket groups](Settings/Type%20Management/Managing%20ticket%20types%20and%20ticket%20groups.md)
+- [Configuring asset, visit, and issue types](Settings/Type%20Management/Configuring%20asset%2C%20visit%2C%20and%20issue%20types.md)
+- [Configuring estimate, invoice, and variation types](Settings/Type%20Management/Configuring%20estimate%2C%20invoice%2C%20and%20variation%20types.md)
+- [Managing todo types, event types, warning types, and lead sources](Settings/Type%20Management/Managing%20todo%20types%2C%20event%20types%2C%20warning%20types%2C%20and%20lead%20sources.md)
+- [Building an automation rule](Settings/Automation/Building%20an%20automation%20rule.md)
+- [Restricting an automation rule to specific record types](Settings/Automation/Restricting%20an%20automation%20rule%20to%20specific%20record%20types.md)
+- [Common trigger types reference](Settings/Automation/Common%20trigger%20types%20reference.md)
+- [Common action types reference](Settings/Automation/Common%20action%20types%20reference.md)
+- [Importing data via CSV](Settings/Imports%20%26%20Integrations/Importing%20data%20via%20CSV.md)
+- [Creating permission sets (per-module grants and per-type overrides)](Settings/Access%20Control%20%28Roles%20%26%20Permissions%29/Creating%20permission%20sets%20%28per-module%20grants%20and%20per-type%20overrides%29.md)
+- [Creating roles and assigning permission sets](Settings/Access%20Control%20%28Roles%20%26%20Permissions%29/Creating%20roles%20and%20assigning%20permission%20sets.md)
 
 ### Tasks
 A cross-job, cross-project view of every task assigned across the organisation — not to be confused with the tasks tab on an individual job.
@@ -529,10 +554,17 @@ OCU-One-Web-User-Guides/
 │   ├── Labels/             (same subfolder shape as Overview/ above)
 │   ├── Views & Organization/
 │   ├── Journeys/
+│   ├── Pipelines & Stages/
 │   ├── Groups & Hierarchy/
 │   ├── Hub Administration/
 │   ├── Visit Scheduling/
-│   └── Scheduling Reference Data/
+│   ├── Scheduling Reference Data/
+│   ├── Tags & Notifications/
+│   ├── Type Management/
+│   ├── Automation/
+│   ├── Imports & Integrations/
+│   ├── Access Control (Roles & Permissions)/
+│   └── Workspace Builder/
 ├── Tasks/                  Tasks guides
 │   ├── _Tasks - Overview.md
 │   ├── _VERIFICATION.md    verification status for Tasks guides

@@ -565,41 +565,41 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Building a field set with field groups and field types |  | Admin | Settings::FieldSetsController, FieldGroupsController, FieldTypesController, FieldOptionsController | todo | Field Set "Fibre Install Details" > group "Site Info" > types "Cable Length" (numeric), "Fibre Type" (single_option) | 10 |  |  |
-| Configuring a check-type field's pass/fail (RAG) scoring |  | Admin | Settings::FieldTypesController (data_type=check) | todo | Check field "Signal Strength OK?" pass/fail/resolved labels, auto-created Issue Type "Signal Fault" | 4 |  |  |
-| Configuring records-type field columns and auto-titles |  | Admin | Settings::FieldTypeRecordColumnsController#move; FieldTypeRecordTitlesController#move | todo | Records-field "Cable Reels Used" with columns and auto-title template | 3 |  |  |
-| Attaching a field set to a type |  | Admin | Settings::FieldableFieldSetsController#move | todo | Field Set "Fibre Install Details" attached to Asset Type "ONT Router" | 3 |  |  |
-| Building a custom form |  | Admin | Settings::FormsController, PagesController | todo | Form "Fibre Install Site Survey" with 2 pages, one live-video variant | 5 |  |  |
-| Adding elements to a form page |  | Admin | Settings::ElementsController, ElementRecordFieldTypesController#move | todo | Page with Photo, Signature, Dropdown, and linked-Records elements | 6 |  |  |
+| Building a field set with field groups and field types |  | Admin | Settings::FieldSetsController, FieldGroupsController, FieldTypesController, FieldOptionsController | done | Field Set "Street Cabinet Inspection" > group "Inspection Details" > types "Voltage Reading" (numeric), "Cabinet Condition" (single_option) — real fields used instead of the row's pre-existing "Fibre Install Details" set, which was reused whole for the attach-to-type guide instead | 10 | 2026-09-11 | v2026.09.01 |
+| Configuring a check-type field's pass/fail (RAG) scoring |  | Admin | Settings::FieldTypesController (data_type=check) | done | Check field "Signal Strength OK?" with Positive/Resolved Positive/Negative labels; negative outcome set to auto-create an "Incident Report" record — the real mechanism creates a Record of a chosen Record Type, not an "Issue Type" as the row assumed | 4 | 2026-09-11 | v2026.09.01 |
+| Configuring records-type field columns and auto-titles |  | Admin | Settings::FieldTypeRecordColumnsController#move; FieldTypeRecordTitlesController#move | done | Records-field "Linked Vehicle Incidents" (target record type "Vehicle Incident", the only one with a field set attached, needed for Columns/Titles to appear) with Severity/Date columns and an auto-title template — used instead of the row's "Cable Reels Used" idea, which had no field-set-bearing target type | 3 | 2026-09-11 | v2026.09.01 |
+| Attaching a field set to a type |  | Admin | Settings::FieldableFieldSetsController#move | done | Field Set "Fibre Install Details" attached to new Asset Type "ONT Router" | 3 | 2026-09-11 | v2026.09.01 |
+| Building a custom form |  | Admin | Settings::FormsController, PagesController | done | Form "Fibre Install Site Survey" (attached to "Fibre Install Details" field set) with 2 pages: "Site Details" (List) and "Live Walkthrough" (Live Video) | 5 | 2026-09-11 | v2026.09.01 |
+| Adding elements to a form page |  | Admin | Settings::ElementsController, ElementRecordFieldTypesController#move | done | "Site Details" page with Take Photo, Draw (signature), Dropdown (bound to Fibre Type), and Records elements | 6 | 2026-09-11 | v2026.09.01 |
 
 ## Settings: Pipelines & Stages
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Building a pipeline with stages |  | Admin | Settings::PipelinesController, StagesController | todo | Pipeline "Fibre Rollout" with 5 stages, ageing thresholds, close_members flag | 6 |  |  |
-| Attaching a pipeline to a type (Assets, Issues, Projects, Records, Tickets, Users) |  | Admin | Settings::*TypePipelinesController#create/#move | todo | Pipeline "Fibre Rollout" attached to Project Types "Fibre Build"/"Fibre Repair" | 4 |  |  |
+| Building a pipeline with stages |  | Admin | Settings::PipelinesController, StagesController | done | Pipeline "Fibre Rollout" with 5 stages (Survey, Design, Installation, Testing, Complete), ageing thresholds on Survey, close_members flag on Complete | 6 | 2026-09-11 | v2026.09.01 |
+| Attaching a pipeline to a type (Assets, Issues, Projects, Records, Tickets, Users) |  | Admin | Settings::*TypePipelinesController#create/#move | done | Pipeline "Fibre Rollout" attached to new Project Types "Fibre Build"/"Fibre Repair" (created fresh — no existing types matched the row's names) | 4 | 2026-09-11 | v2026.09.01 |
 
 ## Settings: Type Management
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Managing job types and task types |  | Admin | Settings::JobTypesController, TaskTypesController | todo | Job Type "Fibre Install" with RAG mode, product allocations; Task Type "Site Survey" | 6 |  |  |
-| Building job task pipelines and sub-statuses |  | Admin | Settings::JobTypeTaskTypesController, SubStatusesController | todo | Task pipeline Survey→Cable Pull→Test&Commission; sub-statuses under "On Hold" | 5 |  |  |
-| Configuring project types, record types, and record groups |  | Admin | Settings::OrderTypesController, RecordTypesController, RecordGroupsController | todo | Project Type "Fibre Build" with public creation slug; Record Type under group "Field Records" | 8 |  |  |
-| Pinning related record types to a record type |  | Admin | Settings::PinnedRecordTypesController | todo | Pin Ticket Type "Fault Ticket" onto Record Type "Site Visit Report" | 4 |  |  |
-| Managing ticket types and ticket groups |  | Admin | Settings::TicketTypesController, TicketGroupsController | todo | Ticket Group "Customer Support" with types "Fault Report"/"Billing Query" | 4 |  |  |
-| Configuring asset, visit, and issue types |  | Admin | Settings::AssetTypesController, VisitTypesController, IssueTypesController | todo | Asset Type "ONT Router" linked to Visit Plan "Annual Maintenance" | 5 |  |  |
-| Configuring estimate, invoice, and variation types |  | Admin | Settings::EstimateTypesController, InvoiceTypesController, VariationTypesController | todo | Estimate Type with approval-limit thresholds; Invoice Type with custom PDF template | 5 |  |  |
-| Managing todo types, event types, warning types, and lead sources |  | Admin | Settings::TodoTypesController, EventTypesController, WarningTypesController, LeadSourcesController | todo | Warning Type "Access Restricted" (locks_jobs=true); Lead Source "Google Ads" | 5 |  |  |
+| Managing job types and task types |  | Admin | Settings::JobTypesController, TaskTypesController | done | Job Type "Fibre Install" with RAG mode, product allocations; Task Type "Site Survey" | 6 | 2026-09-11 | v2026.09.01 |
+| Building job task pipelines and sub-statuses |  | Admin | Settings::JobTypeTaskTypesController, SubStatusesController | done | Task pipeline Survey→Cable Pull→Test&Commission; sub-statuses under "In Progress" (hint's "On Hold" isn't a real status) | 5 | 2026-09-11 | v2026.09.01 |
+| Configuring project types, record types, and record groups |  | Admin | Settings::OrderTypesController, RecordTypesController, RecordGroupsController | done | Project Type "Fibre Build" with public creation slug; Record Type "Site Visit Report" under new group "Field Records" | 8 | 2026-09-11 | v2026.09.01 |
+| Pinning related record types to a record type |  | Admin | Settings::PinnedRecordTypesController | done | Pinned Job Type "Fibre Install" onto Record Type "Site Visit Report" (hint's "Ticket Type" isn't one of the three pinnable type categories — Project Types, Job Types, Record Types) | 4 | 2026-09-11 | v2026.09.01 |
+| Managing ticket types and ticket groups |  | Admin | Settings::TicketTypesController, TicketGroupsController | done | Ticket Group "Customer Support" with type "Fault Report" (Billing pipeline attached) | 4 | 2026-09-11 | v2026.09.01 |
+| Configuring asset, visit, and issue types |  | Admin | Settings::AssetTypesController, VisitTypesController, IssueTypesController | done | Asset Type "ONT Router" linked to Visit Plan "Annual Maintenance"; Visit Type "Router Health Check"; Issue Type "Signal Fault" | 5 | 2026-09-11 | v2026.09.01 |
+| Configuring estimate, invoice, and variation types |  | Admin | Settings::EstimateTypesController, InvoiceTypesController, VariationTypesController | done | Estimate Type "Customer Estimate" with approval-limit thresholds; Invoice Type "Customer Invoice" with custom PDF template value; Variation Type "Scope Change" | 5 | 2026-09-11 | v2026.09.01 |
+| Managing todo types, event types, warning types, and lead sources |  | Admin | Settings::TodoTypesController, EventTypesController, WarningTypesController, LeadSourcesController | done | Warning Type "Access Restricted" (locks_jobs=true); Lead Source "Google Ads"; Todo Type "Follow-up Call"; Event Type "Site Inspection" | 5 | 2026-09-11 | v2026.09.01 |
 
 ## Settings: Automation
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Building an automation rule |  | Admin | Settings::Rules::WebRulesController, OperatorsController | todo | Rule "Auto-flag overdue fibre jobs": trigger + condition group + action | 8 |  |  |
-| Restricting an automation rule to specific record types |  | Admin | Settings::Rules::RuleTargetTypesController | todo | Rule restricted to Job Types "Fibre Install"/"Fibre Repair" | 3 |  |  |
-| Common trigger types reference |  | Admin | Settings::Rules::Triggers::* controllers | todo | Status Updated, Move Stage, Time In Stage trigger examples | 5 |  |  |
-| Common action types reference |  | Admin | Settings::Rules::Actions::* controllers | todo | Add Warning, Move To Stage, Create Notification action examples | 5 |  |  |
+| Building an automation rule |  | Admin | Settings::Rules::WebRulesController, OperatorsController | done | Rule "Auto-flag overdue fibre jobs" (target Job): Status changed trigger, Stage condition nested under a "Fibre job types" operator, Add warning action | 8 | 2026-09-11 | v2026.09.01 |
+| Restricting an automation rule to specific record types |  | Admin | Settings::Rules::RuleTargetTypesController | done | Rule restricted to Job Types "Fibre Install"/"Install" (hint's "Fibre Repair" is a Project Type, not a Job Type, so not selectable here) | 3 | 2026-09-11 | v2026.09.01 |
+| Common trigger types reference |  | Admin | Settings::Rules::Triggers::* controllers | done | Full trigger picker list for a Job-targeted rule (15 trigger types) | 5 | 2026-09-11 | v2026.09.01 |
+| Common action types reference |  | Admin | Settings::Rules::Actions::* controllers | done | Full action picker list for a Job-targeted rule (24 action types), Add Warning detail | 5 | 2026-09-11 | v2026.09.01 |
 
 ## Settings: Journeys
 
@@ -611,7 +611,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Importing data via CSV |  | Admin | Settings::ImportsController, ImportRecordsController | todo | Import "August ASM Work Projects" with 40 projects, 1 warning row | 5 |  |  |
+| Importing data via CSV |  | Admin | Settings::ImportsController, ImportRecordsController | done | Import "August ASM Work Projects" (ASM Projects format); hint's "40 projects, 1 warning row" replaced with a 2-row CSV since the ASM format needs specific tenant-configured order types not present in this dev DB | 5 | 2026-09-11 | v2026.09.01 |
 | Monitoring mobile & web uploads |  | Admin | Settings::UploadsController#index/#filter/#show/#status | todo | Failed upload "file too large"; a mobile crash log upload | 3 |  |  |
 | Managing mobile app shortcut links |  | Admin | Settings::MobileLinksController | todo | Mobile Link "Health & Safety Portal" (web-embed) | 3 |  |  |
 | Managing web dashboard links |  | Admin | Settings::WebLinksController | todo | Web Link "Regional Performance Dashboard" (Power BI) | 3 |  |  |
@@ -724,15 +724,15 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating permission sets (per-module grants and per-type overrides) |  | Admin | Settings::PermissionSetsController | todo | Permission set "Field Engineer - Jobs" with per-type override | 4 |  |  |
-| Creating roles and assigning permission sets |  | Admin | Settings::RolesController#new/#create/#edit/#update/#destroy/#show/#users | todo | Role "Field Engineer" with per-module permission sets | 4 |  |  |
+| Creating permission sets (per-module grants and per-type overrides) |  | Admin | Settings::PermissionSetsController | done | Permission set "Field Engineer - Jobs" (Jobs module) with a per-type override on Job Type "Fibre Install" | 4 | 2026-09-11 | v2026.09.01 |
+| Creating roles and assigning permission sets |  | Admin | Settings::RolesController#new/#create/#edit/#update/#destroy/#show/#users | done | Role "Field Engineer" with Clients: Admin and Jobs: Field Engineer - Jobs | 4 | 2026-09-11 | v2026.09.01 |
 
 ## Settings: Tags & Notifications
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Setting up tag types and tags |  | Admin | Settings::TagTypesController; Settings::TagsController | todo | Tag type "Certifications" with 3 tags | 6 |  |  |
-| Setting up notification groups and recipients |  | Admin | Settings::NotificationGroupsController | todo | Group "North Region Site Managers" built from users+tags | 6 |  |  |
+| Setting up tag types and tags |  | Admin | Settings::TagTypesController; Settings::TagsController | done | Tag type "Certifications" with 3 tags | 6 | 2026-09-11 | v2026.09.01 |
+| Setting up notification groups and recipients |  | Admin | Settings::NotificationGroupsController | done | Group "North Region Site Managers" built from users+tags | 6 | 2026-09-11 | v2026.09.01 |
 
 ## Settings: Labels
 
@@ -797,7 +797,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 179 / 399
+Completed: 206 / 399
 
 Needs update: 0
 
@@ -851,7 +851,7 @@ Map guides completed: 1 / 1
 
 Records guides completed: 1 / 26
 
-Settings guides completed: 13 / 63
+Settings guides completed: 40 / 63
 
 Tasks guides completed: 1 / 1
 
@@ -863,4 +863,4 @@ Release breakdown (current version only, for `done` rows):
 - v2026.08.03: 9
 - v2026.08.04: 45
 - v2026.08.05: 95
-- v2026.09.01: 11
+- v2026.09.01: 38
