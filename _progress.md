@@ -716,9 +716,9 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating and editing team groups |  | Admin | Settings::GroupsController#new/#create/#edit/#update/#destroy | todo | Group "North Region Field Team" under "UK Operations" | 4 |  |  |
-| Browsing the group hierarchy (table and org chart) |  | Admin | Settings::Groups::DrilldownController; Settings::GroupsController#chart/#children | todo | 4-level group hierarchy rendered as org chart | 4 |  |  |
-| Managing group membership (members, leads, admin leads) |  | Admin | Settings::UserGroupsController | todo | User added as lead of "North Region Field Team" | 3 |  |  |
+| Creating and editing team groups |  | Admin | Settings::GroupsController#new/#create/#edit/#update/#destroy | done | Group "North Region Field Team" under "UK Operations" | 4 | 2026-09-11 | v2026.09.01 |
+| Browsing the group hierarchy (table and org chart) |  | Admin | Settings::Groups::DrilldownController; Settings::GroupsController#chart/#children | done | 4-level group hierarchy rendered as org chart | 4 | 2026-09-11 | v2026.09.01 |
+| Managing group membership (members, leads, admin leads) |  | Admin | Settings::UserGroupsController | done | User added as lead of "North Region Field Team" | 3 | 2026-09-11 | v2026.09.01 |
 
 ## Settings: Access Control (Roles & Permissions)
 
@@ -797,7 +797,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 176 / 399
+Completed: 179 / 399
 
 Needs update: 0
 
@@ -851,7 +851,7 @@ Map guides completed: 1 / 1
 
 Records guides completed: 1 / 26
 
-Settings guides completed: 10 / 63
+Settings guides completed: 13 / 63
 
 Tasks guides completed: 1 / 1
 
@@ -863,4 +863,4 @@ Release breakdown (current version only, for `done` rows):
 - v2026.08.03: 9
 - v2026.08.04: 45
 - v2026.08.05: 95
-- v2026.09.01: 8
+- v2026.09.01: 11

@@ -39,7 +39,7 @@ When asked to sync/update/refresh this file, do the following:
 | Projects                         | 0 / 33  |            |
 | Records                          | 0 / 1   |            |
 | Search & Navigation              | 0 / 2   |            |
-| Settings                         | 0 / 10  |            |
+| Settings                         | 0 / 13  |            |
 | Signing In                       | 3 / 3   | 25/08/2026 |
 | Tasks                            | 0 / 1   |            |
 | Tickets                          | 0 / 12  |            |
@@ -51,4 +51,4 @@ When asked to sync/update/refresh this file, do the following:
 ## Summary
 
 Topics fully verified: 4 / 28
-Guides verified: 15 / 176
+Guides verified: 15 / 179

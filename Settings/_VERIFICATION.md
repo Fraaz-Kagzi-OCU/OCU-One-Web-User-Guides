@@ -15,6 +15,7 @@ Settings has its own nested structure, one subfolder per Settings sub-area (`Ove
 
 | Sub-area                | Verified | Date |
 | ------------------------ | -------- | ---- |
+| Groups & Hierarchy        | 0 / 3   |      |
 | Hub Administration        | 0 / 2   |      |
 | Journeys                  | 0 / 1   |      |
 | Labels                    | 0 / 1   |      |
@@ -25,5 +26,5 @@ Settings has its own nested structure, one subfolder per Settings sub-area (`Ove
 
 ## Summary
 
-Sub-areas fully verified: 0 / 7
-Guides verified: 0 / 10
+Sub-areas fully verified: 0 / 8
+Guides verified: 0 / 13

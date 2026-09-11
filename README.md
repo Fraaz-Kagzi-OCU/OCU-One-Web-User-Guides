@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), and Contacts & Addresses (2 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering, which is why those five areas are no longer listed as complete above even though every one of their guides has been written at least once; see `_progress.md` for details. Two areas have made a start but aren't complete yet: **Records** (1/26 — this repo's biggest remaining gap) and **Settings** (10/63 — most admin configuration screens are still undocumented).
+The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), and Contacts & Addresses (2 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering, which is why those five areas are no longer listed as complete above even though every one of their guides has been written at least once; see `_progress.md` for details. Two areas have made a start but aren't complete yet: **Records** (1/26 — this repo's biggest remaining gap) and **Settings** (13/63 — most admin configuration screens are still undocumented).
 
 Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
 
@@ -365,10 +365,13 @@ Custom record types — inspections, audits, and other structured forms attached
 - [Browsing records by category (Record Groups hub)](Records/Browsing%20records%20by%20category%20%28Record%20Groups%20hub%29.md)
 
 ### Settings
-Tenant admin configuration — organised into one subfolder per Settings sub-area (matching the "Settings: *" sections in `_progress.md`), since this will grow to ~14 sub-areas and 60+ guides. (Partial area — 7 of many sub-areas documented so far.)
+Tenant admin configuration — organised into one subfolder per Settings sub-area (matching the "Settings: *" sections in `_progress.md`), since this will grow to ~14 sub-areas and 60+ guides. (Partial area — 8 of many sub-areas documented so far.)
 
 - [Overview — how the written Settings guides fit together](Settings/_Settings%20-%20Overview.md)
 - [Finding your way around Settings (landing page)](Settings/Overview/Finding%20your%20way%20around%20Settings%20%28landing%20page%29.md)
+- [Creating and editing team groups](Settings/Groups%20%26%20Hierarchy/Creating%20and%20editing%20team%20groups.md)
+- [Browsing the group hierarchy (table and org chart)](Settings/Groups%20%26%20Hierarchy/Browsing%20the%20group%20hierarchy%20%28table%20and%20org%20chart%29.md)
+- [Managing group membership (members, leads, admin leads)](Settings/Groups%20%26%20Hierarchy/Managing%20group%20membership%20%28members%2C%20leads%2C%20admin%20leads%29.md)
 - [Configuring label groups](Settings/Labels/Configuring%20label%20groups.md)
 - [Managing folder sets (document folder templates)](Settings/Views%20%26%20Organization/Managing%20folder%20sets%20%28document%20folder%20templates%29.md)
 - [Building a notification journey](Settings/Journeys/Building%20a%20notification%20journey.md)
@@ -526,6 +529,7 @@ OCU-One-Web-User-Guides/
 │   ├── Labels/             (same subfolder shape as Overview/ above)
 │   ├── Views & Organization/
 │   ├── Journeys/
+│   ├── Groups & Hierarchy/
 │   ├── Hub Administration/
 │   ├── Visit Scheduling/
 │   └── Scheduling Reference Data/
