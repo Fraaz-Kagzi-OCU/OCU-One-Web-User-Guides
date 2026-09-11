@@ -55,4 +55,8 @@ Once you've started a shift, you don't need to reopen this panel to check it's s
 
 A couple of things worth knowing:
 - You can only have one shift active at a time. If you click the clock icon while a shift is already running, you'll see the **End Shift** panel instead of Start Shift.
+- If you already had the Start Shift panel open and a shift gets started in the meantime (for example, from another tab or your mobile app), trying to submit that panel now shows a clear error instead of doing nothing: "You already have an active shift running. End it before starting a new one."
+
+  ![An error message shown when trying to start a shift while one is already active](attachments/clocking-in-and-starting-a-shift/08-start-shift-error.jpg)
+
 - The Project Code field only lets you search and select from codes that have already been set up for your organisation — if the one you need isn't listed, check with your manager or administrator.

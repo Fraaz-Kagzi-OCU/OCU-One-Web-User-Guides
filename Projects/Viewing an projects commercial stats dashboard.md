@@ -14,6 +14,7 @@ Open a project and look at the row of tabs across the top (Overview, Sub-Project
 
 At the top of the Commercial tab is a row of numbers under the heading **Commercials**, pairing what will be charged to the client against what it's costing to deliver:
 
+- **Original Value** — only shown if the project had a planned value recorded early on. It's a snapshot of what the project was originally planned to be worth, and it stays fixed even if the current planned figure later changes — so you can always see what was first agreed alongside what's now planned. In this example, the project was originally valued at £40,000.00, but its Total Price (Planned) has since grown to £45,000.00.
 - **Total Price (Planned)** — the value of everything that's been planned for this project so far.
 - **Total Cost (Planned)** — what that planned work is expected to cost.
 - **Total Price (Actual)** — the value of the work actually completed/recorded against that plan.
@@ -33,10 +34,10 @@ The row scrolls sideways — keep going right to see Actual, Invoiced, and Left 
 
 ## The charts
 
-Below the headline figures are four price charts, all showing value building up over time (day by day):
+Below the headline figures are price charts, all showing value building up over time (day by day):
 
-- **All** — a combined chart overlaying Actual, Planned, and Invoiced together, so you can see at a glance how they compare.
-- **Planned**, **Actual**, **Invoice** — the same three figures again, but as separate charts so each is easier to read on its own.
+- **All** — a combined chart overlaying Actual, Planned, and Invoiced together (and Original Value too, if the project has one), so you can see at a glance how they compare.
+- **Original Value** — only shown if the project has one recorded, alongside **Planned**, **Actual**, and **Invoice** as separate charts so each is easier to read on its own. When Original Value is shown, these charts sit at four across instead of three, to make room.
 
 ![The combined "All" chart plus the separate Planned, Actual, and Invoice charts](attachments/viewing-an-orders-commercial-stats-dashboard/03-commercial-tab-scrolled.jpg)
 

@@ -18,6 +18,10 @@ The form suggests a split time roughly halfway through the shift — here, 02:00
 
 Both halves keep the same category, project code and other details as the original — you can edit either one afterwards if they need to differ.
 
+You can also type in your own split time instead of using the suggested one — including a time just after midnight, like 00:30 for an overnight shift. It's handled correctly and splits the entry exactly where you asked:
+
+![An overnight shift split at a custom time of 00:30, becoming a 22:00-00:30 entry and a 00:30-06:00 entry](attachments/rounding-or-splitting-a-timesheet-entry-during-review/07-split-custom-time-result.jpg)
+
 ## Rounding an entry
 
 Rounding is for cleaning up a start or end time that's a few minutes off a round hour — for example, someone clocked in at 08:07 instead of 08:00. Click the **sliders** icon:
@@ -40,5 +44,4 @@ Click **Apply** to confirm. The entry updates immediately — the start time and
 
 - Rounding only ever moves a time to the start of its current or next hour — it doesn't round to the nearest 15 or 30 minutes.
 - You can round the start, the end, or both at once — each has its own independent up/down control, and nothing is applied until you click **Apply**.
-- For an overnight shift, the split time field can be unreliable if you try to type in a custom value near midnight — the suggested default (roughly the midpoint of the shift) is the safest option to use as-is.
 - Both actions can be undone afterwards using **edit** — a split can be reversed by deleting one half and extending the other; a round can be corrected the same way you'd fix any other time.

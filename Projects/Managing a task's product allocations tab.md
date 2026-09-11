@@ -8,9 +8,9 @@ Open a project, go to its **Tasks** list, and open a task. On the task's page yo
 
 ![A task's Overview tab, showing its name, task type, priority, and status](attachments/managing-a-tasks-product-allocations-tab/01-task-overview.jpg)
 
-When a task has nothing allocated to it yet, the Products tab looks like this — an empty table with a search box and two buttons above it: **Allocate from** and **+ Product**.
+When a task has nothing allocated to it yet, the Products tab looks like this — an empty table with a search box and an **Allocate from** button above it. Unlike a project or job, a task's Products tab doesn't have its own **+ Product** button — you can only give a task products that have already been planned at the project level, using **Allocate from** below.
 
-![An empty Products tab on a task, with the Allocate from and + Product buttons](attachments/managing-a-tasks-product-allocations-tab/02-products-tab-empty.jpg)
+![An empty Products tab on a task, with the Allocate from button](attachments/managing-a-tasks-product-allocations-tab/02-products-tab-empty.jpg)
 
 ## Giving the task a slice of the project's materials
 
@@ -79,7 +79,6 @@ Once saved, the Products tab shows both figures side by side, so you can see the
 
 ## Other things on this tab
 
-- **+ Product** lets you add something to the task that isn't already planned on the project, rather than pulling from the project's existing plan.
 - **Modify all Products** lets you apply a rate adjustment across everything allocated to the task at once.
 
-These cover less common situations and are worth exploring separately if you need them.
+This covers a less common situation and is worth exploring separately if you need it.

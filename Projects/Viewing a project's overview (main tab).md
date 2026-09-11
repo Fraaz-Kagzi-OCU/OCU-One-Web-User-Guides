@@ -15,6 +15,8 @@ Near the top of the page:
 
 The Overview panel itself lists the project's core details — Name, Description, Rate Book, Client, Parent Project, Project Type, the Total Price/Cost figures (Planned, Actual, and Invoiced), the Next Action Due date, Pipeline, and its auto-generated Reference number.
 
+If the project had a planned value recorded early on, an **Original Value** field also appears next to Total Price (Planned) — a snapshot of what the project was originally planned to be worth. It stays fixed even if the current planned figure later changes, so you can always see what was first agreed alongside what's now planned. In this example, the project was originally planned at £18,500.00, but its Total Price (Planned) has since grown to £22,000.00.
+
 ## Sub-Projects
 
 If a project has its own sub-projects, they're listed under the **Sub-Projects** tab.

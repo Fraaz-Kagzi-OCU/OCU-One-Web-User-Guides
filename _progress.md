@@ -50,7 +50,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Customizing which columns appear in a list/table view | Views | Ops | ColumnsController#new/#autocomplete; columns/column_component; scenes/view/view_options_component | done | Projects list with columns Reference, Total Price (Planned), Client Lead added then reordered (no literal "Project Number"/"Total (ex VAT)" fields exist; these are the closest real on-screen equivalents) | 4 | 2026-08-16 | v2026.08.02 | |
 | Saving current filters/columns as a new personal view | Views | Ops, FE | ViewsController#create; scenes/view/view_options_component | done | Filtered Jobs list ("Status = In Progress", "Assigned to = me") saved as new view "My Active Jobs" | 3 | 2026-08-16 | v2026.08.02 | |
 | Renaming and updating an existing saved view | Views | Ops | ViewsController#update | done | Renaming view "Overdue Tickets" to "Overdue Tickets - This Week" after adding a Created-at filter (no due-date field exists on Tickets) | 2 | 2026-08-16 | v2026.08.02 | |
-| Switching between saved views on a list screen | Views | Ops, FE | ViewsController#show; scenes/view_component (view tabs) | needs update | Jobs list with tabs "Default view", "My Active Jobs" (favourited), "Unscheduled Jobs"; plus a Tasks-type saved view ("My Open Tasks") opened via a direct link | 3 | 2026-09-06 | v2026.08.04 (from v2026.08.02) | ViewsController#show's redirect for a Tasks-type view changed from `redirect_back_top` to `redirect_to tasks_path(view_id:)` — re-verify the direct-link "My Open Tasks" screenshot flow still matches |
+| Switching between saved views on a list screen | Views | Ops, FE | ViewsController#show; scenes/view_component (view tabs) | done | Jobs list with tabs "Default view", "My Active Jobs" (favourited), "Unscheduled Jobs"; plus a Tasks-type saved view ("My Open Tasks") opened via a direct link | 3 | 2026-09-11 | v2026.09.01 (from v2026.08.04) | |
 | Favouriting a saved view | Views | Ops, FE | ViewsController#favourite | done | Favouriting "Unscheduled Jobs" view (yellow star badge) | 1 | 2026-08-16 | v2026.08.02 | |
 | Managing all your saved views ("My Views") | Views | Ops | ViewsController#index/#edit/#move/#activate/#deactivate/#destroy | done | User with 5 saved views across Jobs/Tickets, one deactivated ("Old Backlog"), reordering two views | 4 | 2026-08-16 | v2026.08.02 | |
 | Managing saved views (admin) | Views | Admin | Settings::ViewsController#index/#filter/#edit/#update/#activate/#deactivate/#destroy | done | Admin Marcus Webb renaming Priya Nair's "Old Backlog" view, deactivating and reactivating it, then deleting it via the fixed settings-scoped Delete link | 8 | 2026-09-03 | v2026.08.04 (from v2026.08.02) | |
@@ -261,7 +261,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Viewing and moving projects on the pipeline (kanban) board |  | Sales, Ops | Orders::PipelinesController#index/show; OrdersController#stage | done | Existing "Sales" pipeline (New/Qualified/Awaiting Site Visit/Quoting/Negotiating/Won/Lost); dragged "Fibre Duct Replacement - Oldham" Quoting → Won | 4 | 2026-08-26 | v2026.08.05 | |
 | Creating a new project |  | Sales, Ops | OrdersController#new/#create | done | Project type "Install" for client "Anglian Water", rate book "2026 Civils Rates" | 5 | 2026-08-26 | v2026.08.05 | |
 | Creating a sub-project (child project) under an existing project |  | Ops | OrdersController#new (parent_id) | done | Parent project "Streetworks Renewal - Zone 4" with new sub-project "Zone 4 - Section B" | 3 | 2026-08-26 | v2026.08.05 | |
-| Viewing a project's overview (main tab) |  | Ops | OrdersController#show/#main | needs update | Project "123 High Street Resurfacing" with parent, 2 children | 4 | 2026-08-26 | v2026.08.05 | New "Original Value" field now shown on the overview when the project has one captured (app/views/orders/_order.html.erb) |
+| Viewing a project's overview (main tab) |  | Ops | OrdersController#show/#main | done | Project "123 High Street Resurfacing" with parent, 2 children, Original Value £18,500 vs current Total Price (Planned) £22,000 | 4 | 2026-09-11 | v2026.09.01 (from v2026.08.05) | |
 | Editing a project's details |  | Ops | OrdersController#edit/#update | done | Project's rate book changed and next-action date moved | 3 | 2026-08-26 | v2026.08.05 | |
 | Deleting (archiving) a project |  | Ops | OrdersController#destroy | done | Completed project with no open jobs, deleted | 2 | 2026-08-26 | v2026.08.05 | |
 | Managing sub-projects on the Children tab |  | Ops | OrdersController#children | done | Project "Streetworks Renewal - Zone 4" with 3 child projects, one over budget | 2 | 2026-08-26 | v2026.08.05 | |
@@ -275,10 +275,10 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Viewing and filtering tasks on a project |  | Ops | OrdersController#tasks; Orders::TasksController#filter | done | Project filtered by Status="In Progress", Task Type="Site Survey" | 2 | 2026-08-27 | v2026.08.05 | |
 | Creating a new task under a project |  | Ops | Orders::TasksController#new/#create | done | Task type "Site Survey" named "Initial roof survey" with product allocation | 3 | 2026-08-27 | v2026.08.05 | |
 | Viewing and working a task's overview tab |  | Ops, FE | Orders::TasksController#show/#main | done | Task status changed Not Started → In Progress; download PDF | 4 | 2026-08-27 | v2026.08.05 | |
-| Managing a task's product allocations tab | PVA | Ops | Orders::TasksController#products | needs update | Task planned quantity for "Solar Panel 400W" changed 12 → 14 | 2 | 2026-08-13 | v2026.08.02 | The "Add Product" control is now hidden entirely for Task allocatables (app/views/product_allocations/index.html.erb) — re-verify whether this tab still supports adding products at all |
+| Managing a task's product allocations tab | PVA | Ops | Orders::TasksController#products | done | Task "Install Panels - Roof Section A" on project "Riverside Depot Solar Installation"; Solar Panel 400W allocated 12 units from the project's 30, planned quantity changed 12 → 14, 10 units recorded as actually used | 2 | 2026-09-11 | v2026.09.01 (from v2026.08.02) | |
 | Editing or deleting a task |  | Ops | Orders::TasksController#edit/#update/#destroy | done | Rename a task; delete a duplicate task | 2 | 2026-08-27 | v2026.08.05 | |
 | Viewing and managing product allocations on a project | PVA | Ops, Fin | OrdersController#products | done | Project allocated 200m "Ducting 100mm" and 15 "Chamber Cover" | 3 | 2026-08-13 | v2026.08.02 | |
-| Viewing a project's commercial stats dashboard | PVA | Fin, Mgr | OrdersController#stats | needs update | Project with £45k planned, £38.2k actual, £30k invoiced, £2.5k pending variations | 3 | 2026-08-13 | v2026.08.03 | New "Original Value" stat tile and column chart now shown when the project has an original value captured; existing planned/actual/invoice charts shrink from 4 to 3 columns to make room (app/views/orders/tabs/stats.html.erb) |
+| Viewing a project's commercial stats dashboard | PVA | Fin, Mgr | OrdersController#stats | done | Project "Colchester Substation Refurbishment", £40k original value vs £45k current planned, £38.2k actual, £30k invoiced, £2.5k pending / £500 approved / £300 applied variations | 3 | 2026-09-11 | v2026.09.01 (from v2026.08.03) | |
 | Viewing and creating estimates on a project |  | Sales, Fin | OrdersController#estimates | done | Project with 1 draft and 1 approved estimate (£12,400) | 2 | 2026-08-27 | v2026.08.05 | |
 | Viewing and creating invoices on a project |  | Fin | OrdersController#invoices | done | Project with 1 sent invoice (£15,000) and 1 unsent draft (£8,200) | 2 | 2026-08-27 | v2026.08.05 | |
 | Viewing and raising variations on a project |  | Fin, Ops | OrdersController#variations | done | Project with 1 pending (£2,500) and 1 approved (£900) variation | 2 | 2026-08-27 | v2026.08.05 | |
@@ -349,14 +349,14 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release | Change notes |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|-------|
 | Using the Timesheets landing page | Timesheets | FE, Ops | TimesheetsController#landing | done | N/A — static entry page, viewed as Priya Nair (Ops) | 1 | 2026-09-04 | v2026.08.04 | |
-| Clocking in and starting a shift | Timesheets | FE | TimesheetsController#start_shift_form/#start_shift | needs update | Project code "PC-2026-OFFICE", planned duration 8h | 3 | 2026-08-15 | v2026.08.02 | Starting a shift while one is already active now shows a proper error message on the form (previously silent/unclear) |
+| Clocking in and starting a shift | Timesheets | FE | TimesheetsController#start_shift_form/#start_shift | done | Project code "PC-2026-OFFICE", planned duration 8h; Tom Fletcher hitting the "already have an active shift" error on a stale Start Shift panel | 4 | 2026-09-11 | v2026.09.01 (from v2026.08.02) | |
 | Ending a shift and confirming hours worked | Timesheets | FE | TimesheetsController#end_shift_form/#end_shift/#confirm_shift | done | Shift started 08:00 at "Riverside Substation", ended 16:30 | 3 | 2026-08-15 | v2026.08.02 | |
 | Viewing and editing an individual timesheet | Timesheets | FE, Mgr | TimesheetsController#show/new/edit/update/destroy | done | Timesheet "J. Smith - Approved", 04/08/2026, duration changed from 8h15m to 12h30m, project "Tesco Door Install" | 6 | 2026-09-03 | v2026.08.04 (from v2026.08.02) | |
 | Logging a break or other shift event | Timesheets | FE | EventsController CRUD (top-level, not namespaced) | done | Event "Lunch Break" 12:00, 30 min | 3 | 2026-08-15 | v2026.08.02 | |
 | Browsing all timesheets in the table view | Timesheets | Mgr, Fin | TimesheetsController#index/#filter | done | Filter status=pending, group="North Region Engineers" | 3 | 2026-08-15 | v2026.08.02 | |
 | Approving or denying timesheets for your team (weekly review grid) | Timesheets | Mgr | TimesheetsController#review/#status/#bulk_status | done | Week of 2026-08-10, manager Sarah Whitfield reviewing Tom Fletcher and Aisha Rahman's 5 pending entries; right-click approve, right-click deny, and the whole-week Total-cell bulk action | 8 | 2026-09-04 | v2026.08.04 (from v2026.08.02) | |
 | Adding or editing a timesheet entry from the review grid | Timesheets | Mgr | TimesheetsController#review_new/#review_create/#review_edit/#review_update/#review_entry_status | done | User "A. Fieldworker", date 2026-08-11, category "Overtime", 2h | 4 | 2026-08-15 | v2026.08.02 | |
-| Rounding or splitting a timesheet entry during review | Timesheets | Mgr | TimesheetsController#round/#split | needs update | Split shift 22:00–06:00 at midnight; round start to nearest 15 min | 3 | 2026-08-15 | v2026.08.02 | Split-time picker's midnight clamping logic reworked (wraparound-safe minutes math) — re-verify the 22:00–06:00 overnight split screenshot still behaves the same |
+| Rounding or splitting a timesheet entry during review | Timesheets | Mgr | TimesheetsController#round/#split | done | Split shift 22:00–06:00 at midnight (default 02:00, and a custom 00:30 split); round start to nearest hour | 4 | 2026-09-11 | v2026.09.01 (from v2026.08.02) | |
 
 ## Timesheet Timeline
 
@@ -534,7 +534,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Viewing and editing a product                        | PVA     | Admin, Fin | ProductsController#show/#main/#edit/#update/#delete_photo | done   | Product "HV Cable per metre" with photo and ref code                      | 3                       | 2026-08-26    | v2026.08.05 | |
 | Deleting a product                                   | PVA     | Admin, Fin | ProductsController#destroy                                | done   | Parent product with 3 sub-products, cascade-delete                        | 2                       | 2026-08-26    | v2026.08.05 | |
 | Managing sell rates on a product                     | PVA     | Fin, Admin | ProductsController#rates; RatesController (as :rates)     | done   | Sell rate £14.50/m for "HV Cable per metre" under "2026 Wind Rates" v1    | 4                       | 2026-08-13    | v2026.08.03 | |
-| Managing cost rates on a product                     | PVA     | Fin, Admin | ProductsController#costs; RatesController (as :costs)     | needs update   | Product "HV Cable per metre" with sell rate under "2026 Wind Rates" and cost rate £9.20/m under "Internal Costs 2026" v1; new cost rate added and existing one edited | 5                       | 2026-09-03    | v2026.08.04 (from v2026.08.03) | Form copy now says "Cost Book" instead of "Rate Book" for cost rates — update the guide's text for this. The Cancel-button bug (`cancelling-a-new-cost-rate-lands-on-the-rates-tab-not-costs`) is NOT fixed — re-verified live 2026-09-10, still lands on Rates tab; keep the guide's existing caveat about it. |
+| Managing cost rates on a product                     | PVA     | Fin, Admin | ProductsController#costs; RatesController (as :costs)     | done   | Product "HV Cable per metre" with cost rate £9.20/m under "Internal Costs 2026" v1; new cost rate added and existing one edited | 5                       | 2026-09-11    | v2026.09.01 (from v2026.08.04) | |
 | Viewing a product's sub-products                     | PVA     | Admin, Fin | ProductsController#sub_products                           | done   | Parent "Groundworks" with 2 sub-products                                  | 2                       | 2026-08-26    | v2026.08.05 | |
 
 ## Product Allocations
@@ -797,9 +797,9 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 169 / 399
+Completed: 176 / 399
 
-Needs update: 7
+Needs update: 0
 
 Access & Visibility guides completed: 3 / 3
 
@@ -807,13 +807,13 @@ Media & Attachments guides completed: 2 / 2
 
 Product Allocations guides completed: 7 / 7
 
-Products & Rates guides completed: 10 / 11
+Products & Rates guides completed: 11 / 11
 
-Projects guides completed: 30 / 33
+Projects guides completed: 33 / 33
 
-Timesheets guides completed: 16 / 18
+Timesheets guides completed: 18 / 18
 
-Views guides completed: 8 / 9
+Views guides completed: 9 / 9
 
 Tickets guides completed: 12 / 12
 
@@ -863,4 +863,4 @@ Release breakdown (current version only, for `done` rows):
 - v2026.08.03: 9
 - v2026.08.04: 45
 - v2026.08.05: 95
-- v2026.09.01: 1
+- v2026.09.01: 8
