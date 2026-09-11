@@ -319,12 +319,14 @@ function findGuideFile(topicFolder, guideTitle, warnings) {
 
 /** Pulls every "attachments/<slug>/" reference out of a guide's markdown and
  * copies those slug folders into the mirrored output location, so the
- * guide's own relative image paths keep resolving unmodified. */
+ * guide's own relative image paths keep resolving unmodified. Slugs are
+ * decoded (Markdown image targets containing a space are written as
+ * "%20" etc.) since the folder on disk uses the literal, un-encoded name. */
 function copyReferencedAttachments(topicFolder, guideContent) {
   const slugs = new Set();
   const re = /attachments\/([^/)\s]+)\//g;
   let m;
-  while ((m = re.exec(guideContent))) slugs.add(m[1]);
+  while ((m = re.exec(guideContent))) slugs.add(decodeURIComponent(m[1]));
 
   for (const slug of slugs) {
     const src = path.join(VAULT_ROOT, topicFolder, 'attachments', slug);
