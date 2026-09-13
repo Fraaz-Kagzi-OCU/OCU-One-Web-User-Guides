@@ -167,23 +167,23 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Using the permits landing page |  | Ops | PermitsController#landing | todo | N/A — static entry page | 1 |  |  |
-| Browsing permits |  | Ops | PermitsController#index/#filter | todo | 5 permits: draft, submitted, approved | 2 |  |  |
-| Viewing the permits board (pipeline) |  | Ops, Mgr | Permits::PipelinesController#index/show | todo | Permits across Draft/Submitted/Approved/Closed, 2 per stage | 2 |  |  |
-| Creating a permit for a project |  | Ops | PermitsController#new/#create/#duration | todo | Project "Fibre Install - Oak St"; permit type "Major", start 2026-09-01, duration 5 days | 4 |  |  |
-| Editing or deleting a permit |  | Ops | PermitsController#edit/#update/#destroy | todo | Edit working hours/traffic management; delete cancelled permit | 2 |  |  |
-| Viewing a permit's overview page |  | Ops, FE | PermitsController#show/#main | todo | Permit "Permit for Fibre Install - Oak St", Submitted, traffic sensitive | 4 |  |  |
-| Changing a permit's status |  | Ops | PermitsController#status | todo | Permit moved Draft → Submitted | 2 |  |  |
-| Viewing a permit's defects tab |  | Ops | PermitsController#defects | todo | Permit with 1 existing defect "Signage missing" | 2 |  |  |
-| Viewing a permit's linked project |  | Ops | PermitsController#orders | todo | Permit linked to project "Fibre Install - Oak St" | 1 |  |  |
-| Viewing a permit's linked jobs |  | Ops, FE | PermitsController#jobs | todo | Permit linked to 2 jobs on the same project | 1 |  |  |
-| Linking or unlinking a permit to a job |  | Ops | JobPermitsController#create/#destroy | todo | Job linked to permit "Permit for Fibre Install - Oak St", then unlinked | 1 |  |  |
-| Viewing a permit's records |  | Ops | PermitsController#records | todo | Permit with 1 attached record | 1 |  |  |
-| Browsing defects |  | Ops | DefectsController#index | todo | 5 defects of varying type/status across 3 permits | 2 |  |  |
-| Raising a defect against a permit |  | Ops, FE | DefectsController#new/#create | todo | Permit "Permit for Fibre Install - Oak St"; defect type "D1", notice "Notice 123" | 3 |  |  |
-| Editing or deleting a defect |  | Ops | DefectsController#edit/#update/#destroy | todo | Mark inspector_contacted true; delete a resolved defect | 2 |  |  |
-| Viewing a defect |  | Ops, FE | DefectsController#show | todo | Defect "Signage missing", status Open | 2 |  |  |
-| Changing a defect's status |  | Ops | DefectsController#status | todo | Defect "Signage missing" moved Open → Closed | 2 |  |  |
+| Using the permits landing page |  | Ops | PermitsController#landing | done | N/A — static entry page | 1 | 2026-09-13 | v2026.09.01 |
+| Browsing permits |  | Ops | PermitsController#index/#filter | done | 6 permits across draft, submitted, granted, closed, cancelled | 2 | 2026-09-13 | v2026.09.01 |
+| Viewing the permits board (pipeline) |  | Ops, Mgr | Permits::PipelinesController#index/show | done | Permits across Draft/Submitted/Granted (real statuses, not the row's fictional "Approved") | 2 | 2026-09-13 | v2026.09.01 |
+| Creating a permit for a project |  | Ops | PermitsController#new/#create/#duration | done | Project "Fibre Install - Oak St"; permit type "Major", start 2026-09-01, duration 5 days | 4 | 2026-09-13 | v2026.09.01 |
+| Editing or deleting a permit |  | Ops | PermitsController#edit/#update/#destroy | done | Edited working hours (07:00-19:00) and TM Request (Road Closure); deleted a cancelled permit | 2 | 2026-09-13 | v2026.09.01 |
+| Viewing a permit's overview page |  | Ops, FE | PermitsController#show/#main | done | Permit "Permit for Fibre Install - Oak St", Submitted, traffic sensitive | 4 | 2026-09-13 | v2026.09.01 |
+| Changing a permit's status |  | Ops | PermitsController#status | done | Permit moved Draft → Submitted | 2 | 2026-09-13 | v2026.09.01 |
+| Viewing a permit's defects tab |  | Ops | PermitsController#defects | done | Permit with 1 existing defect "Signage missing" | 2 | 2026-09-13 | v2026.09.01 |
+| Viewing a permit's linked project |  | Ops | PermitsController#orders | done | Permit linked to project "Fibre Install - Oak St" | 1 | 2026-09-13 | v2026.09.01 |
+| Viewing a permit's linked jobs |  | Ops, FE | PermitsController#jobs | done | Permit linked to 2 jobs on the same project | 1 | 2026-09-13 | v2026.09.01 |
+| Linking or unlinking a permit to a job |  | Ops | JobPermitsController#create/#destroy | done | Job linked to permit "Permit for Fibre Install - Oak St", then unlinked | 1 | 2026-09-13 | v2026.09.01 |
+| Viewing a permit's records |  | Ops | PermitsController#records | done | Permit with 1 attached record | 1 | 2026-09-13 | v2026.09.01 |
+| Browsing defects |  | Ops | DefectsController#index | done | 5 defects of varying type/status across 3 permits | 2 | 2026-09-13 | v2026.09.01 |
+| Raising a defect against a permit |  | Ops, FE | DefectsController#new/#create | done | Permit "Permit for Fibre Install - Oak St"; defect type "New", notice "Notice 123", D1 Arranged ticked (row's "defect type D1" was actually the D1 Arranged checkbox, not a defect_type value) | 3 | 2026-09-13 | v2026.09.01 |
+| Editing or deleting a defect |  | Ops | DefectsController#edit/#update/#destroy | done | Marked Inspector Contacted true; deleted a resolved (Closed) defect | 2 | 2026-09-13 | v2026.09.01 |
+| Viewing a defect |  | Ops, FE | DefectsController#show | done | Defect "Signage missing", status New (row's "status Open" isn't a real defect status — New/Acknowledged/Disputed/Closed are the real options) | 2 | 2026-09-13 | v2026.09.01 |
+| Changing a defect's status |  | Ops | DefectsController#status | done | Defect "Signage missing" moved New → Closed | 2 | 2026-09-13 | v2026.09.01 |
 
 ## Jobs
 
@@ -463,11 +463,11 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing and filtering the sales lead list |  | Sales | LeadsController#index/#filter | todo | 8 open leads, e.g. "Ashcroft Property Group" (Referral) | 3 |  |  |
-| Creating and editing a sales lead |  | Sales | LeadsController#new/#create/#edit/#update | todo | New lead "Riverside Warehousing Co.", source "Trade Show — BuildExpo 2026" | 4 |  |  |
-| Lead overview, todos, sites, and records tabs |  | Sales | LeadsController#main/#todos/#sites/#records | todo | Lead with 2 todos, 1 prospective site, 1 linked record | 5 |  |  |
-| Converting a lead into a client |  | Sales | LeadsController#convert_to_client | todo | Signed lead "Fenwick Estates" converted to client | 3 |  |  |
-| Archiving a lead |  | Sales | LeadsController#destroy | todo | Disqualified lead "Coldwell Traders" archived | 2 |  |  |
+| Viewing and filtering the sales lead list |  | Sales | LeadsController#index/#filter | done | 8 open leads, e.g. "Ashcroft Property Group" (Referral) | 3 | 2026-09-13 | v2026.09.01 |
+| Creating and editing a sales lead |  | Sales | LeadsController#new/#create/#edit/#update | done | New lead "Riverside Warehousing Co.", source "Trade Show — BuildExpo 2026" | 4 | 2026-09-13 | v2026.09.01 |
+| Lead overview, todos, sites, and records tabs |  | Sales | LeadsController#main/#todos/#sites/#records | done | Lead with 2 todos, 1 prospective site — no Records tab actually exists for Leads (route is unwired to any controller action), so the guide covers Overview, Sites, and Todos only | 5 | 2026-09-13 | v2026.09.01 |
+| Converting a lead into a client |  | Sales | LeadsController#convert_to_client | done | Signed lead "Fenwick Estates" converted to client | 3 | 2026-09-13 | v2026.09.01 |
+| Archiving a lead |  | Sales | LeadsController#destroy | done | Disqualified lead "Coldwell Traders" archived | 2 | 2026-09-13 | v2026.09.01 |
 
 ## Contacts & Addresses
 
@@ -797,7 +797,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 301 / 399
+Completed: 323 / 399
 
 Needs update: 0
 
@@ -871,10 +871,14 @@ Jobs guides completed: 20 / 20
 
 Public Share Links guides completed: 4 / 4
 
+Leads guides completed: 5 / 5
+
+Permits guides completed: 17 / 17
+
 Release breakdown (current version only, for `done` rows):
 
 - v2026.08.02: 19
 - v2026.08.03: 9
 - v2026.08.04: 45
 - v2026.08.05: 95
-- v2026.09.01: 130
+- v2026.09.01: 155

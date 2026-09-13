@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty-seven complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), Contacts & Addresses (2 guides), Invoice Exports (3 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/creating-an-invoice-export-shows-no-selected-invoices-and-crashes-on-create.md)), Hub - Surveys (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/survey-response-drilldown-link-goes-to-wrong-page-and-crashes.md)), Hub - Pages (5 guides), Hub - Channels (5 guides), Public Share Links (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/csrf-token-leaked-into-public-share-redirect-url.md)), and Settings (63 guides across 18 sub-areas) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering, which is why those five areas are no longer listed as complete above even though every one of their guides has been written at least once; see `_progress.md` for details. **Records** (26/26) is now also complete, though two of its guides are currently blocked from human verification by open app bugs (see the Records section below). **Jobs** (20/20) is now also complete, though one of its guides is currently blocked from human verification by an open app bug — see the Jobs section below.
+The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty-nine complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), Contacts & Addresses (2 guides), Invoice Exports (3 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/creating-an-invoice-export-shows-no-selected-invoices-and-crashes-on-create.md)), Hub - Surveys (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/survey-response-drilldown-link-goes-to-wrong-page-and-crashes.md)), Hub - Pages (5 guides), Hub - Channels (5 guides), Public Share Links (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/csrf-token-leaked-into-public-share-redirect-url.md)), Settings (63 guides across 18 sub-areas), Leads (5 guides), and Permits (17 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering, which is why those five areas are no longer listed as complete above even though every one of their guides has been written at least once; see `_progress.md` for details. **Records** (26/26) is now also complete, though two of its guides are currently blocked from human verification by open app bugs (see the Records section below). **Jobs** (20/20) is now also complete, though one of its guides is currently blocked from human verification by an open app bug — see the Jobs section below. **Leads** (5/5) is now also complete. **Permits** (17/17) is now also complete, covering both permits and the defects raised against them.
 
 Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
 
@@ -436,6 +436,38 @@ Custom record types — inspections, audits, and other structured forms attached
 - [Changing and reordering a record's pipeline stage](Records/Changing%20and%20reordering%20a%20record's%20pipeline%20stage.md)
 - [Viewing and filtering the Records pipeline/kanban board](Records/Viewing%20and%20filtering%20the%20Records%20pipeline-kanban%20board.md)
 
+### Leads
+Prospective clients — companies or contacts you're talking to before any work is agreed. All 5 guides are now written.
+
+- [Overview — how browsing, creating, working, and converting or archiving a lead fit together](Leads/_Leads%20-%20Overview.md)
+- [Viewing and filtering the sales lead list](Leads/Viewing%20and%20filtering%20the%20sales%20lead%20list.md)
+- [Creating and editing a sales lead](Leads/Creating%20and%20editing%20a%20sales%20lead.md)
+- [Lead overview, todos, and sites tabs](Leads/Lead%20overview%2C%20todos%2C%20and%20sites%20tabs.md)
+- [Converting a lead into a client](Leads/Converting%20a%20lead%20into%20a%20client.md)
+- [Archiving a lead](Leads/Archiving%20a%20lead.md)
+
+### Permits
+Street-works and traffic-management permits raised against a project, and the defects logged against them. All 17 guides are now written.
+
+- [Overview — how permits, defects, and their links to projects and jobs fit together](Permits/_Permits%20-%20Overview.md)
+- [Using the permits landing page](Permits/Using%20the%20permits%20landing%20page.md)
+- [Browsing permits](Permits/Browsing%20permits.md)
+- [Viewing the permits board (pipeline)](Permits/Viewing%20the%20permits%20board%20%28pipeline%29.md)
+- [Creating a permit for a project](Permits/Creating%20a%20permit%20for%20a%20project.md)
+- [Editing or deleting a permit](Permits/Editing%20or%20deleting%20a%20permit.md)
+- [Viewing a permit's overview page](Permits/Viewing%20a%20permit's%20overview%20page.md)
+- [Changing a permit's status](Permits/Changing%20a%20permit's%20status.md)
+- [Viewing a permit's defects tab](Permits/Viewing%20a%20permit's%20defects%20tab.md)
+- [Viewing a permit's linked project](Permits/Viewing%20a%20permit's%20linked%20project.md)
+- [Viewing a permit's linked jobs](Permits/Viewing%20a%20permit's%20linked%20jobs.md)
+- [Linking or unlinking a permit to a job](Permits/Linking%20or%20unlinking%20a%20permit%20to%20a%20job.md)
+- [Viewing a permit's records](Permits/Viewing%20a%20permit's%20records.md)
+- [Browsing defects](Permits/Browsing%20defects.md)
+- [Raising a defect against a permit](Permits/Raising%20a%20defect%20against%20a%20permit.md)
+- [Editing or deleting a defect](Permits/Editing%20or%20deleting%20a%20defect.md)
+- [Viewing a defect](Permits/Viewing%20a%20defect.md)
+- [Changing a defect's status](Permits/Changing%20a%20defect's%20status.md)
+
 ### Settings
 Tenant admin configuration — organised into one subfolder per Settings sub-area (matching the "Settings: *" sections in `_progress.md`). All 18 sub-areas and 63 guides are now written.
 
@@ -733,6 +765,16 @@ OCU-One-Web-User-Guides/
 ├── Hub - Channels/         Hub - Channels guides
 │   ├── _Hub - Channels - Overview.md
 │   ├── _VERIFICATION.md    verification status for Hub - Channels guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Leads/                  Leads guides
+│   ├── _Leads - Overview.md
+│   ├── _VERIFICATION.md    verification status for Leads guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Permits/                Permits guides (permits and the defects raised against them)
+│   ├── _Permits - Overview.md
+│   ├── _VERIFICATION.md    verification status for Permits guides
 │   ├── ...guide files
 │   └── attachments/        
 └── Zz - Known Bugs/        real product issues found while building guides, not documentation — named to sort last
