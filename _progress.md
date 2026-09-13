@@ -273,10 +273,10 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Viewing and attaching records (surveys/inspections) to a project |  | Ops, FE | OrdersController#records | done | Project with 2 "Pre-Works Survey" records and 1 "H&S Inspection" record | 3 | 2026-08-27 | v2026.08.05 | |
 | Viewing and creating jobs from a project |  | Ops | OrdersController#jobs | done | Project with 6 active jobs across 2 engineers, one overdue | 3 | 2026-08-27 | v2026.08.05 | |
 | Viewing and filtering tasks on a project |  | Ops | OrdersController#tasks; Orders::TasksController#filter | done | Project filtered by Status="In Progress", Task Type="Site Survey" | 2 | 2026-08-27 | v2026.08.05 | |
-| Creating a new task under a project |  | Ops | Orders::TasksController#new/#create | done | Task type "Site Survey" named "Initial roof survey" with product allocation | 3 | 2026-08-27 | v2026.08.05 | |
+| Creating a new task under a project |  | Ops | Orders::TasksController#new/#create | needs update | Task type "Site Survey" named "Initial roof survey" with product allocation | 3 | 2026-08-27 | v2026.08.05 | New Cost Book / Cost Book Version selects added to the task form's product-allocations card, pre-filled from the parent project's rate book — not yet documented. |
 | Viewing and working a task's overview tab |  | Ops, FE | Orders::TasksController#show/#main | done | Task status changed Not Started → In Progress; download PDF | 4 | 2026-08-27 | v2026.08.05 | |
 | Managing a task's product allocations tab | PVA | Ops | Orders::TasksController#products | done | Task "Install Panels - Roof Section A" on project "Riverside Depot Solar Installation"; Solar Panel 400W allocated 12 units from the project's 30, planned quantity changed 12 → 14, 10 units recorded as actually used | 2 | 2026-09-11 | v2026.09.01 (from v2026.08.02) | |
-| Editing or deleting a task |  | Ops | Orders::TasksController#edit/#update/#destroy | done | Rename a task; delete a duplicate task | 2 | 2026-08-27 | v2026.08.05 | |
+| Editing or deleting a task |  | Ops | Orders::TasksController#edit/#update/#destroy | needs update | Rename a task; delete a duplicate task | 2 | 2026-08-27 | v2026.08.05 | The product-allocations card (including the new Cost Book selects) can now also appear on the edit form when the task has no allocations yet, not just on create — not yet documented. |
 | Viewing and managing product allocations on a project | PVA | Ops, Fin | OrdersController#products | done | Project allocated 200m "Ducting 100mm" and 15 "Chamber Cover" | 3 | 2026-08-13 | v2026.08.02 | |
 | Viewing a project's commercial stats dashboard | PVA | Fin, Mgr | OrdersController#stats | done | Project "Colchester Substation Refurbishment", £40k original value vs £45k current planned, £38.2k actual, £30k invoiced, £2.5k pending / £500 approved / £300 applied variations | 3 | 2026-09-11 | v2026.09.01 (from v2026.08.03) | |
 | Viewing and creating estimates on a project |  | Sales, Fin | OrdersController#estimates | done | Project with 1 draft and 1 approved estimate (£12,400) | 2 | 2026-08-27 | v2026.08.05 | |
@@ -571,6 +571,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Attaching a field set to a type |  | Admin | Settings::FieldableFieldSetsController#move | done | Field Set "Fibre Install Details" attached to new Asset Type "ONT Router" | 3 | 2026-09-11 | v2026.09.01 |
 | Building a custom form |  | Admin | Settings::FormsController, PagesController | done | Form "Fibre Install Site Survey" (attached to "Fibre Install Details" field set) with 2 pages: "Site Details" (List) and "Live Walkthrough" (Live Video) | 5 | 2026-09-11 | v2026.09.01 |
 | Adding elements to a form page |  | Admin | Settings::ElementsController, ElementRecordFieldTypesController#move | done | "Site Details" page with Take Photo, Draw (signature), Dropdown (bound to Fibre Type), and Records elements | 6 | 2026-09-11 | v2026.09.01 |
+| Configuring an attachment-type field's display options (eager load, show on PDF) |  | Admin | Settings::FieldsController#toggle_attachment_eager_load/#toggle_attachment_show_on_pdf/#update_attachment | todo | | | | |
 
 ## Settings: Pipelines & Stages
 
@@ -600,6 +601,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Restricting an automation rule to specific record types |  | Admin | Settings::Rules::RuleTargetTypesController | done | Rule restricted to Job Types "Fibre Install"/"Install" (hint's "Fibre Repair" is a Project Type, not a Job Type, so not selectable here) | 3 | 2026-09-11 | v2026.09.01 |
 | Common trigger types reference |  | Admin | Settings::Rules::Triggers::* controllers | done | Full trigger picker list for a Job-targeted rule (15 trigger types) | 5 | 2026-09-11 | v2026.09.01 |
 | Common action types reference |  | Admin | Settings::Rules::Actions::* controllers | done | Full action picker list for a Job-targeted rule (24 action types), Add Warning detail | 5 | 2026-09-11 | v2026.09.01 |
+| Common condition types reference |  | Admin | Settings::Rules::Conditions::* controllers | todo | | | | |
 
 ## Settings: Journeys
 
@@ -797,9 +799,9 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 323 / 399
+Completed: 321 / 401
 
-Needs update: 0
+Needs update: 2
 
 Access & Visibility guides completed: 3 / 3
 
@@ -809,7 +811,7 @@ Product Allocations guides completed: 7 / 7
 
 Products & Rates guides completed: 11 / 11
 
-Projects guides completed: 36 / 36
+Projects guides completed: 34 / 36
 
 Timesheets guides completed: 18 / 18
 
@@ -853,7 +855,7 @@ Map guides completed: 1 / 1
 
 Records guides completed: 26 / 26
 
-Settings guides completed: 63 / 63
+Settings guides completed: 63 / 65
 
 Tasks guides completed: 1 / 1
 
@@ -880,5 +882,5 @@ Release breakdown (current version only, for `done` rows):
 - v2026.08.02: 19
 - v2026.08.03: 9
 - v2026.08.04: 45
-- v2026.08.05: 95
+- v2026.08.05: 93
 - v2026.09.01: 155

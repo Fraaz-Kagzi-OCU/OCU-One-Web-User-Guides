@@ -314,6 +314,61 @@ function findGuideFile(topicFolder, guideTitle, warnings) {
 }
 
 // ===========================================================================
+// Inter-guide links
+// ===========================================================================
+
+function stripAnchor(href) {
+  const hashIndex = href.indexOf('#');
+  if (hashIndex === -1) return { rawPath: href, anchor: '' };
+  return { rawPath: href.slice(0, hashIndex), anchor: href.slice(hashIndex) };
+}
+
+function isExternalOrSpecial(href) {
+  return /^([a-z][a-z0-9+.-]*:|#|attachments\/)/i.test(href);
+}
+
+/** Resolves Obsidian wikilinks ("[[Some Guide]]" or "[[Some Guide|display
+ * text]]", optionally with a "#heading" suffix) into ordinary markdown links
+ * to the matching guide's generated output page. Obsidian resolves these by
+ * note basename regardless of folder, so the lookup here does the same
+ * (basenameToOutFile is keyed by vault filename, not by title). Left
+ * unchanged — same as Obsidian's own "unresolved link" look — when no guide
+ * with that basename is part of this build. */
+function rewriteWikilinks(markdown, currentOutFile, basenameToOutFile) {
+  return markdown.replace(/\[\[([^\]|#]+)(#[^\]|]*)?(?:\|([^\]]+))?\]\]/g, (full, target, _heading, alias) => {
+    const targetOutFile = basenameToOutFile.get(target.trim());
+    if (!targetOutFile) return full;
+
+    const newHref = path.relative(path.dirname(currentOutFile), targetOutFile).split(path.sep).join('/');
+    const text = (alias || target).trim();
+    return `[${text}](${newHref})`;
+  });
+}
+
+/** Rewrites a guide's own inter-guide links so they resolve on the generated
+ * site. Source guides link to each other with vault-relative "*.md" paths
+ * (e.g. "Viewing a permit's overview page.md") — these work fine in Obsidian,
+ * but the site renames/moves every guide to "<topic>/<slugified-title>.html",
+ * so left unrewritten they 404. Links to a guide that isn't part of this
+ * build (already verified, blocked, or otherwise excluded — see the module
+ * docstring) are left as-is, since no output page exists for them to point
+ * to either way. */
+function rewriteGuideLinks(markdown, currentFilePath, currentOutFile, fileToOutFile) {
+  return markdown.replace(/(!?)\[([^\]]*)\]\(([^)\s]+)\)/g, (full, bang, text, href) => {
+    if (bang || isExternalOrSpecial(href)) return full;
+    const { rawPath, anchor } = stripAnchor(href);
+    if (!/\.md$/i.test(rawPath)) return full;
+
+    const targetAbs = path.resolve(path.dirname(currentFilePath), decodeURIComponent(rawPath));
+    const targetOutFile = fileToOutFile.get(targetAbs);
+    if (!targetOutFile) return full;
+
+    const newHref = path.relative(path.dirname(currentOutFile), targetOutFile).split(path.sep).join('/');
+    return `[${text}](${newHref}${anchor})`;
+  });
+}
+
+// ===========================================================================
 // Attachments
 // ===========================================================================
 
@@ -569,7 +624,7 @@ function main() {
 
       // Confirmed above to match _progress.md exactly, so row.guide here
       // *is* the _progress.md string — not a coincidence, a checked fact.
-      guides.push({ title: row.guide, version, outFile, guideContent });
+      guides.push({ title: row.guide, version, outFile, guideContent, filePath: guideFile });
     }
 
     if (guides.length > 0) {
@@ -579,10 +634,24 @@ function main() {
 
   const topicsWithCounts = topicPages.map(({ topic, guides }) => ({ ...topic, count: guides.length }));
 
+  // Map every guide's source vault path to its generated output path, so
+  // inter-guide links (see rewriteGuideLinks) can be resolved regardless of
+  // which topic either end lives in.
+  const fileToOutFile = new Map();
+  const basenameToOutFile = new Map();
+  for (const { guides } of topicPages) {
+    for (const guide of guides) {
+      fileToOutFile.set(guide.filePath, guide.outFile);
+      basenameToOutFile.set(path.basename(guide.filePath, '.md'), guide.outFile);
+    }
+  }
+
   // Guide pages
   for (const { topic, guides } of topicPages) {
     for (const guide of guides) {
-      const renderedMarkdown = marked.parse(guide.guideContent);
+      let linkedMarkdown = rewriteGuideLinks(guide.guideContent, guide.filePath, guide.outFile, fileToOutFile);
+      linkedMarkdown = rewriteWikilinks(linkedMarkdown, guide.outFile, basenameToOutFile);
+      const renderedMarkdown = marked.parse(linkedMarkdown);
       const body = `
 <span class="guide-meta">Version ${escapeHtml(guide.version || '—')} · Unverified</span>
 ${renderedMarkdown}
