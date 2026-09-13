@@ -6,20 +6,20 @@ A **survey** is a set of questions you send out through a Hub channel and ask pe
 
 1. Open the Hub channel you want to send the survey through, then click **Create Survey** in the right-hand panel.
 
-   ![Create Survey Request dialog with empty Title and Survey Type fields](attachments/Creating%20a%20survey%20and%20setting%20up%20its%20questions/01-create-survey-modal-blank.jpg)
+   ![Create Survey Request dialog with empty Title and Survey Type fields](attachments/creating-a-survey-and-setting-up-its-questions/01-create-survey-modal-blank.jpg)
 
 2. Fill in:
    - **Title** — what people will see in the channel feed, e.g. **Q3 Site Safety Feedback**.
    - **Survey Type** — search and pick from the survey types already set up for your organisation. This is what actually decides the questions people will answer — you can't add or edit individual questions from here.
    - **Must read?** — tick this if people should be required to acknowledge the survey.
 
-   ![Title filled in as "Q3 Site Safety Feedback" with the Survey Type dropdown open showing "Sample Survey" and "Site Safety Checklist"](attachments/Creating%20a%20survey%20and%20setting%20up%20its%20questions/02-title-filled-type-dropdown-open.jpg)
+   ![Title filled in as "Q3 Site Safety Feedback" with the Survey Type dropdown open showing "Sample Survey" and "Site Safety Checklist"](attachments/creating-a-survey-and-setting-up-its-questions/02-title-filled-type-dropdown-open.jpg)
 
-   ![Survey Type field now showing "Site Safety Checklist" selected](attachments/Creating%20a%20survey%20and%20setting%20up%20its%20questions/03-survey-type-selected.jpg)
+   ![Survey Type field now showing "Site Safety Checklist" selected](attachments/creating-a-survey-and-setting-up-its-questions/03-survey-type-selected.jpg)
 
 3. Click **Create Survey Request**. It appears straight away in the channel feed as a card with a **Draft** badge — only you (and other admins) can see it at this point.
 
-   ![New survey card in the channel feed, showing a Draft badge and the title "Q3 Site Safety Feedback"](attachments/Creating%20a%20survey%20and%20setting%20up%20its%20questions/04-draft-card-in-feed.jpg)
+   ![New survey card in the channel feed, showing a Draft badge and the title "Q3 Site Safety Feedback"](attachments/creating-a-survey-and-setting-up-its-questions/04-draft-card-in-feed.jpg)
 
 ## Things to know
 

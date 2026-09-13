@@ -6,15 +6,15 @@ A **Visit Plan** is a reusable schedule for recurring maintenance visits — for
 
 1. From the Visit Plans list, click **+ Visit Plan**.
 
-   ![Visit Plans list, empty, with the + Visit Plan button](attachments/Creating%20a%20shared%20visit%20plan%20and%20its%20recurring%20visit%20schedules/01-visit-plans-empty-filtered.jpg)
+   ![Visit Plans list, empty, with the + Visit Plan button](attachments/creating-a-shared-visit-plan-and-its-recurring-visit-schedules/01-visit-plans-empty-filtered.jpg)
 
 2. Enter a **Name** — for example **Quarterly Fire Safety Servicing** — and click **Create Visit Plan**.
 
-   ![New Visit Plan form with the Name field filled in](attachments/Creating%20a%20shared%20visit%20plan%20and%20its%20recurring%20visit%20schedules/02-new-visit-plan-form.jpg)
+   ![New Visit Plan form with the Name field filled in](attachments/creating-a-shared-visit-plan-and-its-recurring-visit-schedules/02-new-visit-plan-form.jpg)
 
 3. You're taken straight to the new plan's page, on its **Visit Schedules** tab — empty until you add a schedule.
 
-   ![Newly created "Quarterly Fire Safety Servicing" plan with an empty Visit Schedules tab and the + Visit Schedule button](attachments/Creating%20a%20shared%20visit%20plan%20and%20its%20recurring%20visit%20schedules/03-visit-plan-created-empty-schedules.jpg)
+   ![Newly created "Quarterly Fire Safety Servicing" plan with an empty Visit Schedules tab and the + Visit Schedule button](attachments/creating-a-shared-visit-plan-and-its-recurring-visit-schedules/03-visit-plan-created-empty-schedules.jpg)
 
 ## Adding a recurring visit schedule
 
@@ -23,11 +23,11 @@ Click **+ Visit Schedule** and fill in:
 - The row of day letters (M T W T F S S) — pick at least one day; this is required even when repeating monthly or yearly.
 - **Make [Visit Type] visit [X] days in advance** — which type of visit to create, and how many days ahead of the due date it should be raised.
 
-![New Visit Schedule form: repeat every 3 Month, Monday selected, Battery Checkup visit type, 7 days in advance](attachments/Creating%20a%20shared%20visit%20plan%20and%20its%20recurring%20visit%20schedules/04-new-visit-schedule-form.jpg)
+![New Visit Schedule form: repeat every 3 Month, Monday selected, Battery Checkup visit type, 7 days in advance](attachments/creating-a-shared-visit-plan-and-its-recurring-visit-schedules/04-new-visit-schedule-form.jpg)
 
 Click **Create Visit Schedule**. It's added to the plan's Visit Schedules tab, described in plain English:
 
-![Visit Schedules tab showing "Every 3 months — Make Battery Checkup visit 7 days in advance"](attachments/Creating%20a%20shared%20visit%20plan%20and%20its%20recurring%20visit%20schedules/05-visit-schedule-created.jpg)
+![Visit Schedules tab showing "Every 3 months — Make Battery Checkup visit 7 days in advance"](attachments/creating-a-shared-visit-plan-and-its-recurring-visit-schedules/05-visit-schedule-created.jpg)
 
 ## Editing or removing a schedule
 
@@ -35,7 +35,7 @@ Click a schedule's description (e.g. "Every 3 months") to reopen it in the same 
 
 To remove a schedule entirely, click the trash icon on its row. You'll be asked to confirm:
 
-![Confirm dialog asking "Are you sure you want to delete this?"](attachments/Creating%20a%20shared%20visit%20plan%20and%20its%20recurring%20visit%20schedules/06-delete-schedule-confirm.jpg)
+![Confirm dialog asking "Are you sure you want to delete this?"](attachments/creating-a-shared-visit-plan-and-its-recurring-visit-schedules/06-delete-schedule-confirm.jpg)
 
 ## Things to know
 

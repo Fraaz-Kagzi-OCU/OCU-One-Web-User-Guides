@@ -6,7 +6,7 @@ A **survey type** defines a kind of survey your organisation can send out throug
 
 1. From the Settings landing page, find **Survey Types** under the **Hub** section, then click **+ Survey Type** on that list.
 
-   ![Settings landing page with the Hub section expanded, showing Journeys, Survey Types, and Launcher Apps](attachments/Configuring%20Hub%20survey%20types/00-settings-hub-section.jpg)
+   ![Settings landing page with the Hub section expanded, showing Journeys, Survey Types, and Launcher Apps](attachments/configuring-hub-survey-types/00-settings-hub-section.jpg)
 
 2. Fill in the survey type's details:
    - **Name** — for example **Site Safety Walkaround**.
@@ -16,17 +16,17 @@ A **survey type** defines a kind of survey your organisation can send out throug
    - **Icon** and **Colour** — how the survey type is represented visually in lists.
    - **Default tags** — tags that are automatically applied to anything created from this survey type. Start typing to search existing tags.
 
-   ![New Survey Type form filled in with name, attached form, description, and a default tag](attachments/Configuring%20Hub%20survey%20types/02-new-survey-type-form.jpg)
+   ![New Survey Type form filled in with name, attached form, description, and a default tag](attachments/configuring-hub-survey-types/02-new-survey-type-form.jpg)
 
 3. Click **Create Survey Type**. It's added to the list, owned by whoever created it:
 
-   ![Survey Types list filtered to "Site Safety Walkaround", showing its owner and active state](attachments/Configuring%20Hub%20survey%20types/07-survey-types-list-filtered.jpg)
+   ![Survey Types list filtered to "Site Safety Walkaround", showing its owner and active state](attachments/configuring-hub-survey-types/07-survey-types-list-filtered.jpg)
 
 ## Viewing and editing a survey type
 
 Click a survey type's name to open it in the same form used to create it, with its current values filled in. Change any field and click **Update Survey Type** to save.
 
-![Site Safety Walkaround survey type open for editing, showing its saved form, description, and default tag](attachments/Configuring%20Hub%20survey%20types/03-survey-type-edit-view.jpg)
+![Site Safety Walkaround survey type open for editing, showing its saved form, description, and default tag](attachments/configuring-hub-survey-types/03-survey-type-edit-view.jpg)
 
 Two icons sit at the bottom-right of this panel:
 - A **lock** icon showing the survey type's access.
@@ -36,15 +36,15 @@ Two icons sit at the bottom-right of this panel:
 
 Click the eye icon to deactivate a survey type that's no longer in use. You'll be asked to confirm:
 
-![Confirm dialog asking "Are you sure you want to deactivate this?"](attachments/Configuring%20Hub%20survey%20types/04-deactivate-confirm.jpg)
+![Confirm dialog asking "Are you sure you want to deactivate this?"](attachments/configuring-hub-survey-types/04-deactivate-confirm.jpg)
 
 Once deactivated, the icon changes to an eye with a line through it, and the survey type's **Lifecycle Status** shows as inactive in the list:
 
-![Survey type panel showing the deactivated state, with the eye-slash icon highlighted](attachments/Configuring%20Hub%20survey%20types/05-deactivated-state.jpg)
+![Survey type panel showing the deactivated state, with the eye-slash icon highlighted](attachments/configuring-hub-survey-types/05-deactivated-state.jpg)
 
 Click the same icon again to reactivate it — you'll get a matching confirmation first:
 
-![Confirm dialog asking "Are you sure you want to activate this?"](attachments/Configuring%20Hub%20survey%20types/06-activate-confirm.jpg)
+![Confirm dialog asking "Are you sure you want to activate this?"](attachments/configuring-hub-survey-types/06-activate-confirm.jpg)
 
 ## Things to know
 

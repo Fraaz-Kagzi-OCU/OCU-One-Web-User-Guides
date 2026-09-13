@@ -28,7 +28,7 @@ The form closes but lands on the **Rates** (sell) tab instead of Costs.
 
 ## Screenshot or Video
 
-![Clicking "Add New Cost" from the Costs tab, filling in a cost rate, then clicking Never mind — landing on the Rates tab instead of back on Costs](attachments/managing-cost-rates-on-a-product/cost-rate-cancel-returns-to-rates-tab.gif)
+![Clicking "Add New Cost" from the Costs tab, filling in a cost rate, then clicking Never mind — landing on the Rates tab instead of back on Costs](attachments/cancelling-a-new-cost-rate-lands-on-the-rates-tab-not-costs/cost-rate-cancel-returns-to-rates-tab.gif)
 
 ## Root cause (brief)
 

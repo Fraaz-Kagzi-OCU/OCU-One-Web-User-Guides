@@ -28,9 +28,9 @@ The badge visually updates to the new colour right after picking it, but the cha
 
 ## Screenshot or Video
 
-![Picking "Red" on a booked job's RAG Status dropdown, then reloading to reveal it silently reverted to "Amber"](attachments/tracking-a-jobs-rag-health-status/02-rag-status-silent-failure.gif)
+![Picking "Red" on a booked job's RAG Status dropdown, then reloading to reveal it silently reverted to "Amber"](attachments/rag-status-change-silently-fails-on-a-live-job/02-rag-status-silent-failure.gif)
 
-![The job's RAG Status back to "Amber" after reload, despite having just picked "Red"](attachments/tracking-a-jobs-rag-health-status/03-reverted-to-amber-after-reload.jpg)
+![The job's RAG Status back to "Amber" after reload, despite having just picked "Red"](attachments/rag-status-change-silently-fails-on-a-live-job/03-reverted-to-amber-after-reload.jpg)
 
 ## Root cause (brief)
 
