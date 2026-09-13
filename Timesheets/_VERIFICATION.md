@@ -17,7 +17,7 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 | Guide                                                                        | Verified | Verified by | Date | Version     | Notes |
 | ----------------------------------------------------------------------------- | -------- | ----------- | ---- | ----------- | ----- |
-| Clocking in and starting a shift                                             | No       |             |      | v2026.09.01 |       |
+| Clocking in and starting a shift                                             | Yes      | Daniela Ribeiro | 11/09/2026 | v2026.09.01 | <!-- synced: 11/09/2026 16:19:41 --> |
 | Ending a shift and confirming hours worked                                   | No       |             |      | v2026.08.02 |       |
 | Viewing and editing an individual timesheet                                  | No       |             |      | v2026.08.04 | Rewritten 2026-09-03 to cover the Active Duration field's 18-hour cap. Not yet human-verified. |
 | Logging a break or other shift event                                        | No       |             |      | v2026.08.02 |       |
@@ -53,4 +53,4 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 ## Summary
 
-Verified: 0 / 18
+Verified: 1 / 18

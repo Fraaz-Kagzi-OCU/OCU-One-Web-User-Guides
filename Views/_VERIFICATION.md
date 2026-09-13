@@ -27,7 +27,7 @@ Tracks whether a human has actually checked each guide against the live app — 
 | ----------------------------------------------------- | -------- | ----------- | ---------- | ----------- | --------------------------------------- |
 | Saving current filters-columns as a new personal view | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
 | Renaming and updating an existing saved view          | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
-| Switching between saved views on a list screen        | No      |  |  | v2026.09.01 |       |
+| Switching between saved views on a list screen        | Yes     | Fraaz Kagzi | 11/09/2026 | v2026.09.01 | <!-- synced: 11/09/2026 15:27:40 --> |
 | Favouriting a saved view                              | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 |                                         |
 | Managing all your saved views (My Views)              | Yes      | Fraaz Kagzi | 17/08/2026 | v2026.08.02 | Yes: gated by the `manage_views` permission in permission_set_settings (ViewImplicitPolicy#index?), not user.admin, so any role granted that permission can access it. Edit/activate/deactivate/destroy/move further require owning the view or being admin (ViewPolicy#update?). |
 
@@ -39,4 +39,4 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 ## Summary
 
-Verified: 7 / 9
+Verified: 8 / 9
