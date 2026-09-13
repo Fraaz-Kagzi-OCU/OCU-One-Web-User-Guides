@@ -18,14 +18,17 @@ Settings has its own nested structure, one subfolder per Settings sub-area (`Ove
 | Access Control            | 0 / 2   |      |
 | Automation                | 0 / 4   |      |
 | Groups & Hierarchy        | 0 / 3   |      |
-| Imports & Integrations    | 0 / 1   |      |
+| Imports & Integrations    | 0 / 5   |      |
 | Hub Administration        | 0 / 2   |      |
 | Journeys                  | 0 / 1   |      |
 | Labels                    | 0 / 1   |      |
 | Overview                  | 0 / 1   |      |
 | Pipelines & Stages        | 0 / 2   |      |
 | Scheduling Reference Data | 0 / 2   |      |
+| Skills Administration     | 0 / 3   |      |
+| SLA Configuration         | 0 / 4   |      |
 | Tags & Notifications      | 0 / 2   |      |
+| Team & Users              | 0 / 14  |      |
 | Type Management           | 0 / 8   |      |
 | Views & Organization      | 0 / 1   |      |
 | Visit Scheduling          | 0 / 2   |      |
@@ -33,5 +36,5 @@ Settings has its own nested structure, one subfolder per Settings sub-area (`Ove
 
 ## Summary
 
-Sub-areas fully verified: 0 / 15
-Guides verified: 0 / 38
+Sub-areas fully verified: 0 / 18
+Guides verified: 0 / 63

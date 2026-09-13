@@ -56,7 +56,13 @@ reviewers, and comes back once the bug is fixed (`/recheck-bugs` →
 | [Creating and managing rotating shift patterns](Settings/Scheduling%20Reference%20Data/Creating%20and%20managing%20rotating%20shift%20patterns.md) | Settings: Scheduling Reference Data | [launcher-apps-include-closed-does-not-show-deactivated-apps](Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md) | No | Open | |
 | [Creating and managing rotating shift patterns](Settings/Scheduling%20Reference%20Data/Creating%20and%20managing%20rotating%20shift%20patterns.md) | Settings: Scheduling Reference Data | [shift-cannot-be-created-back-to-back-with-adjacent-shift](Zz%20-%20Known%20Bugs/shift-cannot-be-created-back-to-back-with-adjacent-shift.md) | No | Open | |
 | [Managing availability types](Settings/Scheduling%20Reference%20Data/Managing%20availability%20types.md) | Settings: Scheduling Reference Data | [launcher-apps-include-closed-does-not-show-deactivated-apps](Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md) | No | Open | |
+| [Creating a batch invoice export](Invoice%20Exports/Creating%20a%20batch%20invoice%20export.md) | Invoice Exports | [creating-an-invoice-export-shows-no-selected-invoices-and-crashes-on-create](Zz%20-%20Known%20Bugs/creating-an-invoice-export-shows-no-selected-invoices-and-crashes-on-create.md) | No | Open | |
+| [Viewing survey results and individual responses](Hub%20-%20Surveys/Viewing%20survey%20results%20and%20individual%20responses.md) | Hub - Surveys | [survey-response-drilldown-link-goes-to-wrong-page-and-crashes](Zz%20-%20Known%20Bugs/survey-response-drilldown-link-goes-to-wrong-page-and-crashes.md) | No | Open | |
+| [Managing jobs linked to a record](Records/Managing%20jobs%20linked%20to%20a%20record.md) | Records | [job-created-with-nil-client-crashes-project-jobs-tab](Zz%20-%20Known%20Bugs/job-created-with-nil-client-crashes-project-jobs-tab.md) | No | Open | |
+| [Attaching and detaching a permit on a record](Records/Attaching%20and%20detaching%20a%20permit%20on%20a%20record.md) | Records | [draft-permit-unsearchable-in-attach-picker](Zz%20-%20Known%20Bugs/draft-permit-unsearchable-in-attach-picker.md) | No | Open | |
+| [Tracking a job's RAG health status](Jobs/Tracking%20a%20job's%20RAG%20health%20status.md) | Jobs | [rag-status-change-silently-fails-on-a-live-job](Zz%20-%20Known%20Bugs/rag-status-change-silently-fails-on-a-live-job.md) | No | Open | |
+| [Accessing a Shared Intake Link and Identifying Yourself](Public%20Share%20Links/Accessing%20a%20Shared%20Intake%20Link%20and%20Identifying%20Yourself.md) | Public Share Links | [csrf-token-leaked-into-public-share-redirect-url](Zz%20-%20Known%20Bugs/csrf-token-leaked-into-public-share-redirect-url.md) | No | Open | |
 
 ## Summary
 
-Bugged: 15 (0 resolved)
+Bugged: 21 (0 resolved)

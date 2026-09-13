@@ -34,7 +34,18 @@
 - [Common trigger types reference](Automation/Common%20trigger%20types%20reference.md) — every event a rule can start from
 - [Common action types reference](Automation/Common%20action%20types%20reference.md) — every effect a rule can trigger
 - [Importing data via CSV](Imports%20%26%20Integrations/Importing%20data%20via%20CSV.md) — bulk-loading data from a CSV file, choosing a format, and reviewing what imported
+- [Monitoring mobile and web uploads](Imports%20%26%20Integrations/Monitoring%20mobile%20and%20web%20uploads.md) — every piece of data the mobile app has queued up, and resolving stuck or failed uploads
+- [Managing mobile app shortcut links](Imports%20%26%20Integrations/Managing%20mobile%20app%20shortcut%20links.md) — shortcuts to external resources shown inside the mobile app
+- [Managing web dashboard links](Imports%20%26%20Integrations/Managing%20web%20dashboard%20links.md) — embedding an external dashboard, like a Power BI report, directly in the web app
+- [Monitoring gateway and API messages](Imports%20%26%20Integrations/Monitoring%20gateway%20and%20API%20messages.md) — every message flowing to and from connected external systems, and retrying failures
 - [Creating permission sets (per-module grants and per-type overrides)](Access%20Control%20%28Roles%20%26%20Permissions%29/Creating%20permission%20sets%20%28per-module%20grants%20and%20per-type%20overrides%29.md) — module-wide grants with optional per-type fine-tuning
 - [Creating roles and assigning permission sets](Access%20Control%20%28Roles%20%26%20Permissions%29/Creating%20roles%20and%20assigning%20permission%20sets.md) — bundling a permission set per module into one role people can be assigned
+- [Managing skills](Skills%20Administration/Managing%20skills.md) — the individual certifications and trained abilities tracked across the app
+- [Building skill sets](Skills%20Administration/Building%20skill%20sets.md) — bundling several skills together into what a job role needs, each with its own importance level
+- [Defining skill requirements](Skills%20Administration/Defining%20skill%20requirements.md) — the certificates or evidence that prove someone holds a skill, with expiry and grace periods
+- [Creating an SLA type and its escalation thresholds](SLA%20Configuration/Creating%20an%20SLA%20type%20and%20its%20escalation%20thresholds.md) — the amber/red/breach timings a service-level agreement escalates through
+- [Defining SLA stage policies](SLA%20Configuration/Defining%20SLA%20stage%20policies.md) — pausing, resuming, or otherwise acting on an SLA clock automatically as a record moves through pipeline stages
+- [Assigning SLA types to record, project, ticket, and user types](SLA%20Configuration/Assigning%20SLA%20types%20to%20record%2C%20project%2C%20ticket%2C%20and%20user%20types.md) — making an SLA type available manually or automatically on real record/project/ticket/user types
+- [Configuring SLA working-hour periods](SLA%20Configuration/Configuring%20SLA%20working-hour%20periods.md) — the working hours an SLA clock actually counts against
 
 This folder will keep growing as more of the many other Settings sub-areas (asset/job/project types, pipelines, rate configuration, roles & permissions, and more) get written up.

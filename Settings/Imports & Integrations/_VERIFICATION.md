@@ -17,7 +17,11 @@ Tracks whether a human has actually checked each guide against the live app — 
 | Guide | Verified | Verified by | Date | Version | Notes |
 | ----- | -------- | ------------ | ---- | ------- | ----- |
 | Importing data via CSV | No |  |  | v2026.09.01 | Demonstrates a failed import (ASM Projects format needs tenant-configured order types not present in this dev DB) alongside the create/upload flow |
+| Monitoring mobile & web uploads | No |  |  | v2026.09.01 |  |
+| Managing mobile app shortcut links | No |  |  | v2026.09.01 |  |
+| Managing web dashboard links | No |  |  | v2026.09.01 |  |
+| Monitoring gateway/API messages | No |  |  | v2026.09.01 |  |
 
 ## Summary
 
-Verified: 0 / 1
+Verified: 0 / 5

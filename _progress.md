@@ -189,26 +189,26 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating a job |  | Ops | JobsController#new/#create | todo | 3 job types with different defaults, 1 open project, 2 clients, 1 field engineer | 4 |  |  |
-| Creating a job from existing visits |  | Ops | JobsController#new_with_visits/#create_with_visits | todo | 5 pending unbooked visits, 2 eligible job types | 3 |  |  |
-| Viewing job details |  | Ops, FE | JobsController#show/#main | todo | 1 booked job with allocated user, project, 3 tasks, 2 todos, address, 2 activity entries | 3 |  |  |
-| Editing a job |  | Ops | JobsController#edit/#update | todo | Existing job whose job type allows editing allocation/rate book | 3 |  |  |
-| Deleting (archiving) a job |  | Ops | JobsController#destroy | todo | 1 unlinked job + 1 job linked to a locked project (failure path) | 2 |  |  |
-| Changing a job's status |  | Ops, FE | JobsController#status/#review_book/#book | todo | Unallocated job (warning path); fully-booked job with sub-statuses "On Site"/"Delayed"; new review/confirm step before a status change actually books the job | 4 |  |  |
-| Unbooking a job |  | Ops | JobsController#unbook/#status | todo | Job in "booked" status with a scheduled start time | 2 |  |  |
-| Tracking a job's RAG health status |  | Ops, Mgr | JobsController#rag_status | todo | 3 jobs set red/amber/green respectively | 2 |  |  |
-| Managing secondary allocated users on a job |  | Ops | JobsController#promote_secondary_allocated_user | todo | Job with secondary users enabled and 2 extra crew members | 3 |  |  |
-| Downloading or previewing a job PDF |  | Ops, FE | JobsController#download | todo | 1 default-template job, 1 job-type with a custom PDF template | 2 |  |  |
-| Attaching or detaching an estimate to a job |  | Ops, Sales | JobsController#attach_estimate/#detach_estimate | todo | 1 approved unlinked estimate; 1 job already linked to a different estimate | 3 |  |  |
-| Allocating products to a job |  | Ops | JobsController#products | todo | Job type with product allocations enabled, rate book with 5 products | 2 |  |  |
-| Tracking todos on a job |  | Ops, FE | JobsController#todos | todo | Job with 4 todos, mixed complete/incomplete | 2 |  |  |
-| Managing visits attached to a job |  | Ops | JobsController#visits | todo | Job with 2 attached visits, 3 unattached pending visits | 2 |  |  |
-| Viewing assets linked to a job |  | Ops, FE | JobsController#assets | todo | Job whose site address has 3 registered assets | 1 |  |  |
-| Viewing issues linked to a job |  | Ops, FE | JobsController#issues | todo | Job with 2 open issues (one via asset, one via visit) | 1 |  |  |
-| Managing records on a job |  | Ops, FE | JobsController#records | todo | Job type with 2 custom record types ("Risk Assessment", "Completion Certificate") | 2 |  |  |
-| Linking permits to a job |  | Ops | JobsController#permits; JobPermitsController#create/#destroy | todo | Job linked to a project with 2 active permits; 1 already-linked to detach | 2 |  |  |
-| Browsing and filtering the jobs list |  | Ops | JobsController#index/#filter/#autocomplete | todo | 10+ jobs across statuses/types/users, 1 saved view | 2 |  |  |
-| Viewing jobs on a pipeline (kanban) board |  | Ops, Mgr | Jobs::PipelinesController#show/#filter | todo | 8 jobs across 4+ status columns | 3 |  |  |
+| Creating a job |  | Ops | JobsController#new/#create | done | 3 job types with different defaults, 1 open project, 2 clients, 1 field engineer | 4 | 2026-09-13 | v2026.09.01 |
+| Creating a job from existing visits |  | Ops | JobsController#new_with_visits/#create_with_visits | done | 5 pending unbooked visits, 2 eligible job types | 3 | 2026-09-13 | v2026.09.01 |
+| Viewing job details |  | Ops, FE | JobsController#show/#main | done | 1 booked job with allocated user, project, 3 tasks, 2 todos, address, 2 activity entries | 3 | 2026-09-13 | v2026.09.01 |
+| Editing a job |  | Ops | JobsController#edit/#update | done | Existing job whose job type allows editing allocation/rate book | 3 | 2026-09-13 | v2026.09.01 |
+| Deleting (archiving) a job |  | Ops | JobsController#destroy | done | 1 unlinked job + 1 job linked to a locked project (failure path) | 2 | 2026-09-13 | v2026.09.01 |
+| Changing a job's status |  | Ops, FE | JobsController#status/#review_book/#book | done | Unallocated job (warning path); fully-booked job with sub-statuses "On Site"/"Delayed"; new review/confirm step before a status change actually books the job | 4 | 2026-09-13 | v2026.09.01 |
+| Unbooking a job |  | Ops | JobsController#unbook/#status | done | Job in "booked" status with a scheduled start time | 2 | 2026-09-13 | v2026.09.01 |
+| Tracking a job's RAG health status |  | Ops, Mgr | JobsController#rag_status | done | 3 jobs set red/amber/green respectively | 2 | 2026-09-13 | v2026.09.01 |
+| Managing secondary allocated users on a job |  | Ops | JobsController#promote_secondary_allocated_user | done | Job with secondary users enabled and 2 extra crew members | 3 | 2026-09-13 | v2026.09.01 |
+| Downloading or previewing a job PDF |  | Ops, FE | JobsController#download | done | 1 default-template job, 1 job-type with a custom PDF template | 2 | 2026-09-13 | v2026.09.01 |
+| Attaching or detaching an estimate to a job |  | Ops, Sales | JobsController#attach_estimate/#detach_estimate | done | 1 approved unlinked estimate; 1 job already linked to a different estimate | 3 | 2026-09-13 | v2026.09.01 |
+| Allocating products to a job |  | Ops | JobsController#products | done | Job type with product allocations enabled, rate book with 5 products | 2 | 2026-09-13 | v2026.09.01 |
+| Tracking todos on a job |  | Ops, FE | JobsController#todos | done | Job with 4 todos, mixed complete/incomplete | 2 | 2026-09-13 | v2026.09.01 |
+| Managing visits attached to a job |  | Ops | JobsController#visits | done | Job with 2 attached visits, 3 unattached pending visits | 2 | 2026-09-13 | v2026.09.01 |
+| Viewing assets linked to a job |  | Ops, FE | JobsController#assets | done | Job whose site address has 3 registered assets | 1 | 2026-09-13 | v2026.09.01 |
+| Viewing issues linked to a job |  | Ops, FE | JobsController#issues | done | Job with 2 open issues (one via asset, one via visit) | 1 | 2026-09-13 | v2026.09.01 |
+| Managing records on a job |  | Ops, FE | JobsController#records | done | Job type with 2 custom record types ("Risk Assessment", "Completion Certificate") | 2 | 2026-09-13 | v2026.09.01 |
+| Linking permits to a job |  | Ops | JobsController#permits; JobPermitsController#create/#destroy | done | Job linked to a project with 2 active permits; 1 already-linked to detach | 2 | 2026-09-13 | v2026.09.01 |
+| Browsing and filtering the jobs list |  | Ops | JobsController#index/#filter/#autocomplete | done | 10+ jobs across statuses/types/users, 1 saved view | 2 | 2026-09-13 | v2026.09.01 |
+| Viewing jobs on a pipeline (kanban) board |  | Ops, Mgr | Jobs::PipelinesController#show/#filter | done | 8 jobs across 4+ status columns | 3 | 2026-09-13 | v2026.09.01 |
 
 ## Job Tasks
 
@@ -293,39 +293,39 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Raising a warning against a project |  | Ops | WarningsController#new/#create | todo | Project #10432, warning type "Access Restricted" | 2 |  |  |
-| Editing a warning's message |  | Ops | WarningsController#edit/#update | todo | Correct wording on an acknowledged warning | 1 |  |  |
-| Acknowledging and closing a warning |  | Ops, Mgr | WarningsController#acknowledge/#close | todo | Acknowledge "Access Restricted", then close once resolved | 2 |  |  |
+| Raising a warning against a project |  | Ops | WarningsController#new/#create | done | Project #10432, warning type "Access Restricted" | 2 | 2026-09-12 | v2026.09.01 |
+| Editing a warning's message |  | Ops | WarningsController#edit/#update | done | Correct wording on an acknowledged warning | 1 | 2026-09-12 | v2026.09.01 |
+| Acknowledging and closing a warning |  | Ops, Mgr | WarningsController#acknowledge/#close | done | Acknowledge "Access Restricted", then close once resolved | 2 | 2026-09-12 | v2026.09.01 |
 
 ## Records
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing all record type categories (Record Groups landing page) |  | Ops, FE | RecordGroupsController#index | todo | Record Groups "H&S Inspections", "Customer Complaints", "Vehicle Checks" with counts | 2 |  |  |
-| Drilling into a Record Group to pick a record type |  | Ops, FE | RecordGroupsController#show | todo | Group "Vehicle Checks" with types "Daily Vehicle Checklist"/"Defect Report" | 2 |  |  |
-| Viewing the Records list/index (table view) |  | Ops | RecordsController#index | todo | Records "Substation Inspection #1042" (Green), "Near Miss - Forklift" (Amber) | 3 |  |  |
-| Filtering and searching records in the list view |  | Ops | RecordsController#index (filters) | todo | Filter by Record Type "Site Audit" and RAG "Red" | 2 |  |  |
-| Choosing a record type before creating a new record |  | Ops, FE | RecordsController#new (type picker) | todo | Choosing "Site Audit" under "Vehicle Checks" | 2 |  |  |
-| Creating a new record |  | Ops, FE | RecordsController#new/#create | todo | Record "Q3 Substation Safety Audit", type "Site Audit", assigned "Jane Smith" | 4 |  |  |
-| Viewing a record's Overview/Main tab |  | Ops, FE | RecordsController#show/#main | todo | Record "Substation Inspection #1042" with fields, RAG Green | 4 |  |  |
-| Editing a record's details |  | Ops, FE | RecordsController#edit/#update | todo | Update description and next-action-due date | 2 |  |  |
-| Deleting (archiving) a record |  | Ops | RecordsController#destroy | todo | Delete duplicate record | 2 |  |  |
-| Setting a record's RAG status |  | Ops, FE | RecordsController#rag_status | todo | Record RAG Green → Red after failed check | 1 |  |  |
-| Managing todos on a record |  | Ops, FE | RecordsController#todos | todo | Todo "Replace damaged guardrail" due 2026-08-25 | 2 |  |  |
-| Managing assets linked to a record |  | Ops, FE | RecordsController#assets | todo | Link Asset "Substation Transformer T-204" | 2 |  |  |
-| Managing jobs linked to a record |  | Ops | RecordsController#jobs | todo | Create Job "Repair guardrail at Substation 12" from record | 2 |  |  |
-| Managing issues linked to a record |  | Ops, FE | RecordsController#issues | todo | Attach issue "Guardrail corrosion beyond tolerance" | 2 |  |  |
-| Managing estimates linked to a record |  | Sales, Fin | RecordsController#estimates | todo | Estimate "EST-3391" £1,250 attached | 2 |  |  |
-| Managing clients linked to a record |  | Ops, Sales | RecordsController#clients | todo | Client "Northgate Property Management Ltd" attached | 2 |  |  |
-| Managing projects linked to a record |  | Ops | RecordsController#orders | todo | Project "ORD-2044" attached | 2 |  |  |
-| Managing variations linked to a record |  | Fin | RecordsController#variations | todo | Variation "VAR-118" attached | 2 |  |  |
-| Managing invoices linked to a record |  | Fin | RecordsController#invoices | todo | Invoice "INV-5502" £1,250 attached | 2 |  |  |
-| Managing linked records (record-to-record relationships) |  | Ops, FE | RecordsController#linked_records; RecordRecordablesController | todo | Link follow-up inspection record to original | 2 |  |  |
-| Managing child records of a specific type ("Records" tab) |  | Ops, FE | RecordsController#records | todo | Attach child "Checklist Item - Fire Extinguisher Check" to parent record | 2 |  |  |
-| Attaching and detaching a permit on a record |  | Ops | RecordsController#attach_permit/#detach_permit | todo | Attach then detach Permit "PTW-9081" | 2 |  |  |
-| Downloading a record as PDF or Word document |  | Ops, FE | RecordsController#download/#download_word_doc | todo | PDF with custom "SHEQ Inspection" template; Word doc export | 3 |  |  |
-| Changing and reordering a record's pipeline stage |  | Ops | RecordsController#stage/#move | todo | Move record Scheduled → Completed; reorder within a column | 2 |  |  |
-| Viewing and filtering the Records pipeline/kanban board |  | Ops, Mgr | Records::PipelinesController#index/show/#filter | todo | Pipeline "Audit Workflow": Scheduled/In Progress/Completed | 3 |  |  |
+| Browsing all record type categories (Record Groups landing page) |  | Ops, FE | RecordGroupsController#index | done | Records landing page as viewed by Priya Nair (Ops); real groups "Health and Safety" and "Fleet" shown, not the row's fictional group names | 2 | 2026-09-12 | v2026.09.01 |
+| Drilling into a Record Group to pick a record type |  | Ops, FE | RecordGroupsController#show | done | "Health and Safety" group expanded, showing its 3 real record types (Incident Report, Safety Risk, Near Miss Report) — row's "Vehicle Checks" group/types don't exist | 2 | 2026-09-12 | v2026.09.01 |
+| Viewing the Records list/index (table view) |  | Ops | RecordsController#index | done | Combined Records table across Incident Report/Safety Risk/Near Miss Report records; pre-existing "TEST -" junk records archived so only real data shows | 3 | 2026-09-12 | v2026.09.01 |
+| Filtering and searching records in the list view |  | Ops | RecordsController#index (filters) | done | Filtered by Record Type "Incident Report" (row's "Site Audit"/RAG filter combo isn't how this filter works — Record Type is its own filter) | 2 | 2026-09-12 | v2026.09.01 |
+| Choosing a record type before creating a new record |  | Ops, FE | RecordsController#new (type picker) | done | Type picker grouped by real Record Groups (Fleet, Health and Safety) — row's "Site Audit"/"Vehicle Checks" don't exist | 2 | 2026-09-12 | v2026.09.01 |
+| Creating a new record |  | Ops, FE | RecordsController#new/#create | done | Record "Q3 Substation Safety Audit", type "Incident Report" (row's "Site Audit" type and "Jane Smith" assignee aren't real) | 4 | 2026-09-12 | v2026.09.01 |
+| Viewing a record's Overview/Main tab |  | Ops, FE | RecordsController#show/#main | done | Record "Substation Inspection #1042", Incident Report type, RAG Green | 4 | 2026-09-12 | v2026.09.01 |
+| Editing a record's details |  | Ops, FE | RecordsController#edit/#update | done | Updated description and next-action-due date on "Substation Inspection #1042" | 2 | 2026-09-12 | v2026.09.01 |
+| Deleting (archiving) a record |  | Ops | RecordsController#destroy | done | Deleted duplicate record "Substation Inspection #1042 (Duplicate Entry)" | 2 | 2026-09-12 | v2026.09.01 |
+| Setting a record's RAG status |  | Ops, FE | RecordsController#rag_status | done | "Substation Inspection #1042" RAG Green → Red (Incident Report type's rag_mode enabled for this) | 1 | 2026-09-12 | v2026.09.01 |
+| Managing todos on a record |  | Ops, FE | RecordsController#todos | done | Todo "Replace corroded cabinet door hinge" assigned to Priya Nair, due 26 Sep, marked done | 2 | 2026-09-12 | v2026.09.01 |
+| Managing assets linked to a record |  | Ops, FE | RecordsController#assets | done | Existing asset "Derbyshire Battery #5437" attached (row's "Substation Transformer T-204" doesn't exist) | 2 | 2026-09-12 | v2026.09.01 |
+| Managing jobs linked to a record |  | Ops | RecordsController#jobs | done | Job "Repair substation cabinet door hinge" (Safety Check type) created from the record, client Tesco — feature confirmed broken (picking "Add as new client" for an existing client name silently saves the job with no client and crashes the project's Jobs tab), guide documents the correct working flow and flags the bug | 2 | 2026-09-12 | v2026.09.01 |
+| Managing issues linked to a record |  | Ops, FE | RecordsController#issues | done | Existing issue "Derbyshire #5437 Degraded Performance" attached (row's "Guardrail corrosion..." issue doesn't exist) | 2 | 2026-09-12 | v2026.09.01 |
+| Managing estimates linked to a record |  | Sales, Fin | RecordsController#estimates | done | Existing estimate "Roof Leak Repair" attached (row's "EST-3391" doesn't exist) | 2 | 2026-09-12 | v2026.09.01 |
+| Managing clients linked to a record |  | Ops, Sales | RecordsController#clients | done | Existing client "Tesco" attached (row's "Northgate Property Management Ltd" doesn't exist) | 2 | 2026-09-12 | v2026.09.01 |
+| Managing projects linked to a record |  | Ops | RecordsController#orders | done | Project "Substation Refurbishment - Riverside" attached (row's "ORD-2044" doesn't exist) | 2 | 2026-09-12 | v2026.09.01 |
+| Managing variations linked to a record |  | Fin | RecordsController#variations | done | Variation "Additional cabinet security fencing" attached on the record's linked project (row's "VAR-118" doesn't exist) | 2 | 2026-09-12 | v2026.09.01 |
+| Managing invoices linked to a record |  | Fin | RecordsController#invoices | done | Invoice "Substation Refurbishment - Interim" attached on the record's linked project (row's "INV-5502" doesn't exist) | 2 | 2026-09-12 | v2026.09.01 |
+| Managing linked records (record-to-record relationships) |  | Ops, FE | RecordsController#linked_records; RecordRecordablesController | done | "Follow-up Inspection - Substation #1042" linked via the "Linked to me" tab | 2 | 2026-09-12 | v2026.09.01 |
+| Managing child records of a specific type ("Records" tab) |  | Ops, FE | RecordsController#records | done | "Checklist Item - Fire Extinguisher Check" (Near Miss Report) attached under a pinned "Near Miss Reports" tab on an Incident Report record | 2 | 2026-09-12 | v2026.09.01 |
+| Attaching and detaching a permit on a record |  | Ops | RecordsController#attach_permit/#detach_permit | done | Draft permit "Riverside Substation Working Permit" attached then detached — feature confirmed broken (a draft permit with no reference number is unsearchable by title in the attach picker, only an empty search reveals it), guide documents the working empty-search flow and flags the bug | 2 | 2026-09-12 | v2026.09.01 |
+| Downloading a record as PDF or Word document |  | Ops, FE | RecordsController#download/#download_word_doc | done | Default PDF template preview (no custom "SHEQ Inspection" template exists on this record type) | 3 | 2026-09-12 | v2026.09.01 |
+| Changing and reordering a record's pipeline stage |  | Ops | RecordsController#stage/#move | done | Moved "Substation Inspection #1042" Assessing → Assessed (real "Health and Safety" pipeline stages, not the row's fictional Scheduled/In Progress/Completed) | 2 | 2026-09-12 | v2026.09.01 |
+| Viewing and filtering the Records pipeline/kanban board |  | Ops, Mgr | Records::PipelinesController#index/show/#filter | done | Real "Health and Safety" pipeline board (Assessing/Assessed columns), not the row's fictional "Audit Workflow" pipeline | 3 | 2026-09-12 | v2026.09.01 |
 
 ## Tickets
 
@@ -406,30 +406,30 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating and organizing Hub pages (intranet CMS pages) |  | Admin | Hub::PagesController#new/#create/#index/#show | todo | Page "Health & Safety Policy" nested under "Company Handbook" | 5 |  |  |
-| Editing a Hub page's hero image, featured media, and settings |  | Admin | Hub::PagesController#edit/#update/#delete_hero_image/#delete_featured_media | todo | Hero image + featured media + acceptance_type "policy" | 4 |  |  |
-| Writing and updating a Hub page's body content inline |  | Admin | Hub::PagesController#inline_show/#inline_edit/#inline_update | todo | Inline body edit on "Health & Safety Policy" | 3 |  |  |
-| Submitting, approving, rejecting, and publishing a Hub page |  | Admin, Mgr | Hub::PagesController#submit_for_review/#approve/#send_to_draft/#publish | todo | Page draft → in_review → ready_to_publish, scheduled publish_at | 4 |  |  |
-| Accepting a Hub page (policy/document acknowledgment) |  | All | Hub::PagesController#accept | todo | Page "Code of Conduct 2026" accepted by user | 3 |  |  |
+| Creating and organizing Hub pages (intranet CMS pages) |  | Admin | Hub::PagesController#new/#create/#index/#show | done | Page "Health & Safety Policy" nested under "Company Handbook" | 5 | 2026-09-13 | v2026.09.01 |
+| Editing a Hub page's hero image, featured media, and settings |  | Admin | Hub::PagesController#edit/#update/#delete_hero_image/#delete_featured_media | done | Hero image + featured media + acceptance_type "policy" | 4 | 2026-09-13 | v2026.09.01 |
+| Writing and updating a Hub page's body content inline |  | Admin | Hub::PagesController#inline_show/#inline_edit/#inline_update | done | Inline body edit on "Health & Safety Policy" | 3 | 2026-09-13 | v2026.09.01 |
+| Submitting, approving, rejecting, and publishing a Hub page |  | Admin, Mgr | Hub::PagesController#submit_for_review/#approve/#send_to_draft/#publish | done | Page draft → in_review → ready_to_publish, scheduled publish_at | 4 | 2026-09-13 | v2026.09.01 |
+| Accepting a Hub page (policy/document acknowledgment) |  | All | Hub::PagesController#accept | done | Page "Code of Conduct 2026" accepted by user | 3 | 2026-09-13 | v2026.09.01 |
 
 ## Hub - Channels
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing Hub channels and viewing a channel's feed |  | All | Hub::ChannelsController#index/#show; Hub::Channels::FeedsController#index | todo | Channel "Operations Updates" feed filtered to "posts" | 4 |  |  |
-| Creating and configuring a Hub channel |  | Admin | Hub::ChannelsController#new/#create/#edit/#update/#destroy | todo | Channel "Fleet & Vehicles", allow_comments true | 4 |  |  |
-| Writing and publishing a quick post in a channel |  | Admin, Ops | Hub::Channels::PostsController CRUD + workflow actions | todo | Post "Reminder: toolbox talk at 8am tomorrow", needs_acknowledging_until set | 5 |  |  |
-| Writing and publishing a full article in a channel |  | Admin, Ops | Hub::Channels::ArticlesController CRUD + workflow actions | todo | Article "New PPE Requirements for Q3" with featured media | 5 |  |  |
-| Acknowledging (marking as read) a post or article |  | All | Hub::Channels::AcknowledgmentsController#create | todo | User acknowledging a "toolbox talk" post | 2 |  |  |
+| Browsing Hub channels and viewing a channel's feed |  | All | Hub::ChannelsController#index/#show; Hub::Channels::FeedsController#index | done | Channel "Operations Updates" feed filtered to "posts" | 4 | 2026-09-13 | v2026.09.01 |
+| Creating and configuring a Hub channel |  | Admin | Hub::ChannelsController#new/#create/#edit/#update/#destroy | done | Channel "Fleet & Vehicles", allow_comments true | 4 | 2026-09-13 | v2026.09.01 |
+| Writing and publishing a quick post in a channel |  | Admin, Ops | Hub::Channels::PostsController CRUD + workflow actions | done | Post "Reminder: toolbox talk at 8am tomorrow", needs_acknowledging_until set | 5 | 2026-09-13 | v2026.09.01 |
+| Writing and publishing a full article in a channel |  | Admin, Ops | Hub::Channels::ArticlesController CRUD + workflow actions | done | Article "New PPE Requirements for Q3" with featured media | 5 | 2026-09-13 | v2026.09.01 |
+| Acknowledging (marking as read) a post or article |  | All | Hub::Channels::AcknowledgmentsController#create | done | User acknowledging a "toolbox talk" post | 2 | 2026-09-13 | v2026.09.01 |
 
 ## Hub - Surveys
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating a survey (announcement) and setting up its questions |  | Admin | Hub::Channels::SurveyRequestsController#new/#create/#edit/#update | todo | Survey request "Q3 Site Safety Feedback", survey type "Site Safety Checklist" | 4 |  |  |
-| Submitting, approving, and publishing a survey request |  | Admin, Mgr | Hub::Channels::SurveyRequestsController workflow actions | todo | Survey moved draft → in_review → ready_to_publish → archived | 4 |  |  |
-| Responding to a survey |  | All | Hub::Channels::SurveyRequestResultController#new/#create | todo | Response to "Q3 Site Safety Feedback" | 4 |  |  |
-| Viewing survey results and individual responses |  | Mgr, Admin | Hub::Channels::SurveyRequestResultController#show; SurveysController | todo | Survey with 42 responses, drilling into 1 respondent | 4 |  |  |
+| Creating a survey (announcement) and setting up its questions |  | Admin | Hub::Channels::SurveyRequestsController#new/#create/#edit/#update | done | Survey request "Q3 Site Safety Feedback", survey type "Site Safety Checklist" | 4 | 2026-09-12 | v2026.09.01 |
+| Submitting, approving, and publishing a survey request |  | Admin, Mgr | Hub::Channels::SurveyRequestsController workflow actions | done | Survey moved draft → in_review → ready_to_publish → archived | 4 | 2026-09-12 | v2026.09.01 |
+| Responding to a survey |  | All | Hub::Channels::SurveyRequestResultController#new/#create | done | Response to "Q3 Site Safety Feedback" | 4 | 2026-09-12 | v2026.09.01 |
+| Viewing survey results and individual responses |  | Mgr, Admin | Hub::Channels::SurveyRequestResultController#show; SurveysController | done | Survey with 12 responses, drilling into 1 respondent — feature confirmed broken (every response link crashes), guide documents intended/actual behaviour and flags the bug | 4 | 2026-09-12 | v2026.09.01 |
 
 ## Client Portal
 
@@ -441,10 +441,10 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Enabling a public intake link for a project type or record type |  | Admin | Settings::OrderTypesController#edit/update; Settings::RecordTypesController#edit/update | todo | Project Type "Street Light Fault Report" with public_slug, passcode, domain whitelist | 2 |  |  |
-| Accessing a shared intake link and identifying yourself |  | Ext | ShareController#new/#create | todo | Reference "street-light-fault", visitor name/email/passcode | 2 |  |  |
-| Submitting a new project through a public share link |  | Ext | Share::OrdersController#new/#create/#show | todo | Project "Pole #42 not illuminating" via public form | 3 |  |  |
-| Submitting a new record through a public share link |  | Ext | Share::RecordsController#new/#create/#show | todo | Record "Loose paving slab reported" via public form | 3 |  |  |
+| Enabling a public intake link for a project type or record type |  | Admin | Settings::OrderTypesController#edit/update; Settings::RecordTypesController#edit/update | done | Project Type "Street Light Fault Report" with public_slug, passcode, domain whitelist | 2 | 2026-09-13 | v2026.09.01 |
+| Accessing a shared intake link and identifying yourself |  | Ext | ShareController#new/#create | done | Reference "street-light-fault", visitor name/email/passcode | 2 | 2026-09-13 | v2026.09.01 |
+| Submitting a new project through a public share link |  | Ext | Share::OrdersController#new/#create/#show | done | Project "Pole #42 not illuminating" via public form | 3 | 2026-09-13 | v2026.09.01 |
+| Submitting a new record through a public share link |  | Ext | Share::RecordsController#new/#create/#show | done | Record "Loose paving slab reported" via public form | 3 | 2026-09-13 | v2026.09.01 |
 
 ## Clients
 
@@ -494,9 +494,9 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating a batch invoice export |  | Fin | InvoiceExportsController#new/#select_invoices/#create | todo | 8 unsent invoices totalling £42,500 across 4 clients, CSV format | 4 |  |  |
-| Viewing and managing an invoice export |  | Fin | InvoiceExportsController#show/#main/#invoices/#todos/#edit/#update/#destroy | todo | Export with 8 bills, one rejected | 3 |  |  |
-| Bulk-updating invoice statuses within an export |  | Fin | InvoiceExportsController#bulk_status/#invoice_status | todo | 8 invoices bulk-set from unsent to valid | 2 |  |  |
+| Creating a batch invoice export |  | Fin | InvoiceExportsController#new/#select_invoices/#create | done | 8 unsent invoices totalling £42,500 across 4 clients, CSV format | 4 | 2026-09-12 | v2026.09.01 |
+| Viewing and managing an invoice export |  | Fin | InvoiceExportsController#show/#main/#invoices/#todos/#edit/#update/#destroy | done | Export with 8 bills, one rejected | 3 | 2026-09-12 | v2026.09.01 |
+| Bulk-updating invoice statuses within an export |  | Fin | InvoiceExportsController#bulk_status/#invoice_status | done | 8 invoices bulk-set from unsent to pending | 2 | 2026-09-12 | v2026.09.01 |
 
 ## Estimates & Quotes
 
@@ -612,10 +612,10 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
 | Importing data via CSV |  | Admin | Settings::ImportsController, ImportRecordsController | done | Import "August ASM Work Projects" (ASM Projects format); hint's "40 projects, 1 warning row" replaced with a 2-row CSV since the ASM format needs specific tenant-configured order types not present in this dev DB | 5 | 2026-09-11 | v2026.09.01 |
-| Monitoring mobile & web uploads |  | Admin | Settings::UploadsController#index/#filter/#show/#status | todo | Failed upload "file too large"; a mobile crash log upload | 3 |  |  |
-| Managing mobile app shortcut links |  | Admin | Settings::MobileLinksController | todo | Mobile Link "Health & Safety Portal" (web-embed) | 3 |  |  |
-| Managing web dashboard links |  | Admin | Settings::WebLinksController | todo | Web Link "Regional Performance Dashboard" (Power BI) | 3 |  |  |
-| Monitoring gateway/API messages |  | Admin | Settings::ApiMessagesController#index/#filter/#show/#status | todo | Failed eBusiness message, admin resets to pending for retry | 4 |  |  |
+| Monitoring mobile & web uploads |  | Admin | Settings::UploadsController#index/#filter/#show/#status | done | Mobile Session for Priya Nair with 3 uploads: Create Visit (done), Add File to Field (fail, "File exceeds maximum upload size of 25MB"), Logs (pending) | 3 | 2026-09-11 | v2026.09.01 |
+| Managing mobile app shortcut links |  | Admin | Settings::MobileLinksController | done | Mobile Link "Health & Safety Portal" with "Links into OCU One Web App?" checked | 3 | 2026-09-11 | v2026.09.01 |
+| Managing web dashboard links |  | Admin | Settings::WebLinksController | done | Web Link "Regional Performance Dashboard" with Link Type PowerBI Embed | 3 | 2026-09-11 | v2026.09.01 |
+| Monitoring gateway/API messages |  | Admin | Settings::ApiMessagesController#index/#filter/#show/#status | done | Failed eBusiness InvoiceSubmission message, reset to Pending for retry | 4 | 2026-09-11 | v2026.09.01 |
 
 ## Settings: Views & Organization
 
@@ -676,9 +676,9 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing company announcements |  | All | AnnouncementsController#index/#show | todo | Announcement "New PPE Policy Effective September 2026" | 3 |  |  |
-| Creating and editing an announcement (Admin) |  | Admin | AnnouncementsController#new/#create/#edit/#update/#destroy | todo | Announcement "Q3 Safety Briefing" | 3 |  |  |
-| Sending an announcement as a notification (Admin) |  | Admin | AnnouncementsController#send_notification_to/#send_notification | todo | Sent to group "All Field Engineers" | 2 |  |  |
+| Browsing company announcements |  | All | AnnouncementsController#index/#show | done | Announcement "New PPE Policy Effective September 2026" | 3 | 2026-09-12 | v2026.09.01 |
+| Creating and editing an announcement (Admin) |  | Admin | AnnouncementsController#new/#create/#edit/#update/#destroy | done | Announcement "Q3 Safety Briefing" | 3 | 2026-09-12 | v2026.09.01 |
+| Sending an announcement as a notification (Admin) |  | Admin | AnnouncementsController#send_notification_to/#send_notification | done | Sent to group "All Field Engineers" | 2 | 2026-09-12 | v2026.09.01 |
 
 ## Watches
 
@@ -697,20 +697,20 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Adding a new team member |  | Admin | Settings::UsersController#new/#create | todo | User "Priya Nakamura", type "Field Engineer", roles, groups | 4 |  |  |
-| Editing a team member's profile and system settings |  | Admin | Settings::UsersController#edit/#update/#delete_profile_picture | todo | Approver, cover authority, timesheet defaults, booking toggles | 4 |  |  |
-| Viewing a team member's overview |  | Admin | Settings::UsersController#show/#main | todo | User with tag, group, SLAs, docs, activity feed | 3 |  |  |
-| Managing a user's availability entries |  | Admin | Settings::AvailabilitiesController; Settings::UsersController#availability | todo | Availability type "Annual Leave", dated range, authorised | 3 |  |  |
-| Tracking a user's mobile device sessions |  | Admin | Settings::UsersController#mobile_sessions | todo | Sessions with statuses current/inactive/conflict | 2 |  |  |
-| Reviewing and resolving a mobile session's uploads |  | Admin | Settings::Users::MobileSessions::UploadsController | todo | Upload "job_status" payload, status overridden | 4 |  |  |
-| Managing a user's skill sets |  | Admin | Settings::UserSkillSetsController; Settings::UsersController#skill_sets | todo | Skill set "High Voltage Authorised Person" linked/deactivated | 3 |  |  |
-| Reviewing a user's skill evidence and todos |  | Admin | Settings::UsersController#skill_evidence/#todos | todo | Evidence "First Aid at Work" cert, todo due date | 3 |  |  |
-| Sending a push message to a user's mobile device |  | Admin | Settings::UsersController#send_fcm_message | todo | Message type "request_logs" sent | 2 |  |  |
-| Managing a user's tags and lifecycle status |  | Admin | Settings::UsersController#tags/#activate/#deactivate/#destroy | todo | Tags added; leaver deactivated | 3 |  |  |
-| Moving a user through a stage/pipeline |  | Admin | Settings::UsersController#stage; Settings::Users::PipelinesController | todo | Onboarding pipeline stage move | 3 |  |  |
-| Browsing team members in a table or pipeline board view |  | Admin | Settings::UsersController#index/#filter/#autocomplete | todo | Filter by user type and tag | 3 |  |  |
-| Managing user types (job roles reference data) |  | Admin | Settings::UserTypesController | todo | User type "Field Engineer" with default stage, field set | 3 |  |  |
-| Attaching a pipeline to user types |  | Admin | Settings::UserTypePipelinesController#create/#move | todo | Onboarding pipeline toggled per user type | 2 |  |  |
+| Adding a new team member |  | Admin | Settings::UsersController#new/#create | done | User "Priya Nakamura", type "Field Engineer" | 4 | 2026-09-12 | v2026.09.01 |
+| Editing a team member's profile and system settings |  | Admin | Settings::UsersController#edit/#update/#delete_profile_picture | done | Approver Sarah Whitfield, role Field Engineer, group North Region Field Team, booking toggles | 4 | 2026-09-12 | v2026.09.01 |
+| Viewing a team member's overview |  | Admin | Settings::UsersController#show/#main | done | Priya Nakamura with tag, group, SLAs, docs, activity feed | 3 | 2026-09-12 | v2026.09.01 |
+| Managing a user's availability entries |  | Admin | Settings::AvailabilitiesController; Settings::UsersController#availability | done | Availability type "Holiday" (closest real type to the row's "Annual Leave"), 21-25 Sept, authorised | 3 | 2026-09-12 | v2026.09.01 |
+| Tracking a user's mobile device sessions |  | Admin | Settings::UsersController#mobile_sessions | done | Sessions with statuses current/inactive/conflict | 2 | 2026-09-12 | v2026.09.01 |
+| Reviewing and resolving a mobile session's uploads |  | Admin | Settings::Users::MobileSessions::UploadsController | done | Upload "Add File to Field" (fail, "File exceeds maximum upload size of 25MB"), status overridden to Skipped | 4 | 2026-09-12 | v2026.09.01 |
+| Managing a user's skill sets |  | Admin | Settings::UserSkillSetsController; Settings::UsersController#skill_sets | done | Skill set "High Voltage Authorised Person" linked/deactivated | 3 | 2026-09-12 | v2026.09.01 |
+| Reviewing a user's skill evidence and todos |  | Admin | Settings::UsersController#skill_evidence/#todos | done | Evidence "First Aid at Work" cert (Valid); todo "Renew First Aid at Work certificate" (High priority) | 3 | 2026-09-12 | v2026.09.01 |
+| Sending a push message to a user's mobile device |  | Admin | Settings::UsersController#send_fcm_message | done | Send FCM Message dropdown (Send Uploads/Logs/Database); no FCM keyfile configured in this dev environment so delivery itself isn't observable, only the picker | 2 | 2026-09-12 | v2026.09.01 |
+| Managing a user's tags and lifecycle status |  | Admin | Settings::UsersController#tags/#activate/#deactivate/#destroy | done | Tag "Area · North East" added; deactivated then reactivated | 3 | 2026-09-12 | v2026.09.01 |
+| Moving a user through a stage/pipeline |  | Admin | Settings::UsersController#stage; Settings::Users::PipelinesController | done | "Field Engineer Onboarding" pipeline, Applied → Induction | 3 | 2026-09-12 | v2026.09.01 |
+| Browsing team members in a table or pipeline board view |  | Admin | Settings::UsersController#index/#filter/#autocomplete | done | Table filtered by User Type "Field Engineer"; pipeline board for "Field Engineer Onboarding" | 3 | 2026-09-12 | v2026.09.01 |
+| Managing user types (job roles reference data) |  | Admin | Settings::UserTypesController | done | User type "Field Engineer" with default stage, field set "Fibre Install Details" | 3 | 2026-09-12 | v2026.09.01 |
+| Attaching a pipeline to user types |  | Admin | Settings::UserTypePipelinesController#create/#move | done | "Field Engineer Onboarding" pipeline toggled onto "Field Engineer" user type | 2 | 2026-09-12 | v2026.09.01 |
 
 ## Settings: Groups & Hierarchy
 
@@ -768,18 +768,18 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating an SLA type and its escalation thresholds |  | Admin | Settings::SlaTypesController | todo | "Priority 1 - Critical Fault" with amber/red/breach thresholds | 4 |  |  |
-| Defining SLA stage policies |  | Admin | Settings::SlaStagePoliciesController | todo | Stage-enter/leave clock actions (pause/resume) | 3 |  |  |
-| Assigning SLA types to record, project, ticket, and user types |  | Admin | Settings::SlaTypesController#record_types/etc; SlaTypeAssignmentsController | todo | SLA type auto-created on Ticket Type "Emergency Callout" | 4 |  |  |
-| Configuring SLA working-hour periods |  | Admin | Settings::SlaPeriodsController | todo | Periods Mon-Fri 09:00-17:00 | 3 |  |  |
+| Creating an SLA type and its escalation thresholds |  | Admin | Settings::SlaTypesController | done | "Priority 1 - Critical Fault" with amber/red/breach thresholds | 4 | 2026-09-12 | v2026.09.01 |
+| Defining SLA stage policies |  | Admin | Settings::SlaStagePoliciesController | done | Stage-enter/leave clock actions (pause/resume) | 3 | 2026-09-12 | v2026.09.01 |
+| Assigning SLA types to record, project, ticket, and user types |  | Admin | Settings::SlaTypesController#record_types/etc; SlaTypeAssignmentsController | done | SLA type attached to Ticket Type "Fault Report" (row's hint "Emergency Callout" doesn't exist as a real ticket type) | 3 | 2026-09-12 | v2026.09.01 |
+| Configuring SLA working-hour periods |  | Admin | Settings::SlaPeriodsController | done | Periods Mon-Fri 09:00-17:00 | 4 | 2026-09-12 | v2026.09.01 |
 
 ## Settings: Skills Administration
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Managing skills |  | Admin | Settings::SkillsController | todo | Skills "MEWP Operation", "Confined Space Entry" | 5 |  |  |
-| Building skill sets |  | Admin | Settings::SkillSetsController; SkillSkillSetsController | todo | Skill set "Electrical Engineer - Level 2" with 2 skills | 5 |  |  |
-| Defining skill requirements |  | Admin | Settings::SkillRequirementsController; SkillSkillRequirementsController | todo | "Gas Safe Card - Category 1" mandatory requirement | 5 |  |  |
+| Managing skills |  | Admin | Settings::SkillsController | done | Skills "MEWP Operation", "Confined Space Entry" | 5 | 2026-09-12 | v2026.09.01 |
+| Building skill sets |  | Admin | Settings::SkillSetsController; SkillSkillSetsController | done | Skill set "Electrical Engineer - Level 2" with 2 skills | 5 | 2026-09-12 | v2026.09.01 |
+| Defining skill requirements |  | Admin | Settings::SkillRequirementsController; SkillSkillRequirementsController | done | "Gas Safe Card - Category 1" mandatory requirement | 5 | 2026-09-12 | v2026.09.01 |
 
 ## Settings: Hub Administration
 
@@ -797,7 +797,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 206 / 399
+Completed: 301 / 399
 
 Needs update: 0
 
@@ -809,7 +809,7 @@ Product Allocations guides completed: 7 / 7
 
 Products & Rates guides completed: 11 / 11
 
-Projects guides completed: 33 / 33
+Projects guides completed: 36 / 36
 
 Timesheets guides completed: 18 / 18
 
@@ -824,6 +824,8 @@ Account guides completed: 3 / 3
 Home Dashboard guides completed: 15 / 15
 
 Notifications guides completed: 1 / 1
+
+Announcements guides completed: 3 / 3
 
 Search & Navigation guides completed: 2 / 2
 
@@ -849,13 +851,25 @@ Custom Fields guides completed: 1 / 1
 
 Map guides completed: 1 / 1
 
-Records guides completed: 1 / 26
+Records guides completed: 26 / 26
 
-Settings guides completed: 40 / 63
+Settings guides completed: 63 / 63
 
 Tasks guides completed: 1 / 1
 
 Platform Administration guides completed: 2 / 2
+
+Invoice Exports guides completed: 3 / 3
+
+Hub - Surveys guides completed: 4 / 4
+
+Hub - Pages guides completed: 5 / 5
+
+Hub - Channels guides completed: 5 / 5
+
+Jobs guides completed: 20 / 20
+
+Public Share Links guides completed: 4 / 4
 
 Release breakdown (current version only, for `done` rows):
 
@@ -863,4 +877,4 @@ Release breakdown (current version only, for `done` rows):
 - v2026.08.03: 9
 - v2026.08.04: 45
 - v2026.08.05: 95
-- v2026.09.01: 38
+- v2026.09.01: 130

@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), and Contacts & Addresses (2 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering, which is why those five areas are no longer listed as complete above even though every one of their guides has been written at least once; see `_progress.md` for details. Two areas have made a start but aren't complete yet: **Records** (1/26 — this repo's biggest remaining gap) and **Settings** (40/63 — most admin configuration screens are still undocumented).
+The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers twenty-seven complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), Contacts & Addresses (2 guides), Invoice Exports (3 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/creating-an-invoice-export-shows-no-selected-invoices-and-crashes-on-create.md)), Hub - Surveys (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/survey-response-drilldown-link-goes-to-wrong-page-and-crashes.md)), Hub - Pages (5 guides), Hub - Channels (5 guides), Public Share Links (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/csrf-token-leaked-into-public-share-redirect-url.md)), and Settings (63 guides across 18 sub-areas) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering, which is why those five areas are no longer listed as complete above even though every one of their guides has been written at least once; see `_progress.md` for details. **Records** (26/26) is now also complete, though two of its guides are currently blocked from human verification by open app bugs (see the Records section below). **Jobs** (20/20) is now also complete, though one of its guides is currently blocked from human verification by an open app bug — see the Jobs section below.
 
 Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
 
@@ -190,7 +190,7 @@ Browsing, creating, editing, and deleting products in the catalog, plus everythi
 - [Managing rate categories](Products%20%26%20Rates/Managing%20rate%20categories.md)
 
 ### Projects
-Browsing projects in every available view, creating and managing a project end to end, its Children/Key Fields/Plan tabs, its Records/Jobs/Tasks tabs, its Estimates/Invoices/Variations/Permits and linking to other projects, and its Todos/RAG/job-locking/PDF export controls — all 33 guides are now written, making this the biggest complete area in the repo.
+Browsing projects in every available view, creating and managing a project end to end, its Children/Key Fields/Plan tabs, its Records/Jobs/Tasks tabs, its Estimates/Invoices/Variations/Permits and linking to other projects, its Todos/RAG/job-locking/PDF export controls, and raising/acknowledging/closing warnings against a project — all 36 guides are now written, making this the biggest complete area in the repo.
 
 - [Overview — what a Project is and how its structure, records/jobs/tasks, financials, and status controls fit together](Projects/_Projects%20-%20Overview.md)
 
@@ -240,6 +240,44 @@ Browsing projects in every available view, creating and managing a project end t
 - [Setting a project's RAG status](Projects/Setting%20a%20project%27s%20RAG%20status.md) — the RAG dropdown click can silently fail to save; see `Zz - Known Bugs/`
 - [Locking and unlocking jobs on a project](Projects/Locking%20and%20unlocking%20jobs%20on%20a%20project.md) — unlocking has the same silent-save issue as RAG status
 - [Downloading or previewing a project PDF](Projects/Downloading%20or%20previewing%20a%20project%20PDF.md)
+
+**Warnings**
+- [Raising a warning against a project](Projects/Raising%20a%20warning%20against%20a%20project.md)
+- [Editing a warning's message](Projects/Editing%20a%20warning%27s%20message.md)
+- [Acknowledging and closing a warning](Projects/Acknowledging%20and%20closing%20a%20warning.md)
+
+### Jobs
+Booking, running, and tracking a single piece of work end to end — creating and editing a job, moving it through status and RAG health, managing its allocated users, and everything that accumulates on it: tasks, todos, visits, estimates, products, permits, and the assets/issues pulled in from its visits. All 20 guides are now written, though one is currently blocked from human verification by an open app bug.
+
+- [Overview — how a job's type, status, allocation, and everything attached to it fit together](Jobs/_Jobs%20-%20Overview.md)
+
+**Creating and managing a job**
+- [Creating a job](Jobs/Creating%20a%20job.md)
+- [Creating a job from existing visits](Jobs/Creating%20a%20job%20from%20existing%20visits.md)
+- [Viewing job details](Jobs/Viewing%20job%20details.md)
+- [Editing a job](Jobs/Editing%20a%20job.md)
+- [Deleting (archiving) a job](Jobs/Deleting%20%28archiving%29%20a%20job.md)
+
+**Status, RAG health, and allocation**
+- [Changing a job's status](Jobs/Changing%20a%20job%27s%20status.md)
+- [Unbooking a job](Jobs/Unbooking%20a%20job.md)
+- [Tracking a job's RAG health status](Jobs/Tracking%20a%20job%27s%20RAG%20health%20status.md) — changing RAG status can silently fail to save on a live job; see `Zz - Known Bugs/`
+- [Managing secondary allocated users on a job](Jobs/Managing%20secondary%20allocated%20users%20on%20a%20job.md)
+- [Downloading or previewing a job PDF](Jobs/Downloading%20or%20previewing%20a%20job%20PDF.md)
+
+**Commercials, tasks, and visits**
+- [Attaching or detaching an estimate to a job](Jobs/Attaching%20or%20detaching%20an%20estimate%20to%20a%20job.md)
+- [Allocating products to a job](Jobs/Allocating%20products%20to%20a%20job.md)
+- [Tracking todos on a job](Jobs/Tracking%20todos%20on%20a%20job.md)
+- [Managing visits attached to a job](Jobs/Managing%20visits%20attached%20to%20a%20job.md)
+- [Viewing assets linked to a job](Jobs/Viewing%20assets%20linked%20to%20a%20job.md)
+- [Viewing issues linked to a job](Jobs/Viewing%20issues%20linked%20to%20a%20job.md)
+- [Managing records on a job](Jobs/Managing%20records%20on%20a%20job.md)
+- [Linking permits to a job](Jobs/Linking%20permits%20to%20a%20job.md)
+
+**Browsing jobs**
+- [Browsing and filtering the jobs list](Jobs/Browsing%20and%20filtering%20the%20jobs%20list.md)
+- [Viewing jobs on a pipeline (kanban) board](Jobs/Viewing%20jobs%20on%20a%20pipeline%20%28kanban%29%20board.md)
 
 ### Timesheets
 
@@ -346,6 +384,15 @@ The read-only page a client reaches from an emailed link to approve or reject a 
 - [Overview — what the Client Portal is for](Client%20Portal/_Client%20Portal%20-%20Overview.md)
 - [Approving or rejecting a quote via a client portal link](Client%20Portal/Approving%20or%20rejecting%20a%20quote%20via%20a%20client%20portal%20link.md)
 
+### Public Share Links
+Letting people who aren't logged into OCU One submit a new Project or Record through a link — for setting one up, and for what the person on the other end of the link sees. All 4 guides are now written; one is currently blocked from human verification by an open app bug (see below).
+
+- [Overview — how enabling a link, identifying yourself, and submitting a Project or Record fit together](Public%20Share%20Links/_Public%20Share%20Links%20-%20Overview.md)
+- [Enabling a Public Intake Link for a Project Type or Record Type](Public%20Share%20Links/Enabling%20a%20Public%20Intake%20Link%20for%20a%20Project%20Type%20or%20Record%20Type.md)
+- [Accessing a Shared Intake Link and Identifying Yourself](Public%20Share%20Links/Accessing%20a%20Shared%20Intake%20Link%20and%20Identifying%20Yourself.md) — currently blocked from human verification by [a known bug](Zz%20-%20Known%20Bugs/csrf-token-leaked-into-public-share-redirect-url.md)
+- [Submitting a New Project Through a Public Share Link](Public%20Share%20Links/Submitting%20a%20New%20Project%20Through%20a%20Public%20Share%20Link.md)
+- [Submitting a New Record Through a Public Share Link](Public%20Share%20Links/Submitting%20a%20New%20Record%20Through%20a%20Public%20Share%20Link.md)
+
 ### Custom Fields
 Filling in the extra fields an admin has attached to a record type, beyond the record's standard fields.
 
@@ -359,13 +406,38 @@ A live view of where your field team is right now.
 - [Viewing the live user map](Map/Viewing%20the%20live%20user%20map.md)
 
 ### Records
-Custom record types — inspections, audits, and other structured forms attached to your work. (Partial area — this repo's biggest remaining gap; only the entry-point hub is written so far.)
+Custom record types — inspections, audits, and other structured forms attached to your work. All 26 guides are now written; two are currently blocked from human verification by open app bugs (see below).
 
-- [Overview — Record Groups and what's still to come](Records/_Records%20-%20Overview.md)
+- [Overview — Record Groups and the full record lifecycle](Records/_Records%20-%20Overview.md)
 - [Browsing records by category (Record Groups hub)](Records/Browsing%20records%20by%20category%20%28Record%20Groups%20hub%29.md)
+- [Browsing all record type categories (Record Groups landing page)](Records/Browsing%20all%20record%20type%20categories%20%28Record%20Groups%20landing%20page%29.md)
+- [Drilling into a Record Group to pick a record type](Records/Drilling%20into%20a%20Record%20Group%20to%20pick%20a%20record%20type.md)
+- [Viewing the Records list (table view)](Records/Viewing%20the%20Records%20list-table%20view.md)
+- [Filtering and searching records in the list view](Records/Filtering%20and%20searching%20records%20in%20the%20list%20view.md)
+- [Choosing a record type before creating a new record](Records/Choosing%20a%20record%20type%20before%20creating%20a%20new%20record.md)
+- [Creating a new record](Records/Creating%20a%20new%20record.md)
+- [Viewing a record's Overview/Main tab](Records/Viewing%20a%20record's%20Overview-Main%20tab.md)
+- [Editing a record's details](Records/Editing%20a%20record's%20details.md)
+- [Deleting (archiving) a record](Records/Deleting%20%28archiving%29%20a%20record.md)
+- [Setting a record's RAG status](Records/Setting%20a%20record's%20RAG%20status.md)
+- [Managing todos on a record](Records/Managing%20todos%20on%20a%20record.md)
+- [Managing assets linked to a record](Records/Managing%20assets%20linked%20to%20a%20record.md)
+- [Managing jobs linked to a record](Records/Managing%20jobs%20linked%20to%20a%20record.md) — blocked from human verification by an [open app bug](Zz%20-%20Known%20Bugs/job-created-with-nil-client-crashes-project-jobs-tab.md)
+- [Managing issues linked to a record](Records/Managing%20issues%20linked%20to%20a%20record.md)
+- [Managing estimates linked to a record](Records/Managing%20estimates%20linked%20to%20a%20record.md)
+- [Managing clients linked to a record](Records/Managing%20clients%20linked%20to%20a%20record.md)
+- [Managing projects linked to a record](Records/Managing%20projects%20linked%20to%20a%20record.md)
+- [Managing variations linked to a record](Records/Managing%20variations%20linked%20to%20a%20record.md)
+- [Managing invoices linked to a record](Records/Managing%20invoices%20linked%20to%20a%20record.md)
+- [Managing linked records (record-to-record relationships)](Records/Managing%20linked%20records%20%28record-to-record%20relationships%29.md)
+- [Managing child records of a specific type ("Records" tab)](Records/Managing%20child%20records%20of%20a%20specific%20type%20%28Records%20tab%29.md)
+- [Attaching and detaching a permit on a record](Records/Attaching%20and%20detaching%20a%20permit%20on%20a%20record.md) — blocked from human verification by an [open app bug](Zz%20-%20Known%20Bugs/draft-permit-unsearchable-in-attach-picker.md)
+- [Downloading a record as PDF or Word document](Records/Downloading%20a%20record%20as%20PDF%20or%20Word%20document.md)
+- [Changing and reordering a record's pipeline stage](Records/Changing%20and%20reordering%20a%20record's%20pipeline%20stage.md)
+- [Viewing and filtering the Records pipeline/kanban board](Records/Viewing%20and%20filtering%20the%20Records%20pipeline-kanban%20board.md)
 
 ### Settings
-Tenant admin configuration — organised into one subfolder per Settings sub-area (matching the "Settings: *" sections in `_progress.md`), since this will grow to ~14 sub-areas and 60+ guides. (Partial area — 15 of many sub-areas documented so far.)
+Tenant admin configuration — organised into one subfolder per Settings sub-area (matching the "Settings: *" sections in `_progress.md`). All 18 sub-areas and 63 guides are now written.
 
 - [Overview — how the written Settings guides fit together](Settings/_Settings%20-%20Overview.md)
 - [Finding your way around Settings (landing page)](Settings/Overview/Finding%20your%20way%20around%20Settings%20%28landing%20page%29.md)
@@ -404,14 +476,76 @@ Tenant admin configuration — organised into one subfolder per Settings sub-are
 - [Common trigger types reference](Settings/Automation/Common%20trigger%20types%20reference.md)
 - [Common action types reference](Settings/Automation/Common%20action%20types%20reference.md)
 - [Importing data via CSV](Settings/Imports%20%26%20Integrations/Importing%20data%20via%20CSV.md)
+- [Monitoring mobile and web uploads](Settings/Imports%20%26%20Integrations/Monitoring%20mobile%20and%20web%20uploads.md)
+- [Managing mobile app shortcut links](Settings/Imports%20%26%20Integrations/Managing%20mobile%20app%20shortcut%20links.md)
+- [Managing web dashboard links](Settings/Imports%20%26%20Integrations/Managing%20web%20dashboard%20links.md)
+- [Monitoring gateway and API messages](Settings/Imports%20%26%20Integrations/Monitoring%20gateway%20and%20API%20messages.md)
 - [Creating permission sets (per-module grants and per-type overrides)](Settings/Access%20Control%20%28Roles%20%26%20Permissions%29/Creating%20permission%20sets%20%28per-module%20grants%20and%20per-type%20overrides%29.md)
 - [Creating roles and assigning permission sets](Settings/Access%20Control%20%28Roles%20%26%20Permissions%29/Creating%20roles%20and%20assigning%20permission%20sets.md)
+- [Managing skills](Settings/Skills%20Administration/Managing%20skills.md)
+- [Building skill sets](Settings/Skills%20Administration/Building%20skill%20sets.md)
+- [Defining skill requirements](Settings/Skills%20Administration/Defining%20skill%20requirements.md)
+- [Creating an SLA type and its escalation thresholds](Settings/SLA%20Configuration/Creating%20an%20SLA%20type%20and%20its%20escalation%20thresholds.md)
+- [Defining SLA stage policies](Settings/SLA%20Configuration/Defining%20SLA%20stage%20policies.md)
+- [Assigning SLA types to record, project, ticket, and user types](Settings/SLA%20Configuration/Assigning%20SLA%20types%20to%20record%2C%20project%2C%20ticket%2C%20and%20user%20types.md)
+- [Configuring SLA working-hour periods](Settings/SLA%20Configuration/Configuring%20SLA%20working-hour%20periods.md)
+- [Adding a new team member](Settings/Team%20%26%20Users/Adding%20a%20new%20team%20member.md)
+- [Editing a team member's profile and system settings](Settings/Team%20%26%20Users/Editing%20a%20team%20member%27s%20profile%20and%20system%20settings.md)
+- [Viewing a team member's overview](Settings/Team%20%26%20Users/Viewing%20a%20team%20member%27s%20overview.md)
+- [Managing a user's availability entries](Settings/Team%20%26%20Users/Managing%20a%20user%27s%20availability%20entries.md)
+- [Tracking a user's mobile device sessions](Settings/Team%20%26%20Users/Tracking%20a%20user%27s%20mobile%20device%20sessions.md)
+- [Reviewing and resolving a mobile session's uploads](Settings/Team%20%26%20Users/Reviewing%20and%20resolving%20a%20mobile%20session%27s%20uploads.md)
+- [Managing a user's skill sets](Settings/Team%20%26%20Users/Managing%20a%20user%27s%20skill%20sets.md)
+- [Reviewing a user's skill evidence and todos](Settings/Team%20%26%20Users/Reviewing%20a%20user%27s%20skill%20evidence%20and%20todos.md)
+- [Sending a push message to a user's mobile device](Settings/Team%20%26%20Users/Sending%20a%20push%20message%20to%20a%20user%27s%20mobile%20device.md)
+- [Managing a user's tags and lifecycle status](Settings/Team%20%26%20Users/Managing%20a%20user%27s%20tags%20and%20lifecycle%20status.md)
+- [Moving a user through a stage or pipeline](Settings/Team%20%26%20Users/Moving%20a%20user%20through%20a%20stage%20or%20pipeline.md)
+- [Browsing team members in a table or pipeline board view](Settings/Team%20%26%20Users/Browsing%20team%20members%20in%20a%20table%20or%20pipeline%20board%20view.md)
+- [Managing user types (job roles reference data)](Settings/Team%20%26%20Users/Managing%20user%20types%20%28job%20roles%20reference%20data%29.md)
+- [Attaching a pipeline to user types](Settings/Team%20%26%20Users/Attaching%20a%20pipeline%20to%20user%20types.md)
 
 ### Tasks
 A cross-job, cross-project view of every task assigned across the organisation — not to be confused with the tasks tab on an individual job.
 
 - [Overview — what the Tasks landing page is for](Tasks/_Tasks%20-%20Overview.md)
 - [Browsing the tasks landing page](Tasks/Browsing%20the%20tasks%20landing%20page.md)
+
+### Invoice Exports
+Bundling a batch of invoices together to send to payroll or finance, and tracking each invoice's generated export line.
+
+- [Overview — what an Invoice Export is](Invoice%20Exports/_Invoice%20Exports%20-%20Overview.md)
+- [Creating a batch invoice export](Invoice%20Exports/Creating%20a%20batch%20invoice%20export.md) — currently blocked by [a known bug](Zz%20-%20Known%20Bugs/creating-an-invoice-export-shows-no-selected-invoices-and-crashes-on-create.md)
+- [Viewing and managing an invoice export](Invoice%20Exports/Viewing%20and%20managing%20an%20invoice%20export.md)
+- [Bulk-updating invoice statuses within an export](Invoice%20Exports/Bulk-updating%20invoice%20statuses%20within%20an%20export.md)
+
+### Hub - Surveys
+Sending out a set of questions through a Hub channel, taking it from draft through approval and publishing, and reviewing the results.
+
+- [Overview — what a Hub survey is](Hub%20-%20Surveys/_Hub%20-%20Surveys%20-%20Overview.md)
+- [Creating a survey (announcement) and setting up its questions](Hub%20-%20Surveys/Creating%20a%20survey%20%28announcement%29%20and%20setting%20up%20its%20questions.md)
+- [Submitting, approving, and publishing a survey request](Hub%20-%20Surveys/Submitting%2C%20approving%2C%20and%20publishing%20a%20survey%20request.md)
+- [Responding to a survey](Hub%20-%20Surveys/Responding%20to%20a%20survey.md)
+- [Viewing survey results and individual responses](Hub%20-%20Surveys/Viewing%20survey%20results%20and%20individual%20responses.md) — currently blocked by [a known bug](Zz%20-%20Known%20Bugs/survey-response-drilldown-link-goes-to-wrong-page-and-crashes.md)
+
+### Hub - Pages
+OCU One's built-in intranet — reference material like handbooks and policies, nested into a tree of pages with their own review-and-publish workflow.
+
+- [Overview — what a Hub Page is](Hub%20-%20Pages/_Hub%20-%20Pages%20-%20Overview.md)
+- [Creating and organizing Hub pages (intranet CMS pages)](Hub%20-%20Pages/Creating%20and%20organizing%20Hub%20pages%20%28intranet%20CMS%20pages%29.md)
+- [Editing a Hub page's hero image, featured media, and settings](Hub%20-%20Pages/Editing%20a%20Hub%20page%27s%20hero%20image%2C%20featured%20media%2C%20and%20settings.md)
+- [Writing and updating a Hub page's body content inline](Hub%20-%20Pages/Writing%20and%20updating%20a%20Hub%20page%27s%20body%20content%20inline.md)
+- [Submitting, approving, rejecting, and publishing a Hub page](Hub%20-%20Pages/Submitting%2C%20approving%2C%20rejecting%2C%20and%20publishing%20a%20Hub%20page.md)
+- [Accepting a Hub page (policy/document acknowledgment)](Hub%20-%20Pages/Accepting%20a%20Hub%20page.md)
+
+### Hub - Channels
+Topic-based feeds in the Hub for sharing posts and articles, each moving through the same draft → review → publish workflow as a Hub page.
+
+- [Overview — what a Hub Channel is](Hub%20-%20Channels/_Hub%20-%20Channels%20-%20Overview.md)
+- [Browsing Hub channels and viewing a channel's feed](Hub%20-%20Channels/Browsing%20Hub%20channels%20and%20viewing%20a%20channel%27s%20feed.md)
+- [Creating and configuring a Hub channel](Hub%20-%20Channels/Creating%20and%20configuring%20a%20Hub%20channel.md)
+- [Writing and publishing a quick post in a channel](Hub%20-%20Channels/Writing%20and%20publishing%20a%20quick%20post%20in%20a%20channel.md)
+- [Writing and publishing a full article in a channel](Hub%20-%20Channels/Writing%20and%20publishing%20a%20full%20article%20in%20a%20channel.md)
+- [Acknowledging (marking as read) a post or article](Hub%20-%20Channels/Acknowledging%20%28marking%20as%20read%29%20a%20post%20or%20article.md)
 
 ## Folder layout
 
@@ -434,6 +568,11 @@ OCU-One-Web-User-Guides/
 │   ├── _VERIFICATION.md    verification status for Projects guides
 │   ├── ...guide files
 │   └── attachments/         
+├── Jobs/                   Jobs guides
+│   ├── _Jobs - Overview.md
+│   ├── _VERIFICATION.md    verification status for Jobs guides
+│   ├── ...guide files
+│   └── attachments/        
 ├── Timesheets/             Timesheets guides
 │   ├── _Timesheets - Overview.md
 │   ├── _VERIFICATION.md    verification status for Timesheets guides
@@ -529,6 +668,11 @@ OCU-One-Web-User-Guides/
 │   ├── _VERIFICATION.md    verification status for Client Portal guides
 │   ├── ...guide files
 │   └── attachments/        
+├── Public Share Links/     Public Share Links guides
+│   ├── _Public Share Links - Overview.md
+│   ├── _VERIFICATION.md    verification status for Public Share Links guides
+│   ├── ...guide files
+│   └── attachments/        
 ├── Custom Fields/          Custom Fields guides
 │   ├── _Custom Fields - Overview.md
 │   ├── _VERIFICATION.md    verification status for Custom Fields guides
@@ -564,10 +708,31 @@ OCU-One-Web-User-Guides/
 │   ├── Automation/
 │   ├── Imports & Integrations/
 │   ├── Access Control (Roles & Permissions)/
+│   ├── Team & Users/
 │   └── Workspace Builder/
 ├── Tasks/                  Tasks guides
 │   ├── _Tasks - Overview.md
 │   ├── _VERIFICATION.md    verification status for Tasks guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Invoice Exports/        Invoice Exports guides
+│   ├── _Invoice Exports - Overview.md
+│   ├── _VERIFICATION.md    verification status for Invoice Exports guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Hub - Surveys/          Hub - Surveys guides
+│   ├── _Hub - Surveys - Overview.md
+│   ├── _VERIFICATION.md    verification status for Hub - Surveys guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Hub - Pages/            Hub - Pages guides
+│   ├── _Hub - Pages - Overview.md
+│   ├── _VERIFICATION.md    verification status for Hub - Pages guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Hub - Channels/         Hub - Channels guides
+│   ├── _Hub - Channels - Overview.md
+│   ├── _VERIFICATION.md    verification status for Hub - Channels guides
 │   ├── ...guide files
 │   └── attachments/        
 └── Zz - Known Bugs/        real product issues found while building guides, not documentation — named to sort last
