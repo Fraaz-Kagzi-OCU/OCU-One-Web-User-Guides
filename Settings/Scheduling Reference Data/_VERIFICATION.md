@@ -17,8 +17,8 @@ Tracks whether a human has actually checked each guide against the live app — 
 
 | Guide | Verified | Verified by | Date | Version | Blocked | Notes |
 | ----- | -------- | ------------ | ---- | ------- | ------- | ----- |
-| Creating and managing rotating shift patterns | No |  |  | v2026.08.04 | Yes: [launcher-apps-include-closed-does-not-show-deactivated-apps.md](../../Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md), [shift-cannot-be-created-back-to-back-with-adjacent-shift.md](../../Zz%20-%20Known%20Bugs/shift-cannot-be-created-back-to-back-with-adjacent-shift.md) |  |
-| Managing availability types | No |  |  | v2026.08.04 | Yes: [launcher-apps-include-closed-does-not-show-deactivated-apps.md](../../Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md) |  |
+| Creating and managing rotating shift patterns | No |  |  | v2026.08.04 | Yes: [shift-cannot-be-created-back-to-back-with-adjacent-shift.md](../../Zz%20-%20Known%20Bugs/shift-cannot-be-created-back-to-back-with-adjacent-shift.md) |  |
+| Managing availability types | No |  |  | v2026.08.04 |  |  |
 
 ## Summary
 

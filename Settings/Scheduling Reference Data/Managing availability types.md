@@ -38,9 +38,9 @@ Click the eye icon in a type's **State** column to deactivate it. You'll be aske
 
 ![Confirm dialog asking "Are you sure you want to deactivate this?"](attachments/managing-availability-types/05-deactivate-confirm.jpg)
 
-Once deactivated, the type drops off the default list. Turning on **Include closed?** does not currently bring it back into the list — once deactivated, a type stops showing here regardless of that toggle.
+Once deactivated, the type drops off the default list.
 
-![Availability Types list after deactivating "Annual Leave" — it no longer appears, and turning on "Include closed?" doesn't bring it back](attachments/managing-availability-types/07-include-closed-still-missing.jpg)
+![Availability Types list after deactivating "Annual Leave" — it no longer appears in the default list](attachments/managing-availability-types/06-availability-type-deactivated.jpg)
 
 ## Things to know
 

@@ -18,7 +18,7 @@ Tracks whether a human has actually checked each guide against the live app — 
 | Guide | Verified | Verified by | Date | Version | Blocked | Notes |
 | ----- | -------- | ------------ | ---- | ------- | ------- | ----- |
 | Configuring Hub survey types | No |  |  | v2026.08.04 |  |  |
-| Configuring app-launcher shortcuts | No |  |  | v2026.08.04 | Yes: [launcher-apps-include-closed-does-not-show-deactivated-apps.md](../../Zz%20-%20Known%20Bugs/launcher-apps-include-closed-does-not-show-deactivated-apps.md) |  |
+| Configuring app-launcher shortcuts | No |  |  | v2026.08.04 |  |  |
 
 ## Summary
 

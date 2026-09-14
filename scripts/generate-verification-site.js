@@ -5,18 +5,19 @@
  * Static site generator for OCU-One-Web-User-Guides.
  *
  * Scans every topic's _VERIFICATION.md (root-level topic folders, plus each
- * Settings/<sub-area>/_VERIFICATION.md), and builds one page per guide row
- * whose Verified column is "No" and whose Blocked column is empty. Verified
- * guides are omitted entirely, so a guide drops off the site the moment its
- * row flips to Verified = Yes. Blocked guides (Blocked column non-empty —
- * the guide's own documented behavior is affected by an open app bug, see
- * <vault>/Zz - Bugged Guides.md) are omitted too, so a reviewer is never
- * shown a guide that's known to be wrong until the bug is fixed and the
- * guide is rewritten.
+ * Settings/<sub-area>/_VERIFICATION.md) and splits each guide row into one of
+ * two sections by its Verified column: "verified" (Yes) or "needs-verify"
+ * (No). A row whose Blocked column is non-empty — the guide's own documented
+ * behavior is affected by an open app bug, see <vault>/Zz - Bugged Guides.md
+ * — is omitted from both sections, so nobody is shown a guide that's known
+ * to be wrong until the bug is fixed and the guide is rewritten. A guide
+ * moves from needs-verify to verified the moment its row flips to
+ * Verified = Yes and the site is rebuilt.
  *
- * Output goes to <vault>/site/, mirroring the source folder structure, so
- * that a guide's own "attachments/<slug>/..." image paths keep working
- * unmodified in the generated HTML.
+ * Output goes to <vault>/site/, with a top-level landing page linking to
+ * site/needs-verify/ and site/verified/, each mirroring the source folder
+ * structure so a guide's own "attachments/<slug>/..." image paths keep
+ * working unmodified in the generated HTML.
  *
  * Usage: node scripts/generate-verification-site.js
  */
@@ -40,6 +41,26 @@ const VERSION_ENTRY_ID = "65365296";
 const VAULT_ROOT = path.resolve(__dirname, '..');
 const OUTPUT_DIR = path.join(VAULT_ROOT, 'site');
 const IGNORED_TOP_LEVEL = new Set(['.git', '.obsidian', 'node_modules', 'site', 'scripts']);
+
+/** The two sections the site is split into. `match` decides which section a
+ * _VERIFICATION.md row belongs to; a row matching neither (blocked) is
+ * omitted from the site entirely. */
+const SECTIONS = [
+  {
+    id: 'needs-verify',
+    dirName: 'needs-verify',
+    label: 'Needs Verification',
+    statusLabel: 'Unverified',
+    match: (row) => (row.verified || '').toLowerCase() === 'no' && !(row.blocked || '').trim(),
+  },
+  {
+    id: 'verified',
+    dirName: 'verified',
+    label: 'Verified',
+    statusLabel: 'Verified',
+    match: (row) => (row.verified || '').toLowerCase() === 'yes' && !(row.blocked || '').trim(),
+  },
+];
 
 // ===========================================================================
 // Small utilities
@@ -377,7 +398,7 @@ function rewriteGuideLinks(markdown, currentFilePath, currentOutFile, fileToOutF
  * guide's own relative image paths keep resolving unmodified. Slugs are
  * decoded (Markdown image targets containing a space are written as
  * "%20" etc.) since the folder on disk uses the literal, un-encoded name. */
-function copyReferencedAttachments(topicFolder, guideContent) {
+function copyReferencedAttachments(topicFolder, guideContent, sectionDirName) {
   const slugs = new Set();
   const re = /attachments\/([^/)\s]+)\//g;
   let m;
@@ -386,7 +407,7 @@ function copyReferencedAttachments(topicFolder, guideContent) {
   for (const slug of slugs) {
     const src = path.join(VAULT_ROOT, topicFolder, 'attachments', slug);
     if (!isDir(src)) continue;
-    const dest = path.join(OUTPUT_DIR, topicFolder, 'attachments', slug);
+    const dest = path.join(OUTPUT_DIR, sectionDirName, topicFolder, 'attachments', slug);
     copyDir(src, dest);
   }
 }
@@ -501,27 +522,80 @@ main blockquote { border-left: 3px solid var(--border); margin: 0; padding-left:
 }
 .topic-list a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .topic-list .version { color: var(--muted); font-size: 0.85rem; }
+.all-guides-link {
+  display: inline-block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+.all-guides-link:hover { color: var(--fg); }
+.section-switch {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+.section-switch a {
+  flex: 1;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.3rem;
+}
+.section-switch a.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.section-cards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.section-cards li {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+.section-cards a { color: var(--accent); text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+.section-cards p { color: var(--muted); margin: 0.4rem 0 0; }
 `.trim();
 }
 
-function renderSidebar(topics, currentPagePath) {
+function relHref(currentPagePath, target) {
+  return (path.relative(path.dirname(currentPagePath), target) || path.basename(target)).split(path.sep).join('/');
+}
+
+function renderSidebar(topics, currentPagePath, section) {
+  const sectionBase = path.join(OUTPUT_DIR, section.dirName);
   const items = topics
     .map((t) => {
-      const target = path.join(OUTPUT_DIR, t.folder, 'index.html');
-      const href = path.relative(path.dirname(currentPagePath), target) || path.basename(target);
-      const isActive = currentPagePath.startsWith(path.join(OUTPUT_DIR, t.folder) + path.sep) ||
+      const target = path.join(sectionBase, t.folder, 'index.html');
+      const href = relHref(currentPagePath, target);
+      const isActive = currentPagePath.startsWith(path.join(sectionBase, t.folder) + path.sep) ||
         currentPagePath === target;
-      return `<li><a class="${isActive ? 'active' : ''}" href="${href.split(path.sep).join('/')}">` +
+      return `<li><a class="${isActive ? 'active' : ''}" href="${href}">` +
         `<span>${escapeHtml(t.label)}</span><span class="count">${t.count}</span></a></li>`;
     })
     .join('\n');
 
-  const homeTarget = path.join(OUTPUT_DIR, 'index.html');
-  const homeHref = path.relative(path.dirname(currentPagePath), homeTarget) || path.basename(homeTarget);
+  const landingHref = relHref(currentPagePath, path.join(OUTPUT_DIR, 'index.html'));
+  const sectionSwitch = SECTIONS.map((s) => {
+    const href = relHref(currentPagePath, path.join(OUTPUT_DIR, s.dirName, 'index.html'));
+    return `<a class="${s.id === section.id ? 'active' : ''}" href="${href}">${escapeHtml(s.label)}</a>`;
+  }).join('\n');
+
+  const homeHref = relHref(currentPagePath, path.join(sectionBase, 'index.html'));
 
   return `
 <nav class="sidebar">
-  <h2><a href="${homeHref.split(path.sep).join('/')}" style="color:inherit;text-decoration:none;">Guides needing verification</a></h2>
+  <a class="all-guides-link" href="${landingHref}">&larr; All guides</a>
+  <div class="section-switch">
+    ${sectionSwitch}
+  </div>
+  <h2><a href="${homeHref}" style="color:inherit;text-decoration:none;">${escapeHtml(section.label)}</a></h2>
   <ul>
     ${items}
   </ul>
@@ -565,66 +639,64 @@ function formIframeHtml(guideTitle, version) {
 // Main
 // ===========================================================================
 
-function main() {
-  const warnings = [];
+/** Resolves a _VERIFICATION.md row to its source guide file + content, or
+ * null (with a warning) if it can't be matched confidently or its title
+ * doesn't line up 1:1 with _progress.md. Shared by both sections since the
+ * matching rules don't depend on which section the row belongs to. */
+function resolveGuideSource(topic, row, progressTitleCounts, warnings) {
+  const guideFile = findGuideFile(topic.folder, row.guide, warnings);
+  if (!guideFile) return null;
 
-  rmrf(OUTPUT_DIR);
-  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-  fs.mkdirSync(path.join(OUTPUT_DIR, 'assets'), { recursive: true });
-  fs.writeFileSync(path.join(OUTPUT_DIR, 'assets', 'style.css'), styleSheet());
+  // The guide title stamped into the Google Form URL must come from
+  // _progress.md, verbatim — never from this row's own copy of the title
+  // (that's <Topic>/_VERIFICATION.md, a separately-maintained file that can
+  // drift). Require an exact, unambiguous match rather than guessing which
+  // _progress.md row was meant.
+  const progressCount = progressTitleCounts.get(row.guide) || 0;
+  if (progressCount === 0) {
+    warnings.push(
+      `"${row.guide}" (${topic.folder}/_VERIFICATION.md) has no exact match in _progress.md — ` +
+        `the two files' titles have diverged. Skipping until that's fixed.`
+    );
+    return null;
+  }
+  if (progressCount > 1) {
+    warnings.push(
+      `"${row.guide}" (${topic.folder}/_VERIFICATION.md) matches ${progressCount} rows in _progress.md — ` +
+        `guide titles must be unique across the tracker. Skipping rather than guessing.`
+    );
+    return null;
+  }
 
-  const progressTitleCounts = loadProgressGuideTitleCounts();
+  // Confirmed above to match _progress.md exactly, so row.guide here *is*
+  // the _progress.md string — not a coincidence, a checked fact.
+  const guideContent = fs.readFileSync(guideFile, 'utf8');
+  return { title: row.guide, version: row.version || '', guideContent, filePath: guideFile };
+}
 
-  const topics = discoverTopics();
-  /** @type {Array<{topic: Topic, guides: Array<{title: string, version: string, outFile: string}>}>} */
+/** Builds one section's topic pages (guide entries grouped by topic, each
+ * with its section-scoped output path). Does not render/write anything yet —
+ * that happens after every section's guides are known, so inter-guide links
+ * can resolve across sections too. */
+function buildSectionTopicPages(section, topics, progressTitleCounts, warnings) {
   const topicPages = [];
 
   for (const topic of topics) {
     const verificationPath = path.join(VAULT_ROOT, topic.folder, '_VERIFICATION.md');
     const content = fs.readFileSync(verificationPath, 'utf8');
     const rows = parseVerificationTables(content).filter((r) => r.guide);
-    const unverified = rows.filter(
-      (r) => (r.verified || '').toLowerCase() === 'no' && !(r.blocked || '').trim()
-    );
+    const matched = rows.filter(section.match);
 
     const guides = [];
+    for (const row of matched) {
+      const src = resolveGuideSource(topic, row, progressTitleCounts, warnings);
+      if (!src) continue;
 
-    for (const row of unverified) {
-      const guideFile = findGuideFile(topic.folder, row.guide, warnings);
-      if (!guideFile) continue;
-
-      // The guide title stamped into the Google Form URL must come from
-      // _progress.md, verbatim — never from this row's own copy of the
-      // title (that's <Topic>/_VERIFICATION.md, a separately-maintained
-      // file that can drift). Require an exact, unambiguous match rather
-      // than guessing which _progress.md row was meant.
-      const progressCount = progressTitleCounts.get(row.guide) || 0;
-      if (progressCount === 0) {
-        warnings.push(
-          `"${row.guide}" (${topic.folder}/_VERIFICATION.md) has no exact match in _progress.md — ` +
-            `the two files' titles have diverged. Skipping until that's fixed.`
-        );
-        continue;
-      }
-      if (progressCount > 1) {
-        warnings.push(
-          `"${row.guide}" (${topic.folder}/_VERIFICATION.md) matches ${progressCount} rows in _progress.md — ` +
-            `guide titles must be unique across the tracker. Skipping rather than guessing.`
-        );
-        continue;
-      }
-
-      const guideContent = fs.readFileSync(guideFile, 'utf8');
-      copyReferencedAttachments(topic.folder, guideContent);
-
-      const version = row.version || '';
-      const outName = `${slugifyForUrl(row.guide)}.html`;
-      const outFile = path.join(OUTPUT_DIR, topic.folder, outName);
+      const outName = `${slugifyForUrl(src.title)}.html`;
+      const outFile = path.join(OUTPUT_DIR, section.dirName, topic.folder, outName);
       fs.mkdirSync(path.dirname(outFile), { recursive: true });
 
-      // Confirmed above to match _progress.md exactly, so row.guide here
-      // *is* the _progress.md string — not a coincidence, a checked fact.
-      guides.push({ title: row.guide, version, outFile, guideContent, filePath: guideFile });
+      guides.push({ ...src, outFile });
     }
 
     if (guides.length > 0) {
@@ -632,33 +704,31 @@ function main() {
     }
   }
 
-  const topicsWithCounts = topicPages.map(({ topic, guides }) => ({ ...topic, count: guides.length }));
+  return topicPages;
+}
 
-  // Map every guide's source vault path to its generated output path, so
-  // inter-guide links (see rewriteGuideLinks) can be resolved regardless of
-  // which topic either end lives in.
-  const fileToOutFile = new Map();
-  const basenameToOutFile = new Map();
-  for (const { guides } of topicPages) {
-    for (const guide of guides) {
-      fileToOutFile.set(guide.filePath, guide.outFile);
-      basenameToOutFile.set(path.basename(guide.filePath, '.md'), guide.outFile);
-    }
-  }
+/** Renders every page (guide pages, topic indexes, section index) for one
+ * already-built section. `fileToOutFile`/`basenameToOutFile` are the global,
+ * cross-section link maps so a guide in one section can link to a guide in
+ * the other. */
+function renderSection(section, topicPages, fileToOutFile, basenameToOutFile) {
+  const topicsWithCounts = topicPages.map(({ topic, guides }) => ({ ...topic, count: guides.length }));
 
   // Guide pages
   for (const { topic, guides } of topicPages) {
     for (const guide of guides) {
+      copyReferencedAttachments(topic.folder, guide.guideContent, section.dirName);
+
       let linkedMarkdown = rewriteGuideLinks(guide.guideContent, guide.filePath, guide.outFile, fileToOutFile);
       linkedMarkdown = rewriteWikilinks(linkedMarkdown, guide.outFile, basenameToOutFile);
       const renderedMarkdown = marked.parse(linkedMarkdown);
       const body = `
-<span class="guide-meta">Version ${escapeHtml(guide.version || '—')} · Unverified</span>
+<span class="guide-meta">Version ${escapeHtml(guide.version || '—')} · ${escapeHtml(section.statusLabel)}</span>
 ${renderedMarkdown}
 ${formIframeHtml(guide.title, guide.version)}`;
 
       const cssHref = path.relative(path.dirname(guide.outFile), path.join(OUTPUT_DIR, 'assets', 'style.css')).split(path.sep).join('/');
-      const sidebarHtml = renderSidebar(topicsWithCounts, guide.outFile);
+      const sidebarHtml = renderSidebar(topicsWithCounts, guide.outFile, section);
 
       fs.writeFileSync(
         guide.outFile,
@@ -669,7 +739,7 @@ ${formIframeHtml(guide.title, guide.version)}`;
 
   // Topic index pages
   for (const { topic, guides } of topicPages) {
-    const indexFile = path.join(OUTPUT_DIR, topic.folder, 'index.html');
+    const indexFile = path.join(OUTPUT_DIR, section.dirName, topic.folder, 'index.html');
     const items = guides
       .map((g) => {
         const href = path.relative(path.dirname(indexFile), g.outFile).split(path.sep).join('/');
@@ -679,46 +749,122 @@ ${formIframeHtml(guide.title, guide.version)}`;
 
     const body = `
 <h1>${escapeHtml(topic.label)}</h1>
-<p>${guides.length} guide${guides.length === 1 ? '' : 's'} awaiting verification.</p>
+<p>${guides.length} guide${guides.length === 1 ? '' : 's'} ${section.id === 'verified' ? 'verified against the live app.' : 'awaiting verification.'}</p>
 <ul class="topic-list">
 ${items}
 </ul>`;
 
     const cssHref = path.relative(path.dirname(indexFile), path.join(OUTPUT_DIR, 'assets', 'style.css')).split(path.sep).join('/');
-    const sidebarHtml = renderSidebar(topicsWithCounts, indexFile);
+    const sidebarHtml = renderSidebar(topicsWithCounts, indexFile, section);
 
-    fs.writeFileSync(indexFile, pageShell({ title: topic.label, bodyHtml: body, cssHref, sidebarHtml }));
+    fs.writeFileSync(indexFile, pageShell({ title: `${topic.label} — ${section.label}`, bodyHtml: body, cssHref, sidebarHtml }));
   }
 
-  // Root index page
-  const rootIndexFile = path.join(OUTPUT_DIR, 'index.html');
+  // Section index page
+  const sectionIndexFile = path.join(OUTPUT_DIR, section.dirName, 'index.html');
   const totalGuides = topicsWithCounts.reduce((sum, t) => sum + t.count, 0);
   const topicItems = topicsWithCounts
     .map((t) => {
-      const href = path.relative(OUTPUT_DIR, path.join(OUTPUT_DIR, t.folder, 'index.html')).split(path.sep).join('/');
+      const href = path.relative(path.join(OUTPUT_DIR, section.dirName), path.join(OUTPUT_DIR, section.dirName, t.folder, 'index.html')).split(path.sep).join('/');
       return `<li><a href="${href}">${escapeHtml(t.label)}</a> <span class="version">${t.count} guide${t.count === 1 ? '' : 's'}</span></li>`;
     })
     .join('\n');
 
-  const rootBody = `
-<h1>Guides needing verification</h1>
-<p>${totalGuides} guide${totalGuides === 1 ? '' : 's'} across ${topicsWithCounts.length} topic${topicsWithCounts.length === 1 ? '' : 's'} still need a human check against the live app. A guide disappears from here the moment its row is marked <code>Verified = Yes</code> and the site is rebuilt.</p>
+  const intro = section.id === 'verified'
+    ? `${totalGuides} guide${totalGuides === 1 ? '' : 's'} across ${topicsWithCounts.length} topic${topicsWithCounts.length === 1 ? '' : 's'} have been checked against the live app and confirmed accurate. A guide lands here the moment its row is marked <code>Verified = Yes</code> and the site is rebuilt.`
+    : `${totalGuides} guide${totalGuides === 1 ? '' : 's'} across ${topicsWithCounts.length} topic${topicsWithCounts.length === 1 ? '' : 's'} still need a human check against the live app. A guide moves to Verified the moment its row is marked <code>Verified = Yes</code> and the site is rebuilt.`;
+
+  const sectionBody = `
+<h1>${escapeHtml(section.label)}</h1>
+<p>${intro}</p>
 <ul class="topic-list">
 ${topicItems}
 </ul>`;
 
+  const sectionIndexCssHref = path.relative(path.dirname(sectionIndexFile), path.join(OUTPUT_DIR, 'assets', 'style.css')).split(path.sep).join('/');
   fs.writeFileSync(
-    rootIndexFile,
+    sectionIndexFile,
     pageShell({
-      title: 'Guides needing verification',
-      bodyHtml: rootBody,
-      cssHref: 'assets/style.css',
-      sidebarHtml: renderSidebar(topicsWithCounts, rootIndexFile),
+      title: section.label,
+      bodyHtml: sectionBody,
+      cssHref: sectionIndexCssHref,
+      sidebarHtml: renderSidebar(topicsWithCounts, sectionIndexFile, section),
     })
   );
 
+  return totalGuides;
+}
+
+function renderLandingPage(sectionTotals) {
+  const cards = SECTIONS
+    .map((s) => {
+      const total = sectionTotals[s.id];
+      const desc = s.id === 'verified'
+        ? `${total} guide${total === 1 ? '' : 's'} confirmed against the live app.`
+        : `${total} guide${total === 1 ? '' : 's'} still need a human check against the live app.`;
+      return `<li><a href="${s.dirName}/index.html">${escapeHtml(s.label)}</a><p>${desc}</p></li>`;
+    })
+    .join('\n');
+
+  const body = `
+<h1>OCU One User Guides</h1>
+<p>Every user guide, split by verification status.</p>
+<ul class="section-cards">
+${cards}
+</ul>`;
+
+  fs.writeFileSync(
+    path.join(OUTPUT_DIR, 'index.html'),
+    pageShell({
+      title: 'OCU One User Guides',
+      bodyHtml: body,
+      cssHref: 'assets/style.css',
+      sidebarHtml: '',
+    })
+  );
+}
+
+function main() {
+  const warnings = [];
+
+  rmrf(OUTPUT_DIR);
+  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+  fs.mkdirSync(path.join(OUTPUT_DIR, 'assets'), { recursive: true });
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'assets', 'style.css'), styleSheet());
+
+  const progressTitleCounts = loadProgressGuideTitleCounts();
+  const topics = discoverTopics();
+
+  const sectionTopicPages = {};
+  for (const section of SECTIONS) {
+    sectionTopicPages[section.id] = buildSectionTopicPages(section, topics, progressTitleCounts, warnings);
+  }
+
+  // Map every guide's source vault path to its generated output path, across
+  // BOTH sections, so inter-guide links (see rewriteGuideLinks) can resolve
+  // regardless of which section or topic either end lives in.
+  const fileToOutFile = new Map();
+  const basenameToOutFile = new Map();
+  for (const section of SECTIONS) {
+    for (const { guides } of sectionTopicPages[section.id]) {
+      for (const guide of guides) {
+        fileToOutFile.set(guide.filePath, guide.outFile);
+        basenameToOutFile.set(path.basename(guide.filePath, '.md'), guide.outFile);
+      }
+    }
+  }
+
+  const sectionTotals = {};
+  for (const section of SECTIONS) {
+    sectionTotals[section.id] = renderSection(section, sectionTopicPages[section.id], fileToOutFile, basenameToOutFile);
+  }
+
+  renderLandingPage(sectionTotals);
+
   // Report
-  console.log(`Generated ${totalGuides} guide page(s) across ${topicsWithCounts.length} topic(s) into ${path.relative(VAULT_ROOT, OUTPUT_DIR)}/`);
+  const grandTotal = Object.values(sectionTotals).reduce((sum, n) => sum + n, 0);
+  const summary = SECTIONS.map((s) => `${sectionTotals[s.id]} ${s.label.toLowerCase()}`).join(', ');
+  console.log(`Generated ${grandTotal} guide page(s) (${summary}) into ${path.relative(VAULT_ROOT, OUTPUT_DIR)}/`);
   if (warnings.length > 0) {
     console.warn(`\n${warnings.length} warning(s):`);
     for (const w of warnings) console.warn(`  - ${w}`);

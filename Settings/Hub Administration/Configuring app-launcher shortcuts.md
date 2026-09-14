@@ -43,5 +43,4 @@ Click the eye icon to deactivate a launcher app that's no longer needed. You'll 
 ## Things to know
 
 - The list shows **Name**, **Logo**, **Owner**, **Lifecycle**, **Access**, **Created at**, and **Updated at** for every launcher app. Use the **Name** or **State** filters to narrow it down.
-- Turning on **Include closed?** does not currently bring a deactivated launcher app back into the list — once deactivated, a launcher app stops showing here regardless of that toggle.
 - Name, URL, and Logo are all required — a launcher app can't be created without a working link and an image.

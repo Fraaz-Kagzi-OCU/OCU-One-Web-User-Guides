@@ -17,39 +17,47 @@ When asked to sync/update/refresh this file, do the following:
 
 ## Status
 
-| Topic                          | Verified | Date       |
-| ------------------------------- | -------- | ---------- |
-| Access & Visibility               | 0 / 3   |            |
-| Account                          | 3 / 3   | 25/08/2026 |
-| Assets                           | 0 / 16  |            |
-| Assignments                      | 0 / 3   |            |
-| Client Portal                    | 0 / 1   |            |
-| Collaboration                    | 0 / 3   |            |
-| Contacts & Addresses              | 0 / 2   |            |
-| Custom Fields                    | 0 / 1   |            |
-| Documents                        | 0 / 5   |            |
-| Home Dashboard                   | 0 / 15  |            |
-| Invoice Exports                  | 0 / 3   |            |
-| Labels                           | 0 / 3   |            |
-| Map                              | 0 / 1   |            |
-| Media & Attachments              | 0 / 2   |            |
-| Notifications                    | 1 / 1   | 25/08/2026 |
-| Platform Administration           | 0 / 2   |            |
-| Product Allocations              | 0 / 7   |            |
-| Products & Rates                 | 0 / 11  |            |
-| Projects                         | 0 / 33  |            |
-| Records                          | 0 / 1   |            |
-| Search & Navigation              | 0 / 2   |            |
-| Settings                         | 0 / 63  |            |
-| Signing In                       | 3 / 3   | 25/08/2026 |
-| Tasks                            | 0 / 1   |            |
-| Tickets                          | 0 / 12  |            |
-| Timesheets                       | 0 / 18  |            |
-| Todos & Checklists               | 0 / 7   |            |
-| Views                            | 7 / 9   |            |
-| Watches                          | 1 / 1   | 26/08/2026 |
+| Topic                    | Verified | Date       |
+| ------------------------ | -------- | ---------- |
+| Access & Visibility     | 0 / 3    |            |
+| Account                 | 3 / 3    | 25/08/2026 |
+| Announcements           | 0 / 3    |            |
+| Assets                  | 0 / 16   |            |
+| Assignments             | 0 / 3    |            |
+| Client Portal           | 0 / 1    |            |
+| Collaboration           | 0 / 3    |            |
+| Contacts & Addresses    | 0 / 2    |            |
+| Custom Fields           | 0 / 1    |            |
+| Documents               | 0 / 5    |            |
+| Home Dashboard          | 0 / 15   |            |
+| Hub - Channels          | 0 / 5    |            |
+| Hub - Pages             | 0 / 5    |            |
+| Hub - Surveys           | 0 / 4    |            |
+| Invoice Exports         | 0 / 3    |            |
+| Jobs                    | 0 / 20   |            |
+| Labels                  | 0 / 3    |            |
+| Leads                   | 0 / 5    |            |
+| Map                     | 0 / 1    |            |
+| Media & Attachments     | 0 / 2    |            |
+| Notifications           | 1 / 1    | 25/08/2026 |
+| Permits                 | 0 / 17   |            |
+| Platform Administration | 0 / 2    |            |
+| Product Allocations     | 0 / 7    |            |
+| Products & Rates        | 0 / 11   |            |
+| Projects                | 0 / 36   |            |
+| Public Share Links      | 0 / 4    |            |
+| Records                 | 0 / 26   |            |
+| Search & Navigation     | 0 / 2    |            |
+| Settings                | 0 / 63   |            |
+| Signing In              | 3 / 3    | 25/08/2026 |
+| Tasks                   | 0 / 1    |            |
+| Tickets                 | 0 / 12   |            |
+| Timesheets              | 1 / 18   |            |
+| Todos & Checklists      | 0 / 7    |            |
+| Views                   | 8 / 9    |            |
+| Watches                | 1 / 1    | 26/08/2026 |
 
 ## Summary
 
-Topics fully verified: 4 / 29
-Guides verified: 15 / 232
+Topics fully verified: 4 / 36
+Guides verified: 17 / 323

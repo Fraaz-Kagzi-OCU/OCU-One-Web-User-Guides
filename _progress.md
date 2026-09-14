@@ -543,7 +543,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|-------|
 | Allocating products or materials to a job, project, estimate, or variation | PVA | Ops, Fin | ProductAllocationsController#new/#create/#index | done | Job allocated 25m of "HV Cable per metre" | 4 | 2026-09-06 | v2026.08.04 (from v2026.08.03) | |
 | Copying or transferring allocated products between records | PVA | Ops, Fin | ProductAllocationsController#allocate_new/#allocate/#allocatable_products | done | Accepted estimate's allocations transferred onto new project | 4 | 2026-08-13 | v2026.08.03 | |
-| Editing or removing a product allocation | PVA | Ops, Fin | ProductAllocationsController#edit/#update/#destroy/#show | done | Allocation title typo corrected and category set; accidental duplicate allocation removed | 3 | 2026-09-06 | v2026.08.04 (from v2026.08.03) | |
+| Editing or removing a product allocation | PVA | Ops, Fin | ProductAllocationsController#edit/#update/#destroy/#show | needs update | Allocation title typo corrected and category set; accidental duplicate allocation removed | 3 | 2026-09-06 | v2026.08.04 (from v2026.08.03) | Once an allocation has invoiced lines, the Edit form no longer shows the Uplift/Discount modifier section at all (was previously always shown), and a new validation blocks the change server-side too. |
 | Bulk-applying a rate modifier to all allocated products | PVA | Fin | ProductAllocationsController#bulk_modifier/#bulk_update_modifier | done | 12 allocations with a "+15% Out of Hours" modifier applied | 2 | 2026-08-13 | v2026.08.03 | |
 | Raising a planned quantity change on an allocation | PVA | Ops, FE | PlannedQuantityChangesController#new/#create/#show | done | Allocation changed 40m → 55m with reason and attached sketch | 3 | 2026-08-13 | v2026.08.03 | |
 | Viewing planned quantity change history | PVA | Ops, Fin | ProductAllocationsController#quantity_history | done | Allocation with 2 recorded changes (40→55→60m) | 1 | 2026-08-13 | v2026.08.03 | |
@@ -799,15 +799,15 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 321 / 401
+Completed: 320 / 401
 
-Needs update: 2
+Needs update: 3
 
 Access & Visibility guides completed: 3 / 3
 
 Media & Attachments guides completed: 2 / 2
 
-Product Allocations guides completed: 7 / 7
+Product Allocations guides completed: 6 / 7
 
 Products & Rates guides completed: 11 / 11
 
@@ -881,6 +881,6 @@ Release breakdown (current version only, for `done` rows):
 
 - v2026.08.02: 19
 - v2026.08.03: 9
-- v2026.08.04: 45
+- v2026.08.04: 44
 - v2026.08.05: 93
 - v2026.09.01: 155

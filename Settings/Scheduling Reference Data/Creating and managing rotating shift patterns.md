@@ -60,7 +60,7 @@ From the Patterns list, click the eye icon in a pattern's **State** column to de
 
 ![Confirm dialog asking "Are you sure you want to deactivate this?"](attachments/creating-and-managing-rotating-shift-patterns/10-deactivate-pattern-confirm.jpg)
 
-Once deactivated, the pattern drops off the default Patterns list. Turning on **Include closed?** does not currently bring it back into the list — once deactivated, a pattern stops showing here regardless of that toggle.
+Once deactivated, the pattern drops off the default Patterns list.
 
 ## Things to know
 
