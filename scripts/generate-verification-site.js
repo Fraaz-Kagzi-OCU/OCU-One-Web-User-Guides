@@ -35,6 +35,14 @@ const FORM_ID = "1FAIpQLSe4kFggwnvLeJfEPnm68Lj3TIjLKdV22aoYzPT5dksv3nnBdA";
 const GUIDE_NAME_ENTRY_ID = "47921394";
 const VERSION_ENTRY_ID = "65365296";
 
+// Published-to-web CSV of the Form's responses sheet (Sheets > File > Share >
+// Publish to web). Read client-side (see verify-status.js) so a needs-verify
+// guide page can flag "already submitted, pending sync" the moment someone
+// submits the form — without waiting for the next /sync-human-verification +
+// site rebuild. Public and read-only by design (Publish to web), same trust
+// level as the form itself.
+const RESPONSES_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRhRKTnN3qsQU8QeJOzIfnexdKioA5WPCckm7MtkPqoum-XhQBAsyAdZuRTuoCI0PjLYttMEm4UTmCB/pub?gid=1693730751&single=true&output=csv";
+
 // ---------------------------------------------------------------------------
 // Paths
 // ---------------------------------------------------------------------------
@@ -51,6 +59,7 @@ const SECTIONS = [
     dirName: 'needs-verify',
     label: 'Needs Verification',
     statusLabel: 'Unverified',
+    showVerifyForm: true,
     match: (row) => (row.verified || '').toLowerCase() === 'no' && !(row.blocked || '').trim(),
   },
   {
@@ -58,6 +67,7 @@ const SECTIONS = [
     dirName: 'verified',
     label: 'Verified',
     statusLabel: 'Verified',
+    showVerifyForm: false,
     match: (row) => (row.verified || '').toLowerCase() === 'yes' && !(row.blocked || '').trim(),
   },
 ];
@@ -561,6 +571,106 @@ main blockquote { border-left: 3px solid var(--border); margin: 0; padding-left:
 }
 .section-cards a { color: var(--accent); text-decoration: none; font-weight: 700; font-size: 1.1rem; }
 .section-cards p { color: var(--muted); margin: 0.4rem 0 0; }
+.pending-sync-banner {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--fg);
+  font-weight: 600;
+}
+`.trim();
+}
+
+/** Client-side script for needs-verify guide pages: fetches the Form's
+ * published response CSV and, if any row for this exact guide title arrived
+ * after this page was generated, replaces the verify-form iframe with a
+ * "pending sync" banner — closing the window where two reviewers verify the
+ * same guide because the response hasn't been reconciled into
+ * _VERIFICATION.md yet (see /sync-human-verification). Best-effort: any
+ * fetch/parse failure just leaves the form showing, same as today. */
+function verifyStatusScript() {
+  return `
+(function () {
+  var script = document.currentScript;
+  var guideTitle = script.getAttribute('data-guide');
+  var guideVersion = script.getAttribute('data-version') || '';
+  var buildTime = script.getAttribute('data-build-time');
+  var csvUrl = script.getAttribute('data-csv-url');
+  if (!guideTitle || !buildTime || !csvUrl) return;
+
+  var buildDate = new Date(buildTime);
+
+  // Sheets stamps responses as "DD/MM/YYYY HH:MM:SS" — JS's Date parser
+  // reads that as US MM/DD/YYYY, so parse it explicitly instead.
+  function parseSheetTimestamp(s) {
+    var m = /^(\\d{1,2})\\/(\\d{1,2})\\/(\\d{4})\\s+(\\d{1,2}):(\\d{2}):(\\d{2})$/.exec((s || '').trim());
+    if (!m) return null;
+    var day = +m[1], month = +m[2], year = +m[3], h = +m[4], min = +m[5], sec = +m[6];
+    var d = new Date(year, month - 1, day, h, min, sec);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  function parseCsv(text) {
+    var rows = [];
+    var row = [];
+    var field = '';
+    var inQuotes = false;
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      if (inQuotes) {
+        if (c === '"') {
+          if (text[i + 1] === '"') { field += '"'; i++; } else { inQuotes = false; }
+        } else {
+          field += c;
+        }
+      } else if (c === '"') {
+        inQuotes = true;
+      } else if (c === ',') {
+        row.push(field); field = '';
+      } else if (c === '\\n') {
+        row.push(field); rows.push(row); row = []; field = '';
+      } else if (c === '\\r') {
+        // skip
+      } else {
+        field += c;
+      }
+    }
+    if (field.length > 0 || row.length > 0) { row.push(field); rows.push(row); }
+    return rows;
+  }
+
+  fetch(csvUrl)
+    .then(function (r) { return r.ok ? r.text() : null; })
+    .then(function (text) {
+      if (!text) return;
+      var rows = parseCsv(text);
+      if (rows.length < 2) return;
+      var header = rows[0].map(function (h) { return h.trim().toLowerCase(); });
+      var guideIdx = header.indexOf('guide name');
+      var tsIdx = header.indexOf('timestamp');
+      var versionIdx = header.indexOf('version');
+      if (guideIdx === -1 || tsIdx === -1) return;
+
+      // A response for a since-superseded version of this guide is never
+      // going to sync as Verified = Yes (the sync command skips it as a
+      // "version mismatch") — it doesn't relieve anyone from reviewing the
+      // guide as it stands now, so it must not suppress the form. Only a
+      // response for the guide's CURRENT version counts as pending.
+      var pending = rows.slice(1).some(function (row) {
+        if ((row[guideIdx] || '').trim() !== guideTitle) return false;
+        if (versionIdx !== -1 && (row[versionIdx] || '').trim() !== guideVersion) return false;
+        var ts = parseSheetTimestamp(row[tsIdx]);
+        return ts !== null && ts > buildDate;
+      });
+
+      if (!pending) return;
+      var form = document.querySelector('.verify-form');
+      if (!form) return;
+      form.innerHTML = '<h2>Verify this guide</h2><p class="pending-sync-banner">Verification already submitted, pending sync.</p>';
+    })
+    .catch(function () {});
+})();
 `.trim();
 }
 
@@ -621,7 +731,7 @@ ${bodyHtml}
 `;
 }
 
-function formIframeHtml(guideTitle, version) {
+function formIframeHtml(guideTitle, version, { scriptHref, buildTimestamp }) {
   const src =
     `https://docs.google.com/forms/d/e/${FORM_ID}/viewform?embedded=true` +
     `&entry.${GUIDE_NAME_ENTRY_ID}=${encodeURIComponent(guideTitle)}` +
@@ -632,7 +742,8 @@ function formIframeHtml(guideTitle, version) {
   <h2>Verify this guide</h2>
   <p>Checked this against the live app? Log it here.</p>
   <iframe src="${escapeHtml(src)}" loading="lazy">Loading form…</iframe>
-</section>`;
+</section>
+<script src="${escapeHtml(scriptHref)}" data-guide="${escapeHtml(guideTitle)}" data-version="${escapeHtml(version)}" data-build-time="${escapeHtml(buildTimestamp)}" data-csv-url="${escapeHtml(RESPONSES_CSV_URL)}" defer></script>`;
 }
 
 // ===========================================================================
@@ -711,7 +822,7 @@ function buildSectionTopicPages(section, topics, progressTitleCounts, warnings) 
  * already-built section. `fileToOutFile`/`basenameToOutFile` are the global,
  * cross-section link maps so a guide in one section can link to a guide in
  * the other. */
-function renderSection(section, topicPages, fileToOutFile, basenameToOutFile) {
+function renderSection(section, topicPages, fileToOutFile, basenameToOutFile, buildTimestamp) {
   const topicsWithCounts = topicPages.map(({ topic, guides }) => ({ ...topic, count: guides.length }));
 
   // Guide pages
@@ -722,10 +833,11 @@ function renderSection(section, topicPages, fileToOutFile, basenameToOutFile) {
       let linkedMarkdown = rewriteGuideLinks(guide.guideContent, guide.filePath, guide.outFile, fileToOutFile);
       linkedMarkdown = rewriteWikilinks(linkedMarkdown, guide.outFile, basenameToOutFile);
       const renderedMarkdown = marked.parse(linkedMarkdown);
+      const scriptHref = path.relative(path.dirname(guide.outFile), path.join(OUTPUT_DIR, 'assets', 'verify-status.js')).split(path.sep).join('/');
       const body = `
 <span class="guide-meta">Version ${escapeHtml(guide.version || '—')} · ${escapeHtml(section.statusLabel)}</span>
 ${renderedMarkdown}
-${formIframeHtml(guide.title, guide.version)}`;
+${section.showVerifyForm ? formIframeHtml(guide.title, guide.version, { scriptHref, buildTimestamp }) : ''}`;
 
       const cssHref = path.relative(path.dirname(guide.outFile), path.join(OUTPUT_DIR, 'assets', 'style.css')).split(path.sep).join('/');
       const sidebarHtml = renderSidebar(topicsWithCounts, guide.outFile, section);
@@ -831,7 +943,9 @@ function main() {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   fs.mkdirSync(path.join(OUTPUT_DIR, 'assets'), { recursive: true });
   fs.writeFileSync(path.join(OUTPUT_DIR, 'assets', 'style.css'), styleSheet());
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'assets', 'verify-status.js'), verifyStatusScript());
 
+  const buildTimestamp = new Date().toISOString();
   const progressTitleCounts = loadProgressGuideTitleCounts();
   const topics = discoverTopics();
 
@@ -856,7 +970,7 @@ function main() {
 
   const sectionTotals = {};
   for (const section of SECTIONS) {
-    sectionTotals[section.id] = renderSection(section, sectionTopicPages[section.id], fileToOutFile, basenameToOutFile);
+    sectionTotals[section.id] = renderSection(section, sectionTopicPages[section.id], fileToOutFile, basenameToOutFile, buildTimestamp);
   }
 
   renderLandingPage(sectionTotals);
