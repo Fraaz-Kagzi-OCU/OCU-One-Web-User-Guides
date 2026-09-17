@@ -20,7 +20,8 @@ Tracks whether a human has actually checked each guide against the live app — 
 | Restricting an automation rule to specific record types | No |  |  | v2026.09.01 | Hint's "Fibre Repair" isn't a Job Type — used "Install" as the second target type instead |
 | Common trigger types reference | No |  |  | v2026.09.01 |  |
 | Common action types reference | No |  |  | v2026.09.01 |  |
+| Common condition types reference | No |  |  | v2026.09.01 |  |
 
 ## Summary
 
-Verified: 0 / 4
+Verified: 0 / 5

@@ -22,7 +22,8 @@ Tracks whether a human has actually checked each guide against the live app — 
 | Attaching a field set to a type | No |  |  | v2026.09.01 |  |
 | Building a custom form | No |  |  | v2026.09.01 |  |
 | Adding elements to a form page | No |  |  | v2026.09.01 |  |
+| Configuring an attachment-type field's display options (eager load, show on PDF) | No |  |  | v2026.09.01 |  |
 
 ## Summary
 
-Verified: 0 / 6
+Verified: 0 / 7

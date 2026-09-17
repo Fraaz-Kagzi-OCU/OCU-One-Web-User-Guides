@@ -4,10 +4,10 @@ Once a task exists, you can rename it or remove it entirely if it was created by
 
 ## Renaming a task
 
-Open the task and click **Edit** in the top right. The edit form only has one field to change — the task's name.
+Open the task and click **Edit** in the top right. If the task doesn't have any product allocations yet, you'll also see the Product allocations card here, with the same Cost Book and Cost Book Version fields shown when the task was created — otherwise the edit form only has the task's name to change.
 
-![The task edit form with the name field highlighted](attachments/editing-or-deleting-a-task/01-edit-task-form-annotated.jpg)
-*Editing "Initial roof survey" to be more specific.*
+![The task edit form with the name field and Cost Book fields highlighted](attachments/editing-or-deleting-a-task/01-edit-task-form-annotated.jpg)
+*Editing "Initial roof survey" to be more specific. Since this task has no product allocations yet, its Cost Book and Cost Book Version can still be changed here too.*
 
 Change the name and click **Update Task**.
 

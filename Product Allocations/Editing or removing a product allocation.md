@@ -34,6 +34,10 @@ Click **Update Product Allocation** to save. The change appears immediately, bot
 
 ![The Products tab afterwards, showing the corrected title and category on the first row, and the trash icon on the second](attachments/editing-or-removing-a-product-allocation/06-after-edit-both-rows-annotated.jpg)
 
+**Good to know:** once an allocation has been added to an invoice, its **Uplift or Discount** modifier becomes view-only — you'll see the current modifier (or "None") shown as a plain label instead of a dropdown, with a note explaining that the product allocation is included in an invoice and the modifier can't be added or changed until it's removed from any invoices. Title and Product Category can still be edited as normal.
+
+![The edit form for an invoiced allocation, with the Uplift or Discount section shown as a read-only "None" label and a note that it's included in an invoice](attachments/editing-or-removing-a-product-allocation/09-edit-form-invoiced-locked.jpg)
+
 ## Removing an allocation
 
 If something was added by mistake — like a genuine duplicate — click the trash icon at the end of its row on the Products tab.

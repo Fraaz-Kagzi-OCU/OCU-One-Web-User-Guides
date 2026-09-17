@@ -59,7 +59,14 @@ reviewers, and comes back once the bug is fixed (`/recheck-bugs` →
 | [Attaching and detaching a permit on a record](Records/Attaching%20and%20detaching%20a%20permit%20on%20a%20record.md) | Records | [draft-permit-unsearchable-in-attach-picker](Zz%20-%20Known%20Bugs/draft-permit-unsearchable-in-attach-picker.md) | No | Open | |
 | [Tracking a job's RAG health status](Jobs/Tracking%20a%20job's%20RAG%20health%20status.md) | Jobs | [rag-status-change-silently-fails-on-a-live-job](Zz%20-%20Known%20Bugs/rag-status-change-silently-fails-on-a-live-job.md) | No | Open | |
 | [Accessing a Shared Intake Link and Identifying Yourself](Public%20Share%20Links/Accessing%20a%20Shared%20Intake%20Link%20and%20Identifying%20Yourself.md) | Public Share Links | [csrf-token-leaked-into-public-share-redirect-url](Zz%20-%20Known%20Bugs/csrf-token-leaked-into-public-share-redirect-url.md) | No | Open | |
+| [Changing a visit's status](Visits/Changing%20a%20visit's%20status.md) | Visits | [no-way-to-change-a-visits-status-from-the-ui](Zz%20-%20Known%20Bugs/no-way-to-change-a-visits-status-from-the-ui.md) | No | Open | |
+| [Updating an issue's RAG status](Issues/Updating%20an%20issue's%20RAG%20status.md) | Issues | [rag-status-badge-does-not-refresh-after-update](Zz%20-%20Known%20Bugs/rag-status-badge-does-not-refresh-after-update.md) | No | Open | |
+| [Updating invoice status and RAG rating](Invoicing/Updating%20invoice%20status%20and%20RAG%20rating.md) | Invoicing | [activity-feed-says-created-sent-a-bill-for-a-pending-status-change](Zz%20-%20Known%20Bugs/activity-feed-says-created-sent-a-bill-for-a-pending-status-change.md) | No | Open | |
+| [Creating and sending an invoice bill (PDF) to a client](Invoicing/Creating%20and%20sending%20an%20invoice%20bill%20%28PDF%29%20to%20a%20client.md) | Invoicing | [creating-or-previewing-an-invoice-bill-crashes-missing-template](Zz%20-%20Known%20Bugs/creating-or-previewing-an-invoice-bill-crashes-missing-template.md) | No | Open | |
+| [Managing products/materials on an estimate](Estimates%20%26%20Quotes/Managing%20products%20materials%20on%20an%20estimate.md) | Estimates & Quotes | [adding-a-product-to-an-estimate-crashes-with-template-is-missing](Zz%20-%20Known%20Bugs/adding-a-product-to-an-estimate-crashes-with-template-is-missing.md) | No | Open | |
+| [Viewing a client's invoices](Clients/Viewing%20a%20client%27s%20invoices.md) | Clients | [clients-invoices-tab-route-has-no-controller-action-or-ui-link](Zz%20-%20Known%20Bugs/clients-invoices-tab-route-has-no-controller-action-or-ui-link.md) | No | Open | |
+| [Downloading a client PDF summary](Clients/Downloading%20a%20client%20PDF%20summary.md) | Clients | [clients-pdf-download-route-has-no-controller-action-or-ui-link](Zz%20-%20Known%20Bugs/clients-pdf-download-route-has-no-controller-action-or-ui-link.md) | No | Open | |
 
 ## Summary
 
-Bugged: 18 (0 resolved)
+Bugged: 24 (0 resolved)

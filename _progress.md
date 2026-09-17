@@ -139,29 +139,29 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing visits |  | Ops, FE | VisitsController#index/#filter | todo | 5 visits: 2 overdue pending, 2 completed, 1 in progress, across 2 visit types | 2 |  |  |
-| Creating a visit |  | Ops | VisitsController#new/#create | todo | New visit type "Quarterly Safety Check" for asset "Cabinet 42" | 3 |  |  |
-| Editing or deleting a visit |  | Ops | VisitsController#edit/#update/#destroy | todo | Edit description; delete a cancelled visit | 2 |  |  |
-| Viewing a visit's overview page |  | Ops, FE | VisitsController#show/#main | todo | Visit "Quarterly Check - Cabinet 42", in_progress, RAG amber | 3 |  |  |
-| Changing a visit's status |  | Ops, FE | VisitsController#status | todo | Unbooked visit "Annual Inspection" pending → in_progress; booked-job visit shows dropdown disabled | 2 |  |  |
-| Updating a visit's RAG status |  | Ops, FE | VisitsController#rag_status | todo | RAG-enabled visit type changed green → red | 1 |  |  |
-| Attaching or detaching a visit from a job |  | Ops | VisitsController#attach_job/#detach_job | todo | Visit "Annual Inspection" attached to Job #1042, then detached | 2 |  |  |
-| Viewing a visit's to-dos |  | Ops, FE | VisitsController#todos | todo | Visit with 1 open todo "Take before photos" | 1 |  |  |
-| Viewing and raising issues on a visit |  | Ops, FE | VisitsController#issues; IssuesController#new | todo | Visit with 1 issue "Cabinet lock broken"; raise "Missing signage" | 3 |  |  |
+| Browsing visits |  | Ops, FE | VisitsController#index/#filter | done | 5 visits across pending/planned/done statuses and 2 visit types (real statuses are pending/planned/failed/done, not the row's fictional "in progress"/"completed") on asset "Cabinet 42" | 2 | 2026-09-15 | v2026.09.01 |
+| Creating a visit |  | Ops | VisitsController#new/#create | done | New visit type "Quarterly Safety Check" for asset "Cabinet 42" | 3 | 2026-09-15 | v2026.09.01 |
+| Editing or deleting a visit |  | Ops | VisitsController#edit/#update/#destroy | done | Edited description on "Cabinet 42 Annual Inspection"; deleted a duplicate visit (no "cancelled" visit status exists — real statuses are pending/planned/failed/done) | 2 | 2026-09-15 | v2026.09.01 |
+| Viewing a visit's overview page |  | Ops, FE | VisitsController#show/#main | done | Visit "Router Signal Health Visit" on Cabinet 42, pending, RAG green (row's "in_progress"/"RAG amber" aren't quite real — statuses/RAG values adjusted to what the app actually offers) | 3 | 2026-09-15 | v2026.09.01 |
+| Changing a visit's status |  | Ops, FE | VisitsController#status | done | Confirmed live that the Status field has no dropdown or other control anywhere in the UI — feature confirmed broken (`Visits::StatusDropdownComponent` and its `PUT /visits/1/status` endpoint exist but the component is never rendered), guide documents the actual static-badge behaviour and flags the bug | 2 | 2026-09-15 | v2026.09.01 |
+| Updating a visit's RAG status |  | Ops, FE | VisitsController#rag_status | done | RAG-enabled visit type "Router Health Check" changed green → red | 1 | 2026-09-15 | v2026.09.01 |
+| Attaching or detaching a visit from a job |  | Ops | VisitsController#attach_job/#detach_job | done | Visit "Cabinet 42 Annual Inspection" attached to project job "Substation Cable Run - Riverside Depot" (row's "Job #1042" doesn't exist); detach described via the real confirm-dialog text rather than clicked live (native `window.confirm`, no JS override) | 2 | 2026-09-15 | v2026.09.01 |
+| Viewing a visit's to-dos |  | Ops, FE | VisitsController#todos | done | Visit "Cabinet 42 Site Walkdown" with 1 todo added and marked done (only Todo Type available in this tenant is "Follow-up Action", not the row's "Take before photos" wording) | 1 | 2026-09-15 | v2026.09.01 |
+| Viewing and raising issues on a visit |  | Ops, FE | VisitsController#issues; IssuesController#new | done | Raised "Cabinet backup battery draining faster than expected" (only Issue Type this test account can use is "Degraded Battery Performance" — row's "Cabinet lock broken"/"Missing signage" types don't exist) | 3 | 2026-09-15 | v2026.09.01 |
 
 ## Issues
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Browsing issues |  | Ops, FE | IssuesController#index/#filter | todo | 6 issues across 3 issue types and pipeline stages | 2 |  |  |
-| Viewing the issues board (pipeline) |  | Ops, Mgr | Issues::PipelinesController#index/show | todo | Pipeline "Issue Triage" with stages Open/Investigating/Resolved | 2 |  |  |
-| Raising an issue |  | Ops, FE | IssuesController#new/#create | todo | Issue type "Damage" raised against asset "Cabinet 42" | 3 |  |  |
-| Editing or deleting an issue |  | Ops | IssuesController#edit/#update/#destroy | todo | Edit description; delete a duplicate issue | 2 |  |  |
-| Viewing an issue's overview page |  | Ops, FE | IssuesController#show/#main | todo | Issue "Cabinet door damaged" via a visit, stage "Investigating" | 3 |  |  |
-| Resolving an issue (moving through pipeline stages) |  | Ops | IssuesController#stage | todo | Issue "Cabinet door damaged" moved Open → Resolved | 2 |  |  |
-| Updating an issue's RAG status |  | Ops | IssuesController#rag_status | todo | RAG-enabled issue set to red (critical) | 1 |  |  |
-| Viewing an issue's to-dos |  | Ops, FE | IssuesController#todos | todo | Issue with 2 open todos | 1 |  |  |
-| Viewing an issue's records |  | Ops, FE | IssuesController#records | todo | Issue with 1 attached inspection record | 1 |  |  |
+| Browsing issues |  | Ops, FE | IssuesController#index/#filter | done | 6 issues across 3 issue types and pipeline stages | 2 | 2026-09-17 | v2026.09.01 |
+| Viewing the issues board (pipeline) |  | Ops, Mgr | Issues::PipelinesController#index/show | done | Pipeline "Issue Triage" with stages Open/Investigating/Resolved | 2 | 2026-09-17 | v2026.09.01 |
+| Raising an issue |  | Ops, FE | IssuesController#new/#create | done | Issue type "Damage" raised against asset "Cabinet 42" | 3 | 2026-09-17 | v2026.09.01 |
+| Editing or deleting an issue |  | Ops | IssuesController#edit/#update/#destroy | done | Edit description; delete a duplicate issue | 2 | 2026-09-17 | v2026.09.01 |
+| Viewing an issue's overview page |  | Ops, FE | IssuesController#show/#main | done | Issue "Cabinet door damaged" via a visit, stage "Investigating" | 3 | 2026-09-17 | v2026.09.01 |
+| Resolving an issue (moving through pipeline stages) |  | Ops | IssuesController#stage | done | Issue "Cabinet door damaged" moved Open → Resolved | 2 | 2026-09-17 | v2026.09.01 |
+| Updating an issue's RAG status |  | Ops | IssuesController#rag_status | done | RAG-enabled issue set to red (critical) | 1 | 2026-09-17 | v2026.09.01 |
+| Viewing an issue's to-dos |  | Ops, FE | IssuesController#todos | done | Issue with 2 open todos | 1 | 2026-09-17 | v2026.09.01 |
+| Viewing an issue's records |  | Ops, FE | IssuesController#records | done | Issue with 1 attached inspection record | 1 | 2026-09-17 | v2026.09.01 |
 
 ## Permits
 
@@ -231,13 +231,13 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Using the scheduling board (navigation, zoom, time span, user search) |  | Ops | SchedulerController#show; Scheduler::UsersController#index/#availability | todo | 5 field users with varied availability over a 3-day range, each with a job on their row | 4 |  |  |
-| Booking a job on the scheduler |  | Ops | Scheduler::JobsController#book/#unallocated | todo | 3 "ready" unbooked jobs of different types, 2 users with free slots | 4 |  |  |
-| Creating a job directly on the scheduler |  | Ops | Scheduler::JobsController (drag-create) | todo | 1 user with an open slot; 2 job types to pick from | 3 |  |  |
-| Unbooking a job from the scheduler |  | Ops | Scheduler::JobsController#unbook | todo | 1 job in "booked" status assigned to a user | 2 |  |  |
-| Unallocating a job from a user on the scheduler |  | Ops | Scheduler::JobsController#unallocate | todo | 1 booked job + 1 in-progress job, each allocated (to see the confirm-dialog path) | 3 |  |  |
-| Editing a job from the scheduler |  | Ops | Scheduler::JobsController#edit/#update | todo | 1 job in "ready" status on the board | 2 |  |  |
-| Bulk-booking many jobs |  | Ops | JobsController#book_many_pick/#book_many_book | todo | 6 unbooked jobs in the visible date range across 3 job types | 3 |  |  |
+| Using the scheduling board (navigation, zoom, time span, user search) |  | Ops | SchedulerController#show; Scheduler::UsersController#index/#availability | done | 5 field users with varied availability over a 3-day range, each with a job on their row | 4 | 2026-09-14 | v2026.09.01 |
+| Booking a job on the scheduler |  | Ops | Scheduler::JobsController#book/#unallocated | done | 3 "ready" unbooked jobs of different types, 2 users with free slots | 4 | 2026-09-14 | v2026.09.01 |
+| Creating a job directly on the scheduler |  | Ops | Scheduler::JobsController (drag-create) | done | 1 user with an open slot; 2 job types to pick from | 3 | 2026-09-14 | v2026.09.01 |
+| Unbooking a job from the scheduler |  | Ops | Scheduler::JobsController#unbook | done | 1 job in "booked" status assigned to a user | 2 | 2026-09-14 | v2026.09.01 |
+| Unallocating a job from a user on the scheduler |  | Ops | Scheduler::JobsController#unallocate | done | 1 booked job + 1 in-progress job, each allocated (to see the confirm-dialog path) | 3 | 2026-09-14 | v2026.09.01 |
+| Editing a job from the scheduler |  | Ops | Scheduler::JobsController#edit/#update | done | 1 job in "ready" status on the board | 2 | 2026-09-14 | v2026.09.01 |
+| Bulk-booking many jobs |  | Ops | JobsController#book_many_pick/#book_many_book | done | 6 unbooked jobs in the visible date range across 3 job types (only 2 real job types are actually visible in this environment — Install and Safety Check) | 3 | 2026-09-14 | v2026.09.01 |
 
 ## Map
 
@@ -273,10 +273,10 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Viewing and attaching records (surveys/inspections) to a project |  | Ops, FE | OrdersController#records | done | Project with 2 "Pre-Works Survey" records and 1 "H&S Inspection" record | 3 | 2026-08-27 | v2026.08.05 | |
 | Viewing and creating jobs from a project |  | Ops | OrdersController#jobs | done | Project with 6 active jobs across 2 engineers, one overdue | 3 | 2026-08-27 | v2026.08.05 | |
 | Viewing and filtering tasks on a project |  | Ops | OrdersController#tasks; Orders::TasksController#filter | done | Project filtered by Status="In Progress", Task Type="Site Survey" | 2 | 2026-08-27 | v2026.08.05 | |
-| Creating a new task under a project |  | Ops | Orders::TasksController#new/#create | needs update | Task type "Site Survey" named "Initial roof survey" with product allocation | 3 | 2026-08-27 | v2026.08.05 | New Cost Book / Cost Book Version selects added to the task form's product-allocations card, pre-filled from the parent project's rate book — not yet documented. |
+| Creating a new task under a project |  | Ops | Orders::TasksController#new/#create | done | Project "Riverside Fibre Rollout - Phase 3" (Tesco, Cost Book "Internal Costs 2026"); Task type "Site Survey" named "Initial roof survey" | 4 | 2026-09-14 | v2026.09.01 (from v2026.08.05) | |
 | Viewing and working a task's overview tab |  | Ops, FE | Orders::TasksController#show/#main | done | Task status changed Not Started → In Progress; download PDF | 4 | 2026-08-27 | v2026.08.05 | |
 | Managing a task's product allocations tab | PVA | Ops | Orders::TasksController#products | done | Task "Install Panels - Roof Section A" on project "Riverside Depot Solar Installation"; Solar Panel 400W allocated 12 units from the project's 30, planned quantity changed 12 → 14, 10 units recorded as actually used | 2 | 2026-09-11 | v2026.09.01 (from v2026.08.02) | |
-| Editing or deleting a task |  | Ops | Orders::TasksController#edit/#update/#destroy | needs update | Rename a task; delete a duplicate task | 2 | 2026-08-27 | v2026.08.05 | The product-allocations card (including the new Cost Book selects) can now also appear on the edit form when the task has no allocations yet, not just on create — not yet documented. |
+| Editing or deleting a task |  | Ops | Orders::TasksController#edit/#update/#destroy | done | Rename a task ("Initial roof survey" → "Initial roof survey - North Elevation"); delete a duplicate task ("Duct Route Survey (duplicate)") | 2 | 2026-09-14 | v2026.09.01 (from v2026.08.05) | |
 | Viewing and managing product allocations on a project | PVA | Ops, Fin | OrdersController#products | done | Project allocated 200m "Ducting 100mm" and 15 "Chamber Cover" | 3 | 2026-08-13 | v2026.08.02 | |
 | Viewing a project's commercial stats dashboard | PVA | Fin, Mgr | OrdersController#stats | done | Project "Colchester Substation Refurbishment", £40k original value vs £45k current planned, £38.2k actual, £30k invoiced, £2.5k pending / £500 approved / £300 applied variations | 3 | 2026-09-11 | v2026.09.01 (from v2026.08.03) | |
 | Viewing and creating estimates on a project |  | Sales, Fin | OrdersController#estimates | done | Project with 1 draft and 1 approved estimate (£12,400) | 2 | 2026-08-27 | v2026.08.05 | |
@@ -450,14 +450,14 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing and filtering the client list |  | Sales, Ops | ClientsController#index/#filter | todo | 15 active clients, e.g. "Northgate Retail Park Ltd" (VIP label), "Meridian Logistics" (Overdue tag) | 3 |  |  |
-| Creating and editing a client |  | Sales, Ops | ClientsController#new/#create/#edit/#update | todo | New client "Bellhaven Construction Group", rate book "Standard Commercial 2026" v3 | 4 |  |  |
-| Client overview, todos, jobs, and linked records tabs |  | Sales, Ops | ClientsController#main/#todos/#jobs/#records | todo | Client with 3 open todos, 5 active jobs, 2 linked records | 5 |  |  |
-| Viewing a client's invoices |  | Fin | ClientsController#invoices | todo | Client with 4 invoices, one overdue | 2 |  |  |
-| Downloading a client PDF summary |  | Sales, Ops | ClientsController#pdf | todo | Client PDF export | 1 |  |  |
-| Managing a client's sites |  | Sales, Ops | ClientsController#sites; SitesController CRUD | todo | Client "Meridian Logistics" with 2 sites | 5 |  |  |
-| Site detail — overview and linked assets |  | Sales, Ops | SitesController#main/#assets | todo | Site "Meridian Depot North" with 4 registered assets | 4 |  |  |
-| Archiving a client |  | Sales, Ops | ClientsController#destroy | todo | Client with no open jobs, archived | 2 |  |  |
+| Viewing and filtering the client list |  | Sales, Ops | ClientsController#index/#filter | done | 15 active clients incl. "Northgate Retail Park Ltd" (Client VIP label) and "Meridian Logistics" (Area · North East tag, row's "Overdue tag" isn't a real tag in this tenant) | 3 | 2026-09-17 | v2026.09.01 |
+| Creating and editing a client |  | Sales, Ops | ClientsController#new/#create/#edit/#update | done | New client "Bellhaven Construction Group" created with rate book "2026 Wind Rates" v1 (row's "Standard Commercial 2026" v3 doesn't exist), then edited to "...Ltd" on rate book "Default" | 4 | 2026-09-17 | v2026.09.01 |
+| Client overview, todos, jobs, and linked records tabs |  | Sales, Ops | ClientsController#main/#todos/#jobs/#records | done | Client "Meridian Logistics" with 3 pending todos, 5 jobs across statuses, 2 linked records (Incident Report, Safety Risk) | 5 | 2026-09-17 | v2026.09.01 |
+| Viewing a client's invoices |  | Fin | ClientsController#invoices | done | Confirmed live that the route exists but has no controller action or view, and no UI ever links to it — "Unknown action" error, guide documents the actual broken behaviour and flags the bug | 2 | 2026-09-17 | v2026.09.01 |
+| Downloading a client PDF summary |  | Sales, Ops | ClientsController#pdf | done | Confirmed live that the route exists but has no controller action or view, and no Download/PDF button exists anywhere on a client's page — "Unknown action" error, guide documents the actual broken behaviour and flags the bug | 1 | 2026-09-17 | v2026.09.01 |
+| Managing a client's sites |  | Sales, Ops | ClientsController#sites; SitesController CRUD | done | Client "Meridian Logistics" with 2 existing sites, a third ("Meridian Yard South") added live then removed | 5 | 2026-09-17 | v2026.09.01 |
+| Site detail — overview and linked assets |  | Sales, Ops | SitesController#main/#assets | done | Site "Meridian Depot North" with 4 registered Battery-type assets | 4 | 2026-09-17 | v2026.09.01 |
+| Archiving a client |  | Sales, Ops | ClientsController#destroy | done | Client "Bellhaven Construction Group Ltd" (no open jobs) archived | 2 | 2026-09-17 | v2026.09.01 |
 
 ## Leads
 
@@ -480,15 +480,15 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing and filtering the invoices list and pipeline |  | Fin | InvoicesController#index/#landing/#autocomplete; Invoices::PipelinesController | todo | 15 invoices across statuses for 5 clients | 3 |  |  |
-| Creating a new invoice |  | Fin | InvoicesController#new/#create | todo | Project "Substation Refurbishment - Project #4021", invoice type "Standard Invoice" | 3 |  |  |
-| Viewing an invoice overview |  | Fin | InvoicesController#show/#main | todo | Invoice "INV-1042" with 1 bill sent, 2 todos, 3 activity entries | 2 |  |  |
-| Editing or deleting an invoice |  | Fin | InvoicesController#edit/#update/#destroy | todo | Draft invoice "INV-1050" with PO "PO-8834" | 3 |  |  |
-| Managing invoice lines |  | Fin | InvoicesController#lines; Invoices::LinesController#bulk_new/#bulk/#destroy | todo | Invoice with 6 lines across 3 products, 1 modifier line | 4 |  |  |
-| Updating invoice status and RAG rating |  | Fin | InvoicesController#status/#status_unsent/#rag_status | todo | Invoice "unsent" with RAG thresholds configured | 2 |  |  |
-| Activating or deactivating an invoice |  | Fin | InvoicesController#activate/#deactivate | todo | Active invoice toggled inactive | 1 |  |  |
-| Creating and sending an invoice bill (PDF) to a client |  | Fin | Invoices::BillsController#new/#create/#edit/#update/#preview/#show | todo | Invoice with contact and custom PDF template | 5 |  |  |
-| Viewing an invoice's export history |  | Fin | InvoicesController#exports | todo | Invoice included in export "August Xero Export" | 1 |  |  |
+| Viewing and filtering the invoices list and pipeline |  | Fin | InvoicesController#index/#landing/#autocomplete; Invoices::PipelinesController | done | 9 invoices across 7 statuses for 3 clients (scaled down from the row's "15 invoices / 5 clients" hint) | 3 | 2026-09-17 | v2026.09.01 |
+| Creating a new invoice |  | Fin | InvoicesController#new/#create | done | Project "Trunk Main Renewal - Norwich" (client "Anglian Water"), invoice type "Customer Invoice" (only real type in this tenant, not the row's fictional "Standard Invoice") | 3 | 2026-09-17 | v2026.09.01 |
+| Viewing an invoice overview |  | Fin | InvoicesController#show/#main | done | Paid invoice "Trunk Main Renewal - Interim Invoice 1" with RAG Green, £797.50, full status-change activity history | 2 | 2026-09-17 | v2026.09.01 |
+| Editing or deleting an invoice |  | Fin | InvoicesController#edit/#update/#destroy | done | Draft invoice "Trunk Main Renewal - Interim Invoice 3 (Draft)" with PO "PO-8834" edited; a duplicate deleted | 3 | 2026-09-17 | v2026.09.01 |
+| Managing invoice lines |  | Fin | InvoicesController#lines; Invoices::LinesController#bulk_new/#bulk/#destroy | done | Invoice with 1 line for 55m of recorded "HV Cable per metre" usage (only one recorded product existed, not the row's "6 lines / 3 products") | 4 | 2026-09-17 | v2026.09.01 |
+| Updating invoice status and RAG rating |  | Fin | InvoicesController#status/#status_unsent/#rag_status | done | Invoice walked Unsent → Pending → Approved → Paid, RAG set to Green while Unsent | 2 | 2026-09-17 | v2026.09.01 |
+| Activating or deactivating an invoice |  | Fin | InvoicesController#activate/#deactivate | done | Unsent invoice deactivated then reactivated via the eye icon | 1 | 2026-09-17 | v2026.09.01 |
+| Creating and sending an invoice bill (PDF) to a client |  | Fin | Invoices::BillsController#new/#create/#edit/#update/#preview/#show | done | Invoice with contact Rachel Osei (Anglian Water) — feature confirmed broken (invoice type's custom PDF template doesn't exist, crashes on preview/create/send), guide documents the actual (broken) behaviour and flags the bug | 5 | 2026-09-17 | v2026.09.01 |
+| Viewing an invoice's export history |  | Fin | InvoicesController#exports | done | Invoice's bill included in export "August Invoice Export" (row's "August Xero Export" isn't a real export format in this app) | 1 | 2026-09-17 | v2026.09.01 |
 
 ## Invoice Exports
 
@@ -502,28 +502,28 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing and filtering estimates and the estimates pipeline |  | Sales, Fin | EstimatesController#index/#autocomplete; Estimates::PipelinesController | todo | 10 estimates across draft/sent/accepted/rejected | 3 |  |  |
-| Creating a new estimate |  | Sales | EstimatesController#new/#create | todo | Project "Turbine Blade Inspection - Project #5510", type "Site Survey Estimate" | 3 |  |  |
-| Viewing an estimate overview and updating status/RAG |  | Sales, Fin | EstimatesController#show/#main/#status/#status_unsent/#rag_status | todo | Estimate "EST-330" status "ready", RAG amber | 3 |  |  |
-| Editing, activating/deactivating, or deleting an estimate |  | Sales | EstimatesController#edit/#update/#activate/#deactivate/#destroy | todo | Draft estimate "EST-341" with no jobs/quotes | 3 |  |  |
-| Managing products/materials on an estimate |  | Sales | EstimatesController#products | todo | Estimate with 4 allocated products | 2 |  |  |
-| Attaching or detaching jobs on an estimate |  | Sales, Ops | EstimatesController#jobs/#attach_job/#detach_job | todo | Estimate linked to job "Blade Inspection Visit - Job #9012" | 3 |  |  |
-| Viewing records attached to an estimate |  | Sales | EstimatesController#records | todo | Estimate with pinned "Site Survey" record type, 2 completed surveys | 2 |  |  |
-| Creating and sending a quote (PDF) to a client |  | Sales | QuotesController#new/#create/#edit/#update/#preview/#show | todo | Estimate with contact and custom PDF template "rfq" | 5 |  |  |
+| Viewing and filtering estimates and the estimates pipeline |  | Sales, Fin | EstimatesController#index/#autocomplete; Estimates::PipelinesController | done | 11 estimates across Unsent/Planned/Pending/Pending Amber/Pending Red/Internally Rejected/Rejected/Won on project "Turbine Blade Inspection - Seaton Bay Wind Farm" (row's "draft/sent/accepted/rejected" aren't the real statuses) | 3 | 2026-09-17 | v2026.09.01 |
+| Creating a new estimate |  | Sales | EstimatesController#new/#create | done | Project "Turbine Blade Inspection - Seaton Bay Wind Farm" (row's "Turbine Blade Inspection - Project #5510" and "Site Survey Estimate" type don't exist; only "Internal Estimate" type is visible to this role) | 3 | 2026-09-17 | v2026.09.01 |
+| Viewing an estimate overview and updating status/RAG |  | Sales, Fin | EstimatesController#show/#main/#status/#status_unsent/#rag_status | done | Estimate "Turbine Blade Inspection - Full Scope Estimate" walked Ready → Approved → Won; RAG set to Amber while Unsent (RAG is only editable while unlocked) | 3 | 2026-09-17 | v2026.09.01 |
+| Editing, activating/deactivating, or deleting an estimate |  | Sales | EstimatesController#edit/#update/#activate/#deactivate/#destroy | done | Draft estimate "Draft Turbine Site Survey Estimate" with no jobs/quotes, edited/deactivated/reactivated/deleted | 3 | 2026-09-17 | v2026.09.01 |
+| Managing products/materials on an estimate |  | Sales | EstimatesController#products | done | Confirmed live that adding a product to an estimate crashes with a server error ("Template is missing", `turbo/streams/redirect` variant `:slide_over`) — the identical flow works on a job's Products tab, guide documents the actual broken behaviour and flags the bug | 2 | 2026-09-17 | v2026.09.01 |
+| Attaching or detaching jobs on an estimate |  | Sales, Ops | EstimatesController#jobs/#attach_job/#detach_job | done | Estimate linked to job "Turbine Blade Inspection Visit" (row's "Blade Inspection Visit - Job #9012" doesn't exist) | 3 | 2026-09-17 | v2026.09.01 |
+| Viewing records attached to an estimate |  | Sales | EstimatesController#records | done | Record "Rope access work at height near live rotor" created as a "Safety Risk" type (row's pinned "Site Survey" record type doesn't exist for Estimates in this tenant) | 2 | 2026-09-17 | v2026.09.01 |
+| Creating and sending a quote (PDF) to a client |  | Sales | QuotesController#new/#create/#edit/#update/#preview/#show | done | Estimate with contact "David Whitmore"; no custom PDF template configured so the default template renders (real PDF generation fails locally, Grover/headless-Chrome, same as other guides this session — the Quote record itself still saves) | 5 | 2026-09-17 | v2026.09.01 |
 
 ## Variations (Change Projects)
 
 | Guide                                                        | Feature | Audience | Maps to (controllers/views)                                               | Status | Test data needed                                                                        | Screenshot steps (est.) | documented_at | Release |
 | ------------------------------------------------------------ | ------- | -------- | ------------------------------------------------------------------------- | ------ | --------------------------------------------------------------------------------------- | ----------------------- | ------------- | ------- |
-| Viewing and filtering variations and the variations pipeline |         | Fin, Ops | VariationsController#index/#autocomplete; Variations::PipelinesController | todo   | 6 variations against a project, 2 pending approval                                      | 3                       |               |         |
-| Creating a new variation                                     |         | Fin, Ops | VariationsController#new/#create                                          | todo   | Project "Substation Refurbishment - Project #4021", type "Additional Works Instruction" | 3                       |               |         |
-| Viewing a variation overview and updating status/RAG         |         | Fin, Mgr | VariationsController#show/#main/#status/#rag_status                       | todo   | Variation "VAR-22" status "pending", RAG red                                            | 3                       |               |         |
-| Editing, activating/deactivating, or deleting a variation    |         | Fin, Ops | VariationsController#edit/#update/#activate/#deactivate/#destroy          | todo   | Variation "VAR-22" description edited                                                   | 3                       |               |         |
-| Managing products on a variation                             |         | Fin, Ops | VariationsController#products                                             | todo   | Variation with 2 added products                                                         | 2                       |               |         |
-| Applying an approved variation to a job or project           |         | Fin, Ops | VariationsController#apply_new/#apply                                     | todo   | Approved variation applied to job "Substation Panel Swap - Job #9101"                   | 4                       |               |         |
-| Downloading or previewing a variation PDF                    |         | Fin, Ops | VariationsController#download                                             | todo   | Variation with custom template, one attachment hidden                                   | 2                       |               |         |
-| Sending a variation for client approval                      |         | Fin      | VariationsController#send_variation_form/#send_variation                  | todo   | Variation emailed to "Priya Shah" for sign-off                                          | 3                       |               |         |
-| Toggling attachment visibility on a variation PDF            |         | Fin      | VariationsController#toggle_attachment_show_on_pdf                        | todo   | Internal cost-breakdown attachment excluded from client PDF                             | 1                       |               |         |
+| Viewing and filtering variations and the variations pipeline |         | Fin, Ops | VariationsController#index/#autocomplete; Variations::PipelinesController | done   | 8 variations across all 7 statuses on project "Riverside Substation Cabling Upgrade"    | 3                       | 2026-09-15    | v2026.09.01 |
+| Creating a new variation                                     |         | Fin, Ops | VariationsController#new/#create                                          | done   | Project "Riverside Substation Cabling Upgrade" (only "Deviation" type is creatable in this tenant); variation "Cable Duct Reinforcement - Riverside Substation" with an attached file | 3                       | 2026-09-15    | v2026.09.01 |
+| Viewing a variation overview and updating status/RAG         |         | Fin, Mgr | VariationsController#show/#main/#status/#rag_status                       | done   | Variation walked Draft → Valid → Pending → Approved; RAG status (only settable while Draft) set to Amber on a separate draft variation | 3                       | 2026-09-15    | v2026.09.01 |
+| Editing, activating/deactivating, or deleting a variation    |         | Fin, Ops | VariationsController#edit/#update/#activate/#deactivate/#destroy          | done   | Draft variation's description edited, deactivated, and reactivated; a second draft variation deleted | 3                       | 2026-09-15    | v2026.09.01 |
+| Managing products on a variation                             |         | Fin, Ops | VariationsController#products                                             | done   | 25m of "HV Cable per metre" allocated to a draft variation, rates overridden since the rate book had no cost set | 2                       | 2026-09-15    | v2026.09.01 |
+| Applying an approved variation to a job or project           |         | Fin, Ops | VariationsController#apply_new/#apply                                     | done   | Approved variation with a 25m HV Cable allocation applied as a new allocation on its project | 4                       | 2026-09-15    | v2026.09.01 |
+| Downloading or previewing a variation PDF                    |         | Fin, Ops | VariationsController#download                                             | done   | Approved variation previewed; real PDF generation fails locally (Grover/headless-Chrome, same as other guides this session) | 2                       | 2026-09-15    | v2026.09.01 |
+| Sending a variation for client approval                      |         | Fin      | VariationsController#send_variation_form/#send_variation                  | done   | Variation emailed to "Priya Shah" (Tesco); send fails locally for the same Grover/PDF reason as Download | 3                       | 2026-09-15    | v2026.09.01 |
+| Toggling attachment visibility on a variation PDF            |         | Fin      | VariationsController#toggle_attachment_show_on_pdf                        | done   | Internal cost-breakdown attachment set to "don't show" via the shared select-images screen (the dedicated controller action has no reachable UI trigger) | 1                       | 2026-09-15    | v2026.09.01 |
 
 ## Products & Rates
 
@@ -543,7 +543,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|-------|
 | Allocating products or materials to a job, project, estimate, or variation | PVA | Ops, Fin | ProductAllocationsController#new/#create/#index | done | Job allocated 25m of "HV Cable per metre" | 4 | 2026-09-06 | v2026.08.04 (from v2026.08.03) | |
 | Copying or transferring allocated products between records | PVA | Ops, Fin | ProductAllocationsController#allocate_new/#allocate/#allocatable_products | done | Accepted estimate's allocations transferred onto new project | 4 | 2026-08-13 | v2026.08.03 | |
-| Editing or removing a product allocation | PVA | Ops, Fin | ProductAllocationsController#edit/#update/#destroy/#show | needs update | Allocation title typo corrected and category set; accidental duplicate allocation removed | 3 | 2026-09-06 | v2026.08.04 (from v2026.08.03) | Once an allocation has invoiced lines, the Edit form no longer shows the Uplift/Discount modifier section at all (was previously always shown), and a new validation blocks the change server-side too. |
+| Editing or removing a product allocation | PVA | Ops, Fin | ProductAllocationsController#edit/#update/#destroy/#show | done | Allocation title typo corrected and category set; accidental duplicate allocation removed; new "HV Cable per metre" allocation on project "Cabling Upgrade - Deansgate Substation" partially invoiced (40 of 60m) to show the now-locked modifier section | 4 | 2026-09-14 | v2026.09.01 (from v2026.08.04) | |
 | Bulk-applying a rate modifier to all allocated products | PVA | Fin | ProductAllocationsController#bulk_modifier/#bulk_update_modifier | done | 12 allocations with a "+15% Out of Hours" modifier applied | 2 | 2026-08-13 | v2026.08.03 | |
 | Raising a planned quantity change on an allocation | PVA | Ops, FE | PlannedQuantityChangesController#new/#create/#show | done | Allocation changed 40m → 55m with reason and attached sketch | 3 | 2026-08-13 | v2026.08.03 | |
 | Viewing planned quantity change history | PVA | Ops, Fin | ProductAllocationsController#quantity_history | done | Allocation with 2 recorded changes (40→55→60m) | 1 | 2026-08-13 | v2026.08.03 | |
@@ -571,7 +571,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Attaching a field set to a type |  | Admin | Settings::FieldableFieldSetsController#move | done | Field Set "Fibre Install Details" attached to new Asset Type "ONT Router" | 3 | 2026-09-11 | v2026.09.01 |
 | Building a custom form |  | Admin | Settings::FormsController, PagesController | done | Form "Fibre Install Site Survey" (attached to "Fibre Install Details" field set) with 2 pages: "Site Details" (List) and "Live Walkthrough" (Live Video) | 5 | 2026-09-11 | v2026.09.01 |
 | Adding elements to a form page |  | Admin | Settings::ElementsController, ElementRecordFieldTypesController#move | done | "Site Details" page with Take Photo, Draw (signature), Dropdown (bound to Fibre Type), and Records elements | 6 | 2026-09-11 | v2026.09.01 |
-| Configuring an attachment-type field's display options (eager load, show on PDF) |  | Admin | Settings::FieldsController#toggle_attachment_eager_load/#toggle_attachment_show_on_pdf/#update_attachment | todo | | | | |
+| Configuring an attachment-type field's display options (eager load, show on PDF) |  | Admin | Settings::FieldsController#toggle_attachment_eager_load/#toggle_attachment_show_on_pdf/#update_attachment | done | Files-type field "Inspection Photo" on Street Cabinet Inspection field set, Cache Strategy set to Eager, Hidden on PDF? ticked — the real UI has no separate "show on PDF" toggle, it's the Hidden on PDF? checkbox working in reverse | 5 | 2026-09-15 | v2026.09.01 |
 
 ## Settings: Pipelines & Stages
 
@@ -601,7 +601,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 | Restricting an automation rule to specific record types |  | Admin | Settings::Rules::RuleTargetTypesController | done | Rule restricted to Job Types "Fibre Install"/"Install" (hint's "Fibre Repair" is a Project Type, not a Job Type, so not selectable here) | 3 | 2026-09-11 | v2026.09.01 |
 | Common trigger types reference |  | Admin | Settings::Rules::Triggers::* controllers | done | Full trigger picker list for a Job-targeted rule (15 trigger types) | 5 | 2026-09-11 | v2026.09.01 |
 | Common action types reference |  | Admin | Settings::Rules::Actions::* controllers | done | Full action picker list for a Job-targeted rule (24 action types), Add Warning detail | 5 | 2026-09-11 | v2026.09.01 |
-| Common condition types reference |  | Admin | Settings::Rules::Conditions::* controllers | todo | | | | |
+| Common condition types reference |  | Admin | Settings::Rules::Conditions::* controllers | done | Full condition picker list for a Job-targeted rule (5 condition types); Field Value condition detail with Field set "Sample Survey Field Set", Field "Contact Email", Term Type "contains", Value "@ocugroup.com" | 2 | 2026-09-15 | v2026.09.01 |
 
 ## Settings: Journeys
 
@@ -799,19 +799,19 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 320 / 401
+Completed: 384 / 401
 
-Needs update: 3
+Needs update: 0
 
 Access & Visibility guides completed: 3 / 3
 
 Media & Attachments guides completed: 2 / 2
 
-Product Allocations guides completed: 6 / 7
+Product Allocations guides completed: 7 / 7
 
 Products & Rates guides completed: 11 / 11
 
-Projects guides completed: 34 / 36
+Projects guides completed: 36 / 36
 
 Timesheets guides completed: 18 / 18
 
@@ -855,7 +855,7 @@ Map guides completed: 1 / 1
 
 Records guides completed: 26 / 26
 
-Settings guides completed: 63 / 65
+Settings guides completed: 65 / 65
 
 Tasks guides completed: 1 / 1
 
@@ -877,10 +877,24 @@ Leads guides completed: 5 / 5
 
 Permits guides completed: 17 / 17
 
+Scheduling guides completed: 7 / 7
+
+Variations (Change Projects) guides completed: 9 / 9
+
+Visits guides completed: 9 / 9
+
+Issues guides completed: 9 / 9
+
+Invoicing guides completed: 9 / 9
+
+Estimates & Quotes guides completed: 8 / 8
+
+Clients guides completed: 8 / 8
+
 Release breakdown (current version only, for `done` rows):
 
 - v2026.08.02: 19
 - v2026.08.03: 9
 - v2026.08.04: 44
 - v2026.08.05: 93
-- v2026.09.01: 155
+- v2026.09.01: 219

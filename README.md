@@ -6,7 +6,7 @@ Every guide listed below still needs a human to check it against the live app be
 
 ## Roadmap
 
-The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers thirty complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), Contacts & Addresses (2 guides), Invoice Exports (3 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/creating-an-invoice-export-shows-no-selected-invoices-and-crashes-on-create.md)), Hub - Surveys (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/survey-response-drilldown-link-goes-to-wrong-page-and-crashes.md)), Hub - Pages (5 guides), Hub - Channels (5 guides), Public Share Links (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/csrf-token-leaked-into-public-share-redirect-url.md)), Leads (5 guides), Permits (17 guides), Products & Rates (11 guides), Timesheets (18 guides), and List Views & Filtering (9 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering. Products & Rates, Timesheets, and List Views & Filtering have since been fully rewritten and are back in the complete list above; Projects and Product Allocations remain incomplete — see `_progress.md` for details. **Records** (26/26) is now also complete, though two of its guides are currently blocked from human verification by open app bugs (see the Records section below). **Jobs** (20/20) is now also complete, though one of its guides is currently blocked from human verification by an open app bug — see the Jobs section below. **Leads** (5/5) is now also complete. **Permits** (17/17) is now also complete, covering both permits and the defects raised against them. Settings (63/65 guides across 18 sub-areas) is not yet listed as complete — two guides are still `todo` (an attachment-field display-options guide in Workspace Builder, and a common-condition-types reference in Automation).
+The app has roughly 399 user-facing workflows worth documenting in total. This repo currently covers thirty-two complete areas — Tickets (12 guides), Signing In (3 guides), Account (3 guides), Home Dashboard (15 guides), Notifications (1 guide), Search & Navigation (2 guides), Assets (16 guides), Watches (1 guide), Media & Attachments (2 guides), Labels (3 guides), Todos & Checklists (7 guides), Documents (5 guides), Collaboration (3 guides), Client Portal (1 guide), Custom Fields (1 guide), Map (1 guide), Tasks (1 guide), Access & Visibility (3 guides), Assignments (3 guides), Contacts & Addresses (2 guides), Invoice Exports (3 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/creating-an-invoice-export-shows-no-selected-invoices-and-crashes-on-create.md)), Hub - Surveys (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/survey-response-drilldown-link-goes-to-wrong-page-and-crashes.md)), Hub - Pages (5 guides), Hub - Channels (5 guides), Public Share Links (4 guides, one currently blocked by [a known bug](Zz%20-%20Known%20Bugs/csrf-token-leaked-into-public-share-redirect-url.md)), Leads (5 guides), Permits (17 guides), Products & Rates (11 guides), Timesheets (18 guides), and List Views & Filtering (9 guides) — each end to end, from setup through to seeing the results. All six guides flagged `needs update` by the 2026-09-03 code-drift sync (see `_progress.md`) have now been rewritten, and every new guide that sync's discovery pass found has been written too. A further code-drift sync on 2026-09-10 found 8 more guides gone stale — in Projects, Product Allocations, Products & Rates, Timesheets, and List Views & Filtering. Products & Rates, Timesheets, and List Views & Filtering have since been fully rewritten and are back in the complete list above; Projects and Product Allocations remain incomplete — see `_progress.md` for details. **Records** (26/26) is now also complete, though two of its guides are currently blocked from human verification by open app bugs (see the Records section below). **Jobs** (20/20) is now also complete, though one of its guides is currently blocked from human verification by an open app bug — see the Jobs section below. **Leads** (5/5) is now also complete. **Permits** (17/17) is now also complete, covering both permits and the defects raised against them. **Scheduling** (7/7) is now also complete, covering the scheduler board and its drag-and-drop booking, unbooking, unallocating, editing, and bulk-booking actions. **Variations (Change Projects)** (9/9) is now also complete, covering browsing and the status pipeline, raising, editing, and managing products on a variation, moving it through its approval workflow (including RAG status, Draft-only), applying an approved one to its project, and its PDF export, sending, and attachment-visibility controls. **Visits** (9/9) is now also complete, covering browsing, creating, editing/deleting, the overview page, RAG status, attaching/detaching a visit from a job, and its todos and issues — though one of its guides is currently blocked from human verification by an open app bug (see the Visits section below). **Estimates & Quotes** (8/8) is now also complete, covering browsing/filtering the estimates list and pipeline, creating an estimate, its status/RAG workflow, editing/activating/deactivating/deleting, attaching jobs, viewing records, and creating/sending a quote — though one of its guides is currently blocked from human verification by an open app bug (see the Estimates & Quotes section below). Settings (63/65 guides across 18 sub-areas) is not yet listed as complete — two guides are still `todo` (an attachment-field display-options guide in Workspace Builder, and a common-condition-types reference in Automation). **Clients** (8/8) is now also complete, covering browsing/filtering the client list, creating and editing a client, its overview/todos/jobs/records tabs, managing its sites, a site's own overview and assets, and archiving — though two of its guides ("Viewing a client's invoices" and "Downloading a client PDF summary") are currently blocked from human verification by open app bugs, since both routes exist with no working controller action or UI entry point (see the Clients section below).
 
 Together with Product Allocations and Products & Rates, three of the Projects guides descend from what used to be grouped as one "Planned vs Actual (PVA)" folder — see the [Planned vs Actual overview](Product%20Allocations/_Planned%20vs%20Actual%20-%20Overview.md) in Product Allocations for how those pieces still fit together conceptually, even though the guide files themselves live under whichever `_progress.md` section they actually belong to.
 
@@ -279,6 +279,18 @@ Booking, running, and tracking a single piece of work end to end — creating an
 - [Browsing and filtering the jobs list](Jobs/Browsing%20and%20filtering%20the%20jobs%20list.md)
 - [Viewing jobs on a pipeline (kanban) board](Jobs/Viewing%20jobs%20on%20a%20pipeline%20%28kanban%29%20board.md)
 
+### Scheduling
+The drag-and-drop board dispatchers use to assign jobs to field users on a calendar — navigating and searching the board, dragging jobs onto it to book them, creating jobs directly on it, and taking jobs back off (unbooking or unallocating), editing, and bulk-booking. All 7 guides are now written.
+
+- [Overview — how the scheduler board, its Ready for Scheduling panel, and job booking states fit together](Scheduling/_Scheduling%20-%20Overview.md)
+- [Using the scheduling board (navigation, zoom, time span, user search)](Scheduling/Using%20the%20scheduling%20board.md)
+- [Booking a job on the scheduler](Scheduling/Booking%20a%20job%20on%20the%20scheduler.md)
+- [Creating a job directly on the scheduler](Scheduling/Creating%20a%20job%20directly%20on%20the%20scheduler.md)
+- [Unbooking a job from the scheduler](Scheduling/Unbooking%20a%20job%20from%20the%20scheduler.md)
+- [Unallocating a job from a user on the scheduler](Scheduling/Unallocating%20a%20job%20from%20a%20user%20on%20the%20scheduler.md)
+- [Editing a job from the scheduler](Scheduling/Editing%20a%20job%20from%20the%20scheduler.md)
+- [Bulk-booking many jobs](Scheduling/Bulk-booking%20many%20jobs.md)
+
 ### Timesheets
 
 
@@ -384,6 +396,19 @@ The read-only page a client reaches from an emailed link to approve or reject a 
 - [Overview — what the Client Portal is for](Client%20Portal/_Client%20Portal%20-%20Overview.md)
 - [Approving or rejecting a quote via a client portal link](Client%20Portal/Approving%20or%20rejecting%20a%20quote%20via%20a%20client%20portal%20link.md)
 
+### Clients
+Browsing, creating, and working a client record — its todos, jobs, sites, and linked records — through to archiving one whose work is finished. All 8 guides are now written; two are currently blocked from human verification by open app bugs (see below).
+
+- [Overview — how browsing, creating, working, and archiving a client fit together](Clients/_Clients%20-%20Overview.md)
+- [Viewing and filtering the client list](Clients/Viewing%20and%20filtering%20the%20client%20list.md)
+- [Creating and editing a client](Clients/Creating%20and%20editing%20a%20client.md)
+- [Client overview, todos, jobs, and linked records tabs](Clients/Client%20overview%2C%20todos%2C%20jobs%2C%20and%20linked%20records%20tabs.md)
+- [Viewing a client's invoices](Clients/Viewing%20a%20client's%20invoices.md) — currently blocked from human verification by [a known bug](Zz%20-%20Known%20Bugs/clients-invoices-tab-route-has-no-controller-action-or-ui-link.md)
+- [Downloading a client PDF summary](Clients/Downloading%20a%20client%20PDF%20summary.md) — currently blocked from human verification by [a known bug](Zz%20-%20Known%20Bugs/clients-pdf-download-route-has-no-controller-action-or-ui-link.md)
+- [Managing a client's sites](Clients/Managing%20a%20client's%20sites.md)
+- [Site detail — overview and linked assets](Clients/Site%20detail%20%E2%80%94%20overview%20and%20linked%20assets.md)
+- [Archiving a client](Clients/Archiving%20a%20client.md)
+
 ### Public Share Links
 Letting people who aren't logged into OCU One submit a new Project or Record through a link — for setting one up, and for what the person on the other end of the link sees. All 4 guides are now written; one is currently blocked from human verification by an open app bug (see below).
 
@@ -467,6 +492,34 @@ Street-works and traffic-management permits raised against a project, and the de
 - [Editing or deleting a defect](Permits/Editing%20or%20deleting%20a%20defect.md)
 - [Viewing a defect](Permits/Viewing%20a%20defect.md)
 - [Changing a defect's status](Permits/Changing%20a%20defect's%20status.md)
+
+### Variations (Change Projects)
+Changes to the agreed scope of work on a project — raising one, giving it a value through allocated products, moving it through its approval workflow, and applying an approved one back onto the project. All 9 guides are now written.
+
+- [Overview — how a variation's status workflow, products, and PDF export fit together](Variations%20%28Change%20Projects%29/_Variations%20%28Change%20Projects%29%20-%20Overview.md)
+- [Viewing and filtering variations and the variations pipeline](Variations%20%28Change%20Projects%29/Viewing%20and%20filtering%20variations%20and%20the%20variations%20pipeline.md)
+- [Creating a new variation](Variations%20%28Change%20Projects%29/Creating%20a%20new%20variation.md)
+- [Managing products on a variation](Variations%20%28Change%20Projects%29/Managing%20products%20on%20a%20variation.md)
+- [Editing, activating or deactivating, or deleting a variation](Variations%20%28Change%20Projects%29/Editing%2C%20activating%20or%20deactivating%2C%20or%20deleting%20a%20variation.md)
+- [Viewing a variation overview and updating status/RAG](Variations%20%28Change%20Projects%29/Viewing%20a%20variation%20overview%20and%20updating%20status-rag.md)
+- [Applying an approved variation to a job or project](Variations%20%28Change%20Projects%29/Applying%20an%20approved%20variation%20to%20a%20job%20or%20project.md)
+- [Downloading or previewing a variation PDF](Variations%20%28Change%20Projects%29/Downloading%20or%20previewing%20a%20variation%20PDF.md)
+- [Sending a variation for client approval](Variations%20%28Change%20Projects%29/Sending%20a%20variation%20for%20client%20approval.md)
+- [Toggling attachment visibility on a variation PDF](Variations%20%28Change%20Projects%29/Toggling%20attachment%20visibility%20on%20a%20variation%20PDF.md)
+
+### Visits
+Planned or completed trips out to an asset — browsing them, creating one by hand, its overview page, RAG status, attaching/detaching it from a job, and its todos and issues. All 9 guides are now written, though one ("Changing a visit's status") is currently blocked from human verification by an open app bug — see the bug list below.
+
+- [Overview — how a visit's type, asset, status, and job attachment fit together](Visits/_Visits%20-%20Overview.md)
+- [Browsing visits](Visits/Browsing%20visits.md)
+- [Creating a visit](Visits/Creating%20a%20visit.md)
+- [Editing or deleting a visit](Visits/Editing%20or%20deleting%20a%20visit.md)
+- [Viewing a visit's overview page](Visits/Viewing%20a%20visit's%20overview%20page.md)
+- [Changing a visit's status](Visits/Changing%20a%20visit's%20status.md)
+- [Updating a visit's RAG status](Visits/Updating%20a%20visit's%20RAG%20status.md)
+- [Attaching or detaching a visit from a job](Visits/Attaching%20or%20detaching%20a%20visit%20from%20a%20job.md)
+- [Viewing a visit's to-dos](Visits/Viewing%20a%20visit's%20to-dos.md)
+- [Viewing and raising issues on a visit](Visits/Viewing%20and%20raising%20issues%20on%20a%20visit.md)
 
 ### Settings
 Tenant admin configuration — organised into one subfolder per Settings sub-area (matching the "Settings: *" sections in `_progress.md`). All 18 sub-areas and 63 guides are now written.
@@ -579,6 +632,19 @@ Topic-based feeds in the Hub for sharing posts and articles, each moving through
 - [Writing and publishing a full article in a channel](Hub%20-%20Channels/Writing%20and%20publishing%20a%20full%20article%20in%20a%20channel.md)
 - [Acknowledging (marking as read) a post or article](Hub%20-%20Channels/Acknowledging%20%28marking%20as%20read%29%20a%20post%20or%20article.md)
 
+### Estimates & Quotes
+Scoping out proposed work and cost on an estimate, then turning it into a quote to send to a client.
+
+- [Overview — what an estimate and a quote are, and how they fit together](Estimates%20%26%20Quotes/_Estimates%20%26%20Quotes%20-%20Overview.md)
+- [Viewing and filtering estimates and the estimates pipeline](Estimates%20%26%20Quotes/Viewing%20and%20filtering%20estimates%20and%20the%20estimates%20pipeline.md)
+- [Creating a new estimate](Estimates%20%26%20Quotes/Creating%20a%20new%20estimate.md)
+- [Viewing an estimate overview and updating status/RAG](Estimates%20%26%20Quotes/Viewing%20an%20estimate%20overview%20and%20updating%20status%20RAG.md)
+- [Editing, activating/deactivating, or deleting an estimate](Estimates%20%26%20Quotes/Editing%2C%20activating%20deactivating%2C%20or%20deleting%20an%20estimate.md)
+- [Managing products/materials on an estimate](Estimates%20%26%20Quotes/Managing%20products%20materials%20on%20an%20estimate.md) — currently blocked by [a known bug](Zz%20-%20Known%20Bugs/adding-a-product-to-an-estimate-crashes-with-template-is-missing.md)
+- [Attaching or detaching jobs on an estimate](Estimates%20%26%20Quotes/Attaching%20or%20detaching%20jobs%20on%20an%20estimate.md)
+- [Viewing records attached to an estimate](Estimates%20%26%20Quotes/Viewing%20records%20attached%20to%20an%20estimate.md)
+- [Creating and sending a quote (PDF) to a client](Estimates%20%26%20Quotes/Creating%20and%20sending%20a%20quote%20%28PDF%29%20to%20a%20client.md)
+
 ## Folder layout
 
 ```
@@ -603,6 +669,11 @@ OCU-One-Web-User-Guides/
 ├── Jobs/                   Jobs guides
 │   ├── _Jobs - Overview.md
 │   ├── _VERIFICATION.md    verification status for Jobs guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Scheduling/             Scheduling guides (the drag-and-drop scheduler board)
+│   ├── _Scheduling - Overview.md
+│   ├── _VERIFICATION.md    verification status for Scheduling guides
 │   ├── ...guide files
 │   └── attachments/        
 ├── Timesheets/             Timesheets guides
@@ -700,6 +771,11 @@ OCU-One-Web-User-Guides/
 │   ├── _VERIFICATION.md    verification status for Client Portal guides
 │   ├── ...guide files
 │   └── attachments/        
+├── Clients/                Clients guides
+│   ├── _Clients - Overview.md
+│   ├── _VERIFICATION.md    verification status for Clients guides
+│   ├── ...guide files
+│   └── attachments/        
 ├── Public Share Links/     Public Share Links guides
 │   ├── _Public Share Links - Overview.md
 │   ├── _VERIFICATION.md    verification status for Public Share Links guides
@@ -775,6 +851,21 @@ OCU-One-Web-User-Guides/
 ├── Permits/                Permits guides (permits and the defects raised against them)
 │   ├── _Permits - Overview.md
 │   ├── _VERIFICATION.md    verification status for Permits guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Variations (Change Projects)/   Variations guides
+│   ├── _Variations (Change Projects) - Overview.md
+│   ├── _VERIFICATION.md    verification status for Variations guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Visits/                 Visits guides
+│   ├── _Visits - Overview.md
+│   ├── _VERIFICATION.md    verification status for Visits guides
+│   ├── ...guide files
+│   └── attachments/        
+├── Estimates & Quotes/     Estimates & Quotes guides
+│   ├── _Estimates & Quotes - Overview.md
+│   ├── _VERIFICATION.md    verification status for Estimates & Quotes guides
 │   ├── ...guide files
 │   └── attachments/        
 └── Zz - Known Bugs/        real product issues found while building guides, not documentation — named to sort last

@@ -16,12 +16,12 @@ Click **New**. You're asked which type of task you're creating.
 
 Pick a type and you land on a short form: give the task a name, and optionally allocate products to it if the task type supports that.
 
-![New task form with the name filled in](attachments/creating-a-new-task-under-a-project/03-new-task-form-filled.jpg)
-*Naming the task "Initial roof survey" before creating it.*
+![New task form with the name filled in and the Cost Book fields highlighted](attachments/creating-a-new-task-under-a-project/03-new-task-form-filled-annotated.jpg)
+*Naming the task "Initial roof survey" before creating it. The Cost Book is pre-filled from the project's own Cost Book ("Internal Costs 2026") — pick a Cost Book Version to match.*
 
 Click **Create Task**. You're taken straight to the new task's page.
 
 ![The new task's Products tab, empty](attachments/creating-a-new-task-under-a-project/04-task-created-products-tab.jpg)
-*The new task exists with no product allocations yet — these can be added later from here if needed.*
+*The new task exists with no product allocations yet. From here you can only allocate from products already allocated to the project — there's no option to add a brand new product directly to a task.*
 
 **Worth knowing:** a task created this way starts with status "New" and belongs directly to the project — it isn't tied to a job unless one is linked to it later.
