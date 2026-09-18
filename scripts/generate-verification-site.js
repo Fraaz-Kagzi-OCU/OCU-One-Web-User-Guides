@@ -730,7 +730,7 @@ function renderSidebar(topics, currentPagePath, section) {
       const href = relHref(currentPagePath, target);
       const isActive = currentPagePath.startsWith(path.join(sectionBase, t.folder) + path.sep) ||
         currentPagePath === target;
-      return `<li><a class="${isActive ? 'active' : ''}" href="${href}">` +
+      return `<li><a class="${isActive ? 'active' : ''}" href="${escapeHtml(href)}">` +
         `<span>${escapeHtml(t.label)}</span><span class="count">${t.count}</span></a></li>`;
     })
     .join('\n');
@@ -738,18 +738,18 @@ function renderSidebar(topics, currentPagePath, section) {
   const landingHref = relHref(currentPagePath, path.join(OUTPUT_DIR, 'index.html'));
   const sectionSwitch = ALL_SECTIONS.map((s) => {
     const href = relHref(currentPagePath, path.join(OUTPUT_DIR, s.dirName, 'index.html'));
-    return `<a class="${s.id === section.id ? 'active' : ''}" href="${href}">${escapeHtml(s.label)}</a>`;
+    return `<a class="${s.id === section.id ? 'active' : ''}" href="${escapeHtml(href)}">${escapeHtml(s.label)}</a>`;
   }).join('\n');
 
   const homeHref = relHref(currentPagePath, path.join(sectionBase, 'index.html'));
 
   return `
 <nav class="sidebar">
-  <a class="all-guides-link" href="${landingHref}">&larr; All guides</a>
+  <a class="all-guides-link" href="${escapeHtml(landingHref)}">&larr; All guides</a>
   <div class="section-switch">
     ${sectionSwitch}
   </div>
-  <h2><a href="${homeHref}" style="color:inherit;text-decoration:none;">${escapeHtml(section.label)}</a></h2>
+  <h2><a href="${escapeHtml(homeHref)}" style="color:inherit;text-decoration:none;">${escapeHtml(section.label)}</a></h2>
   <ul>
     ${items}
   </ul>
@@ -925,7 +925,7 @@ ${section.showVerifyForm ? formIframeHtml(guide.title, guide.version, { scriptHr
       .map((g) => {
         const href = path.relative(path.dirname(indexFile), g.outFile).split(path.sep).join('/');
         const versionTag = section.showVersion === false ? '' : ` <span class="version">v${escapeHtml(g.version || '—')}</span>`;
-        return `<li><a href="${href}">${escapeHtml(g.title)}</a>${versionTag}</li>`;
+        return `<li><a href="${escapeHtml(href)}">${escapeHtml(g.title)}</a>${versionTag}</li>`;
       })
       .join('\n');
 
@@ -949,7 +949,7 @@ ${items}
     .map((t) => {
       const href = path.relative(path.join(OUTPUT_DIR, section.dirName), path.join(OUTPUT_DIR, section.dirName, t.folder, 'index.html')).split(path.sep).join('/');
       const unit = section.unitLabel || 'guide';
-      return `<li><a href="${href}">${escapeHtml(t.label)}</a> <span class="version">${t.count} ${unit}${t.count === 1 ? '' : 's'}</span></li>`;
+      return `<li><a href="${escapeHtml(href)}">${escapeHtml(t.label)}</a> <span class="version">${t.count} ${unit}${t.count === 1 ? '' : 's'}</span></li>`;
     })
     .join('\n');
 
