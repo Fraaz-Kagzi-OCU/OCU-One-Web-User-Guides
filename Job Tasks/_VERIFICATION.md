@@ -10,14 +10,19 @@ Tracks whether a human has actually checked each guide against the live app — 
 - If you spot something wrong while reviewing, either fix the guide and then mark it verified, or leave **Verified** as `No` and note what's broken.
 - Keep rows in the same order and grouping as the internal progress tracker's sections, so the two files stay easy to cross-reference.
 - Only guides that are actually written (`done` in the progress tracker) appear here — a `todo` guide has nothing to verify yet.
+- **Blocked** is present because this topic currently has a blocked guide. A blocked row is invisible on the verification site regardless of its `Verified` value — see `Zz - Bugged Guides.md` and `WORKFLOW.md`.
 
 ## Status
 
 | Guide | Verified | Verified by | Date | Version | Notes | Blocked |
 | ----- | -------- | ------------ | ---- | ------- | ----- | ----- |
-| Managing contacts on a client, lead, or other record | No |  |  | v2026.08.04 | Newly written 2026-09-09. Notes the "View all" button bug (see `Zz - Known Bugs/view-all-contacts-button-missing-until-page-reload.md`). Not yet human-verified. | Yes: view-all-contacts-button-missing-until-page-reload.md |
-| Viewing an address on a map | No |  |  | v2026.08.04 | Newly written 2026-09-09. Google Maps rendered correctly in this dev environment (unlike the earlier live user map guide). Not yet human-verified. | |
+| Viewing and updating a job task | No |  |  | v2026.09.01 |  |  |
+| Deleting a job task | No |  |  | v2026.09.01 |  |  |
+| Updating a job task's status | No |  |  | v2026.09.01 |  |  |
+| Tracking a job task's RAG status | No |  |  | v2026.09.01 |  |  |
+| Tracking todos and records on a job task | No |  |  | v2026.09.01 |  |  |
+| Downloading or previewing a job task PDF | No |  |  | v2026.09.01 | Guide documents the actual behaviour; the Download button's accessible title is broken — see the linked bug. | Yes: job-task-download-button-shows-missing-translation-title.md |
 
 ## Summary
 
-Verified: 0 / 2
+Verified: 0 / 6

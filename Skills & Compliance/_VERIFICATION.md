@@ -10,14 +10,15 @@ Tracks whether a human has actually checked each guide against the live app — 
 - If you spot something wrong while reviewing, either fix the guide and then mark it verified, or leave **Verified** as `No` and note what's broken.
 - Keep rows in the same order and grouping as the internal progress tracker's sections, so the two files stay easy to cross-reference.
 - Only guides that are actually written (`done` in the progress tracker) appear here — a `todo` guide has nothing to verify yet.
+- **Blocked** is present because this topic currently has a blocked guide. A blocked row is invisible on the verification site regardless of its `Verified` value — see `Zz - Bugged Guides.md` and `WORKFLOW.md`.
 
 ## Status
 
 | Guide | Verified | Verified by | Date | Version | Notes | Blocked |
 | ----- | -------- | ------------ | ---- | ------- | ----- | ----- |
-| Managing contacts on a client, lead, or other record | No |  |  | v2026.08.04 | Newly written 2026-09-09. Notes the "View all" button bug (see `Zz - Known Bugs/view-all-contacts-button-missing-until-page-reload.md`). Not yet human-verified. | Yes: view-all-contacts-button-missing-until-page-reload.md |
-| Viewing an address on a map | No |  |  | v2026.08.04 | Newly written 2026-09-09. Google Maps rendered correctly in this dev environment (unlike the earlier live user map guide). Not yet human-verified. | |
-
-## Summary
-
-Verified: 0 / 2
+| Finding your way around Skills & Compliance | No | | | v2026.09.01 | | |
+| Viewing the Skills Matrix | No | | | v2026.09.01 | | |
+| Viewing the compliance dashboard and drilling into missing evidence | No | | | v2026.09.01 | | |
+| Uploading skill evidence | No | | | v2026.09.01 | | |
+| Reviewing, editing, or approving/rejecting skill evidence | No | | | v2026.09.01 | Guide documents the intended manager-approval flow, which works as shown — but any user (not just a manager) can also do it, since the status change isn't actually role-restricted. See the linked bug. | Yes: field-engineer-can-self-approve-skill-evidence.md |
+| Viewing your personal skills wallet | No | | | v2026.09.01 | Guide documents the actual behaviour, including the inflated "Missing"/"Outstanding" counts — see the linked bug. | Yes: wallet-dashboard-double-counts-missing-skill-requirements.md |

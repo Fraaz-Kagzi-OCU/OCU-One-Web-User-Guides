@@ -214,12 +214,12 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Viewing and updating a job task |  | Ops, FE | TasksController#show/#main/#edit/#update | todo | Job with 2 tasks of different types, one allocated and booked | 3 |  |  |
-| Deleting a job task |  | Ops | TasksController#destroy | todo | Task not marked required/blocking | 1 |  |  |
-| Updating a job task's status |  | Ops, FE | TasksController#status | todo | Task in "new" status with 2 possible next statuses | 2 |  |  |
-| Tracking a job task's RAG status |  | Ops, Mgr | TasksController#rag_status | todo | Task set amber, then changed | 1 |  |  |
-| Tracking todos and records on a job task |  | Ops, FE | TasksController#todos/#records | todo | Task with 3 todos; task type with records enabled and 1 custom record type | 2 |  |  |
-| Downloading or previewing a job task PDF |  | Ops, FE | TasksController#download | todo | Completed task with description and booked duration | 2 |  |  |
+| Viewing and updating a job task |  | Ops, FE | TasksController#show/#main/#edit/#update | done | Job with 2 tasks of different types, one allocated and booked | 3 | 2026-09-18 | v2026.09.01 |
+| Deleting a job task |  | Ops | TasksController#destroy | done | Task not marked required/blocking | 1 | 2026-09-18 | v2026.09.01 |
+| Updating a job task's status |  | Ops, FE | TasksController#status | done | Task in "new" status with 2 possible next statuses | 2 | 2026-09-18 | v2026.09.01 |
+| Tracking a job task's RAG status |  | Ops, Mgr | TasksController#rag_status | done | Task set amber, then changed | 1 | 2026-09-18 | v2026.09.01 |
+| Tracking todos and records on a job task |  | Ops, FE | TasksController#todos/#records | done | Task with 3 todos; task type with records enabled and 1 custom record type | 2 | 2026-09-18 | v2026.09.01 |
+| Downloading or previewing a job task PDF |  | Ops, FE | TasksController#download | done | Completed task with description and booked duration | 2 | 2026-09-18 | v2026.09.01 |
 
 ## Tasks
 
@@ -385,12 +385,12 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Finding your way around Skills & Compliance |  | FE, Ops | SkillsController#landing | todo | N/A — navigation hub | 1 |  |  |
-| Viewing the Skills Matrix |  | Mgr | SkillsController#matrix/#filter_matrix | todo | Skill set "Electrical Safety", group "North Region Engineers" | 3 |  |  |
-| Viewing the compliance dashboard and drilling into missing evidence |  | Mgr | SkillsController#compliance/#filter_compliance/#compliance_evidences | todo | User with status "expires_soon" on "First Aid Certificate" | 3 |  |  |
-| Uploading skill evidence (e.g. a certificate) |  | FE | SkillEvidencesController#new/#create | todo | Requirement "First Aid Certificate", valid 2026–2029, file uploaded | 4 |  |  |
-| Reviewing, editing, or approving/rejecting skill evidence |  | Mgr | SkillEvidencesController#show/#edit/#update/#status/#destroy | todo | Evidence status pending → approved | 3 |  |  |
-| Viewing your personal skills wallet |  | FE | WalletController#index/#dashboard/#skill_sets/#skill_evidences | todo | N/A (detailed under Home/Account) | 1 |  |  |
+| Finding your way around Skills & Compliance |  | FE, Ops | SkillsController#landing | done | N/A — navigation hub | 1 | 2026-09-18 | v2026.09.01 |
+| Viewing the Skills Matrix |  | Mgr | SkillsController#matrix/#filter_matrix | done | Skill set "Electrical Safety", group "North Region Engineers" | 2 | 2026-09-18 | v2026.09.01 |
+| Viewing the compliance dashboard and drilling into missing evidence |  | Mgr | SkillsController#compliance/#filter_compliance/#compliance_evidences | done | User with status "expires_soon" on "First Aid Certificate" | 3 | 2026-09-18 | v2026.09.01 |
+| Uploading skill evidence (e.g. a certificate) |  | FE | SkillEvidencesController#new/#create | done | Requirement "First Aid Certificate", valid 2026–2029, file uploaded | 4 | 2026-09-18 | v2026.09.01 |
+| Reviewing, editing, or approving/rejecting skill evidence |  | Mgr | SkillEvidencesController#show/#edit/#update/#status/#destroy | done | Evidence status pending → approved | 5 | 2026-09-18 | v2026.09.01 |
+| Viewing your personal skills wallet |  | FE | WalletController#index/#dashboard/#skill_sets/#skill_evidences | done | N/A (detailed under Home/Account) | 4 | 2026-09-18 | v2026.09.01 |
 
 ## SLAs
 
@@ -799,7 +799,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 389 / 401
+Completed: 401 / 401
 
 Needs update: 0
 
@@ -859,6 +859,8 @@ Settings guides completed: 65 / 65
 
 Tasks guides completed: 1 / 1
 
+Job Tasks guides completed: 6 / 6
+
 Platform Administration guides completed: 2 / 2
 
 Invoice Exports guides completed: 3 / 3
@@ -893,10 +895,12 @@ Clients guides completed: 8 / 8
 
 SLAs guides completed: 5 / 5
 
+Skills & Compliance guides completed: 6 / 6
+
 Release breakdown (current version only, for `done` rows):
 
 - v2026.08.02: 19
 - v2026.08.03: 9
 - v2026.08.04: 44
 - v2026.08.05: 93
-- v2026.09.01: 224
+- v2026.09.01: 236

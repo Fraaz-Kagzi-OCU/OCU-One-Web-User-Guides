@@ -41,6 +41,7 @@ reviewers, and comes back once the bug is fixed (`/recheck-bugs` →
 
 | Guide | Topic | Bug | Guide currently mentions bug? | Status | Defect logged? |
 | ----- | ----- | --- | ------------------------------ | ------ | -------------- |
+| [Managing contacts on a client, lead, or other record](Contacts%20%26%20Addresses/Managing%20contacts%20on%20a%20client%2C%20lead%2C%20or%20other%20record.md) | Contacts & Addresses | [view-all-contacts-button-missing-until-page-reload](Zz%20-%20Known%20Bugs/view-all-contacts-button-missing-until-page-reload.md) | Yes | Open | |
 | [Viewing assigned records in your Assignments inbox](Assignments/Viewing%20assigned%20records%20in%20your%20Assignments%20inbox.md) | Assignments | [assigned-by-me-tab-always-shows-nothing-here](Zz%20-%20Known%20Bugs/assigned-by-me-tab-always-shows-nothing-here.md) | Yes | Open | |
 | [Viewing assigned projects in your Assignments inbox](Assignments/Viewing%20assigned%20projects%20in%20your%20Assignments%20inbox.md) | Assignments | [assigned-by-me-tab-always-shows-nothing-here](Zz%20-%20Known%20Bugs/assigned-by-me-tab-always-shows-nothing-here.md) | Yes | Open | |
 | [Deleting a product](Products%20%26%20Rates/Deleting%20a%20product.md) | Products & Rates | [deleting-a-product-does-not-cascade-to-sub-products](Zz%20-%20Known%20Bugs/deleting-a-product-does-not-cascade-to-sub-products.md) | Yes | Open | |
@@ -67,7 +68,10 @@ reviewers, and comes back once the bug is fixed (`/recheck-bugs` →
 | [Viewing a client's invoices](Clients/Viewing%20a%20client%27s%20invoices.md) | Clients | [clients-invoices-tab-route-has-no-controller-action-or-ui-link](Zz%20-%20Known%20Bugs/clients-invoices-tab-route-has-no-controller-action-or-ui-link.md) | No | Open | |
 | [Downloading a client PDF summary](Clients/Downloading%20a%20client%20PDF%20summary.md) | Clients | [clients-pdf-download-route-has-no-controller-action-or-ui-link](Zz%20-%20Known%20Bugs/clients-pdf-download-route-has-no-controller-action-or-ui-link.md) | No | Open | |
 | [Activating or deactivating an SLA](SLAs/Activating%20or%20deactivating%20an%20SLA.md) | SLAs | [sla-activate-deactivate-has-no-ui-entry-point](Zz%20-%20Known%20Bugs/sla-activate-deactivate-has-no-ui-entry-point.md) | No | Open | |
+| [Downloading or previewing a job task PDF](Job%20Tasks/Downloading%20or%20previewing%20a%20job%20task%20PDF.md) | Job Tasks | [job-task-download-button-shows-missing-translation-title](Zz%20-%20Known%20Bugs/job-task-download-button-shows-missing-translation-title.md) | No | Open | |
+| [Viewing your personal skills wallet](Skills%20%26%20Compliance/Viewing%20your%20personal%20skills%20wallet.md) | Skills & Compliance | [wallet-dashboard-double-counts-missing-skill-requirements](Zz%20-%20Known%20Bugs/wallet-dashboard-double-counts-missing-skill-requirements.md) | No | Open | |
+| [Reviewing, editing, or approving/rejecting skill evidence](Skills%20%26%20Compliance/Reviewing%2C%20editing%2C%20or%20approving%20rejecting%20skill%20evidence.md) | Skills & Compliance | [field-engineer-can-self-approve-skill-evidence](Zz%20-%20Known%20Bugs/field-engineer-can-self-approve-skill-evidence.md) | No | Open | |
 
 ## Summary
 
-Bugged: 25 (0 resolved)
+Bugged: 30 (0 resolved)
