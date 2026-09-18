@@ -396,11 +396,11 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 | Guide | Feature | Audience | Maps to (controllers/views) | Status | Test data needed | Screenshot steps (est.) | documented_at | Release |
 |-------|-------|----------|------------------------------|--------|-------------------|--------------------------|----------------|-------|
-| Creating an SLA on a job or other record |  | Ops | SlasController#new/#create | todo | SLA type "Response Time SLA" on Job #JOB-5521 | 3 |  |  |
-| Monitoring and editing an SLA's progress |  | Ops, Mgr | SlasController#show/#edit/#update | todo | SLA jeopardy "amber", breach_at set | 3 |  |  |
-| Pausing, resuming, restarting, cancelling, or satisfying an SLA |  | Ops | SlasController#pause/#resume/#restart/#cancel/#satisfy | todo | SLA paused with confirm dialog | 3 |  |  |
-| Activating or deactivating an SLA |  | Ops | SlasController#activate/#deactivate | todo | SLA deactivated then reactivated | 2 |  |  |
-| Browsing and filtering all SLAs |  | Ops, Mgr | SlasController#index/#filter | todo | Filter jeopardy=red, status=active | 2 |  |  |
+| Creating an SLA on a job or other record |  | Ops | SlasController#new/#create | done | SLA type "Response Time SLA" attached to Record Type "Incident Report" (row's "Job #JOB-5521" isn't valid — SLAs attach to Records, Orders, Tickets, and Users, not Jobs), created on record "Payment terminal fire risk - Store 12" | 3 | 2026-09-17 | v2026.09.01 |
+| Monitoring and editing an SLA's progress |  | Ops, Mgr | SlasController#show/#edit/#update | done | Same SLA showing green progress; a second SLA backdated into amber jeopardy; title edited | 3 | 2026-09-17 | v2026.09.01 |
+| Pausing, resuming, restarting, cancelling, or satisfying an SLA |  | Ops | SlasController#pause/#resume/#restart/#cancel/#satisfy | done | One SLA paused, resumed, restarted, then cancelled; a second SLA satisfied — each confirm dialog described rather than clicked live (native, unoverridden) | 3 | 2026-09-17 | v2026.09.01 |
+| Activating or deactivating an SLA |  | Ops | SlasController#activate/#deactivate | done | Confirmed live that the activate/deactivate routes work but have no button, icon, or link anywhere in the UI — guide documents the actual behaviour and flags the bug | 2 | 2026-09-17 | v2026.09.01 |
+| Browsing and filtering all SLAs |  | Ops, Mgr | SlasController#index/#filter | done | 4 SLAs across Running/Cancelled/Satisfied, filtered by Jeopardy = Red and State = Active + Inactive to reveal one otherwise-hidden overdue SLA | 2 | 2026-09-17 | v2026.09.01 |
 
 ## Hub - Pages
 
@@ -799,7 +799,7 @@ For the full chain — this sync plus the required `_VERIFICATION.md` and `READM
 
 ## Summary
 
-Completed: 384 / 401
+Completed: 389 / 401
 
 Needs update: 0
 
@@ -891,10 +891,12 @@ Estimates & Quotes guides completed: 8 / 8
 
 Clients guides completed: 8 / 8
 
+SLAs guides completed: 5 / 5
+
 Release breakdown (current version only, for `done` rows):
 
 - v2026.08.02: 19
 - v2026.08.03: 9
 - v2026.08.04: 44
 - v2026.08.05: 93
-- v2026.09.01: 219
+- v2026.09.01: 224

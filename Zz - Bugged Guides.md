@@ -66,7 +66,8 @@ reviewers, and comes back once the bug is fixed (`/recheck-bugs` →
 | [Managing products/materials on an estimate](Estimates%20%26%20Quotes/Managing%20products%20materials%20on%20an%20estimate.md) | Estimates & Quotes | [adding-a-product-to-an-estimate-crashes-with-template-is-missing](Zz%20-%20Known%20Bugs/adding-a-product-to-an-estimate-crashes-with-template-is-missing.md) | No | Open | |
 | [Viewing a client's invoices](Clients/Viewing%20a%20client%27s%20invoices.md) | Clients | [clients-invoices-tab-route-has-no-controller-action-or-ui-link](Zz%20-%20Known%20Bugs/clients-invoices-tab-route-has-no-controller-action-or-ui-link.md) | No | Open | |
 | [Downloading a client PDF summary](Clients/Downloading%20a%20client%20PDF%20summary.md) | Clients | [clients-pdf-download-route-has-no-controller-action-or-ui-link](Zz%20-%20Known%20Bugs/clients-pdf-download-route-has-no-controller-action-or-ui-link.md) | No | Open | |
+| [Activating or deactivating an SLA](SLAs/Activating%20or%20deactivating%20an%20SLA.md) | SLAs | [sla-activate-deactivate-has-no-ui-entry-point](Zz%20-%20Known%20Bugs/sla-activate-deactivate-has-no-ui-entry-point.md) | No | Open | |
 
 ## Summary
 
-Bugged: 24 (0 resolved)
+Bugged: 25 (0 resolved)
